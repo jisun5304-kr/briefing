@@ -638,15 +638,19 @@ function openBriefing(file,title,period) {
   const card=document.getElementById(`session-${period}`);
   if (card) card.classList.add('active-session');
 
+  // 현재 테마를 URL 파라미터로 전달 (iframe 최초 로드 시 색상 일치)
+  const theme=document.body.classList.contains('light')?'light':'dark';
+  const fileWithTheme=`${file}?theme=${theme}`;
+
   if (isMobile()) {
     document.getElementById('bs-title').textContent=title;
-    document.getElementById('briefing-frame-mobile').src=file;
+    document.getElementById('briefing-frame-mobile').src=fileWithTheme;
     document.getElementById('bs-overlay').classList.add('open');
     document.getElementById('bottom-sheet').classList.add('open');
     document.body.style.overflow='hidden';
   } else {
     document.getElementById('briefing-bar-title').textContent=title;
-    document.getElementById('briefing-frame').src=file;
+    document.getElementById('briefing-frame').src=fileWithTheme;
     document.getElementById('right-panel').classList.add('has-content');
   }
 }
@@ -721,6 +725,17 @@ function toggleTheme() {
   const isLight=document.body.classList.toggle('light');
   localStorage.setItem('briefing_theme',isLight?'light':'dark');
   document.getElementById('theme-toggle').textContent=isLight?'☀️ 라이트':'🌙 다크';
+
+  // 열려 있는 iframe에도 테마 전달
+  const theme=isLight?'light':'dark';
+  [
+    document.getElementById('briefing-frame'),
+    document.getElementById('briefing-frame-mobile')
+  ].forEach(frame=>{
+    if(frame&&frame.src&&frame.src!==window.location.href){
+      try{frame.contentWindow.postMessage({type:'theme',theme},'*');}catch(e){}
+    }
+  });
 }
 
 /* ══ 초기화 ══ */
