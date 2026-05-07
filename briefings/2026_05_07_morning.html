@@ -133,20 +133,96 @@
     .section { padding: 16px !important; }
   }
 
-  /* ── 다크모드 ── */
-  html.dark body,
-  html.dark body * {
-    color-scheme: dark !important;
-  }
+  /* ── 다크모드: index.html 팔레트 일치 ── */
   html.dark body {
-    filter: invert(1) hue-rotate(180deg) !important;
-    background: #111 !important;
+    background: #0b1120 !important;
+    color: #dce6f5 !important;
   }
-  html.dark canvas,
-  html.dark img,
-  html.dark video {
-    filter: invert(1) hue-rotate(180deg) !important;
+  html.dark .header {
+    border-color: #1e2e4a !important;
   }
+  html.dark .header p { color: #6b80a0 !important; }
+  html.dark .badge {
+    background: rgba(59,130,246,0.15) !important;
+    border-color: rgba(59,130,246,0.4) !important;
+    color: #60a5fa !important;
+  }
+  /* 카드류 */
+  html.dark .index-card,
+  html.dark .chart-wrap,
+  html.dark .info-card,
+  html.dark .stock-card,
+  html.dark .reason-card,
+  html.dark .macro-card,
+  html.dark .sector-row,
+  html.dark .outlook-card,
+  html.dark .supply-card,
+  html.dark .three-col > div,
+  html.dark [class$="-card"],
+  html.dark [class$="-wrap"]:not(.table-wrap) {
+    background: #131e33 !important;
+    border-color: #1e2e4a !important;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.4) !important;
+  }
+  html.dark .index-card .label,
+  html.dark .macro-card .label,
+  html.dark .info-card .title,
+  html.dark .stock-code,
+  html.dark .info-item .k,
+  html.dark .note-small,
+  html.dark .rsi-label,
+  html.dark .session-time { color: #6b80a0 !important; }
+  html.dark .index-card .value,
+  html.dark .stock-name,
+  html.dark .macro-card .val { color: #dce6f5 !important; }
+  /* 테이블 */
+  html.dark .data-table thead tr { background: #0f1928 !important; }
+  html.dark .data-table th { color: #6b80a0 !important; border-color: #1e2e4a !important; }
+  html.dark .data-table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
+  html.dark .data-table tr:hover td { background: #1a2940 !important; }
+  /* 섹션 타이틀 */
+  html.dark .section-title { color: #6b80a0 !important; }
+  html.dark .section-title::before { background: #3b82f6 !important; }
+  /* 요약 박스 */
+  html.dark .summary-box,
+  html.dark .impact-box {
+    background: rgba(37,99,235,0.08) !important;
+    border-color: rgba(37,99,235,0.3) !important;
+  }
+  html.dark .summary-box p,
+  html.dark .impact-box p { color: #a0b8d8 !important; }
+  /* 뉴스 배너 */
+  html.dark .news-banner {
+    background: rgba(146,103,10,0.12) !important;
+    border-color: rgba(251,191,36,0.35) !important;
+  }
+  html.dark .news-banner .news-title { color: #fbbf24 !important; }
+  html.dark .news-banner p { color: #d4a843 !important; }
+  /* KOSPI 스포트라이트 */
+  html.dark .kospi-spotlight {
+    background: rgba(34,197,94,0.07) !important;
+    border-color: rgba(34,197,94,0.3) !important;
+  }
+  /* 판정 배지 */
+  html.dark .verdict.split  { background: rgba(37,99,235,0.15) !important; color: #60a5fa !important; }
+  html.dark .verdict.watch2 { background: rgba(59,68,90,0.3) !important;  color: #6b80a0 !important; }
+  html.dark .stock-card.watch   { border-color: rgba(110,231,183,0.4) !important; }
+  html.dark .stock-card.caution { border-color: rgba(252,165,165,0.4) !important; }
+  html.dark .stock-tag.watch   { background: rgba(0,107,66,0.2) !important; color: #4ade80 !important; }
+  html.dark .stock-tag.caution { background: rgba(185,28,28,0.2) !important; color: #f87171 !important; }
+  /* RSI 트랙 */
+  html.dark .rsi-track { background: #1e2e4a !important; }
+  html.dark .rsi-dot { border-color: #131e33 !important; }
+  /* 면책 고지 */
+  html.dark .disclaimer { color: #3a4e6a !important; border-color: #1e2e4a !important; }
+  /* 중요도 배지 */
+  html.dark .imp.high { background: rgba(190,26,57,0.2) !important; color: #f87171 !important; }
+  html.dark .imp.mid  { background: rgba(146,103,10,0.2) !important; color: #fbbf24 !important; }
+  html.dark .imp.low  { background: rgba(59,68,90,0.2) !important;  color: #6b80a0 !important; }
+  /* 태그 */
+  html.dark .tag.sur  { background: rgba(0,107,66,0.2) !important;  color: #4ade80 !important; }
+  html.dark .tag.beat { background: rgba(37,99,235,0.15) !important; color: #60a5fa !important; }
+  html.dark .tag.miss { background: rgba(185,28,28,0.2) !important; color: #f87171 !important; }
 </style>
 </head>
 <body>
@@ -401,17 +477,21 @@
 
   var _chartInstance = null;
   function _getChartColors() {
+    const d = document.documentElement.classList.contains('dark');
     return {
-      grid: '#eef1f7', text: '#5a6e8c',
-      tooltipBg: '#ffffff', tooltipTitle: '#1a2236', tooltipBorder: '#dde3ef'
+      grid:          d ? '#1e2e4a' : '#eef1f7',
+      text:          d ? '#6b80a0' : '#5a6e8c',
+      tooltipBg:     d ? '#131e33' : '#ffffff',
+      tooltipTitle:  d ? '#dce6f5' : '#1a2236',
+      tooltipBorder: d ? '#1e2e4a' : '#dde3ef',
     };
   }
 
-function _buildChart() {
-  var c = _getChartColors();
+function _buildChart(){
+  var c=_getChartColors();
   const ctx = document.getElementById('indexChart').getContext('2d');
-    if (_chartInstance) _chartInstance.destroy();
-  _chartInstance = new Chart(ctx, {
+    if(_chartInstance)_chartInstance.destroy();
+  _chartInstance=new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['다우존스', 'S&P 500', '나스닥', '필라델피아\n반도체'],
