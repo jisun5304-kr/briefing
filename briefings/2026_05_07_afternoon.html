@@ -394,6 +394,71 @@
     .badge, .imp, .tag { font-size: 9px !important; padding: 2px 6px !important; }
   }
 
+  
+  /* ══ 07 파일 가독성 + 테이블 보정 ══ */
+
+  /* 클래스 없는 테이블 줄색 통일 */
+  html.dark table tr:nth-child(even) td { background: #131e33 !important; }
+  html.dark table tr:hover td { background: #1a2940 !important; }
+  html.dark table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
+  html.dark table th { background: #0f1928 !important; color: #8fa4c0 !important; border-color: #1e2e4a !important; }
+
+  /* 섹션 타이틀 색상 */
+  html.dark .section-title { color: #8fa4c0 !important; }
+
+  /* 상승/하락 밝은 버전 */
+  html.dark .up   { color: #4ade80 !important; }
+  html.dark .down { color: #f87171 !important; }
+  html.dark .neutral { color: #8fa4c0 !important; }
+
+  /* 노트 박스 텍스트 */
+  html.dark .note-green { color: #4ade80 !important; }
+  html.dark .note-blue  { color: #60a5fa !important; }
+  html.dark .note-amber { color: #fbbf24 !important; }
+  html.dark .note-red   { color: #f87171 !important; }
+  html.dark .note-green *, html.dark .note-blue *,
+  html.dark .note-amber *, html.dark .note-red * { color: inherit !important; }
+
+  /* 배지 */
+  html.dark .badge-up     { color: #4ade80 !important; }
+  html.dark .badge-info   { color: #60a5fa !important; }
+  html.dark .badge-warn   { color: #fbbf24 !important; }
+  html.dark .badge-danger { color: #f87171 !important; }
+
+  /* 아웃룩 카드 */
+  html.dark .oc-green .ol, html.dark .oc-green .ov { color: #4ade80 !important; }
+  html.dark .oc-blue  .ol, html.dark .oc-blue  .ov { color: #60a5fa !important; }
+  html.dark .oc-amber .ol, html.dark .oc-amber .ov { color: #fbbf24 !important; }
+
+  /* RSI 박스 */
+  html.dark .rsi-box { background: #131e33 !important; }
+  html.dark .rsi-box strong { color: #60a5fa !important; }
+
+  /* 인덱스 카드 highlight */
+  html.dark .index-card.highlight { color: #4ade80 !important; }
+  html.dark .index-card .name { color: #8fa4c0 !important; }
+  html.dark .index-card .val  { color: #dce6f5 !important; }
+  html.dark .index-card .sub  { color: #6b80a0 !important; }
+
+  /* 수급 바 */
+  html.dark .supply-lbl { color: #8fa4c0 !important; }
+  html.dark .supply-val { color: #dce6f5 !important; }
+
+  /* 이벤트 아이템 */
+  html.dark .event-item { background: #131e33 !important; }
+  html.dark .event-label { color: #8fa4c0 !important; }
+  html.dark .event-desc  { color: #dce6f5 !important; }
+  html.dark .event-desc strong { color: #fbbf24 !important; }
+
+  /* 필 배지 */
+  html.dark .pill-split   { color: #60a5fa !important; }
+  html.dark .pill-watch   { color: #fbbf24 !important; }
+  html.dark .pill-caution { color: #f87171 !important; }
+
+  /* title-block 내부 텍스트 */
+  html.dark .title-block { filter: brightness(0.7) !important; }
+  html.dark .title-block .badge-white { color: #ffffff !important; opacity: 0.9 !important; }
+
   </style>
 <!-- v20260507100156 -->
 </head>
