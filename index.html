@@ -194,21 +194,32 @@
     .auth-btn:active { transform: scale(0.98); }
 
     /* ──────────── APP SHELL ──────────── */
+    /*#main-app { display: none; min-height: 100vh; }*/
+    /* 변경 — topbar를 항상 표시 */
     #main-app { display: none; min-height: 100vh; }
+    #main-app .app-content { display: none; }
 
-    .topbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 60px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      padding: 0 130px 0 32px;
-      gap: 20px;
-      z-index: 100;
-      overflow: visible;
-    }
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 12px;
+  z-index: 100;
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+  .topbar { padding: 0 12px; gap: 8px; }
+  .topbar-logo { font-size: 13px; letter-spacing: 0px; }
+  .role-chip { display: none; }
+  .theme-toggle { padding: 5px 10px; font-size: 12px; }
+  .logout-btn { padding: 5px 10px; font-size: 11px; }
+}
 
     .topbar-logo {
       font-family: 'Oswald', sans-serif;
@@ -719,19 +730,16 @@
 
 <!-- ──────── MAIN APP ──────── -->
 <div id="main-app">
-  <header class="topbar">
-    <div class="topbar-logo">
-      <span class="dot"></span>
-      시황 브리핑
-    </div>
-    <div class="topbar-spacer"></div>
-    <!-- <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>-->
-    <div class="role-chip" id="role-chip">구독자</div>
-    <!-- 기존 -->
-    <!--<button class="logout-btn" onclick="logout()">로그아웃</button>-->
-    <!-- 변경 후 -->
-    <button class="logout-btn" onclick="logout()"><span class="logout-btn-text">로그아웃</span></button>
-  </header>
+<header class="topbar">
+  <div class="topbar-logo">
+    <span class="dot"></span>
+    시황 브리핑
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="role-chip" id="role-chip">구독자</div>
+  <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>
+  <button class="logout-btn" onclick="logout()">로그아웃</button>
+</header>
 
   <div class="app-content">
     <!-- Admin 안내 -->
@@ -1005,8 +1013,9 @@ function tryLogin() {
 }
 
 function launchApp(role) {
-  document.getElementById('auth-screen').style.display = 'none';
-  document.getElementById('main-app').style.display    = 'block';
+  document.getElementById('auth-screen').style.display    = 'none';
+  document.getElementById('main-app').style.display        = 'block';
+  document.getElementById('main-app').querySelector('.app-content').style.display = 'block';
 
   const chip = document.getElementById('role-chip');
   if (role === 'admin') {
