@@ -93,6 +93,45 @@
     .sector-grid { grid-template-columns: 1fr; }
     .two-col { grid-template-columns: 1fr; }
   }
+
+  /* ══ 반응형 공통 추가 ══ */
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    margin-bottom: 18px;
+  }
+  .table-wrap table,
+  .table-wrap .data-table {
+    min-width: 480px;
+    margin-bottom: 0;
+  }
+  .chart-box { width: 100%; position: relative; }
+  .chart-box canvas { max-width: 100% !important; }
+  @media (max-width: 700px) {
+    body { padding: 14px 12px 32px !important; }
+    .header { flex-direction: column; align-items: flex-start; gap: 10px;   flex-wrap: wrap;
+  }
+    .index-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .sector-grid { grid-template-columns: 1fr 1fr !important; }
+    .reason-grid { grid-template-columns: 1fr !important; }
+    .macro-grid { grid-template-columns: 1fr 1fr !important; }
+    .two-col { grid-template-columns: 1fr !important; }
+    .three-col { grid-template-columns: 1fr 1fr !important; }
+    .outlook-grid { grid-template-columns: 1fr !important; }
+    .stock-grid { grid-template-columns: 1fr !important; }
+    .supply-val { width: auto; font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .index-grid { grid-template-columns: 1fr 1fr !important; }
+    .macro-grid { grid-template-columns: 1fr 1fr !important; }
+    .three-col { grid-template-columns: 1fr !important; }
+    .index-card .value, .index-card .val { font-size: 18px !important; }
+    .hero .big { font-size: 30px !important; }
+    .title-block h1 { font-size: 20px !important; }
+    .section { padding: 16px !important; }
+  }
 </style>
 </head>
 <body>
@@ -162,7 +201,8 @@
     </div>
 
     <div style="font-size:13px;font-weight:600;color:#1B3A6B;margin-bottom:10px;">경제 지표 일정</div>
-    <table>
+    <div class="table-wrap">
+<table>
       <thead>
         <tr><th>날짜</th><th>항목</th><th>중요도</th><th>내용</th></tr>
       </thead>
@@ -187,6 +227,7 @@
         </tr>
       </tbody>
     </table>
+</div>
 
     <div class="event-list">
       <div class="event-item">
@@ -263,7 +304,8 @@
       <div class="section-title">오늘 눈여겨볼 종목 + 조심할 종목</div>
     </div>
 
-    <table>
+    <div class="table-wrap">
+<table>
       <thead>
         <tr><th>종목</th><th>현재가</th><th>전일 등락</th><th>52주 위치</th><th>RSI</th><th>목표가</th><th>판단</th></tr>
       </thead>
@@ -315,6 +357,7 @@
         </tr>
       </tbody>
     </table>
+</div>
 
     <div class="rsi-box">
       <strong>💡 RSI란?</strong> — 주가가 얼마나 빠르게 많이 올랐는지 보여주는 숫자 (0~100).<br>
@@ -355,7 +398,8 @@
     },
     options: {
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
+    aspectRatio: 2,
       plugins: {
         legend: { display: false },
         tooltip: { callbacks: { label: (c) => ' +' + c.parsed.y.toFixed(2) + '%' } }

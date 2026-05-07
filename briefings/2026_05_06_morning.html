@@ -30,6 +30,7 @@
     margin-bottom: 24px;
     padding-bottom: 16px;
     border-bottom: 2px solid #dde3ef;
+    flex-wrap: wrap;
   }
   .header h1 { font-family: 'Oswald', sans-serif; font-size: 26px; letter-spacing: 1px; color: #b8720a; }
   .header p { color: #5a6e8c; font-size: 12px; margin-top: 4px; }
@@ -182,6 +183,45 @@
   .rsi-dot   { position: absolute; top:-3px; width:14px; height:14px; border-radius:50%; border:2px solid #ffffff; transform:translateX(-50%); }
 
   .disclaimer { text-align: center; font-size: 11px; color: #8a9ab8; margin-top: 20px; padding-top: 14px; border-top: 1px solid #dde3ef; }
+
+  /* ══ 반응형 공통 추가 ══ */
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    margin-bottom: 18px;
+  }
+  .table-wrap table,
+  .table-wrap .data-table {
+    min-width: 480px;
+    margin-bottom: 0;
+  }
+  .chart-box { width: 100%; position: relative; }
+  .chart-box canvas { max-width: 100% !important; }
+  @media (max-width: 700px) {
+    body { padding: 14px 12px 32px !important; }
+    .header { flex-direction: column; align-items: flex-start; gap: 10px;   flex-wrap: wrap;
+  }
+    .index-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .sector-grid { grid-template-columns: 1fr 1fr !important; }
+    .reason-grid { grid-template-columns: 1fr !important; }
+    .macro-grid { grid-template-columns: 1fr 1fr !important; }
+    .two-col { grid-template-columns: 1fr !important; }
+    .three-col { grid-template-columns: 1fr 1fr !important; }
+    .outlook-grid { grid-template-columns: 1fr !important; }
+    .stock-grid { grid-template-columns: 1fr !important; }
+    .supply-val { width: auto; font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .index-grid { grid-template-columns: 1fr 1fr !important; }
+    .macro-grid { grid-template-columns: 1fr 1fr !important; }
+    .three-col { grid-template-columns: 1fr !important; }
+    .index-card .value, .index-card .val { font-size: 18px !important; }
+    .hero .big { font-size: 30px !important; }
+    .title-block h1 { font-size: 20px !important; }
+    .section { padding: 16px !important; }
+  }
 </style>
 </head>
 <body>
@@ -219,7 +259,7 @@
 
 <div class="chart-wrap">
   <div class="section-title" style="margin-bottom:14px;">최근 3거래일 S&amp;P500 vs 나스닥 흐름</div>
-  <canvas id="spChart" height="372" style="display: block; box-sizing: border-box; height: 248px; width: 826px;" width="1240"></canvas>
+  <canvas id="spChart" style="display: block; box-sizing: border-box; height: 248px; width: 826px;"></canvas>
 </div>
 
 <div class="summary-box">
@@ -243,6 +283,7 @@
 </div>
 
 <div class="section-title">② 오늘 주요 일정 및 이벤트</div>
+<div class="table-wrap">
 <table class="data-table">
   <thead>
     <tr><th>시간</th><th>항목</th><th>내용</th><th>중요도</th></tr>
@@ -255,6 +296,7 @@
     <tr><td>오늘 밤 예정</td><td>🇺🇸 추가 실적 발표</td><td>주요 기업 실적 발표 계속 예정 (개별 확인 권장)</td><td><span class="imp low">★ 낮음</span></td></tr>
   </tbody>
 </table>
+</div>
 
 <div class="section-title">③ 오늘 국내 개장 — 역사적 순간!</div>
 
@@ -284,6 +326,7 @@
   </div>
 </div>
 
+<div class="table-wrap">
 <table class="data-table">
   <thead>
     <tr><th>투자자</th><th>방향</th><th>주목 종목</th><th>코멘트</th></tr>
@@ -294,6 +337,7 @@
     <tr><td>👤 개인</td><td><span class="arrow-up">▲ 순매수</span></td><td>반도체 대형주</td><td>7000피 돌파에 참여</td></tr>
   </tbody>
 </table>
+</div>
 
 <div class="section-title">④ 오늘 눈여겨볼 종목 &amp; 조심할 종목</div>
 
@@ -415,6 +459,8 @@ new Chart(ctx, {
   },
   options: {
     responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 2,
     plugins: {
       legend: { labels: { color: '#5a6e8c', font: { size: 12 }, padding: 20 } },
       tooltip: {

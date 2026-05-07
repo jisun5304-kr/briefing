@@ -24,6 +24,7 @@
     display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 22px; padding-bottom: 14px;
     border-bottom: 2px solid #dde3ef;
+    flex-wrap: wrap;
   }
   .header h1 { font-family:'Oswald',sans-serif; font-size:24px; letter-spacing:1px; color:#b8720a; }
   .header p { color:#5a6e8c; font-size:12px; margin-top:3px; }
@@ -131,6 +132,45 @@
   .info-item .v.down { color:#c0253f; }
 
   .disclaimer { text-align:center; font-size:11px; color:#8a9ab8; margin-top:20px; padding-top:14px; border-top:1px solid #dde3ef; }
+
+  /* ══ 반응형 공통 추가 ══ */
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    margin-bottom: 18px;
+  }
+  .table-wrap table,
+  .table-wrap .data-table {
+    min-width: 480px;
+    margin-bottom: 0;
+  }
+  .chart-box { width: 100%; position: relative; }
+  .chart-box canvas { max-width: 100% !important; }
+  @media (max-width: 700px) {
+    body { padding: 14px 12px 32px !important; }
+    .header { flex-direction: column; align-items: flex-start; gap: 10px;   flex-wrap: wrap;
+  }
+    .index-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .sector-grid { grid-template-columns: 1fr 1fr !important; }
+    .reason-grid { grid-template-columns: 1fr !important; }
+    .macro-grid { grid-template-columns: 1fr 1fr !important; }
+    .two-col { grid-template-columns: 1fr !important; }
+    .three-col { grid-template-columns: 1fr 1fr !important; }
+    .outlook-grid { grid-template-columns: 1fr !important; }
+    .stock-grid { grid-template-columns: 1fr !important; }
+    .supply-val { width: auto; font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .index-grid { grid-template-columns: 1fr 1fr !important; }
+    .macro-grid { grid-template-columns: 1fr 1fr !important; }
+    .three-col { grid-template-columns: 1fr !important; }
+    .index-card .value, .index-card .val { font-size: 18px !important; }
+    .hero .big { font-size: 30px !important; }
+    .title-block h1 { font-size: 20px !important; }
+    .section { padding: 16px !important; }
+  }
 </style>
 </head>
 <body>
@@ -177,7 +217,7 @@
 <!-- 차트 -->
 <div class="chart-wrap">
   <div class="section-title" style="margin-bottom:14px;">오늘 코스피 장중 흐름 (시간대별)</div>
-  <canvas id="intradayChart" height="85"></canvas>
+  <canvas id="intradayChart"></canvas>
 </div>
 
 <!-- 타임라인 -->
@@ -213,6 +253,7 @@
 
 <!-- 수급 -->
 <div class="section-title">수급 흐름 (누가 얼마나 샀나?)</div>
+<div class="table-wrap">
 <table class="data-table">
   <thead>
     <tr><th>투자자</th><th>코스피</th><th>코스닥</th><th>코멘트</th></tr>
@@ -238,6 +279,7 @@
     </tr>
   </tbody>
 </table>
+</div>
 
 <div class="info-box" style="margin-bottom:18px;">
   <p>
@@ -343,6 +385,8 @@ new Chart(ctx, {
   },
   options: {
     responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 2,
     plugins: {
       legend: { labels: { color:'#5a6e8c', font:{size:12} } },
       tooltip: {
