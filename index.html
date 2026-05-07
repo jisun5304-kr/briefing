@@ -652,6 +652,47 @@
   transition: all 0.2s;
 }
 .theme-toggle-fixed:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ──────────── 반응형 ──────────── */
+
+/* 중간 화면 (태블릿, 1024px 이하) */
+@media (max-width: 1024px) {
+  .app-content {
+    padding: 36px 28px 60px;
+  }
+  .session-row {
+    grid-template-columns: repeat(2, 1fr); /* 3열 → 2열 */
+  }
+}
+
+/* 작은 화면 (모바일, 640px 이하) */
+@media (max-width: 640px) {
+  .topbar {
+    padding: 0 70px 0 16px; /* 오른쪽 여백 축소 */
+    gap: 10px;
+  }
+  .topbar-logo {
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .role-chip { display: none; } /* 공간 부족 시 숨김 */
+  .app-content {
+    padding: 24px 16px 60px;
+  }
+  .session-row {
+    grid-template-columns: 1fr; /* 2열 → 1열 */
+  }
+  .cal-wrap {
+    padding: 16px 12px;
+  }
+  .cal-num { font-size: 11px; }
+  .auth-card {
+    width: 92vw;
+    padding: 36px 24px 28px;
+  }
+  .page-title { font-size: 22px; }
+}
+    
   </style>
 </head>
 <body>
