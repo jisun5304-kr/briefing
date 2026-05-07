@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시황 브리핑</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:       #0b1120;
+      --surface:  #131e33;
+      --border:   #1e2e4a;
+      --muted:    #3a4e6a;
+      --text:     #dce6f5;
+      --dim:      #6b80a0;
+      --accent:   #3b82f6;
+      --accent2:  #f59e0b;
+      --green:    #22c55e;
+      --red:      #ef4444;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ──────────── AUTH ──────────── */
+    #auth-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, #1a2e55 0%, var(--bg) 70%);
+    }
+
+    .auth-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 52px 44px 44px;
+      width: 420px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+
+    .auth-logo {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .auth-logo .brand-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--accent) 0%, #6366f1 100%);
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .auth-logo h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      color: var(--text);
+      letter-spacing: 3px;
+      margin-bottom: 6px;
+    }
+
+    .auth-logo p {
+      font-size: 12px;
+      color: var(--dim);
+      letter-spacing: 1px;
+    }
+
+    .tab-row {
+      display: flex;
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 28px;
+      border: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 11px;
+      border: none;
+      background: transparent;
+      color: var(--dim);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      color: var(--dim);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 15px 18px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus  { border-color: var(--accent); }
+    .form-input.shake  { animation: shake 0.3s ease; border-color: var(--red); }
+
+    @keyframes shake {
+      0%,100%{ transform:translateX(0) }
+      25%    { transform:translateX(-6px) }
+      75%    { transform:translateX(6px) }
+    }
+
+    .err-msg {
+      font-size: 12px;
+      color: var(--red);
+      margin-top: 8px;
+      min-height: 18px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .err-msg.show { opacity: 1; }
+
+    .auth-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 18px;
+      letter-spacing: 1px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .auth-btn:hover  { background: #2563eb; }
+    .auth-btn:active { transform: scale(0.98); }
+
+    /* ──────────── APP SHELL ──────────── */
+    #main-app { display: none; min-height: 100vh; }
+
+    /* Topbar */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      gap: 20px;
+      z-index: 100;
+    }
+
+    .topbar-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      color: var(--text);
+      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar-logo .dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100%{ opacity:1 }
+      50%    { opacity:0.3 }
+    }
+
+    .topbar-spacer { flex: 1; }
+
+    .role-chip {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 20px;
+      background: var(--border);
+      color: var(--dim);
+      letter-spacing: 1px;
+    }
+
+    .role-chip.admin { background: rgba(245,158,11,0.15); color: var(--accent2); }
+
+    .logout-btn {
+      font-size: 12px;
+      color: var(--dim);
+      background: none;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: all 0.2s;
+    }
+    .logout-btn:hover { color: var(--red); border-color: var(--red); }
+
+    /* Content */
+    .app-content {
+      margin-top: 60px;
+      padding: 48px 48px 80px;
+      max-width: 1100px;
+    }
+
+    /* Section header */
+    .page-header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+    }
+
+    .page-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 32px;
+      color: var(--text);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .page-sub {
+      font-size: 13px;
+      color: var(--dim);
+    }
+
+    /* Date group */
+    .date-group { margin-bottom: 48px; }
+
+    .date-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--dim);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .date-tag::before {
+      content: '';
+      display: inline-block;
+      width: 3px; height: 14px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Session cards */
+    .session-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .session-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px 24px;
+      position: relative;
+      transition: all 0.25s;
+      overflow: hidden;
+    }
+
+    .session-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--border);
+      transition: background 0.25s;
+    }
+
+    .session-card.ready {
+      cursor: pointer;
+    }
+
+    .session-card.ready:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(59,130,246,0.18);
+    }
+
+    .session-card.ready:hover::before { background: var(--accent); }
+
+    .session-card.not-ready {
+      opacity: 0.45;
+    }
+
+    .session-card.not-ready::before { background: var(--muted); }
+
+    .session-emoji {
+      font-size: 32px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .session-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      color: var(--text);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .session-time {
+      font-size: 12px;
+      color: var(--dim);
+      margin-bottom: 18px;
+    }
+
+    .session-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    .status-ready   { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .status-waiting { background: var(--border); color: var(--dim); }
+
+    .open-icon {
+      position: absolute;
+      right: 20px;
+      bottom: 24px;
+      font-size: 18px;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .session-card.ready:hover .open-icon {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* Admin panel */
+    .admin-box {
+      background: var(--surface);
+      border: 1px solid rgba(245,158,11,0.4);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
+    }
+
+    .admin-box-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-family: monospace;
+      font-size: 18px;
+      color: #4ade80;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .admin-instructions {
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 2;
+    }
+
+    .admin-instructions code {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--accent2);
+    }
+
+    /* ──────────── MODAL ──────────── */
+    #modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    #modal.open { display: flex; }
+
+    .modal-box {
+      background: #f4f6fb;
+      border-radius: 18px;
+      width: 96vw;
+      height: 94vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 32px 100px rgba(0,0,0,0.8);
+      animation: modalIn 0.25s ease;
+    }
+
+    @keyframes modalIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+
+    .modal-bar {
+      background: var(--surface);
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-bar-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      letter-spacing: 2px;
+    }
+
+    .modal-close-btn {
+      background: var(--muted);
+      border: none;
+      color: var(--text);
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-close-btn:hover { background: var(--red); }
+
+    #briefing-frame {
+      flex: 1;
+      border: none;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ──────── AUTH SCREEN ──────── -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="brand-icon">📊</div>
+      <h1>시황 브리핑</h1>
+      <p>매일 오전 · 오후 · 밤 시황 리포트</p>
+    </div>
+
+    <div class="tab-row">
+      <button class="tab-btn active" id="tab-v" onclick="switchTab('viewer')">🔑 구독자 입장</button>
+      <button class="tab-btn"        id="tab-a" onclick="switchTab('admin')">⚙️ 관리자</button>
+    </div>
+
+    <label class="form-label" id="lbl">초대코드</label>
+    <input  class="form-input" id="pw-input" type="password"
+            placeholder="초대코드를 입력하세요"
+            onkeydown="if(event.key==='Enter')tryLogin()">
+    <div class="err-msg" id="err-msg">❌ 코드가 올바르지 않습니다.</div>
+    <button class="auth-btn" onclick="tryLogin()">입장하기</button>
+  </div>
+</div>
+
+<!-- ──────── MAIN APP ──────── -->
+<div id="main-app">
+  <header class="topbar">
+    <div class="topbar-logo">
+      <span class="dot"></span>
+      시황 브리핑
+    </div>
+    <div class="topbar-spacer"></div>
+    <div class="role-chip" id="role-chip">구독자</div>
+    <button class="logout-btn" onclick="logout()">로그아웃</button>
+  </header>
+
+  <div class="app-content">
+    <!-- Admin 안내 (관리자에게만 표시) -->
+    <div class="admin-box" id="admin-box" style="display:none">
+      <div class="admin-box-title">⚙️ 관리자 패널 — 구독자에게 초대코드를 공유하세요</div>
+      <div>
+        <div style="font-size:12px;color:var(--dim);margin-bottom:8px;font-weight:700;letter-spacing:1px;">현재 초대코드</div>
+        <div class="code-block" id="show-invite"></div>
+      </div>
+      <div class="admin-instructions">
+        📌 <strong style="color:var(--text)">새 브리핑 추가하는 법</strong><br>
+        ① 브리핑 HTML 파일을 <code>briefings/</code> 폴더에 넣기<br>
+        ② <code>index.html</code> 상단 <code>BRIEFINGS</code> 배열에 한 줄 추가<br>
+        ③ GitHub에 push → 자동 배포 완료 ✅
+      </div>
+    </div>
+
+    <!-- 브리핑 목록 -->
+    <div class="page-header">
+      <div class="page-title">브리핑 목록</div>
+      <div class="page-sub" id="today-sub"></div>
+    </div>
+    <div id="briefings-list"></div>
+  </div>
+</div>
+
+<!-- ──────── MODAL ──────── -->
+<div id="modal">
+  <div class="modal-box">
+    <div class="modal-bar">
+      <div class="modal-bar-title" id="modal-title">브리핑</div>
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+    </div>
+    <iframe id="briefing-frame" src=""></iframe>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════
+//  ✏️ 설정 영역 — 여기만 수정하면 됩니다
+// ══════════════════════════════════════════════════
+
+const CONFIG = {
+  adminPassword: 'jiseon2026',   // 👑 관리자 비밀번호
+  inviteCode:    'brief2026'     // 🔑 구독자 초대코드 (공유할 코드)
+};
+
+// 브리핑 목록 — 새 날짜 추가 시 항목을 아래에 추가하세요
+const BRIEFINGS = [
+  {
+    date:  '2026-05-06',
+    label: '2026년 5월 6일 (수)',
+    sessions: [
+      { period: '오전', emoji: '🌅', time: '08:00', file: 'briefings/2026_05_06_morning.html', ready: true  },
+      { period: '오후', emoji: '☀️', time: '14:00', file: 'briefings/2026_05_06_afternoon.html', ready: false },
+      { period: '밤',   emoji: '🌙', time: '21:00', file: 'briefings/2026_05_06_night.html',    ready: false },
+    ]
+  }
+  // 새 날짜 추가 예시 ↓ (이 주석 바로 아래에 붙여넣기)
+  // ,{
+  //   date:  '2026-05-07',
+  //   label: '2026년 5월 7일 (목)',
+  //   sessions: [
+  //     { period: '오전', emoji: '🌅', time: '08:00', file: 'briefings/2026_05_07_morning.html',   ready: true  },
+  //     { period: '오후', emoji: '☀️', time: '14:00', file: 'briefings/2026_05_07_afternoon.html', ready: false },
+  //     { period: '밤',   emoji: '🌙', time: '21:00', file: 'briefings/2026_05_07_night.html',    ready: false },
+  //   ]
+  // }
+];
+
+// ══════════════════════════════════════════════════
+//  기능 코드 (수정 불필요)
+// ══════════════════════════════════════════════════
+
+let activeTab = 'viewer';
+
+function switchTab(t) {
+  activeTab = t;
+  document.getElementById('tab-v').classList.toggle('active', t === 'viewer');
+  document.getElementById('tab-a').classList.toggle('active', t === 'admin');
+  document.getElementById('lbl').textContent        = t === 'viewer' ? '초대코드' : '관리자 비밀번호';
+  document.getElementById('pw-input').placeholder   = t === 'viewer' ? '초대코드를 입력하세요' : '비밀번호를 입력하세요';
+  document.getElementById('err-msg').classList.remove('show');
+  document.getElementById('pw-input').classList.remove('shake');
+  document.getElementById('pw-input').value = '';
+  document.getElementById('pw-input').focus();
+}
+
+function tryLogin() {
+  const val = document.getElementById('pw-input').value.trim();
+  const inp = document.getElementById('pw-input');
+  const err = document.getElementById('err-msg');
+
+  let role = null;
+  if (activeTab === 'admin'  && val === CONFIG.adminPassword) role = 'admin';
+  if (activeTab === 'viewer' && val === CONFIG.inviteCode)    role = 'viewer';
+
+  if (role) {
+    localStorage.setItem('briefing_role', role);
+    launchApp(role);
+  } else {
+    inp.classList.remove('shake');
+    void inp.offsetWidth; // reflow for re-trigger
+    inp.classList.add('shake');
+    err.classList.add('show');
+    inp.value = '';
+  }
+}
+
+function launchApp(role) {
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('main-app').style.display    = 'block';
+
+  const chip = document.getElementById('role-chip');
+  if (role === 'admin') {
+    chip.textContent = '👑 관리자';
+    chip.classList.add('admin');
+    document.getElementById('admin-box').style.display    = 'block';
+    document.getElementById('show-invite').textContent    = CONFIG.inviteCode;
+  } else {
+    chip.textContent = '📖 구독자';
+  }
+
+  const d = new Date();
+  const days = ['일','월','화','수','목','금','토'];
+  document.getElementById('today-sub').textContent =
+    `오늘: ${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 (${days[d.getDay()]})`;
+
+  renderBriefings();
+}
+
+function renderBriefings() {
+  const list = document.getElementById('briefings-list');
+  list.innerHTML = '';
+
+  // 최신 날짜가 위에 오도록 정렬
+  const sorted = [...BRIEFINGS].sort((a,b) => b.date.localeCompare(a.date));
+
+  sorted.forEach(day => {
+    const g = document.createElement('div');
+    g.className = 'date-group';
+    g.innerHTML = `
+      <div class="date-tag">${day.label}</div>
+      <div class="session-row">
+        ${day.sessions.map(s => `
+          <div class="session-card ${s.ready ? 'ready' : 'not-ready'}"
+               ${s.ready ? `onclick="openBriefing('${s.file}','${day.label} ${s.period}')"` : ''}>
+            <span class="session-emoji">${s.emoji}</span>
+            <div class="session-title">${s.period}</div>
+            <div class="session-time">${s.time} 브리핑</div>
+            <div class="session-status ${s.ready ? 'status-ready' : 'status-waiting'}">
+              ${s.ready ? '● 열람 가능' : '○ 준비 중'}
+            </div>
+            ${s.ready ? '<span class="open-icon">→</span>' : ''}
+          </div>
+        `).join('')}
+      </div>`;
+    list.appendChild(g);
+  });
+}
+
+function openBriefing(file, title) {
+  document.getElementById('modal-title').textContent    = title;
+  document.getElementById('briefing-frame').src         = file;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('briefing-frame').src = '';
+  document.body.style.overflow = '';
+}
+
+function logout() {
+  localStorage.removeItem('briefing_role');
+  location.reload();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// 자동 로그인 (이미 인증된 경우)
+(function() {
+  const saved = localStorage.getItem('briefing_role');
+  if (saved === 'admin' || saved === 'viewer') launchApp(saved);
+})();
+</script>
+</body>
+</html>
