@@ -261,8 +261,8 @@
 
     .app-content {
       margin-top: 60px;
-      padding: 48px 48px 80px;
-      max-width: 1100px;
+      padding: 36px 32px 80px;
+      max-width: 1400px;
     }
 
     .page-header {
@@ -668,29 +668,24 @@
 /* 작은 화면 (모바일, 640px 이하) */
 @media (max-width: 640px) {
   .topbar {
-    padding: 0 70px 0 16px; /* 오른쪽 여백 축소 */
-    gap: 10px;
+    padding: 0 16px;
+    gap: 8px;
   }
-  .topbar-logo {
-    font-size: 14px;
-    letter-spacing: 1px;
+  .theme-toggle-fixed {
+    top: 12px; right: 12px;
+    padding: 5px 10px;
+    font-size: 12px;
   }
-  .role-chip { display: none; } /* 공간 부족 시 숨김 */
-  .app-content {
-    padding: 24px 16px 60px;
+  .logout-btn {
+    padding: 6px 10px;
+    font-size: 11px;
   }
-  .session-row {
-    grid-template-columns: 1fr; /* 2열 → 1열 */
-  }
-  .cal-wrap {
-    padding: 16px 12px;
-  }
-  .cal-num { font-size: 11px; }
-  .auth-card {
-    width: 92vw;
-    padding: 36px 24px 28px;
-  }
-  .page-title { font-size: 22px; }
+  /* 로그아웃 텍스트 → 아이콘으로 */
+  .logout-btn::before { content: '↩'; }
+  .logout-btn-text { display: none; }
+
+  .role-chip { display: none; }
+  .topbar-logo { font-size: 14px; letter-spacing: 1px; }
 }
     
   </style>
@@ -732,7 +727,10 @@
     <div class="topbar-spacer"></div>
     <!-- <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>-->
     <div class="role-chip" id="role-chip">구독자</div>
-    <button class="logout-btn" onclick="logout()">로그아웃</button>
+    <!-- 기존 -->
+    <!--<button class="logout-btn" onclick="logout()">로그아웃</button>-->
+    <!-- 변경 후 -->
+    <button class="logout-btn" onclick="logout()"><span class="logout-btn-text">로그아웃</span></button>
   </header>
 
   <div class="app-content">
