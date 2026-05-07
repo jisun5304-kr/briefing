@@ -644,13 +644,21 @@ function openBriefing(file,title,period) {
 
   if (isMobile()) {
     document.getElementById('bs-title').textContent=title;
-    document.getElementById('briefing-frame-mobile').src=fileWithTheme;
+    const frm=document.getElementById('briefing-frame-mobile');
+    frm.onload=function(){
+      try{this.contentWindow.postMessage({type:'theme',theme},'*');}catch(e){}
+    };
+    frm.src=fileWithTheme;
     document.getElementById('bs-overlay').classList.add('open');
     document.getElementById('bottom-sheet').classList.add('open');
     document.body.style.overflow='hidden';
   } else {
     document.getElementById('briefing-bar-title').textContent=title;
-    document.getElementById('briefing-frame').src=fileWithTheme;
+    const fr=document.getElementById('briefing-frame');
+    fr.onload=function(){
+      try{this.contentWindow.postMessage({type:'theme',theme},'*');}catch(e){}
+    };
+    fr.src=fileWithTheme;
     document.getElementById('right-panel').classList.add('has-content');
   }
 }
