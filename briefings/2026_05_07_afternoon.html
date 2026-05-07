@@ -527,32 +527,16 @@ buildChart();
 </script>
 
 <script>
-/* ══ 테마 수신 스크립트 ══ */
-let chartInstance = null;
-
-function getChartColors() {
-  const isDark = document.documentElement.classList.contains('dark');
-  return {
-    grid:          isDark ? '#1e2e4a' : '#eef1f7',
-    text:          isDark ? '#6b80a0' : '#5a6e8c',
-    tooltipBg:     isDark ? '#131e33' : '#ffffff',
-    tooltipTitle:  isDark ? '#dce6f5' : '#1a2236',
-    tooltipBorder: isDark ? '#1e2e4a' : '#dde3ef',
-  };
-}
-
+/* ══ 테마 수신 ══ */
 function applyTheme(theme) {
   document.documentElement.classList.toggle('dark', theme === 'dark');
   if (typeof buildChart === 'function') buildChart();
 }
-
 const _urlTheme = new URLSearchParams(window.location.search).get('theme') || 'light';
 applyTheme(_urlTheme);
-
 window.addEventListener('message', function(e) {
   if (e.data && e.data.type === 'theme') applyTheme(e.data.theme);
 });
 </script>
-
 </body>
 </html>

@@ -530,69 +530,21 @@
 </div>
 
 <script>
+  let chartInstance = null;
+
+  function getChartColors() {
+    const isDark = document.documentElement.classList.contains('dark');
+    return {
+      grid:          isDark ? '#1e2e4a' : '#eef1f7',
+      text:          isDark ? '#6b80a0' : '#5a6e8c',
+      tooltipBg:     isDark ? '#131e33' : '#ffffff',
+      tooltipTitle:  isDark ? '#dce6f5' : '#1a2236',
+      tooltipBorder: isDark ? '#1e2e4a' : '#dde3ef',
+    };
+  }
+
+
 /* ══ Chart.js 초기화 ══ */
-let chartInstance = null;
-
-function getChartColors() {
-  const isDark = document.documentElement.classList.contains('dark');
-  return {
-    grid:         isDark ? '#1e2e4a' : '#eef1f7',
-    text:         isDark ? '#6b80a0' : '#5a6e8c',
-    tooltipBg:    isDark ? '#131e33' : '#ffffff',
-    tooltipTitle: isDark ? '#dce6f5' : '#1a2236',
-    tooltipBorder:isDark ? '#1e2e4a' : '#dde3ef',
-  };
-}
-
-function buildChart() {
-  const c = getChartColors();
-  const ctx = document.getElementById('spChart').getContext('2d');
-  if (chartInstance) chartInstance.destroy();
-  chartInstance = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['5/1 (금)', '5/4 (월) 하락', '5/5 (화) 반등'],
-      datasets: [
-        {
-          label: 'S&P 500',
-          data: [7230.12, 7200.75, 7259.22],
-          borderColor: '#2563eb',
-          backgroundColor: 'rgba(37,99,235,0.08)',
-          tension: 0.4, fill: true,
-          pointBackgroundColor: ['#2563eb','#e02f55','#00a65a'],
-          pointRadius: 7, pointHoverRadius: 9,
-        },
-        {
-          label: '나스닥 (스케일 조정)',
-          data: [25114.44/3.47, 25067.80/3.47, 25326.13/3.47],
-          borderColor: '#00a65a',
-          backgroundColor: 'rgba(0,166,90,0.05)',
-          tension: 0.4, fill: false,
-          borderDash: [5,4],
-          pointBackgroundColor: ['#00a65a','#e02f55','#00a65a'],
-          pointRadius: 7,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      aspectRatio: 2,
-      plugins: {
-        legend: { labels: { color: c.text, font: { size: 12 }, padding: 20 } },
-        tooltip: {
-          backgroundColor: c.tooltipBg,
-          titleColor: c.tooltipTitle,
-          bodyColor: c.tooltipTitle,
-          borderColor: c.tooltipBorder,
-          borderWidth: 1,
-          callbacks: {
-            label: function(ctx) {
-              if (ctx.dataset.label.includes('나스닥'))
-                return `나스닥: ${(ctx.raw*3.47).toLocaleString('ko-KR',{maximumFractionDigits:2})}`;
-              return `S&P 500: ${ctx.raw.toLocaleString('ko-KR',{maximumFractionDigits:2})}`;
-            }
-          }
         }
       },
       scales: {
@@ -622,5 +574,17 @@ window.addEventListener('message', function(e) {
 });
 </script>
 
+<script>
+/* ══ 테마 수신 ══ */
+function applyTheme(theme) {
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+  if (typeof buildChart === 'function') buildChart();
+}
+const _urlTheme = new URLSearchParams(window.location.search).get('theme') || 'light';
+applyTheme(_urlTheme);
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'theme') applyTheme(e.data.theme);
+});
+</script>
 </body>
 </html>
