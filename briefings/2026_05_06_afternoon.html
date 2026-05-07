@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>국내 장 마감 브리핑 — 2026.05.06</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@700&display=swap');
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { color-scheme: light only; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    background: #f4f6fb !important;
+    color: #1a2236 !important;
+    padding: 20px;
+    font-size: 13px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 22px; padding-bottom: 14px;
+    border-bottom: 2px solid #dde3ef;
+  }
+  .header h1 { font-family:'Oswald',sans-serif; font-size:24px; letter-spacing:1px; color:#b8720a; }
+  .header p { color:#5a6e8c; font-size:12px; margin-top:3px; }
+  .badge { background:#fef3c7; border:1px solid #f59e0b; border-radius:20px; padding:7px 14px; font-size:11px; color:#92670a; font-weight:700; }
+
+  .section-title {
+    font-size:11px; font-weight:700; letter-spacing:2px; color:#5a6e8c;
+    text-transform:uppercase; margin-bottom:12px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .section-title::before { content:''; display:inline-block; width:3px; height:14px; border-radius:2px; background:#2563eb; flex-shrink:0; }
+
+  /* 🎉 히어로 */
+  .hero {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border: 2px solid #34d399; border-radius: 14px;
+    padding: 22px; margin-bottom: 18px; text-align: center;
+    box-shadow: 0 2px 10px rgba(0,166,90,0.1);
+  }
+  .hero .big { font-family:'Oswald',sans-serif; font-size:42px; color:#00834a; line-height:1; }
+  .hero .headline { font-size:16px; color:#1a2236; margin-top:8px; font-weight:700; }
+  .hero .stats { display:flex; justify-content:center; gap:24px; margin-top:12px; flex-wrap:wrap; }
+  .hero .stat { text-align:center; }
+  .hero .stat .val { font-family:'Oswald',sans-serif; font-size:18px; color:#00834a; }
+  .hero .stat .lbl { font-size:10px; color:#5a6e8c; margin-top:2px; }
+
+  /* 지수 그리드 */
+  .index-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
+  .index-card {
+    background:#fff; border:1px solid #dde3ef; border-radius:12px;
+    padding:16px; position:relative; overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+  .index-card::after { content:''; position:absolute; top:0; left:0; right:0; height:4px; border-radius:12px 12px 0 0; }
+  .index-card.up::after { background:#00a65a; }
+  .index-card.down::after { background:#e02f55; }
+  .index-card .label { font-size:11px; color:#5a6e8c; font-weight:700; margin-bottom:6px; }
+  .index-card .value { font-family:'Oswald',sans-serif; font-size:26px; color:#1a2236; }
+  .index-card .change { font-size:13px; font-weight:700; margin-top:4px; }
+  .change.up { color:#00834a; } .change.down { color:#c0253f; }
+  .index-card .sub { font-size:11px; color:#8a9ab8; margin-top:4px; }
+  .index-card .emoji { font-size:22px; position:absolute; right:14px; top:14px; }
+
+  /* 타임라인 */
+  .timeline {
+    background:#fff; border:1px solid #dde3ef; border-radius:12px;
+    padding:16px; margin-bottom:18px; box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+  .tl-list { list-style:none; }
+  .tl-item { display:flex; gap:14px; align-items:flex-start; padding:8px 0; border-bottom:1px solid #f0f4ff; }
+  .tl-item:last-child { border-bottom:none; }
+  .tl-time { font-family:'Oswald',sans-serif; font-size:13px; color:#2563eb; min-width:54px; margin-top:1px; }
+  .tl-text { font-size:12px; line-height:1.6; color:#1a2236; }
+  .tl-text strong { color:#00834a; }
+
+  /* 차트 */
+  .chart-wrap {
+    background:#fff; border:1px solid #dde3ef; border-radius:12px;
+    padding:16px; margin-bottom:18px; box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  /* 수급 테이블 */
+  .data-table { width:100%; border-collapse:collapse; margin-bottom:18px; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+  .data-table thead tr { background:#eef1f7; }
+  .data-table th { color:#5a6e8c; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:10px 12px; text-align:left; border-bottom:1px solid #dde3ef; }
+  .data-table td { padding:11px 12px; font-size:12px; border-bottom:1px solid #eef1f7; background:#fff; color:#1a2236; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:#f8faff; }
+  .arrow-up { color:#00834a; font-weight:700; }
+  .arrow-down { color:#c0253f; font-weight:700; }
+
+  /* 종목 카드 */
+  .stock-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
+  .stock-card {
+    background:#fff; border:1px solid #dde3ef; border-radius:12px;
+    padding:14px; position:relative; box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+  .stock-card.hot { border-color:#6ee7b7; border-width:1.5px; }
+  .stock-card.limit { border-color:#fbbf24; border-width:1.5px; }
+  .stock-card.watch { border-color:#fca5a5; border-width:1.5px; }
+  .stock-tag { position:absolute; top:11px; right:11px; font-size:10px; font-weight:700; padding:2px 9px; border-radius:11px; }
+  .stock-tag.hot { background:#d1fae5; color:#006b42; }
+  .stock-tag.limit { background:#fef3c7; color:#92670a; }
+  .stock-tag.watch { background:#fee2e2; color:#b91c1c; }
+  .stock-name { font-size:15px; font-weight:700; color:#1a2236; margin-bottom:2px; }
+  .stock-code { font-size:10px; color:#8a9ab8; margin-bottom:8px; }
+  .stock-stat { display:flex; justify-content:space-between; font-size:12px; color:#5a6e8c; margin-top:6px; }
+  .stock-stat span:last-child { color:#1a2236; font-weight:600; }
+
+  /* 인포박스 */
+  .info-box {
+    background:#eff6ff; border:1px solid #93c5fd; border-radius:12px;
+    padding:14px 16px; margin-bottom:18px;
+  }
+  .info-box p { font-size:13px; line-height:1.9; color:#1e3a5f; }
+  .hl { color:#b8720a; font-weight:700; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
+  .info-card { background:#fff; border:1px solid #dde3ef; border-radius:12px; padding:14px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+  .info-card .title { font-size:12px; color:#5a6e8c; font-weight:700; margin-bottom:10px; }
+  .info-item { display:flex; justify-content:space-between; align-items:center; font-size:12px; margin-bottom:7px; }
+  .info-item .k { color:#5a6e8c; }
+  .info-item .v { font-weight:700; color:#1a2236; }
+  .info-item .v.up { color:#00834a; }
+  .info-item .v.down { color:#c0253f; }
+
+  .disclaimer { text-align:center; font-size:11px; color:#8a9ab8; margin-top:20px; padding-top:14px; border-top:1px solid #dde3ef; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>🇰🇷 국내 장 마감 브리핑</h1>
+    <p>2026년 5월 6일 (수) · 오후 3:30 마감 결과</p>
+  </div>
+  <div class="badge">🔔 마감시황</div>
+</div>
+
+<!-- 히어로 -->
+<div class="hero">
+  <div class="big">🎉 코스피 7,384.56</div>
+  <div class="headline">사상 최초 7,000 돌파 · 종가 역대 최고치 경신</div>
+  <div class="stats">
+    <div class="stat"><div class="val">+6.45%</div><div class="lbl">일간 등락률</div></div>
+    <div class="stat"><div class="val">+447.57pt</div><div class="lbl">상승 포인트</div></div>
+    <div class="stat"><div class="val">7,426.60</div><div class="lbl">장중 최고가</div></div>
+    <div class="stat"><div class="val">58조 1,745억</div><div class="lbl">거래대금</div></div>
+  </div>
+</div>
+
+<!-- 지수 -->
+<div class="section-title">지수 마감 결과</div>
+<div class="index-grid">
+  <div class="index-card up">
+    <span class="emoji">🚀</span>
+    <div class="label">코스피 (대형주 시장)</div>
+    <div class="value">7,384.56</div>
+    <div class="change up">▲ +447.57pt (+6.45%)</div>
+    <div class="sub">장중 최고 7,426.60 · 역대 2번째 상승폭</div>
+  </div>
+  <div class="index-card down">
+    <span class="emoji">😐</span>
+    <div class="label">코스닥 (중소형 기술주)</div>
+    <div class="value">1,210.17</div>
+    <div class="change down">▼ -3.57pt (-0.29%)</div>
+    <div class="sub">대형주 쏠림에 소외 · 약보합 마감</div>
+  </div>
+</div>
+
+<!-- 차트 -->
+<div class="chart-wrap">
+  <div class="section-title" style="margin-bottom:14px;">오늘 코스피 장중 흐름 (시간대별)</div>
+  <canvas id="intradayChart" height="85"></canvas>
+</div>
+
+<!-- 타임라인 -->
+<div class="section-title">오늘 장중 타임라인</div>
+<div class="timeline">
+  <ul class="tl-list">
+    <li class="tl-item">
+      <span class="tl-time">09:00</span>
+      <span class="tl-text"><strong>7,093.01로 개장</strong> — 개장과 동시에 7,000선 돌파! '칠천피' 시대 개막</span>
+    </li>
+    <li class="tl-item">
+      <span class="tl-time">09:00:40</span>
+      <span class="tl-text"><strong>7,200선 돌파</strong> — 개장 40초 만에 200선 추가 돌파</span>
+    </li>
+    <li class="tl-item">
+      <span class="tl-time">09:02:40</span>
+      <span class="tl-text"><strong>7,300선 돌파</strong> — 개장 2분 40초 만에 300선 돌파</span>
+    </li>
+    <li class="tl-item">
+      <span class="tl-time">09:06</span>
+      <span class="tl-text"><strong>매수 사이드카 발동</strong> — 선물 가격 5% 이상 급등으로 5분간 프로그램 매수 일시 정지 (안전장치)</span>
+    </li>
+    <li class="tl-item">
+      <span class="tl-time">12:19</span>
+      <span class="tl-text"><strong>장중 최고 7,426.60 터치</strong> — 역대 최고가 경신</span>
+    </li>
+    <li class="tl-item">
+      <span class="tl-time">15:30</span>
+      <span class="tl-text"><strong>7,384.56 마감</strong> — 종가 기준 역대 최고치 · 하루 상승폭 역대 2위</span>
+    </li>
+  </ul>
+</div>
+
+<!-- 수급 -->
+<div class="section-title">수급 흐름 (누가 얼마나 샀나?)</div>
+<table class="data-table">
+  <thead>
+    <tr><th>투자자</th><th>코스피</th><th>코스닥</th><th>코멘트</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>🌍 외국인</td>
+      <td><span class="arrow-up">▲ 3조 1,357억 매수</span></td>
+      <td><span class="arrow-down">▼ 632억 매도</span></td>
+      <td><strong>역대 단일일 최대 매수</strong> 경신</td>
+    </tr>
+    <tr>
+      <td>🏢 기관</td>
+      <td><span class="arrow-down">▼ 2조 3,133억 매도</span></td>
+      <td><span class="arrow-down">▼ 5,438억 매도</span></td>
+      <td>차익 실현에 집중</td>
+    </tr>
+    <tr>
+      <td>👤 개인</td>
+      <td><span class="arrow-down">▼ 5,715억 매도</span></td>
+      <td><span class="arrow-up">▲ 6,094억 매수</span></td>
+      <td>코스피 차익실현 · 코스닥 저가매수</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="info-box" style="margin-bottom:18px;">
+  <p>
+    📌 <span class="hl">수급 핵심 포인트</span><br>
+    외국인이 혼자서 3조원 넘게 사들이며 지수를 끌어올렸습니다. <span class="hl">IBKR(미국 온라인 증권사)의 한국 주식 직접 매수 서비스</span>가 이번 주부터 시작되면서 해외 개인투자자들의 유입이 급격히 늘어난 것도 큰 원인입니다. 기관·개인은 많이 오른 주식을 팔아 이익을 실현(차익실현)했습니다.
+  </p>
+</div>
+
+<!-- 주요 종목 -->
+<div class="section-title">오늘의 주요 종목</div>
+<div class="stock-grid">
+  <div class="stock-card hot">
+    <span class="stock-tag hot">🚀 급등</span>
+    <div class="stock-name">삼성전자</div>
+    <div class="stock-code">005930 · 코스피</div>
+    <div class="stock-stat"><span>종가</span><span style="color:#00834a;font-weight:700">26만원대 (사상 최초)</span></div>
+    <div class="stock-stat"><span>등락률</span><span style="color:#00834a;font-weight:700">▲ +14.41%</span></div>
+    <div class="stock-stat"><span>시가총액</span><span>1조 달러 돌파 — 글로벌 1조달러 클럽 입성</span></div>
+    <div class="stock-stat"><span>이슈</span><span>애플 칩 공급 협의 소식</span></div>
+  </div>
+  <div class="stock-card hot">
+    <span class="stock-tag hot">🚀 급등</span>
+    <div class="stock-name">SK하이닉스</div>
+    <div class="stock-code">000660 · 코스피</div>
+    <div class="stock-stat"><span>종가</span><span style="color:#00834a;font-weight:700">160만원대 (사상 최초)</span></div>
+    <div class="stock-stat"><span>등락률</span><span style="color:#00834a;font-weight:700">▲ +10.64%</span></div>
+    <div class="stock-stat"><span>목표주가</span><span>230만원 (유진투자증권)</span></div>
+    <div class="stock-stat"><span>이슈</span><span>HBM 공급 부족 2027년까지 지속 전망</span></div>
+  </div>
+  <div class="stock-card limit">
+    <span class="stock-tag limit">⬆️ 상한가</span>
+    <div class="stock-name">SKC · 파인디앤씨</div>
+    <div class="stock-code">코스피 / 코스닥</div>
+    <div class="stock-stat"><span>등락률</span><span style="color:#92670a;font-weight:700">▲ +30.00% (상한가)</span></div>
+    <div class="stock-stat"><span>이유</span><span>애플 차기 칩 생산 — 삼성·인텔 협의 소식</span></div>
+    <div class="stock-stat"><span>관련 테마</span><span>유리기판 · 반도체 소재</span></div>
+  </div>
+  <div class="stock-card watch">
+    <span class="stock-tag watch">⚠️ 소외</span>
+    <div class="stock-name">코스닥 제약·바이오</div>
+    <div class="stock-code">알테오젠 · 리가켐바이오 등</div>
+    <div class="stock-stat"><span>알테오젠</span><span style="color:#c0253f;font-weight:700">▼ -2.55%</span></div>
+    <div class="stock-stat"><span>리가켐바이오</span><span style="color:#c0253f;font-weight:700">▼ -2.59%</span></div>
+    <div class="stock-stat"><span>이유</span><span>반도체로 수급 이탈 · 테마 소외</span></div>
+  </div>
+</div>
+
+<!-- 환율·채권 -->
+<div class="section-title">환율 & 채권</div>
+<div class="two-col">
+  <div class="info-card">
+    <div class="title">💱 달러/원 환율</div>
+    <div class="info-item"><span class="k">종가</span><span class="v up">1,455.1원</span></div>
+    <div class="info-item"><span class="k">등락</span><span class="v up">▼ -21.4원 (원화 강세)</span></div>
+    <div class="info-item"><span class="k">의미</span><span class="v">약 3개월 만의 최저 환율</span></div>
+    <div style="font-size:10px;color:#8a9ab8;margin-top:6px;">📝 환율 하락 = 원화 강세 = 외국인 유입 유리</div>
+  </div>
+  <div class="info-card">
+    <div class="title">📊 국채 금리</div>
+    <div class="info-item"><span class="k">국채 3년물</span><span class="v">3.595% (▼ -2.0bp)</span></div>
+    <div class="info-item"><span class="k">국채 10년물</span><span class="v">3.932% (보합)</span></div>
+    <div class="info-item"><span class="k">방향</span><span class="v up">금리 소폭 하락 → 채권 강세</span></div>
+    <div style="font-size:10px;color:#8a9ab8;margin-top:6px;">📝 금리 하락 = 주식에 유리한 환경</div>
+  </div>
+</div>
+
+<!-- 요약 -->
+<div class="section-title">📋 오늘의 핵심 요약</div>
+<div class="info-box">
+  <p>
+    🏆 코스피가 사상 처음으로 <span class="hl">7,000선을 돌파하고 7,384.56에 마감</span>하며 역대 최고가를 경신했습니다.<br><br>
+    💡 오늘 장의 3가지 키워드: <span class="hl">①외국인 역대 최대 매수</span> · <span class="hl">②삼성전자 1조달러 클럽</span> · <span class="hl">③IBKR 해외 직접투자 개방</span><br><br>
+    ⚠️ 코스닥은 대형주로의 수급 쏠림에 소외되어 약보합 마감. <span class="hl">단기 급등 후 차익실현 물량 주의</span>가 필요합니다.
+  </p>
+</div>
+
+<div class="disclaimer">
+  ⚠️ 본 브리핑은 투자 정보 제공 목적이며, 특정 종목의 매수·매도 권유가 아닙니다.<br>
+  모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.
+</div>
+
+<script>
+const ctx = document.getElementById('intradayChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30'],
+    datasets: [{
+      label: '코스피 장중 흐름',
+      data: [7093, 7180, 7240, 7300, 7330, 7350, 7380, 7426, 7400, 7370, 7360, 7370, 7380, 7384],
+      borderColor: '#00a65a',
+      backgroundColor: 'rgba(0,166,90,0.08)',
+      tension: 0.4, fill: true,
+      pointBackgroundColor: (ctx) => {
+        const idx = ctx.dataIndex;
+        if(idx === 0) return '#2563eb';
+        if(idx === 7) return '#e02f55';
+        if(idx === 13) return '#00a65a';
+        return 'rgba(0,166,90,0.4)';
+      },
+      pointRadius: (ctx) => [0,7].includes(ctx.dataIndex) || ctx.dataIndex === 13 ? 7 : 3,
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color:'#5a6e8c', font:{size:12} } },
+      tooltip: {
+        backgroundColor:'#fff', titleColor:'#1a2236', bodyColor:'#1a2236',
+        borderColor:'#dde3ef', borderWidth:1,
+      }
+    },
+    scales: {
+      x: { ticks:{ color:'#5a6e8c', font:{size:10} }, grid:{ color:'#eef1f7' } },
+      y: {
+        ticks:{ color:'#5a6e8c', font:{size:10},
+          callback: v => v.toLocaleString('ko-KR') },
+        grid:{ color:'#eef1f7' },
+        min: 6900, max: 7500
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

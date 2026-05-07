@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>미국 장 시황 브리핑 — 2026.05.06</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@700&display=swap');
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { color-scheme: light only; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    background: #f4f6fb !important;
+    color: #1a2236 !important;
+    padding: 20px;
+    font-size: 13px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:22px; padding-bottom:14px; border-bottom:2px solid #dde3ef;
+  }
+  .header h1 { font-family:'Oswald',sans-serif; font-size:24px; letter-spacing:1px; color:#1d4ed8; }
+  .header p { color:#5a6e8c; font-size:12px; margin-top:3px; }
+  .badge { background:#dbeafe; border:1px solid #2563eb; border-radius:20px; padding:7px 14px; font-size:11px; color:#1d4ed8; font-weight:700; }
+
+  .section-title {
+    font-size:11px; font-weight:700; letter-spacing:2px; color:#5a6e8c;
+    text-transform:uppercase; margin-bottom:12px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .section-title::before { content:''; display:inline-block; width:3px; height:14px; border-radius:2px; background:#2563eb; flex-shrink:0; }
+
+  /* 지수 */
+  .index-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:18px; }
+  .index-card {
+    background:#fff; border:1px solid #dde3ef; border-radius:12px;
+    padding:14px; position:relative; overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+  .index-card::after { content:''; position:absolute; top:0; left:0; right:0; height:4px; border-radius:12px 12px 0 0; }
+  .index-card.up::after { background:#00a65a; }
+  .index-card .label { font-size:10px; color:#5a6e8c; font-weight:700; margin-bottom:6px; }
+  .index-card .value { font-family:'Oswald',sans-serif; font-size:22px; color:#1a2236; }
+  .index-card .change { font-size:12px; font-weight:700; margin-top:4px; color:#00834a; }
+  .index-card .emoji { font-size:18px; position:absolute; right:12px; top:12px; }
+
+  /* 차트 */
+  .chart-wrap {
+    background:#fff; border:1px solid #dde3ef; border-radius:12px;
+    padding:16px; margin-bottom:18px; box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  /* 배경 요인 카드 */
+  .reason-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
+  .reason-card {
+    background:#fff; border:1px solid #dde3ef; border-radius:12px;
+    padding:14px; box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+  .reason-card .icon { font-size:22px; margin-bottom:8px; }
+  .reason-card .title { font-size:13px; font-weight:700; color:#1a2236; margin-bottom:5px; }
+  .reason-card .desc { font-size:11px; color:#5a6e8c; line-height:1.7; }
+  .reason-card .desc strong { color:#b8720a; }
+
+  /* 실적 테이블 */
+  .data-table { width:100%; border-collapse:collapse; margin-bottom:18px; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+  .data-table thead tr { background:#eef1f7; }
+  .data-table th { color:#5a6e8c; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:10px 12px; text-align:left; border-bottom:1px solid #dde3ef; }
+  .data-table td { padding:11px 12px; font-size:12px; border-bottom:1px solid #eef1f7; background:#fff; color:#1a2236; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:#f8faff; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; }
+  .tag.sur { background:#d1fae5; color:#006b42; }
+  .tag.miss { background:#fee2e2; color:#b91c1c; }
+  .tag.beat { background:#dbeafe; color:#1d4ed8; }
+
+  /* 매크로 */
+  .macro-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:18px; }
+  .macro-card {
+    background:#fff; border:1px solid #dde3ef; border-radius:10px;
+    padding:12px; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,0.05);
+  }
+  .macro-card .icon { font-size:20px; margin-bottom:6px; }
+  .macro-card .label { font-size:10px; color:#5a6e8c; margin-bottom:4px; }
+  .macro-card .val { font-family:'Oswald',sans-serif; font-size:18px; color:#1a2236; }
+  .macro-card .chg { font-size:11px; font-weight:700; margin-top:3px; }
+  .chg.up { color:#00834a; } .chg.down { color:#c0253f; }
+
+  /* 내일 국내 영향 */
+  .impact-box {
+    background:#eff6ff; border:1px solid #93c5fd; border-radius:12px;
+    padding:14px 16px; margin-bottom:18px;
+  }
+  .impact-box p { font-size:13px; line-height:1.9; color:#1e3a5f; }
+  .hl { color:#b8720a; font-weight:700; }
+
+  /* 이란 뉴스 배너 */
+  .news-banner {
+    background:linear-gradient(135deg,#fff7ed,#fef3c7);
+    border:1px solid #fbbf24; border-radius:12px;
+    padding:14px 16px; margin-bottom:18px;
+  }
+  .news-banner .news-title { font-size:13px; font-weight:700; color:#92670a; margin-bottom:6px; }
+  .news-banner p { font-size:12px; line-height:1.7; color:#78350f; }
+
+  .disclaimer { text-align:center; font-size:11px; color:#8a9ab8; margin-top:20px; padding-top:14px; border-top:1px solid #dde3ef; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>🇺🇸 미국 장 시황 브리핑</h1>
+    <p>2026년 5월 6일 (수) 현지 기준 · 한국 시각 새벽 마감 예정</p>
+  </div>
+  <div class="badge">🌙 미국장 오픈 중</div>
+</div>
+
+<!-- 이란 뉴스 배너 -->
+<div class="news-banner">
+  <div class="news-title">🌍 오늘의 핵심 뉴스 — 미국·이란 협상 타결 가능성</div>
+  <p>
+    Axios가 "미국과 이란이 전쟁 종식을 위한 1페이지 합의문에 근접했다"고 보도 → 유가 하락 → 증시 상승. 
+    단, 트럼프가 "어쩌면, 큰 가정일 수 있다"며 확신을 낮춰 주가가 고점에서 소폭 후퇴하기도 함.
+  </p>
+</div>
+
+<!-- 지수 -->
+<div class="section-title">① 주요 지수 등락</div>
+<div class="index-grid">
+  <div class="index-card up">
+    <span class="emoji">🟢</span>
+    <div class="label">S&amp;P 500</div>
+    <div class="value">↑ +0.72%</div>
+    <div class="change">3거래일 연속 상승</div>
+  </div>
+  <div class="index-card up">
+    <span class="emoji">🟢</span>
+    <div class="label">나스닥</div>
+    <div class="value">↑ +0.73%</div>
+    <div class="change">반도체·AI 주도</div>
+  </div>
+  <div class="index-card up">
+    <span class="emoji">🟢</span>
+    <div class="label">다우존스</div>
+    <div class="value">↑ +0.94%</div>
+    <div class="change">+463포인트</div>
+  </div>
+</div>
+
+<!-- 차트 -->
+<div class="chart-wrap">
+  <div class="section-title" style="margin-bottom:14px;">최근 3거래일 S&amp;P500 흐름</div>
+  <canvas id="spChart" height="85"></canvas>
+</div>
+
+<!-- 상승 배경 -->
+<div class="section-title">② 오늘 상승 배경 — 한눈에 보기</div>
+<div class="reason-grid">
+  <div class="reason-card">
+    <div class="icon">🕊️</div>
+    <div class="title">미국·이란 협상 진전</div>
+    <div class="desc">이란과의 전쟁 종식 합의가 임박했다는 보도. <strong>유가 -1.5% 하락</strong>으로 이어지며 시장 안도감 형성</div>
+  </div>
+  <div class="reason-card">
+    <div class="icon">💾</div>
+    <div class="title">AMD 어닝 서프라이즈</div>
+    <div class="desc">AI 데이터센터 칩 수요 폭증으로 <strong>1분기 예상치 대폭 상회</strong>. 반도체 섹터 전반 강세 촉발</div>
+  </div>
+  <div class="reason-card">
+    <div class="icon">🎬</div>
+    <div class="title">Disney 깜짝 호실적</div>
+    <div class="desc">스트리밍(+8%)·테마파크 모두 예상치 상회. <strong>엔터 소비 회복</strong> 신호</div>
+  </div>
+  <div class="reason-card">
+    <div class="icon">🔬</div>
+    <div class="title">Nvidia·Corning 협력</div>
+    <div class="desc">엔비디아와 코닝이 광학 기술 제조 시설 3개 공동 설립 발표. <strong>코닝 +17%</strong> 급등</div>
+  </div>
+</div>
+
+<!-- 실적 발표 결과 -->
+<div class="section-title">③ 오늘의 실적 발표 결과</div>
+<table class="data-table">
+  <thead>
+    <tr><th>종목</th><th>결과</th><th>주가 반응</th><th>핵심 이유</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>💾 AMD</td>
+      <td><span class="tag sur">어닝 서프라이즈</span></td>
+      <td style="color:#00834a;font-weight:700">▲ +13~16%</td>
+      <td>AI GPU 칩 수요 폭증 + 2분기 가이던스 상향</td>
+    </tr>
+    <tr>
+      <td>🏰 Disney</td>
+      <td><span class="tag sur">어닝 서프라이즈</span></td>
+      <td style="color:#00834a;font-weight:700">▲ +8%</td>
+      <td>스트리밍·파크 동반 호실적</td>
+    </tr>
+    <tr>
+      <td>🚗 Uber</td>
+      <td><span class="tag beat">예상 상회</span></td>
+      <td style="color:#00834a;font-weight:700">▲ +6%</td>
+      <td>1분기 실적 예상치 상회</td>
+    </tr>
+    <tr>
+      <td>🖥 Super Micro (SMCI)</td>
+      <td><span class="tag sur">어닝 서프라이즈</span></td>
+      <td style="color:#00834a;font-weight:700">▲ +18%</td>
+      <td>4분기 EPS 가이던스 예상치 대폭 상회</td>
+    </tr>
+    <tr>
+      <td>🔗 Corning</td>
+      <td><span class="tag beat">모멘텀</span></td>
+      <td style="color:#00834a;font-weight:700">▲ +17%</td>
+      <td>Nvidia와 광학 제조 공장 3곳 공동 설립</td>
+    </tr>
+    <tr>
+      <td>🌐 Arista Networks</td>
+      <td><span class="tag miss">소폭 미달</span></td>
+      <td style="color:#c0253f;font-weight:700">▼ -12%</td>
+      <td>조정 매출총이익률 62.4% (예상 62.7% 소폭 미달)</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 매크로 -->
+<div class="section-title">④ 주요 매크로 지표</div>
+<div class="macro-grid">
+  <div class="macro-card">
+    <div class="icon">⛽</div>
+    <div class="label">WTI 유가 (기름값)</div>
+    <div class="val">$100.73</div>
+    <div class="chg down">▼ -1.51% — 유가 하락 → 주식 호재</div>
+  </div>
+  <div class="macro-card">
+    <div class="icon">🪙</div>
+    <div class="label">비트코인</div>
+    <div class="val">$82,431</div>
+    <div class="chg up">▲ +1.8% — 위험자산 선호</div>
+  </div>
+  <div class="macro-card">
+    <div class="icon">📊</div>
+    <div class="label">JOLTS 구인 건수</div>
+    <div class="val">687만건</div>
+    <div class="chg">고용 강세 유지 · 금리 인하 기대↓</div>
+  </div>
+</div>
+
+<!-- 내일 국내 영향 -->
+<div class="section-title">⑤ 내일 국내 시장에 미치는 영향</div>
+<div class="impact-box">
+  <p>
+    ✅ <span class="hl">긍정적 요인</span> — AMD를 비롯한 반도체 강세가 이어지고 있어 내일도 삼성전자·SK하이닉스 우호적 흐름 기대. 유가 하락으로 인플레이션 우려 완화. 이란 협상 타결 시 추가 상승 모멘텀.<br><br>
+    ⚠️ <span class="hl">주의 요인</span> — 코스피가 이미 이틀간 700포인트 넘게 급등한 상황. 시장 전문가들은 "반도체 섹터의 급등 움직임이 너무 명백해졌다"며 <span class="hl">단기 차익실현 물량</span>을 경계하고 있음. 이란 협상 변수도 여전히 불확실.
+  </p>
+</div>
+
+<div class="disclaimer">
+  ⚠️ 본 브리핑은 투자 정보 제공 목적이며, 특정 종목의 매수·매도 권유가 아닙니다.<br>
+  모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.
+</div>
+
+<script>
+const ctx = document.getElementById('spChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['5/4 (월)', '5/5 (화)', '5/6 (수)'],
+    datasets: [
+      {
+        label: 'S&P 500',
+        data: [7200.75, 7259.22, 7311],
+        borderColor: '#2563eb',
+        backgroundColor: 'rgba(37,99,235,0.08)',
+        tension: 0.4, fill: true,
+        pointBackgroundColor: ['#e02f55','#00a65a','#2563eb'],
+        pointRadius: 8,
+      },
+      {
+        label: '나스닥 (스케일 조정)',
+        data: [25067.80/3.47, 25326.13/3.47, 25510/3.47],
+        borderColor: '#00a65a',
+        backgroundColor: 'rgba(0,166,90,0.05)',
+        tension: 0.4, fill: false,
+        borderDash: [5,4],
+        pointBackgroundColor: ['#e02f55','#00a65a','#00a65a'],
+        pointRadius: 8,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color:'#5a6e8c', font:{size:12}, padding:20 } },
+      tooltip: {
+        backgroundColor:'#fff', titleColor:'#1a2236', bodyColor:'#1a2236',
+        borderColor:'#dde3ef', borderWidth:1,
+        callbacks: {
+          label: c => c.dataset.label.includes('나스닥')
+            ? `나스닥: ${(c.raw*3.47).toLocaleString('ko-KR',{maximumFractionDigits:0})}`
+            : `S&P 500: ${c.raw.toLocaleString('ko-KR',{maximumFractionDigits:0})}`
+        }
+      }
+    },
+    scales: {
+      x: { ticks:{ color:'#5a6e8c', font:{size:12} }, grid:{ color:'#eef1f7' } },
+      y: { ticks:{ color:'#5a6e8c', font:{size:12} }, grid:{ color:'#eef1f7' } }
+    }
+  }
+});
+</script>
+</body>
+</html>
