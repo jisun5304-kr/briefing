@@ -6,7 +6,6 @@
 <title>2026-05-07 오전 시황 브리핑</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-
   :root {
     --bg:#f5f5f3; --surface:#ffffff; --border:#e0e0dc; --thead:#f0f0ee;
     --row-hover:#f8f8f6; --text:#222222; --dim:#666666; --muted:#aaaaaa;
@@ -21,507 +20,156 @@
     --chart-grid:#1e2e4a; --chart-text:#6b80a0;
     --chart-tooltip-bg:#131e33; --chart-tooltip-title:#dce6f5; --chart-tooltip-border:#1e2e4a;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    transition:background 0.25s,color 0.25s; font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background:var(--bg); color:var(--text); font-size: 14px; line-height: 1.7; }
-  .page { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
-  .title-block { background: #1B3A6B; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; color: #fff; }
-  .title-block h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
-  .title-block .meta { font-size: 13px; opacity: 0.75; }
-  .badge-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-  .badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
-  .badge-up { background: #d4edda; color: #1a5c1a; }
-  .badge-warn { background: #fff3cd; color: #7a5200; }
-  .badge-info { background: #d1ecf1; color: #0c5460; }
-  .badge-danger { background: #f8d7da; color: #721c24; }
-  .section { background:var(--surface); border-radius: 12px; padding: 24px 28px; margin-bottom: 18px; border: 1px solid #e8e8e5; }
-  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #f0f0ee; }
-  .section-num { background: #1B3A6B; color: #fff; font-size: 13px; font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .section-title { font-size: 16px; font-weight: 700; color: #1B3A6B; }
-  .index-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
-  .index-card { border: 1px solid #e8e8e5; border-radius: 10px; padding: 14px 16px; }
-  .index-card .name { font-size: 12px; color: #888; margin-bottom: 4px; }
-  .index-card .val { font-size: 22px; font-weight: 700; color:var(--text); margin-bottom: 2px; }
-  .index-card .chg { font-size: 13px; font-weight: 600; }
-  .up { color: #1a7a3a; }
-  .down { color: #c0392b; }
-  .neutral { color: #7a7a7a; }
-  .chart-wrap { position: relative; width: 100%; height: 200px; margin-bottom: 20px; }
-  .sector-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
-  .sector-row { display: flex; justify-content: space-between; align-items: center; background:var(--row-hover); border-radius: 8px; padding: 9px 14px; font-size: 13px; }
-  .note-box { border-radius: 10px; padding: 14px 18px; font-size: 13px; line-height: 1.65; margin-top: 12px; }
-  .note-blue { background: #e8f1fb; color: #1a3a6b; border-left: 4px solid #2E5EA0; }
-  .note-green { background: #e8f5ea; color: #1a4a1a; border-left: 4px solid #2D6A4F; }
-  .note-amber { background: #fff8e1; color: #5a3e00; border-left: 4px solid #E0A800; }
-  .note-red { background: #fdf0f0; color: #6a1a1a; border-left: 4px solid #C0392B; }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; }
-  th { background: #1B3A6B; color: #fff; padding: 9px 12px; text-align: left; font-weight: 600; }
-  th:first-child { border-radius: 6px 0 0 0; }
-  th:last-child { border-radius: 0 6px 0 0; }
-  td { padding: 9px 12px; border-bottom: 1px solid #f0f0ee; }
-  tr:last-child td { border-bottom: none; }
+  body { transition:background 0.25s,color 0.25s; font-family:'Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:var(--bg); color:var(--text); font-size:14px; line-height:1.7; }
+  .page { max-width:860px; margin:0 auto; padding:32px 20px 60px; }
+  .title-block { background:#1B3A6B; border-radius:14px; padding:28px 32px; margin-bottom:24px; color:#fff; }
+  .title-block h1 { font-size:26px; font-weight:700; margin-bottom:6px; }
+  .title-block .meta { font-size:13px; opacity:0.75; }
+  .badge-row { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .badge { display:inline-block; font-size:12px; font-weight:600; padding:4px 12px; border-radius:20px; }
+  .badge-up { background:#d4edda; color:#1a5c1a; }
+  .badge-warn { background:#fff3cd; color:#7a5200; }
+  .badge-info { background:#d1ecf1; color:#0c5460; }
+  .badge-danger { background:#f8d7da; color:#721c24; }
+  .section { background:var(--surface); border-radius:12px; padding:24px 28px; margin-bottom:18px; border:1px solid #e8e8e5; }
+  .section-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid #f0f0ee; }
+  .section-num { background:#1B3A6B; color:#fff; font-size:13px; font-weight:700; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .section-title { font-size:16px; font-weight:700; color:#1B3A6B; }
+  .index-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; }
+  .index-card { border:1px solid #e8e8e5; border-radius:10px; padding:14px 16px; }
+  .index-card .name { font-size:12px; color:#888; margin-bottom:4px; }
+  .index-card .val { font-size:22px; font-weight:700; color:var(--text); margin-bottom:2px; }
+  .index-card .chg { font-size:13px; font-weight:600; }
+  .up { color:#1a7a3a; }
+  .down { color:#c0392b; }
+  .neutral { color:#7a7a7a; }
+  .chart-wrap { position:relative; width:100%; height:200px; margin-bottom:20px; }
+  .sector-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:16px; }
+  .sector-row { display:flex; justify-content:space-between; align-items:center; background:var(--row-hover); border-radius:8px; padding:9px 14px; font-size:13px; }
+  .note-box { border-radius:10px; padding:14px 18px; font-size:13px; line-height:1.65; margin-top:12px; }
+  .note-blue { background:#e8f1fb; color:#1a3a6b; border-left:4px solid #2E5EA0; }
+  .note-green { background:#e8f5ea; color:#1a4a1a; border-left:4px solid #2D6A4F; }
+  .note-amber { background:#fff8e1; color:#5a3e00; border-left:4px solid #E0A800; }
+  .note-red { background:#fdf0f0; color:#6a1a1a; border-left:4px solid #C0392B; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:16px; }
+  th { background:#1B3A6B; color:#fff; padding:9px 12px; text-align:left; font-weight:600; }
+  th:first-child { border-radius:6px 0 0 0; }
+  th:last-child { border-radius:0 6px 0 0; }
+  td { padding:9px 12px; border-bottom:1px solid #f0f0ee; }
+  tr:last-child td { border-bottom:none; }
   tr:nth-child(even) td { background:var(--bg); }
-  .action-pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
-  .pill-split { background: #d1ecf1; color: #0c5460; }
-  .pill-watch { background: #fff3cd; color: #7a5200; }
-  .pill-caution { background: #f8d7da; color: #721c24; }
-  .outlook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
-  .outlook-card { border-radius: 10px; padding: 14px 16px; }
-  .outlook-card .ol { font-size: 11px; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .outlook-card .ov { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
-  .outlook-card .od { font-size: 12px; line-height: 1.5; }
-  .oc-green { background: #e8f5ea; }
-  .oc-green .ol, .oc-green .ov { color: #1a5c1a; }
-  .oc-green .od { color: #2d6a4f; }
-  .oc-blue { background: #e8f1fb; }
-  .oc-blue .ol, .oc-blue .ov { color: #1a3a6b; }
-  .oc-blue .od { color: #2e5ea0; }
-  .oc-amber { background: #fff8e1; }
-  .oc-amber .ol, .oc-amber .ov { color: #7a5200; }
-  .oc-amber .od { color: #a07000; }
-  .supply-wrap { margin-bottom: 14px; }
-  .supply-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; }
-  .supply-lbl { width: 52px; color: #888; flex-shrink: 0; }
-  .supply-track { flex: 1; height: 8px; background:var(--thead); border-radius: 4px; overflow: hidden; }
-  .supply-fill { height: 100%; border-radius: 4px; }
-  .sf-foreign { background: #2E5EA0; }
-  .sf-inst { background: #2D6A4F; }
-  .sf-indiv { background: #C0392B; }
-  .supply-val { width: 90px; text-align: right; font-weight: 600; font-size: 12px; }
-  .event-list { display: flex; flex-direction: column; gap: 10px; }
-  .event-item { display: flex; gap: 12px; padding: 12px 14px; border-radius: 10px; background:var(--row-hover); font-size: 13px; align-items: flex-start; }
-  .event-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
-  .dot-red { background: #C0392B; }
-  .dot-blue { background: #2E5EA0; }
-  .dot-green { background: #2D6A4F; }
-  .event-label { font-weight: 600; color:var(--text); margin-bottom: 3px; }
-  .event-desc { color: #555; line-height: 1.55; }
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
-  .rsi-box { background:var(--row-hover); border-radius: 10px; padding: 14px 18px; font-size: 13px; margin-top: 12px; }
-  .rsi-box strong { color: #1B3A6B; }
-  .tip-row { display: flex; gap: 6px; align-items: flex-start; margin-bottom: 6px; font-size: 13px; }
-  .tip-row:last-child { margin-bottom: 0; }
-  .tip-icon { flex-shrink: 0; margin-top: 1px; }
-  .disclaimer { font-size: 11px; color:var(--muted); margin-top: 24px; padding-top: 14px; border-top: 1px solid #e8e8e5; line-height: 1.6; }
-  @media (max-width: 600px) {
-    .index-grid { grid-template-columns: repeat(2, 1fr); }
-    .outlook-grid { grid-template-columns: 1fr; }
-    .sector-grid { grid-template-columns: 1fr; }
-    .two-col { grid-template-columns: 1fr; }
-  }
+  .action-pill { display:inline-block; font-size:11px; font-weight:600; padding:3px 10px; border-radius:20px; }
+  .pill-split { background:#d1ecf1; color:#0c5460; }
+  .pill-watch { background:#fff3cd; color:#7a5200; }
+  .pill-caution { background:#f8d7da; color:#721c24; }
+  .outlook-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }
+  .outlook-card { border-radius:10px; padding:14px 16px; }
+  .outlook-card .ol { font-size:11px; font-weight:600; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px; }
+  .outlook-card .ov { font-size:17px; font-weight:700; margin-bottom:4px; }
+  .outlook-card .od { font-size:12px; line-height:1.5; }
+  .oc-green { background:#e8f5ea; }
+  .oc-green .ol, .oc-green .ov { color:#1a5c1a; }
+  .oc-green .od { color:#2d6a4f; }
+  .oc-blue { background:#e8f1fb; }
+  .oc-blue .ol, .oc-blue .ov { color:#1a3a6b; }
+  .oc-blue .od { color:#2e5ea0; }
+  .oc-amber { background:#fff8e1; }
+  .oc-amber .ol, .oc-amber .ov { color:#7a5200; }
+  .oc-amber .od { color:#a07000; }
+  .supply-wrap { margin-bottom:14px; }
+  .supply-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; font-size:13px; }
+  .supply-lbl { width:52px; color:#888; flex-shrink:0; }
+  .supply-track { flex:1; height:8px; background:var(--thead); border-radius:4px; overflow:hidden; }
+  .supply-fill { height:100%; border-radius:4px; }
+  .sf-foreign { background:#2E5EA0; }
+  .sf-inst { background:#2D6A4F; }
+  .sf-indiv { background:#C0392B; }
+  .supply-val { width:90px; text-align:right; font-weight:600; font-size:12px; }
+  .event-list { display:flex; flex-direction:column; gap:10px; }
+  .event-item { display:flex; gap:12px; padding:12px 14px; border-radius:10px; background:var(--row-hover); font-size:13px; align-items:flex-start; }
+  .event-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+  .dot-red { background:#C0392B; }
+  .dot-blue { background:#2E5EA0; }
+  .dot-green { background:#2D6A4F; }
+  .event-label { font-weight:600; color:var(--text); margin-bottom:3px; }
+  .event-desc { color:#555; line-height:1.55; }
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+  .rsi-box { background:var(--row-hover); border-radius:10px; padding:14px 18px; font-size:13px; margin-top:12px; }
+  .rsi-box strong { color:#1B3A6B; }
+  .disclaimer { font-size:11px; color:var(--muted); margin-top:24px; padding-top:14px; border-top:1px solid #e8e8e5; line-height:1.6; }
+  .table-wrap { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:12px; margin-bottom:18px; }
+  .table-wrap table { min-width:480px; margin-bottom:0; }
+  .sector-name { font-size:12px; color:#4a5568; }
+  @media (max-width:600px) { .index-grid{grid-template-columns:repeat(2,1fr);} .outlook-grid{grid-template-columns:1fr;} .sector-grid{grid-template-columns:1fr;} .two-col{grid-template-columns:1fr;} .section{padding:16px;} .title-block h1{font-size:20px;} }
 
-  /* ══ 반응형 공통 추가 ══ */
-  .table-wrap {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 12px;
-    margin-bottom: 18px;
-  }
-  .table-wrap table,
-  .table-wrap .data-table {
-    min-width: 480px;
-    margin-bottom: 0;
-  }
-  .chart-box { width: 100%; position: relative; }
-  .chart-box canvas { max-width: 100% ; }
-  @media (max-width: 700px) {
-    body { padding: 14px 12px 32px ; }
-    .header { flex-direction: column; align-items: flex-start; gap: 10px;   flex-wrap: wrap;
-  }
-    .index-grid { grid-template-columns: repeat(2, 1fr) ; }
-    .sector-grid { grid-template-columns: 1fr 1fr ; }
-    .reason-grid { grid-template-columns: 1fr ; }
-    .macro-grid { grid-template-columns: 1fr 1fr ; }
-    .two-col { grid-template-columns: 1fr ; }
-    .three-col { grid-template-columns: 1fr 1fr ; }
-    .outlook-grid { grid-template-columns: 1fr ; }
-    .stock-grid { grid-template-columns: 1fr ; }
-    .supply-val { width: auto; font-size: 11px; }
-  }
-  @media (max-width: 480px) {
-    .index-grid { grid-template-columns: 1fr 1fr ; }
-    .macro-grid { grid-template-columns: 1fr 1fr ; }
-    .three-col { grid-template-columns: 1fr ; }
-    .index-card .value, .index-card .val { font-size: 18px ; }
-    .hero .big { font-size: 30px ; }
-    .title-block h1 { font-size: 20px ; }
-    .section { padding: 16px ; }
-  }
-
-  /* ══ 다크모드 확실 오버라이드 ══ */
-  html.dark body {
-    background: #0b1120 !important;
-    color: #dce6f5 !important;
-  }
-  /* 카드/섹션 배경 */
-  html.dark .index-card,
-  html.dark .chart-wrap,
-  html.dark .timeline,
-  html.dark .reason-card,
-  html.dark .macro-card,
-  html.dark .info-card,
-  html.dark .info-box,
-  html.dark .stock-card,
-  html.dark .news-banner,
-  html.dark .kospi-spotlight,
-  html.dark .two-col > div {
-    background: #131e33 !important;
-    border-color: #1e2e4a !important;
-  }
-  html.dark .reason-card .title { color: #dce6f5 !important; }
-  html.dark .reason-card .desc  { color: #a0b8d8 !important; }
-  html.dark .reason-card .icon  { opacity: 1 !important; }
-  /* 테이블 */
-  html.dark .data-table thead tr { background: #0f1928 !important; }
-  html.dark .data-table th { color: #8fa4c0 !important; border-color: #1e2e4a !important; }
-  html.dark .data-table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
-  html.dark .data-table tr:nth-child(even) td { background: #131e33 !important; }
-  html.dark .data-table tr:hover td { background: #1a2940 !important; }
-  /* 텍스트 */
-  html.dark .index-card .label,
-  html.dark .index-card .sub,
-  html.dark .header p,
-  html.dark .section-title { color: #8fa4c0 !important; }
-  html.dark .index-card .value,
-  html.dark .index-card .val,
-  html.dark .header h1 { color: #dce6f5 !important; }
-  /* 섹션 타이틀 바 */
-  html.dark .section-title::before { background: #3b82f6 !important; }
-  /* 요약/임팩트 박스 */
-  html.dark .summary-box,
-  html.dark .impact-box,
-  html.dark .info-box {
-    background: rgba(37,99,235,0.08) !important;
-    border-color: rgba(37,99,235,0.3) !important;
-  }
-  html.dark .summary-box p,
-  html.dark .impact-box p { color: #a0b8d8 !important; }
-  /* 뉴스 배너 */
-  html.dark .news-banner {
-    background: rgba(146,103,10,0.12) !important;
-    border-color: rgba(251,191,36,0.35) !important;
-  }
-  html.dark .news-banner .news-title { color: #fbbf24 !important; }
-  html.dark .news-banner p { color: #d4a843 !important; }
-  /* 배지 */
-  html.dark .imp.high { background: rgba(190,26,57,0.2) !important; color: #f87171 !important; }
-  html.dark .imp.mid  { background: rgba(146,103,10,0.2) !important; color: #fbbf24 !important; }
-  html.dark .imp.low  { background: rgba(59,68,90,0.2) !important; color: #8fa4c0 !important; }
-  html.dark .tag.sur  { background: rgba(0,107,66,0.2) !important; color: #4ade80 !important; }
-  html.dark .tag.beat { background: rgba(29,78,216,0.15) !important; color: #60a5fa !important; }
-  html.dark .tag.miss { background: rgba(185,28,28,0.2) !important; color: #f87171 !important; }
-  /* 종목 카드 */
-  html.dark .stock-tag.watch   { background: rgba(0,107,66,0.2) !important; color: #4ade80 !important; }
-  html.dark .stock-tag.caution { background: rgba(185,28,28,0.2) !important; color: #f87171 !important; }
-  html.dark .stock-tag.hot     { background: rgba(0,107,66,0.2) !important; color: #4ade80 !important; }
-  html.dark .stock-tag.limit   { background: rgba(146,103,10,0.2) !important; color: #fbbf24 !important; }
-  html.dark .stock-name { color: #dce6f5 !important; }
-  html.dark .stock-code { color: #6b80a0 !important; }
-  html.dark .verdict.split  { background: rgba(37,99,235,0.15) !important; color: #60a5fa !important; }
-  html.dark .verdict.watch2 { background: rgba(59,68,90,0.2) !important; color: #8fa4c0 !important; }
-  /* RSI */
-  html.dark .rsi-track { background: #1e2e4a !important; }
-  html.dark .rsi-dot { border-color: #131e33 !important; }
-  /* 면책 */
-  html.dark .disclaimer { color: #4a5e80 !important; border-color: #1e2e4a !important; }
-  /* 히어로/섹터 */
-  html.dark .hero { background: rgba(34,197,94,0.07) !important; border-color: rgba(34,197,94,0.3) !important; }
-  html.dark .hero .big { color: #4ade80 !important; }
-  html.dark .hero .headline { color: #dce6f5 !important; }
-  html.dark .sector-row { background: #131e33 !important; border-color: #1e2e4a !important; }
-  html.dark .sector-row .name { color: #dce6f5 !important; }
-  html.dark .tl-time { color: #60a5fa !important; }
-  html.dark .tl-text { color: #dce6f5 !important; }
-  html.dark .note-small { color: #6b80a0 !important; }
-  html.dark .info-item .k { color: #6b80a0 !important; }
-  html.dark .info-item .v { color: #dce6f5 !important; }
-
-  /* 07 계열 추가 */
-  html.dark .section { background: #131e33 !important; border-color: #1e2e4a !important; }
-  html.dark .section-num { background: #3b82f6 !important; color: #ffffff !important; }
-  html.dark .section-title { color: #8fa4c0 !important; border-color: #1e2e4a !important; }
-  html.dark .note-green { background: rgba(34,197,94,0.08) !important; color: #4ade80 !important; border-color: rgba(34,197,94,0.25) !important; }
-  html.dark .note-amber { background: rgba(245,158,11,0.08) !important; color: #fbbf24 !important; border-color: rgba(245,158,11,0.25) !important; }
-  html.dark .note-blue  { background: rgba(37,99,235,0.08) !important; color: #60a5fa !important; border-color: rgba(37,99,235,0.25) !important; }
-  html.dark .note-red   { background: rgba(239,68,68,0.08) !important; color: #f87171 !important; border-color: rgba(239,68,68,0.25) !important; }
-  html.dark .badge-up     { background: rgba(34,197,94,0.15) !important; color: #4ade80 !important; }
-  html.dark .badge-warn   { background: rgba(245,158,11,0.15) !important; color: #fbbf24 !important; }
-  html.dark .badge-info   { background: rgba(37,99,235,0.15) !important; color: #60a5fa !important; }
-  html.dark .badge-danger { background: rgba(239,68,68,0.15) !important; color: #f87171 !important; }
-  html.dark .event-item   { background: #131e33 !important; border-color: #1e2e4a !important; }
-  html.dark .event-label  { color: #6b80a0 !important; }
-  html.dark .event-desc   { color: #dce6f5 !important; }
-  html.dark .supply-wrap  { background: #131e33 !important; border-color: #1e2e4a !important; }
-  html.dark .supply-track { background: #1e2e4a !important; }
-  html.dark .supply-lbl   { color: #6b80a0 !important; }
-  html.dark .supply-val   { color: #dce6f5 !important; }
-  html.dark .milestone-box { background: rgba(34,197,94,0.07) !important; border-color: rgba(34,197,94,0.25) !important; }
-  html.dark .milestone-box .big      { color: #4ade80 !important; }
-  html.dark .milestone-box .headline { color: #dce6f5 !important; }
-  html.dark .stat-card   { background: #131e33 !important; border-color: #1e2e4a !important; }
-  html.dark .oc-green    { background: rgba(34,197,94,0.08) !important; }
-  html.dark .oc-blue     { background: rgba(37,99,235,0.08) !important; }
-  html.dark .oc-amber    { background: rgba(245,158,11,0.08) !important; }
-  html.dark .pill-split  { background: rgba(37,99,235,0.15) !important; color: #60a5fa !important; }
-  html.dark .pill-watch  { background: rgba(245,158,11,0.15) !important; color: #fbbf24 !important; }
-  html.dark .pill-caution{ background: rgba(239,68,68,0.15) !important; color: #f87171 !important; }
-  html.dark .rsi-box     { background: #131e33 !important; border-color: #1e2e4a !important; }
-  html.dark .data-note   { background: #0f1928 !important; color: #4a5e80 !important; }
-  html.dark .index-card .name { color: #8fa4c0 !important; }
-  html.dark .index-card .val  { color: #dce6f5 !important; }
-  html.dark .title-block { filter: brightness(0.75) saturate(0.8) !important; }
-
-  /* ══ 다크모드 색상 가독성 보정 ══ */
-
-  /* 상승/하락 색상 → 밝은 버전으로 */
-  html.dark .pct.up,
-  html.dark .change.up,
-  html.dark .arrow-up,
-  html.dark .chg.up { color: #4ade80 !important; }
-
-  html.dark .pct.down,
-  html.dark .change.down,
-  html.dark .arrow-down,
-  html.dark .chg.down { color: #f87171 !important; }
-
-  /* 앰버/골드 강조 텍스트 */
-  html.dark .hl { color: #fbbf24 !important; }
-  html.dark strong { color: inherit !important; }
-
-  /* 섹터 행 이름 */
-  html.dark .sector-row .name { color: #c8d8ef !important; }
-  html.dark .sector-row { color: #c8d8ef !important; }
-
-  /* KOSPI 스포트라이트 */
-  html.dark .kospi-spotlight .note { color: #4ade80 !important; }
-  html.dark .kospi-spotlight .big  { color: #4ade80 !important; }
-  html.dark .kospi-spotlight .headline { color: #dce6f5 !important; }
-  html.dark .kospi-spotlight .sub  { color: #8fa4c0 !important; }
-
-  /* 종목 카드 수치 */
-  html.dark .stock-stat { color: #8fa4c0 !important; }
-  html.dark .stock-stat span:last-child { color: #c8d8ef !important; }
-
-  /* 요약박스 강조 */
-  html.dark .summary-box .hl,
-  html.dark .impact-box .hl { color: #fbbf24 !important; }
-
-  /* 타임라인 */
-  html.dark .tl-time { color: #60a5fa !important; }
-  html.dark .tl-text { color: #c8d8ef !important; }
-  html.dark .tl-text strong { color: #4ade80 !important; }
-
-  /* 매크로 카드 */
-  html.dark .macro-card .val   { color: #dce6f5 !important; }
-  html.dark .macro-card .label { color: #8fa4c0 !important; }
-  html.dark .macro-card .chg   { color: #8fa4c0 !important; }
-
-  /* 수급 핵심 포인트 등 텍스트 블록 */
-  html.dark .info-box p,
-  html.dark .note-box p,
-  html.dark [class*="box"] p { color: #c8d8ef !important; }
-  html.dark [class*="box"] strong { color: #fbbf24 !important; }
-
-  /* 헤더 */
-  html.dark .header h1 { color: #f59e0b !important; }
-
-  /* ══ 모바일 텍스트 줄바꿈 방지 ══ */
-
-  /* 배지/태그는 줄바꿈 없게 */
-  .badge, .imp, .tag, .stock-tag, .verdict,
-  .badge-up, .badge-warn, .badge-info, .badge-danger,
-  .pill-split, .pill-watch, .pill-caution {
-    white-space: nowrap;
-  }
-
-  /* 지수 카드: 중간 사이즈에서도 안 꺾이게 */
-  .index-card .value,
-  .index-card .val {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* 섹터 행: 한 줄 유지 */
-  .sector-row {
-    flex-wrap: nowrap;
-    min-height: 40px;
-    align-items: center;
-  }
-  .sector-row .name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex: 1;
-  }
-  .sector-row .pct {
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-left: 6px;
-  }
-
-  /* 종목 카드: stat 행 유지 */
-  .stock-stat {
-    flex-wrap: nowrap;
-    gap: 4px;
-  }
-  .stock-stat span:first-child {
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .stock-stat span:last-child {
-    text-align: right;
-    word-break: keep-all;
-  }
-
-  /* 테이블: 중요 열 줄바꿈 방지 */
-  .data-table th,
-  .data-table td:first-child { white-space: nowrap; }
-
-  /* 480~700px 사이 중간 구간 보정 */
-  @media (max-width: 600px) {
-    .index-card .value,
-    .index-card .val { font-size: 18px !important; }
-
-    .stock-stat { font-size: 11px !important; }
-
-    .sector-row .name { font-size: 11px !important; }
-    .sector-row .pct  { font-size: 12px !important; }
-
-    .section-title { font-size: 10px !important; }
-
-    .badge, .imp, .tag { font-size: 9px !important; padding: 2px 6px !important; }
-  }
-
-  
-  /* ══ 07 파일 가독성 + 테이블 보정 ══ */
-
-  /* 클래스 없는 테이블 줄색 통일 */
-  html.dark table tr:nth-child(even) td { background: #131e33 !important; }
-  html.dark table tr:hover td { background: #1a2940 !important; }
-  html.dark table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
-  html.dark table th { background: #0f1928 !important; color: #8fa4c0 !important; border-color: #1e2e4a !important; }
-
-  /* 섹션 타이틀 색상 */
-  html.dark .section-title { color: #8fa4c0 !important; }
-
-  /* 상승/하락 밝은 버전 */
-  html.dark .up   { color: #4ade80 !important; }
-  html.dark .down { color: #f87171 !important; }
-  html.dark .neutral { color: #8fa4c0 !important; }
-
-  /* 노트 박스 텍스트 */
-  html.dark .note-green { color: #4ade80 !important; }
-  html.dark .note-blue  { color: #60a5fa !important; }
-  html.dark .note-amber { color: #fbbf24 !important; }
-  html.dark .note-red   { color: #f87171 !important; }
-  html.dark .note-green *, html.dark .note-blue *,
-  html.dark .note-amber *, html.dark .note-red * { color: inherit !important; }
-
-  /* 배지 */
-  html.dark .badge-up     { color: #4ade80 !important; }
-  html.dark .badge-info   { color: #60a5fa !important; }
-  html.dark .badge-warn   { color: #fbbf24 !important; }
-  html.dark .badge-danger { color: #f87171 !important; }
-
-  /* 아웃룩 카드 */
-  html.dark .oc-green .ol, html.dark .oc-green .ov { color: #4ade80 !important; }
-  html.dark .oc-blue  .ol, html.dark .oc-blue  .ov { color: #60a5fa !important; }
-  html.dark .oc-amber .ol, html.dark .oc-amber .ov { color: #fbbf24 !important; }
-
-  /* RSI 박스 */
-  html.dark .rsi-box { background: #131e33 !important; }
-  html.dark .rsi-box strong { color: #60a5fa !important; }
-
-  /* 인덱스 카드 highlight */
-  html.dark .index-card.highlight { color: #4ade80 !important; }
-  html.dark .index-card .name { color: #8fa4c0 !important; }
-  html.dark .index-card .val  { color: #dce6f5 !important; }
-  html.dark .index-card .sub  { color: #6b80a0 !important; }
-
-  /* 수급 바 */
-  html.dark .supply-lbl { color: #8fa4c0 !important; }
-  html.dark .supply-val { color: #dce6f5 !important; }
-
-  /* 이벤트 아이템 */
-  html.dark .event-item { background: #131e33 !important; }
-  html.dark .event-label { color: #8fa4c0 !important; }
-  html.dark .event-desc  { color: #dce6f5 !important; }
-  html.dark .event-desc strong { color: #fbbf24 !important; }
-
-  /* 필 배지 */
-  html.dark .pill-split   { color: #60a5fa !important; }
-  html.dark .pill-watch   { color: #fbbf24 !important; }
-  html.dark .pill-caution { color: #f87171 !important; }
-
-  /* title-block 내부 텍스트 */
-  html.dark .title-block { filter: brightness(0.7) !important; }
-  html.dark .title-block .badge-white { color: #ffffff !important; opacity: 0.9 !important; }
-
-  
-  /* ══ 인라인 style 색상 다크모드 오버라이드 ══ */
-  /* 어두운 색 → 밝은 버전 */
-  html.dark [style*="color:#555"]    { color: #c8d8ef !important; }
-  html.dark [style*="color:#888"]    { color: #8fa4c0 !important; }
-  html.dark [style*="color:#8a9ab8"] { color: #8fa4c0 !important; }
-  html.dark [style*="color:#92670a"] { color: #fbbf24 !important; }
-  html.dark [style*="color:#166534"] { color: #4ade80 !important; }
-  html.dark [style*="color:#1B3A6B"] { color: #60a5fa !important; }
-  html.dark [style*="color:#2E5EA0"] { color: #60a5fa !important; }
-  html.dark [style*="color:#00834a"] { color: #4ade80 !important; }
-  html.dark [style*="color:#721c24"] { color: #f87171 !important; }
-  html.dark [style*="color:#C0392B"] { color: #f87171 !important; }
-  html.dark [style*="color:#c0392b"] { color: #f87171 !important; }
-  html.dark [style*="color:#c0253f"] { color: #f87171 !important; }
-  html.dark [style*="color:#E0A800"] { color: #fbbf24 !important; }
-
-  /* 밝은 배경 → 어두운 버전 */
-  html.dark [style*="background:#fdf5f5"] { background: rgba(185,28,28,0.1) !important; }
-  html.dark [style*="background:#f8d7da"] { background: rgba(185,28,28,0.15) !important; }
-
-  /* 인라인으로 지정된 업다운 색상 */
-  html.dark td[style*="color:#00834a"],
-  html.dark td[style*="color:#166534"] { color: #4ade80 !important; }
-  html.dark td[style*="color:#C0392B"],
-  html.dark td[style*="color:#c0392b"],
-  html.dark td[style*="color:#c0253f"] { color: #f87171 !important; }
-
-  /* 테이블 td 기본 텍스트 */
-  html.dark td { color: #dce6f5 !important; }
-  html.dark th { color: #8fa4c0 !important; }
-
-  
-  /* 섹터 이름 클래스 */
-  .sector-name {
-    font-size: 12px;
-    color: #4a5568;
-  }
-  html.dark .sector-name {
-    color: #94a3b8 !important;
-  }
-  html.dark .sector-name.neutral {
-    color: #6b80a0 !important;
-  }
-
-  /* 테이블 줄색 완전 통일 */
-  html.dark table { background: #131e33; }
-  html.dark table tbody tr { background: #131e33 !important; }
-  html.dark table tbody tr:nth-child(even) { background: #131e33 !important; }
-  html.dark table tbody tr:nth-child(odd)  { background: #131e33 !important; }
-  html.dark table tbody tr:hover           { background: #1a2940 !important; }
-  html.dark table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
-  html.dark table th { background: #0f1928 !important; color: #8fa4c0 !important; border-color: #1e2e4a !important; }
-  html.dark table tr:nth-child(even) td   { background: #131e33 !important; }
-
+  html.dark body { background:#0b1120 !important; color:#dce6f5 !important; }
+  html.dark .section { background:#131e33 !important; border-color:#1e2e4a !important; }
+  html.dark .section-num { background:#3b82f6 !important; }
+  html.dark .section-title { color:#8fa4c0 !important; }
+  html.dark .index-card { border-color:#1e2e4a !important; }
+  html.dark .index-card .name { color:#8fa4c0 !important; }
+  html.dark .index-card .val { color:#dce6f5 !important; }
+  html.dark .up { color:#4ade80 !important; }
+  html.dark .down { color:#f87171 !important; }
+  html.dark .neutral { color:#8fa4c0 !important; }
+  html.dark .note-green { background:rgba(34,197,94,0.08) !important; color:#4ade80 !important; border-color:rgba(34,197,94,0.25) !important; }
+  html.dark .note-blue  { background:rgba(37,99,235,0.08) !important; color:#60a5fa !important; border-color:rgba(37,99,235,0.25) !important; }
+  html.dark .note-amber { background:rgba(245,158,11,0.08) !important; color:#fbbf24 !important; border-color:rgba(245,158,11,0.25) !important; }
+  html.dark .note-red   { background:rgba(239,68,68,0.08) !important; color:#f87171 !important; border-color:rgba(239,68,68,0.25) !important; }
+  html.dark .note-green *, html.dark .note-blue *, html.dark .note-amber *, html.dark .note-red * { color:inherit !important; }
+  html.dark .badge-up     { background:rgba(34,197,94,0.15) !important; color:#4ade80 !important; }
+  html.dark .badge-warn   { background:rgba(245,158,11,0.15) !important; color:#fbbf24 !important; }
+  html.dark .badge-info   { background:rgba(37,99,235,0.15) !important; color:#60a5fa !important; }
+  html.dark .badge-danger { background:rgba(239,68,68,0.15) !important; color:#f87171 !important; }
+  html.dark .event-item { background:#131e33 !important; }
+  html.dark .event-label { color:#8fa4c0 !important; }
+  html.dark .event-desc { color:#dce6f5 !important; }
+  html.dark .event-desc strong { color:#fbbf24 !important; }
+  html.dark .sector-row { background:#131e33 !important; }
+  html.dark .sector-name { color:#c8d8ef !important; }
+  html.dark .supply-track { background:#1e2e4a !important; }
+  html.dark .supply-lbl { color:#8fa4c0 !important; }
+  html.dark .supply-val { color:#dce6f5 !important; }
+  html.dark .oc-green { background:rgba(34,197,94,0.08) !important; }
+  html.dark .oc-blue  { background:rgba(37,99,235,0.08) !important; }
+  html.dark .oc-amber { background:rgba(245,158,11,0.08) !important; }
+  html.dark .oc-green .ol, html.dark .oc-green .ov { color:#4ade80 !important; }
+  html.dark .oc-blue  .ol, html.dark .oc-blue  .ov { color:#60a5fa !important; }
+  html.dark .oc-amber .ol, html.dark .oc-amber .ov { color:#fbbf24 !important; }
+  html.dark .rsi-box { background:#131e33 !important; }
+  html.dark .rsi-box strong { color:#60a5fa !important; }
+  html.dark .pill-split   { background:rgba(37,99,235,0.15) !important; color:#60a5fa !important; }
+  html.dark .pill-watch   { background:rgba(245,158,11,0.15) !important; color:#fbbf24 !important; }
+  html.dark .pill-caution { background:rgba(239,68,68,0.15) !important; color:#f87171 !important; }
+  html.dark .title-block { filter:brightness(0.75) saturate(0.8) !important; }
+  html.dark table { background:#131e33; }
+  html.dark table tbody tr { background:#131e33 !important; }
+  html.dark table td { background:#131e33 !important; color:#dce6f5 !important; border-color:#1e2e4a !important; }
+  html.dark table th { background:#0f1928 !important; color:#8fa4c0 !important; border-color:#1e2e4a !important; }
+  html.dark table tr:hover td { background:#1a2940 !important; }
+  html.dark td { color:#dce6f5 !important; }
+  html.dark th { color:#8fa4c0 !important; }
+  html.dark .disclaimer { color:#4a5e80 !important; border-color:#1e2e4a !important; }
+  html.dark [style*="color:#555"]    { color:#c8d8ef !important; }
+  html.dark [style*="color:#888"]    { color:#8fa4c0 !important; }
+  html.dark [style*="color:#1B3A6B"] { color:#60a5fa !important; }
+  html.dark [style*="color:#2E5EA0"] { color:#60a5fa !important; }
+  html.dark [style*="color:#C0392B"] { color:#f87171 !important; }
+  html.dark [style*="color:#c0392b"] { color:#f87171 !important; }
+  html.dark [style*="color:#E0A800"] { color:#fbbf24 !important; }
+  html.dark [style*="color:#166534"] { color:#4ade80 !important; }
+  html.dark td[style*="color:#C0392B"], html.dark td[style*="color:#c0392b"] { color:#f87171 !important; }
+  html.dark td[style*="color:#166534"] { color:#4ade80 !important; }
+  html.dark [style*="background:#fdf5f5"] { background:rgba(185,28,28,0.1) !important; }
+  .badge, .badge-up, .badge-warn, .badge-info, .badge-danger, .action-pill, .pill-split, .pill-watch, .pill-caution { white-space:nowrap; }
+  .sector-row { flex-wrap:nowrap; min-height:40px; }
+  .sector-name { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 </style>
-<!-- v202605071321 -->
 </head>
 <body>
 <div class="page">
 
-  <!-- 제목 -->
   <div class="title-block">
     <h1>📊 오전 시황 브리핑</h1>
     <div class="meta">2026년 5월 7일 (목) &nbsp;|&nbsp; 오전 8:00 통합 브리핑</div>
@@ -533,35 +181,19 @@
     </div>
   </div>
 
-  <!-- ① 미국 시장 -->
   <div class="section">
     <div class="section-header">
       <div class="section-num">①</div>
       <div class="section-title">미국 시장 마감 결과 &nbsp;<span style="font-size:13px;font-weight:400;color:#888;">(5월 6일 현지 기준)</span></div>
     </div>
-
     <div class="index-grid">
-      <div class="index-card">
-        <div class="name">다우존스</div>
-        <div class="val">49,910</div>
-        <div class="chg up">▲ +1.24% &nbsp;(+612p)</div>
-      </div>
-      <div class="index-card" style="border-color:#2E5EA0;">
-        <div class="name">S&amp;P 500 &nbsp;<span class="badge badge-up" style="font-size:10px;vertical-align:middle;">신고가</span></div>
-        <div class="val">7,365</div>
-        <div class="chg up">▲ +1.46% &nbsp;(+105p)</div>
-      </div>
-      <div class="index-card" style="border-color:#2E5EA0;">
-        <div class="name">나스닥 &nbsp;<span class="badge badge-up" style="font-size:10px;vertical-align:middle;">신고가</span></div>
-        <div class="val">25,838</div>
-        <div class="chg up">▲ +2.02% &nbsp;(+512p)</div>
-      </div>
+      <div class="index-card"><div class="name">다우존스</div><div class="val">49,910</div><div class="chg up">▲ +1.24% &nbsp;(+612p)</div></div>
+      <div class="index-card" style="border-color:#2E5EA0;"><div class="name">S&amp;P 500 &nbsp;<span class="badge badge-up" style="font-size:10px;vertical-align:middle;">신고가</span></div><div class="val">7,365</div><div class="chg up">▲ +1.46% &nbsp;(+105p)</div></div>
+      <div class="index-card" style="border-color:#2E5EA0;"><div class="name">나스닥 &nbsp;<span class="badge badge-up" style="font-size:10px;vertical-align:middle;">신고가</span></div><div class="val">25,838</div><div class="chg up">▲ +2.02% &nbsp;(+512p)</div></div>
     </div>
-
     <div class="chart-wrap">
-      <canvas id="indexChart" role="img" aria-label="미국 4대 지수 등락률. 다우 +1.24%, S&P500 +1.46%, 나스닥 +2.02%, 필라델피아반도체 +4.50%">다우 +1.24%, S&P500 +1.46%, 나스닥 +2.02%, 필라델피아반도체 +4.50%</canvas>
+      <canvas id="indexChart" role="img" aria-label="미국 4대 지수 등락률">다우 +1.24%, S&P500 +1.46%, 나스닥 +2.02%, 필라델피아반도체 +4.50%</canvas>
     </div>
-
     <div style="font-size:13px;font-weight:600;color:#1B3A6B;margin-bottom:8px;">🔑 핵심 이유</div>
     <div class="sector-grid">
       <div class="sector-row"><span class="sector-name">AMD 어닝 서프라이즈</span><span class="up" style="font-weight:700;">+18.6%</span></div>
@@ -571,193 +203,80 @@
       <div class="sector-row"><span class="sector-name">국제유가 (WTI)</span><span class="down" style="font-weight:700;">-7%대 ↓</span></div>
       <div class="sector-row"><span class="sector-name">미·이란 종전 기대</span><span class="badge badge-up">핵심 호재</span></div>
     </div>
-
     <div class="note-box note-blue">
       <strong>📌 쉽게 말하면</strong> — AMD라는 반도체 회사가 "AI 덕분에 매출이 폭발했어!"라고 깜짝 발표하면서 반도체·AI 주식 전체가 급등했어요. 동시에 미국-이란 전쟁 종식 기대로 유가가 떨어지며 시장 전체가 밝은 분위기였습니다.
     </div>
   </div>
 
-  <!-- ② 주요 일정 -->
   <div class="section">
     <div class="section-header">
       <div class="section-num">②</div>
       <div class="section-title">오늘의 주요 일정 및 이벤트</div>
     </div>
-
     <div style="font-size:13px;font-weight:600;color:#1B3A6B;margin-bottom:10px;">경제 지표 일정</div>
     <div class="table-wrap">
-<table>
-      <thead>
-        <tr><th>날짜</th><th>항목</th><th>중요도</th><th>내용</th></tr>
-      </thead>
+    <table>
+      <thead><tr><th>날짜</th><th>항목</th><th>중요도</th><th>내용</th></tr></thead>
       <tbody>
-        <tr>
-          <td data-dark-color="#f87171" style="color:#C0392B;font-weight:600;">5/8 (금)</td>
-          <td style="font-weight:600;">미국 비농업 고용보고서 (NFP)</td>
-          <td><span data-dark-color="#f87171" style="color:#C0392B;font-weight:700;">★★★</span></td>
-          <td style="color:#555;">예상 5.5~6.2만명. 결과에 따라 연준 금리 방향 변동 가능</td>
-        </tr>
-        <tr>
-          <td>5/7 (오늘)</td>
-          <td>ADP 민간고용 결과 반영</td>
-          <td><span data-dark-color="#fbbf24" style="color:#E0A800;font-weight:700;">★★</span></td>
-          <td style="color:#555;">10.9만명 증가로 예상치 상회 → 연준 금리 동결 압력</td>
-        </tr>
-        <tr>
-          <td>5월 말</td>
-          <td>엔비디아 실적 발표 (예고)</td>
-          <td><span data-dark-color="#60a5fa" style="color:#2E5EA0;font-weight:700;">★★</span></td>
-          <td style="color:#555;">국내 반도체주 다음 변곡점. 선반영 기대감 퍼지는 중</td>
-        </tr>
+        <tr><td data-dark-color="#f87171" style="color:#C0392B;font-weight:600;">5/8 (금)</td><td style="font-weight:600;">미국 비농업 고용보고서 (NFP)</td><td><span data-dark-color="#f87171" style="color:#C0392B;font-weight:700;">★★★</span></td><td style="color:#555;">예상 5.5~6.2만명. 결과에 따라 연준 금리 방향 변동 가능</td></tr>
+        <tr><td>5/7 (오늘)</td><td>ADP 민간고용 결과 반영</td><td><span data-dark-color="#fbbf24" style="color:#E0A800;font-weight:700;">★★</span></td><td style="color:#555;">10.9만명 증가로 예상치 상회 → 연준 금리 동결 압력</td></tr>
+        <tr><td>5월 말</td><td>엔비디아 실적 발표 (예고)</td><td><span data-dark-color="#60a5fa" style="color:#2E5EA0;font-weight:700;">★★</span></td><td style="color:#555;">국내 반도체주 다음 변곡점. 선반영 기대감 퍼지는 중</td></tr>
       </tbody>
     </table>
-</div>
-
+    </div>
     <div class="event-list">
-      <div class="event-item">
-        <span class="event-dot dot-red"></span>
-        <div>
-          <div class="event-label">쿠팡 1분기 실적 쇼크</div>
-          <div class="event-desc">영업손실 3,545억원 — 예상치의 5배 이상. 개인정보 유출 보상금 12억 달러(약 1조6850억원) 지급 영향. 시간외 주가 -3~4% 하락.</div>
-        </div>
-      </div>
-      <div class="event-item">
-        <span class="event-dot dot-blue"></span>
-        <div>
-          <div class="event-label">S&amp;P 500 기업 실적 시즌 진행 중</div>
-          <div class="event-desc">5월 1일 기준 실적 발표 기업의 80% 이상이 예상치를 웃돌며 4년 만에 최강 이익 성장 궤도 진입.</div>
-        </div>
-      </div>
+      <div class="event-item"><span class="event-dot dot-red"></span><div><div class="event-label">쿠팡 1분기 실적 쇼크</div><div class="event-desc">영업손실 3,545억원 — 예상치의 5배 이상. 개인정보 유출 보상금 12억 달러(약 1조6850억원) 지급 영향. 시간외 주가 -3~4% 하락.</div></div></div>
+      <div class="event-item"><span class="event-dot dot-blue"></span><div><div class="event-label">S&amp;P 500 기업 실적 시즌 진행 중</div><div class="event-desc">5월 1일 기준 실적 발표 기업의 80% 이상이 예상치를 웃돌며 4년 만에 최강 이익 성장 궤도 진입.</div></div></div>
     </div>
   </div>
 
-  <!-- ③ 국내 개장 전망 -->
   <div class="section">
     <div class="section-header">
       <div class="section-num">③</div>
       <div class="section-title">오늘 국내 개장 전망</div>
     </div>
-
     <div class="outlook-grid">
-      <div class="outlook-card oc-green">
-        <div class="ol">코스피 방향</div>
-        <div class="ov">상승 우세 ↑</div>
-        <div class="od">전일 7,384pt 신고가. 추가 상승 vs 단기 차익 실현 혼재 예상</div>
-      </div>
-      <div class="outlook-card oc-blue">
-        <div class="ol">원/달러 환율</div>
-        <div class="ov">1,476원대</div>
-        <div class="od">이란 휴전 기대 → 달러 약세 → 원화 강세 가능. 외국인 매수 유리</div>
-      </div>
-      <div class="outlook-card oc-amber">
-        <div class="ol">코스닥 방향</div>
-        <div class="ov">혼조 ↔</div>
-        <div class="od">대형 반도체주 쏠림 지속. 중소형주는 종목별 차별화</div>
-      </div>
+      <div class="outlook-card oc-green"><div class="ol">코스피 방향</div><div class="ov">상승 우세 ↑</div><div class="od">전일 7,384pt 신고가. 추가 상승 vs 단기 차익 실현 혼재 예상</div></div>
+      <div class="outlook-card oc-blue"><div class="ol">원/달러 환율</div><div class="ov">1,476원대</div><div class="od">이란 휴전 기대 → 달러 약세 → 원화 강세 가능. 외국인 매수 유리</div></div>
+      <div class="outlook-card oc-amber"><div class="ol">코스닥 방향</div><div class="ov">혼조 ↔</div><div class="od">대형 반도체주 쏠림 지속. 중소형주는 종목별 차별화</div></div>
     </div>
-
     <div style="font-size:13px;font-weight:600;color:#1B3A6B;margin-bottom:10px;">외국인·기관·개인 수급 예측</div>
     <div class="supply-wrap">
-      <div class="supply-row">
-        <span class="supply-lbl">외국인</span>
-        <div class="supply-track"><div class="supply-fill sf-foreign" style="width:95%"></div></div>
-        <span class="supply-val up">강력 순매수 ↑↑↑</span>
-      </div>
-      <div class="supply-row">
-        <span class="supply-lbl">기관</span>
-        <div class="supply-track"><div class="supply-fill sf-inst" style="width:55%"></div></div>
-        <span class="supply-val up">순매수 ↑</span>
-      </div>
-      <div class="supply-row">
-        <span class="supply-lbl">개인</span>
-        <div class="supply-track"><div class="supply-fill sf-indiv" style="width:75%"></div></div>
-        <span class="supply-val down">차익 실현 ↓</span>
-      </div>
+      <div class="supply-row"><span class="supply-lbl">외국인</span><div class="supply-track"><div class="supply-fill sf-foreign" style="width:95%"></div></div><span class="supply-val up">강력 순매수 ↑↑↑</span></div>
+      <div class="supply-row"><span class="supply-lbl">기관</span><div class="supply-track"><div class="supply-fill sf-inst" style="width:55%"></div></div><span class="supply-val up">순매수 ↑</span></div>
+      <div class="supply-row"><span class="supply-lbl">개인</span><div class="supply-track"><div class="supply-fill sf-indiv" style="width:75%"></div></div><span class="supply-val down">차익 실현 ↓</span></div>
       <div style="font-size:12px;color:#888;margin-top:6px;">전일 외국인 역대 최대 순매수 3조1,878억원 — 삼성전자만 3조967억원 매수.</div>
     </div>
-
     <div class="note-box note-green">
       <strong>📌 쉽게 말하면</strong> — 외국인이 역사상 가장 많은 돈을 어제 한국 반도체주에 쏟아부었어요. 이 흐름이 오늘도 이어지면 추가 상승이 가능하지만, 너무 빠르게 오른 만큼 개인 투자자들의 "이쯤에서 팔자" 물량이 오후에 나올 수 있어요.
     </div>
   </div>
 
-  <!-- ④ 눈여겨볼 종목 -->
   <div class="section">
     <div class="section-header">
       <div class="section-num">④</div>
       <div class="section-title">오늘 눈여겨볼 종목 + 조심할 종목</div>
     </div>
-
     <div class="table-wrap">
-<table>
-      <thead>
-        <tr><th>종목</th><th>현재가</th><th>전일 등락</th><th>52주 위치</th><th>RSI</th><th>목표가</th><th>판단</th></tr>
-      </thead>
+    <table>
+      <thead><tr><th>종목</th><th>현재가</th><th>전일 등락</th><th>52주 위치</th><th>RSI</th><th>목표가</th><th>판단</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>삼성전자</strong></td>
-          <td>266,000원</td>
-          <td class="up" style="font-weight:600;">▲ +14.4%</td>
-          <td><span class="badge badge-up" style="font-size:11px;">신고가권</span></td>
-          <td data-dark-color="#f87171" style="color:#C0392B;font-weight:600;">75+ (과열)</td>
-          <td>300,000원</td>
-          <td><span class="action-pill pill-split">분할매수</span></td>
-        </tr>
-        <tr>
-          <td><strong>SK하이닉스</strong></td>
-          <td>160만1천원</td>
-          <td class="up" style="font-weight:600;">▲ +10.6%</td>
-          <td><span class="badge badge-up" style="font-size:11px;">신고가권</span></td>
-          <td data-dark-color="#f87171" style="color:#C0392B;font-weight:600;">73+ (과열)</td>
-          <td>180만원</td>
-          <td><span class="action-pill pill-split">분할매수</span></td>
-        </tr>
-        <tr>
-          <td><strong>삼성전기</strong></td>
-          <td>실시간 확인</td>
-          <td class="up">동반 강세</td>
-          <td><span class="badge badge-info" style="font-size:11px;">중상단</span></td>
-          <td>55~65</td>
-          <td>—</td>
-          <td><span class="action-pill pill-split">분할매수</span></td>
-        </tr>
-        <tr>
-          <td><strong>LG이노텍</strong></td>
-          <td>실시간 확인</td>
-          <td class="up">동반 강세</td>
-          <td><span class="badge badge-info" style="font-size:11px;">중상단</span></td>
-          <td>55~65</td>
-          <td>—</td>
-          <td><span class="action-pill pill-watch">관망</span></td>
-        </tr>
-        <tr style="background:#fdf5f5;">
-          <td><strong data-dark-color="#f87171" style="color:#C0392B;">⚠ 쿠팡</strong></td>
-          <td>하락세</td>
-          <td class="down" style="font-weight:600;">▼ -3~4% (시외)</td>
-          <td><span class="badge badge-danger" style="font-size:11px;">불확실</span></td>
-          <td>—</td>
-          <td>—</td>
-          <td><span class="action-pill" style="background:#f8d7da;color:#721c24;">조심</span></td>
-        </tr>
+        <tr><td><strong>삼성전자</strong></td><td>266,000원</td><td class="up" style="font-weight:600;">▲ +14.4%</td><td><span class="badge badge-up" style="font-size:11px;">신고가권</span></td><td data-dark-color="#f87171" style="color:#C0392B;font-weight:600;">75+ (과열)</td><td>300,000원</td><td><span class="action-pill pill-split">분할매수</span></td></tr>
+        <tr><td><strong>SK하이닉스</strong></td><td>160만1천원</td><td class="up" style="font-weight:600;">▲ +10.6%</td><td><span class="badge badge-up" style="font-size:11px;">신고가권</span></td><td data-dark-color="#f87171" style="color:#C0392B;font-weight:600;">73+ (과열)</td><td>180만원</td><td><span class="action-pill pill-split">분할매수</span></td></tr>
+        <tr><td><strong>삼성전기</strong></td><td>실시간 확인</td><td class="up">동반 강세</td><td><span class="badge badge-info" style="font-size:11px;">중상단</span></td><td>55~65</td><td>—</td><td><span class="action-pill pill-split">분할매수</span></td></tr>
+        <tr><td><strong>LG이노텍</strong></td><td>실시간 확인</td><td class="up">동반 강세</td><td><span class="badge badge-info" style="font-size:11px;">중상단</span></td><td>55~65</td><td>—</td><td><span class="action-pill pill-watch">관망</span></td></tr>
+        <tr style="background:#fdf5f5;"><td><strong data-dark-color="#f87171" style="color:#C0392B;">⚠ 쿠팡</strong></td><td>하락세</td><td class="down" style="font-weight:600;">▼ -3~4% (시외)</td><td><span class="badge badge-danger" style="font-size:11px;">불확실</span></td><td>—</td><td>—</td><td><span class="action-pill" style="background:#f8d7da;color:#721c24;">조심</span></td></tr>
       </tbody>
     </table>
-</div>
-
+    </div>
     <div class="rsi-box">
       <strong>💡 RSI란?</strong> — 주가가 얼마나 빠르게 많이 올랐는지 보여주는 숫자 (0~100).<br>
       <strong data-dark-color="#f87171" style="color:#C0392B;">70 이상</strong> = 너무 과열 (단기 하락 가능성 높음) &nbsp;/&nbsp; <strong data-dark-color="#60a5fa" style="color:#2E5EA0;">30 이하</strong> = 너무 많이 떨어짐 (반등 가능성)<br>
       삼성전자·SK하이닉스는 현재 <strong>과열 구간</strong>이에요. 한 번에 사기보다 나눠서 사는 분할매수가 안전합니다.
     </div>
-
-    <div class="two-col" style="margin-top:14px;">
-      <div class="note-box note-green" style="margin-top:0;">
-        <strong>👀 눈여겨볼 포인트</strong><br>
-        반도체 후방주 (삼성전기·LG이노텍·대덕전자) 매수세 확산 여부. AI 밸류체인 순환매 신호 시작 가능성.
-      </div>
-      <div class="note-box note-red" style="margin-top:0;">
-        <strong>⚠️ 리스크 요인</strong><br>
-        내일(5/8) 비농업 고용보고서 경계감. 단기 과열에 따른 오후 차익 실현 물량 주의.
-      </div>
+    <div class="two-col">
+      <div class="note-box note-green" style="margin-top:0;"><strong>👀 눈여겨볼 포인트</strong><br>반도체 후방주 (삼성전기·LG이노텍·대덕전자) 매수세 확산 여부. AI 밸류체인 순환매 신호 시작 가능성.</div>
+      <div class="note-box note-red" style="margin-top:0;"><strong>⚠️ 리스크 요인</strong><br>내일(5/8) 비농업 고용보고서 경계감. 단기 과열에 따른 오후 차익 실현 물량 주의.</div>
     </div>
   </div>
 
@@ -767,74 +286,67 @@
 </div>
 
 <script>
-
   var _chartInstance = null;
   function _getChartColors() {
     const d = document.documentElement.classList.contains('dark');
     return {
-      grid: d?'#1e2e4a':'#e8e8e4', text: d?'#6b80a0':'#666666',
-      tooltipBg: d?'#131e33':'#ffffff', tooltipTitle: d?'#dce6f5':'#222222',
-      tooltipBorder: d?'#1e2e4a':'#e0e0dc'
+      grid: d?'#1e2e4a':'#e8e8e4',
+      text: d?'#c8d8ef':'#666666',
+      tooltipBg: d?'#131e33':'#ffffff',
+      tooltipTitle: d?'#dce6f5':'#222222',
+      tooltipBorder: d?'#1e2e4a':'#e0e0dc',
     };
   }
   function _applyTheme(theme) {
     document.documentElement.classList.toggle('dark', theme === 'dark');
-    // data-dark-color 인라인 처리
     if (theme === 'dark') {
-      document.querySelectorAll('[data-dark-color]').forEach(el => {
-        el.style.color = el.getAttribute('data-dark-color');
-      });
+      document.querySelectorAll('[data-dark-color]').forEach(el => { el.style.color = el.getAttribute('data-dark-color'); });
     } else {
-      document.querySelectorAll('[data-dark-color]').forEach(el => {
-        el.style.color = '';
-      });
+      document.querySelectorAll('[data-dark-color]').forEach(el => { el.style.color = ''; });
     }
     if (typeof _buildChart === 'function') _buildChart();
   }
   (function(){
     var t=new URLSearchParams(window.location.search).get('theme')||'dark';
     _applyTheme(t);
-    window.addEventListener('message',function(e){
-      if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);
-    });
+    window.addEventListener('message',function(e){ if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme); });
   })();
 
-function _buildChart(){
-  var c=_getChartColors();
-  const ctx = document.getElementById('indexChart').getContext('2d');
+  function _buildChart(){
+    var c=_getChartColors();
+    const ctx = document.getElementById('indexChart').getContext('2d');
     if(_chartInstance)_chartInstance.destroy();
-  _chartInstance=new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['다우존스', 'S&P 500', '나스닥', '필라델피아\n반도체'],
-      datasets: [{
-        label: '등락률 (%)',
-        data: [1.24, 1.46, 2.02, 4.50],
-        backgroundColor: ['#B5D4F4', '#85B7EB', '#378ADD', '#1B3A6B'],
-        borderRadius: 6,
-        borderSkipped: false
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: true,
-    aspectRatio: 2,
-      plugins: {
-        legend: { display: false },
-        tooltip: { callbacks: { label: (c) => ' +' + c.parsed.y.toFixed(2) + '%' } }
+    _chartInstance=new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['다우존스', 'S&P 500', '나스닥', '필라델피아\n반도체'],
+        datasets: [{
+          label: '등락률 (%)',
+          data: [1.24, 1.46, 2.02, 4.50],
+          backgroundColor: ['#B5D4F4','#85B7EB','#378ADD','#1B3A6B'],
+          borderRadius: 6,
+          borderSkipped: false
+        }]
       },
-      scales: {
-        x: { grid: { display: false }, ticks: { font: { size: 12 }, color: '#888' } },
-        y: {
-          min: 0, max: 6,
-          grid: { color: 'rgba(0,0,0,0.06)' },
-          ticks: { callback: (v) => '+' + v + '%', font: { size: 11 }, color: '#888' }
+      options: {
+        responsive: true, maintainAspectRatio: true, aspectRatio: 2,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: (ctx) => ' +' + ctx.parsed.y.toFixed(2) + '%' } }
+        },
+        scales: {
+          x: { grid:{display:false}, ticks:{font:{size:12}, color:c.text} },
+          y: {
+            min: 0, max: 6,
+            afterFit: (scale) => { scale.width = 52; },
+            grid: { color: c.grid },
+            ticks: { callback:(v) => '+' + v + '%', font:{size:11}, color:c.text }
+          }
         }
       }
-    }
-  });
-}
-_buildChart();
+    });
+  }
+  _buildChart();
 </script>
 </body>
 </html>
