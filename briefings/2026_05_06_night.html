@@ -8,7 +8,7 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@700&display=swap');
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  html { color-scheme: light only; }
+  
   body {
     font-family: 'Noto Sans KR', sans-serif !important;
     background: #f4f6fb !important;
@@ -148,15 +148,19 @@
     .section { padding: 16px !important; }
   }
 
-  /* ── 다크 모드: 필터 반전 방식 ── */
+  /* ── 다크모드 ── */
+  html.dark body,
+  html.dark body * {
+    color-scheme: dark !important;
+  }
   html.dark body {
-    filter: invert(1) hue-rotate(180deg);
-    background: #1a1a1a;
+    filter: invert(1) hue-rotate(180deg) !important;
+    background: #111 !important;
   }
   html.dark canvas,
   html.dark img,
   html.dark video {
-    filter: invert(1) hue-rotate(180deg);
+    filter: invert(1) hue-rotate(180deg) !important;
   }
 </style>
 </head>
