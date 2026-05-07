@@ -7,54 +7,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
   <style>
+
+    /* ══════════════════════════════════════════════
+       [1] 전역 리셋 & CSS 변수 (다크/라이트 색상)
+       ══════════════════════════════════════════════ */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg:       #0b1120;
-      --surface:  #131e33;
-      --border:   #1e2e4a;
-      --muted:    #3a4e6a;
-      --text:     #dce6f5;
-      --dim:      #6b80a0;
-      --accent:   #3b82f6;
-      --accent2:  #f59e0b;
-      --green:    #22c55e;
-      --red:      #ef4444;
+      --bg:      #0b1120;
+      --surface: #131e33;
+      --border:  #1e2e4a;
+      --muted:   #3a4e6a;
+      --text:    #dce6f5;
+      --dim:     #6b80a0;
+      --accent:  #3b82f6;
+      --accent2: #f59e0b;
+      --green:   #22c55e;
+      --red:     #ef4444;
     }
 
-    /* 라이트 모드 */
     body.light {
-      --bg:       #f0f4fa;
-      --surface:  #ffffff;
-      --border:   #dde3ef;
-      --muted:    #c0cce0;
-      --text:     #1a2236;
-      --dim:      #6b80a0;
-      --accent:   #2563eb;
-      --accent2:  #d97706;
-      --green:    #16a34a;
-      --red:      #dc2626;
+      --bg:      #f0f4fa;
+      --surface: #ffffff;
+      --border:  #dde3ef;
+      --muted:   #c0cce0;
+      --text:    #1a2236;
+      --dim:     #6b80a0;
+      --accent:  #2563eb;
+      --accent2: #d97706;
+      --green:   #16a34a;
+      --red:     #dc2626;
     }
-
-    body.light #auth-screen {
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, #c7d9f8 0%, var(--bg) 70%);
-    }
-
-    /* 토글 버튼 */
-    .theme-toggle {
-      background: var(--border);
-      border: 1px solid var(--muted);
-      border-radius: 20px;
-      padding: 5px 14px;
-      color: var(--dim);
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
     body {
       font-family: 'Noto Sans KR', sans-serif;
@@ -63,13 +46,107 @@
       min-height: 100vh;
     }
 
-    /* ──────────── AUTH ──────────── */
+
+    /* ══════════════════════════════════════════════
+       [2] 상단바 (Topbar)
+       - 항상 화면 최상단에 고정 표시
+       - 로그인 전: 로고 + 테마토글만 표시
+       - 로그인 후: 역할칩 + 테마토글 + 로그아웃 추가
+       ══════════════════════════════════════════════ */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 12px;
+      z-index: 200;
+    }
+
+    .topbar-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      color: var(--text);
+      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar-logo .dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50%     { opacity: 0.3; }
+    }
+
+    .topbar-spacer { flex: 1; }
+
+    .role-chip {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 20px;
+      background: var(--border);
+      color: var(--dim);
+      letter-spacing: 1px;
+    }
+    .role-chip.admin { background: rgba(245,158,11,0.15); color: var(--accent2); }
+
+    /* 다크/라이트 테마 전환 버튼 — 로그인 전후 항상 표시 */
+    .theme-toggle {
+      background: var(--border);
+      border: 1px solid var(--muted);
+      border-radius: 20px;
+      padding: 5px 14px;
+      color: var(--dim);
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    .logout-btn {
+      font-size: 12px;
+      color: var(--dim);
+      background: none;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .logout-btn:hover { color: var(--red); border-color: var(--red); }
+
+
+    /* ══════════════════════════════════════════════
+       [3] 로그인 화면
+       - 구독자 / 관리자 탭 전환
+       - 비밀번호 입력 + 입장 버튼
+       ══════════════════════════════════════════════ */
     #auth-screen {
       min-height: 100vh;
+      padding-top: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: radial-gradient(ellipse 80% 60% at 50% 0%, #1a2e55 0%, var(--bg) 70%);
+    }
+
+    body.light #auth-screen {
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, #c7d9f8 0%, var(--bg) 70%);
     }
 
     .auth-card {
@@ -78,13 +155,10 @@
       border-radius: 20px;
       padding: 52px 44px 44px;
       width: 420px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
     }
 
-    .auth-logo {
-      text-align: center;
-      margin-bottom: 36px;
-    }
+    .auth-logo { text-align: center; margin-bottom: 36px; }
 
     .auth-logo .brand-icon {
       width: 56px; height: 56px;
@@ -129,7 +203,6 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-
     .tab-btn.active { background: var(--accent); color: #fff; }
 
     .form-label {
@@ -154,14 +227,13 @@
       outline: none;
       transition: border-color 0.2s;
     }
-
-    .form-input:focus  { border-color: var(--accent); }
-    .form-input.shake  { animation: shake 0.3s ease; border-color: var(--red); }
+    .form-input:focus { border-color: var(--accent); }
+    .form-input.shake { animation: shake 0.3s ease; border-color: var(--red); }
 
     @keyframes shake {
-      0%,100%{ transform:translateX(0) }
-      25%    { transform:translateX(-6px) }
-      75%    { transform:translateX(6px) }
+      0%,100% { transform: translateX(0); }
+      25%     { transform: translateX(-6px); }
+      75%     { transform: translateX(6px); }
     }
 
     .err-msg {
@@ -189,85 +261,15 @@
       letter-spacing: 1px;
       transition: background 0.2s, transform 0.1s;
     }
-
     .auth-btn:hover  { background: #2563eb; }
     .auth-btn:active { transform: scale(0.98); }
 
-    /* ──────────── APP SHELL ──────────── */
-    /* topbar를 항상 표시 */
+
+    /* ══════════════════════════════════════════════
+       [4] 메인 앱 (로그인 후 표시)
+       - 관리자 패널 / 페이지 헤더 / 캘린더 / 세션카드
+       ══════════════════════════════════════════════ */
     #main-app { display: none; min-height: 100vh; }
-    #main-app .app-content { display: none; }
-
-.topbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 60px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-  gap: 12px;
-  z-index: 100;
-}
-
-/* 모바일 */
-@media (max-width: 640px) {
-  .topbar { padding: 0 12px; gap: 8px; }
-  .topbar-logo { font-size: 13px; letter-spacing: 0px; }
-  .role-chip { display: none; }
-  .theme-toggle { padding: 5px 10px; font-size: 12px; }
-  .logout-btn { padding: 5px 10px; font-size: 11px; }
-}
-
-    .topbar-logo {
-      font-family: 'Oswald', sans-serif;
-      font-size: 18px;
-      color: var(--text);
-      letter-spacing: 3px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .topbar-logo .dot {
-      width: 8px; height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%,100%{ opacity:1 }
-      50%    { opacity:0.3 }
-    }
-
-    .topbar-spacer { flex: 1; }
-
-    .role-chip {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 20px;
-      background: var(--border);
-      color: var(--dim);
-      letter-spacing: 1px;
-    }
-
-    .role-chip.admin { background: rgba(245,158,11,0.15); color: var(--accent2); }
-
-    .logout-btn {
-      font-size: 12px;
-      color: var(--dim);
-      background: none;
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-family: 'Noto Sans KR', sans-serif;
-      transition: all 0.2s;
-    }
-    .logout-btn:hover { color: var(--red); border-color: var(--red); }
 
     .app-content {
       margin-top: 60px;
@@ -291,7 +293,7 @@
 
     .page-sub { font-size: 13px; color: var(--dim); }
 
-    /* Admin panel */
+    /* 관리자 전용 패널 */
     .admin-box {
       background: var(--surface);
       border: 1px solid rgba(245,158,11,0.4);
@@ -331,7 +333,13 @@
       color: var(--accent2);
     }
 
-    /* ──────────── CALENDAR ──────────── */
+
+    /* ══════════════════════════════════════════════
+       [5] 캘린더
+       - 월 단위 달력 / 브리핑 있는 날짜에 점 표시
+       - 🟢 초록점: 업로드됨 / ⚫ 회색점: 준비중
+       - 날짜 클릭 → 세션 카드 표시
+       ══════════════════════════════════════════════ */
     .cal-wrap {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -384,8 +392,8 @@
       letter-spacing: 1px;
       padding: 6px 0;
     }
-    .cal-dow:first-child { color: #ef4444; }  /* 일 */
-    .cal-dow:last-child  { color: #60a5fa; }  /* 토 */
+    .cal-dow:first-child { color: #ef4444; }
+    .cal-dow:last-child  { color: #60a5fa; }
 
     .cal-grid {
       display: grid;
@@ -403,11 +411,8 @@
       gap: 4px;
       cursor: default;
       transition: all 0.18s;
-      position: relative;
       padding: 4px;
     }
-
-    .cal-cell.empty { background: transparent; }
 
     .cal-cell.has-data {
       cursor: pointer;
@@ -417,10 +422,6 @@
     .cal-cell.has-data:hover {
       border-color: var(--accent);
       background: rgba(59,130,246,0.08);
-    }
-
-    .cal-cell.no-data {
-      background: transparent;
     }
 
     .cal-cell.today .cal-num {
@@ -445,27 +446,28 @@
       line-height: 1;
     }
 
-    .cal-cell:nth-child(7n+1) .cal-num { color: #ef4444; } /* 일요일 */
-    .cal-cell:nth-child(7n)   .cal-num { color: #60a5fa; } /* 토요일 */
+    .cal-cell:nth-child(7n+1) .cal-num { color: #ef4444; }
+    .cal-cell:nth-child(7n)   .cal-num { color: #60a5fa; }
     .cal-cell.selected .cal-num,
-    .cal-cell.today .cal-num  { color: inherit; }
+    .cal-cell.today    .cal-num { color: inherit; }
 
     .cal-dots {
       display: flex;
       gap: 3px;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
     }
 
-    .cal-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-    }
+    .cal-dot { width: 6px; height: 6px; border-radius: 50%; }
     .cal-dot.ready   { background: var(--green); }
     .cal-dot.waiting { background: var(--muted); }
 
-    /* ──────────── DAY SESSIONS (선택된 날 카드) ──────────── */
+
+    /* ══════════════════════════════════════════════
+       [6] 세션 카드 (오전 / 오후 / 밤)
+       - 날짜 선택 후 캘린더 아래에 표시
+       - ready: 클릭 가능 / not-ready: 흐리게 표시
+       ══════════════════════════════════════════════ */
     .day-sessions-header {
       display: flex;
       align-items: center;
@@ -515,23 +517,17 @@
     }
 
     .session-card.ready { cursor: pointer; }
-
     .session-card.ready:hover {
       border-color: var(--accent);
       transform: translateY(-3px);
       box-shadow: 0 12px 32px rgba(59,130,246,0.18);
     }
-
     .session-card.ready:hover::before { background: var(--accent); }
 
     .session-card.not-ready { opacity: 0.45; }
     .session-card.not-ready::before { background: var(--muted); }
 
-    .session-emoji {
-      font-size: 32px;
-      margin-bottom: 14px;
-      display: block;
-    }
+    .session-emoji  { font-size: 32px; margin-bottom: 14px; display: block; }
 
     .session-title {
       font-family: 'Oswald', sans-serif;
@@ -558,19 +554,13 @@
 
     .open-icon {
       position: absolute;
-      right: 20px;
-      bottom: 24px;
+      right: 20px; bottom: 24px;
       font-size: 18px;
       color: var(--muted);
       transition: color 0.2s, transform 0.2s;
     }
+    .session-card.ready:hover .open-icon { color: var(--accent); transform: translateX(3px); }
 
-    .session-card.ready:hover .open-icon {
-      color: var(--accent);
-      transform: translateX(3px);
-    }
-
-    /* 날짜 없을 때 빈 상태 */
     .empty-day {
       text-align: center;
       padding: 48px 0;
@@ -579,7 +569,12 @@
     }
     .empty-day .empty-icon { font-size: 40px; margin-bottom: 12px; }
 
-    /* ──────────── MODAL ──────────── */
+
+    /* ══════════════════════════════════════════════
+       [7] 브리핑 뷰어 모달
+       - 세션 카드 클릭 → 전체화면 팝업으로 브리핑 표시
+       - ESC 키 또는 ✕ 버튼으로 닫기
+       ══════════════════════════════════════════════ */
     #modal {
       display: none;
       position: fixed;
@@ -590,7 +585,6 @@
       justify-content: center;
       backdrop-filter: blur(4px);
     }
-
     #modal.open { display: flex; }
 
     .modal-box {
@@ -641,173 +635,157 @@
       justify-content: center;
       transition: background 0.2s;
     }
-
     .modal-close-btn:hover { background: var(--red); }
 
     #briefing-frame { flex: 1; border: none; width: 100%; }
-    
-    /* 항상 표시되는 테마 토글 (우상단 고정) */
-.theme-toggle-fixed {
-  position: fixed;
-  top: 14px; right: 20px;
-  z-index: 300;
-  background: var(--border);
-  border: 1px solid var(--muted);
-  border-radius: 20px;
-  padding: 6px 14px;
-  color: var(--dim);
-  font-size: 13px;
-  cursor: pointer;
-  font-family: 'Noto Sans KR', sans-serif;
-  transition: all 0.2s;
-}
-.theme-toggle-fixed:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ──────────── 반응형 ──────────── */
 
-/* 중간 화면 (태블릿, 1024px 이하) */
-@media (max-width: 1024px) {
-  .app-content {
-    padding: 36px 28px 60px;
-  }
-  .session-row {
-    grid-template-columns: repeat(2, 1fr); /* 3열 → 2열 */
-  }
-}
+    /* ══════════════════════════════════════════════
+       [8] 반응형 레이아웃
+       - 태블릿 1024px 이하: 세션카드 2열
+       - 모바일  640px 이하:  세션카드 1열, 버튼 축소
+       ══════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .app-content { padding: 36px 24px 60px; }
+      .session-row { grid-template-columns: repeat(2, 1fr); }
+    }
 
-/* 작은 화면 (모바일, 640px 이하) */
-@media (max-width: 640px) {
-  .topbar {
-    padding: 0 16px;
-    gap: 8px;
-  }
-  .theme-toggle-fixed {
-    top: 12px; right: 12px;
-    padding: 5px 10px;
-    font-size: 12px;
-  }
-  .logout-btn {
-    padding: 6px 10px;
-    font-size: 11px;
-  }
-  /* 로그아웃 텍스트 → 아이콘으로 */
-  .logout-btn::before { content: '↩'; }
-  .logout-btn-text { display: none; }
+    @media (max-width: 640px) {
+      .topbar       { padding: 0 12px; gap: 8px; }
+      .topbar-logo  { font-size: 13px; letter-spacing: 0; }
+      .role-chip    { display: none; }
+      .theme-toggle { padding: 5px 8px; font-size: 11px; }
+      .logout-btn   { padding: 5px 8px; font-size: 11px; }
+      .app-content  { padding: 20px 12px 60px; }
+      .session-row  { grid-template-columns: 1fr; }
+      .cal-wrap     { padding: 16px 10px; }
+      .auth-card    { width: 92vw; padding: 36px 20px 28px; }
+      .page-title   { font-size: 22px; }
+    }
 
-  .role-chip { display: none; }
-  .topbar-logo { font-size: 14px; letter-spacing: 1px; }
-}
-    
   </style>
 </head>
 <body>
 
-  <button class="theme-toggle-fixed" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>
-  
-<!-- ──────── AUTH SCREEN ──────── -->
-<div id="auth-screen">
-  <div class="auth-card">
-    <div class="auth-logo">
-      <div class="brand-icon">📊</div>
-      <h1>시황 브리핑</h1>
-      <p>매일 오전 · 오후 · 밤 시황 리포트</p>
+  <!-- ════════════════════════════════════
+       [상단바] 항상 고정 표시
+       로그인 전: 역할칩·로그아웃 숨김
+       로그인 후: launchApp()에서 표시
+       ════════════════════════════════════ -->
+  <header class="topbar">
+    <div class="topbar-logo">
+      <span class="dot"></span>
+      시황 브리핑
     </div>
+    <div class="topbar-spacer"></div>
+    <div class="role-chip" id="role-chip" style="display:none">구독자</div>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>
+    <button class="logout-btn"   id="logout-btn"   onclick="logout()" style="display:none">로그아웃</button>
+  </header>
 
-    <div class="tab-row">
-      <button class="tab-btn active" id="tab-v" onclick="switchTab('viewer')">🔑 구독자 입장</button>
-      <button class="tab-btn"        id="tab-a" onclick="switchTab('admin')">⚙️ 관리자</button>
-    </div>
-
-    <label class="form-label" id="lbl">초대코드</label>
-    <input  class="form-input" id="pw-input" type="password"
-            placeholder="초대코드를 입력하세요"
-            onkeydown="if(event.key==='Enter')tryLogin()">
-    <div class="err-msg" id="err-msg">❌ 코드가 올바르지 않습니다.</div>
-    <button class="auth-btn" onclick="tryLogin()">입장하기</button>
-  </div>
-</div>
-
-<!-- ──────── MAIN APP ──────── -->
-<div id="main-app">
-<header class="topbar">
-  <div class="topbar-logo">
-    <span class="dot"></span>
-    시황 브리핑
-  </div>
-  <div class="topbar-spacer"></div>
-  <div class="role-chip" id="role-chip">구독자</div>
-  <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>
-  <button class="logout-btn" onclick="logout()">로그아웃</button>
-</header>
-
-  <div class="app-content">
-    <!-- Admin 안내 -->
-    <div class="admin-box" id="admin-box" style="display:none">
-      <div class="admin-box-title">⚙️ 관리자 패널 — 구독자에게 초대코드를 공유하세요</div>
-      <div>
-        <div style="font-size:12px;color:var(--dim);margin-bottom:8px;font-weight:700;letter-spacing:1px;">현재 초대코드</div>
-        <div class="code-block" id="show-invite"></div>
+  <!-- ════════════════════════════════════
+       [로그인 화면] 로그인 전 표시
+       ════════════════════════════════════ -->
+  <div id="auth-screen">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="brand-icon">📊</div>
+        <h1>시황 브리핑</h1>
+        <p>매일 오전 · 오후 · 밤 시황 리포트</p>
       </div>
-      <div class="admin-instructions">
-        📌 <strong style="color:var(--text)">새 브리핑 추가하는 법</strong><br>
-        ① 브리핑 HTML 파일을 <code>briefings/</code> 폴더에 넣기<br>
-        ② <code>index.html</code> 상단 <code>BRIEFINGS</code> 배열에 한 줄 추가<br>
-        ③ GitHub에 push → 자동 배포 완료 ✅
-      </div>
-    </div>
 
-    <!-- 페이지 헤더 -->
-    <div class="page-header">
-      <div class="page-title">시황 정보</div>
-      <div class="page-sub" id="today-sub"></div>
-    </div>
-
-    <!-- 캘린더 -->
-    <div class="cal-wrap">
-      <div class="cal-header">
-        <button class="cal-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
-        <div class="cal-month-label" id="cal-month-label"></div>
-        <button class="cal-nav-btn" onclick="changeMonth(1)">&#8250;</button>
+      <div class="tab-row">
+        <button class="tab-btn active" id="tab-v" onclick="switchTab('viewer')">🔑 구독자 입장</button>
+        <button class="tab-btn"        id="tab-a" onclick="switchTab('admin')">⚙️ 관리자</button>
       </div>
-      <div class="cal-dow-row">
-        <div class="cal-dow">일</div>
-        <div class="cal-dow">월</div>
-        <div class="cal-dow">화</div>
-        <div class="cal-dow">수</div>
-        <div class="cal-dow">목</div>
-        <div class="cal-dow">금</div>
-        <div class="cal-dow">토</div>
-      </div>
-      <div class="cal-grid" id="cal-grid"></div>
-    </div>
 
-    <!-- 선택된 날의 세션 카드 -->
-    <div id="day-sessions-area"></div>
+      <label class="form-label" id="lbl">초대코드</label>
+      <input  class="form-input" id="pw-input" type="password"
+              placeholder="초대코드를 입력하세요"
+              onkeydown="if(event.key==='Enter')tryLogin()">
+      <div class="err-msg" id="err-msg">❌ 코드가 올바르지 않습니다.</div>
+      <button class="auth-btn" onclick="tryLogin()">입장하기</button>
+    </div>
   </div>
-</div>
 
-<!-- ──────── MODAL ──────── -->
-<div id="modal">
-  <div class="modal-box">
-    <div class="modal-bar">
-      <div class="modal-bar-title" id="modal-title">브리핑</div>
-      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+  <!-- ════════════════════════════════════
+       [메인 앱] 로그인 후 표시
+       ════════════════════════════════════ -->
+  <div id="main-app">
+    <div class="app-content">
+
+      <!-- 관리자 전용 패널 (관리자 로그인 시에만 표시) -->
+      <div class="admin-box" id="admin-box" style="display:none">
+        <div class="admin-box-title">⚙️ 관리자 패널 — 구독자에게 초대코드를 공유하세요</div>
+        <div>
+          <div style="font-size:12px;color:var(--dim);margin-bottom:8px;font-weight:700;letter-spacing:1px;">현재 초대코드</div>
+          <div class="code-block" id="show-invite"></div>
+        </div>
+        <div class="admin-instructions">
+          📌 <strong style="color:var(--text)">새 브리핑 추가하는 법</strong><br>
+          ① 브리핑 HTML 파일을 <code>briefings/</code> 폴더에 넣기<br>
+          ② <code>index.html</code> 상단 <code>BRIEFINGS</code> 배열에 한 줄 추가<br>
+          ③ GitHub에 push → 자동 배포 완료 ✅
+        </div>
+      </div>
+
+      <!-- 페이지 헤더 -->
+      <div class="page-header">
+        <div class="page-title">시황 정보</div>
+        <div class="page-sub" id="today-sub"></div>
+      </div>
+
+      <!-- 캘린더 -->
+      <div class="cal-wrap">
+        <div class="cal-header">
+          <button class="cal-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
+          <div class="cal-month-label" id="cal-month-label"></div>
+          <button class="cal-nav-btn" onclick="changeMonth(1)">&#8250;</button>
+        </div>
+        <div class="cal-dow-row">
+          <div class="cal-dow">일</div>
+          <div class="cal-dow">월</div>
+          <div class="cal-dow">화</div>
+          <div class="cal-dow">수</div>
+          <div class="cal-dow">목</div>
+          <div class="cal-dow">금</div>
+          <div class="cal-dow">토</div>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+
+      <!-- 선택된 날짜의 세션 카드 -->
+      <div id="day-sessions-area"></div>
+
     </div>
-    <iframe id="briefing-frame" src=""></iframe>
   </div>
-</div>
+
+  <!-- ════════════════════════════════════
+       [모달] 세션 카드 클릭 시 브리핑 팝업
+       ESC 또는 ✕ 버튼으로 닫기
+       ════════════════════════════════════ -->
+  <div id="modal">
+    <div class="modal-box">
+      <div class="modal-bar">
+        <div class="modal-bar-title" id="modal-title">브리핑</div>
+        <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      </div>
+      <iframe id="briefing-frame" src=""></iframe>
+    </div>
+  </div>
+
 
 <script>
-// ══════════════════════════════════════════════════
-//  ✏️ 설정 영역 — 여기만 수정하면 됩니다
-// ══════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════
+   ✏️ 설정 영역 — 비밀번호와 브리핑 목록만 여기서 수정
+   ══════════════════════════════════════════════════ */
 
 const CONFIG = {
-  adminPassword: 'jisun0754',
-  inviteCode:    'brief2026'
+  adminPassword: 'jisun0754', // 관리자 비밀번호
+  inviteCode:    'brief2026'  // 구독자 초대코드
 };
 
-// 브리핑 목록 — 새 날짜 추가 시 항목을 아래에 추가하세요
+// 브리핑 목록 — 새 날짜 추가 시 아래에 항목 추가
 const BRIEFINGS = [
   {
     date:  '2026-05-06',
@@ -827,7 +805,7 @@ const BRIEFINGS = [
       { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_07_night.html',     ready: false },
     ]
   }
-  // 새 날짜 추가 예시 ↓
+  // 새 날짜 추가 예시 ↓ (앞에 쉼표 붙이고 추가)
   // ,{
   //   date:  '2026-05-08',
   //   label: '2026년 5월 8일 (금)',
@@ -839,59 +817,57 @@ const BRIEFINGS = [
   // }
 ];
 
-// ══════════════════════════════════════════════════
-//  캘린더 상태
-// ══════════════════════════════════════════════════
+
+/* ══════════════════════════════════════════════════
+   [A] 캘린더 렌더링
+   ══════════════════════════════════════════════════ */
 
 let calYear, calMonth, selectedDate;
 
-// BRIEFINGS를 날짜 키로 빠르게 찾기
+// BRIEFINGS 배열을 날짜 문자열 키로 변환 (빠른 검색용)
 const briefingMap = {};
 BRIEFINGS.forEach(b => { briefingMap[b.date] = b; });
 
-// ══════════════════════════════════════════════════
-//  캘린더 렌더링
-// ══════════════════════════════════════════════════
+// 날짜를 'YYYY-MM-DD' 형식으로 변환
+function toDateStr(y, m, d) {
+  return `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+}
 
+// 캘린더 전체 다시 그리기
 function renderCalendar() {
-  const grid = document.getElementById('cal-grid');
+  const grid  = document.getElementById('cal-grid');
   const label = document.getElementById('cal-month-label');
   grid.innerHTML = '';
-
   label.textContent = `${calYear}년 ${calMonth + 1}월`;
 
-  const firstDay = new Date(calYear, calMonth, 1).getDay(); // 0=일
-  const lastDate = new Date(calYear, calMonth + 1, 0).getDate();
-  const today = new Date();
-  const todayStr = toDateStr(today.getFullYear(), today.getMonth(), today.getDate());
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const lastDate  = new Date(calYear, calMonth + 1, 0).getDate();
+  const today     = new Date();
+  const todayStr  = toDateStr(today.getFullYear(), today.getMonth(), today.getDate());
 
-  // 빈 셀 채우기 (1일 이전)
+  // 1일 이전 빈 셀
   for (let i = 0; i < firstDay; i++) {
     const empty = document.createElement('div');
-    empty.className = 'cal-cell empty';
+    empty.className = 'cal-cell';
     grid.appendChild(empty);
   }
 
-  // 날짜 셀
+  // 날짜 셀 생성
   for (let d = 1; d <= lastDate; d++) {
-    const dateStr = toDateStr(calYear, calMonth, d);
+    const dateStr  = toDateStr(calYear, calMonth, d);
     const briefing = briefingMap[dateStr];
-    const cell = document.createElement('div');
-    const isToday = dateStr === todayStr;
-    const isSelected = dateStr === selectedDate;
+    const cell     = document.createElement('div');
 
     cell.className = 'cal-cell' +
-      (briefing ? ' has-data' : ' no-data') +
-      (isToday    ? ' today'    : '') +
-      (isSelected ? ' selected' : '');
+      (briefing            ? ' has-data' : '') +
+      (dateStr === todayStr     ? ' today'    : '') +
+      (dateStr === selectedDate ? ' selected' : '');
 
-    // 날짜 숫자
     const numEl = document.createElement('div');
-    numEl.className = 'cal-num';
+    numEl.className   = 'cal-num';
     numEl.textContent = d;
     cell.appendChild(numEl);
 
-    // 브리핑 있으면 점 표시
     if (briefing) {
       const dots = document.createElement('div');
       dots.className = 'cal-dots';
@@ -901,7 +877,6 @@ function renderCalendar() {
         dots.appendChild(dot);
       });
       cell.appendChild(dots);
-
       cell.onclick = () => selectDate(dateStr);
     }
 
@@ -909,10 +884,7 @@ function renderCalendar() {
   }
 }
 
-function toDateStr(y, m, d) {
-  return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-}
-
+// 이전/다음 달 이동
 function changeMonth(dir) {
   calMonth += dir;
   if (calMonth > 11) { calMonth = 0; calYear++; }
@@ -920,18 +892,26 @@ function changeMonth(dir) {
   renderCalendar();
 }
 
+// 날짜 선택 → 강조 표시 + 세션 카드 렌더링
 function selectDate(dateStr) {
   selectedDate = dateStr;
   renderCalendar();
   renderDaySessions(dateStr);
 }
 
-// ══════════════════════════════════════════════════
-//  선택 날짜 세션 카드 렌더링
-// ══════════════════════════════════════════════════
+// 가장 최근 브리핑 날짜 자동 선택
+function selectLatestDate() {
+  const dates = Object.keys(briefingMap).sort().reverse();
+  if (dates.length > 0) selectDate(dates[0]);
+}
+
+
+/* ══════════════════════════════════════════════════
+   [B] 세션 카드 렌더링 (오전 / 오후 / 밤)
+   ══════════════════════════════════════════════════ */
 
 function renderDaySessions(dateStr) {
-  const area = document.getElementById('day-sessions-area');
+  const area     = document.getElementById('day-sessions-area');
   const briefing = briefingMap[dateStr];
 
   if (!briefing) {
@@ -943,12 +923,12 @@ function renderDaySessions(dateStr) {
     return;
   }
 
+  const readyCount = briefing.sessions.filter(s => s.ready).length;
+
   area.innerHTML = `
     <div class="day-sessions-header">
       <div class="day-sessions-label">${briefing.label}</div>
-      <div class="day-sessions-badge">
-        ${briefing.sessions.filter(s=>s.ready).length} / ${briefing.sessions.length} 업로드됨
-      </div>
+      <div class="day-sessions-badge">${readyCount} / ${briefing.sessions.length} 업로드됨</div>
     </div>
     <div class="session-row">
       ${briefing.sessions.map(s => `
@@ -966,15 +946,10 @@ function renderDaySessions(dateStr) {
     </div>`;
 }
 
-// 가장 최근 브리핑 날짜 자동 선택
-function selectLatestDate() {
-  const dates = Object.keys(briefingMap).sort().reverse();
-  if (dates.length > 0) selectDate(dates[0]);
-}
 
-// ══════════════════════════════════════════════════
-//  기능 코드
-// ══════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════
+   [C] 인증 (로그인 / 로그아웃 / 탭 전환)
+   ══════════════════════════════════════════════════ */
 
 let activeTab = 'viewer';
 
@@ -1012,31 +987,45 @@ function tryLogin() {
 }
 
 function launchApp(role) {
-  document.getElementById('auth-screen').style.display    = 'none';
-  document.getElementById('main-app').style.display        = 'block';
-  document.getElementById('main-app').querySelector('.app-content').style.display = 'block';
+  // 로그인 화면 숨기고 메인 앱 표시
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('main-app').style.display    = 'block';
 
+  // topbar에 역할칩 + 로그아웃 버튼 표시
   const chip = document.getElementById('role-chip');
+  chip.style.display = '';
+  document.getElementById('logout-btn').style.display = '';
+
   if (role === 'admin') {
     chip.textContent = '👑 관리자';
     chip.classList.add('admin');
-    document.getElementById('admin-box').style.display = 'block';
-    document.getElementById('show-invite').textContent = CONFIG.inviteCode;
+    document.getElementById('admin-box').style.display  = 'block';
+    document.getElementById('show-invite').textContent  = CONFIG.inviteCode;
   } else {
     chip.textContent = '📖 구독자';
   }
 
-  const d = new Date();
+  const d    = new Date();
   const days = ['일','월','화','수','목','금','토'];
   document.getElementById('today-sub').textContent =
-    `오늘: ${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 (${days[d.getDay()]})`;
+    `오늘: ${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 (${days[d.getDay()]})`;
 
-  // 캘린더 초기화 — 오늘 날짜 기준으로 열기
+  // 캘린더 초기화 (오늘 기준) + 최근 날짜 자동 선택
   calYear  = d.getFullYear();
   calMonth = d.getMonth();
   renderCalendar();
   selectLatestDate();
 }
+
+function logout() {
+  localStorage.removeItem('briefing_role');
+  location.reload();
+}
+
+
+/* ══════════════════════════════════════════════════
+   [D] 모달 (브리핑 열기 / 닫기)
+   ══════════════════════════════════════════════════ */
 
 function openBriefing(file, title) {
   document.getElementById('modal-title').textContent = title;
@@ -1051,12 +1040,12 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-function logout() {
-  localStorage.removeItem('briefing_role');
-  location.reload();
-}
-
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+
+/* ══════════════════════════════════════════════════
+   [E] 테마 전환 (다크 ↔ 라이트)
+   ══════════════════════════════════════════════════ */
 
 function toggleTheme() {
   const isLight = document.body.classList.toggle('light');
@@ -1064,12 +1053,16 @@ function toggleTheme() {
   document.getElementById('theme-toggle').textContent = isLight ? '☀️ 라이트' : '🌙 다크';
 }
 
-// 자동 로그인
-(function() {
+
+/* ══════════════════════════════════════════════════
+   [F] 초기화 — 페이지 로드 시 자동 실행
+   - 저장된 테마 복원
+   - 이미 로그인된 경우 자동 진입
+   ══════════════════════════════════════════════════ */
+(function init() {
   if (localStorage.getItem('briefing_theme') === 'light') {
     document.body.classList.add('light');
-    const btn = document.getElementById('theme-toggle');
-    if (btn) btn.textContent = '☀️ 라이트';
+    document.getElementById('theme-toggle').textContent = '☀️ 라이트';
   }
   const saved = localStorage.getItem('briefing_role');
   if (saved === 'admin' || saved === 'viewer') launchApp(saved);
