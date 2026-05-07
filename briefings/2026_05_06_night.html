@@ -416,8 +416,31 @@
   html.dark td { color: #dce6f5 !important; }
   html.dark th { color: #8fa4c0 !important; }
 
-  </style>
-<!-- v20260507100156 -->
+  
+  /* 섹터 이름 클래스 */
+  .sector-name {
+    font-size: 12px;
+    color: #4a5568;
+  }
+  html.dark .sector-name {
+    color: #94a3b8 !important;
+  }
+  html.dark .sector-name.neutral {
+    color: #6b80a0 !important;
+  }
+
+  /* 테이블 줄색 완전 통일 */
+  html.dark table { background: #131e33; }
+  html.dark table tbody tr { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(even) { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(odd)  { background: #131e33 !important; }
+  html.dark table tbody tr:hover           { background: #1a2940 !important; }
+  html.dark table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
+  html.dark table th { background: #0f1928 !important; color: #8fa4c0 !important; border-color: #1e2e4a !important; }
+  html.dark table tr:nth-child(even) td   { background: #131e33 !important; }
+
+</style>
+<!-- v202605071321 -->
 </head>
 <body>
 
@@ -503,37 +526,37 @@
     <tr>
       <td>💾 AMD</td>
       <td><span class="tag sur">어닝 서프라이즈</span></td>
-      <td style="color:#00834a;font-weight:700">▲ +13~16%</td>
+      <td data-dark-color="#4ade80" style="color:#00834a;font-weight:700">▲ +13~16%</td>
       <td>AI GPU 칩 수요 폭증 + 2분기 가이던스 상향</td>
     </tr>
     <tr>
       <td>🏰 Disney</td>
       <td><span class="tag sur">어닝 서프라이즈</span></td>
-      <td style="color:#00834a;font-weight:700">▲ +8%</td>
+      <td data-dark-color="#4ade80" style="color:#00834a;font-weight:700">▲ +8%</td>
       <td>스트리밍·파크 동반 호실적</td>
     </tr>
     <tr>
       <td>🚗 Uber</td>
       <td><span class="tag beat">예상 상회</span></td>
-      <td style="color:#00834a;font-weight:700">▲ +6%</td>
+      <td data-dark-color="#4ade80" style="color:#00834a;font-weight:700">▲ +6%</td>
       <td>1분기 실적 예상치 상회</td>
     </tr>
     <tr>
       <td>🖥 Super Micro (SMCI)</td>
       <td><span class="tag sur">어닝 서프라이즈</span></td>
-      <td style="color:#00834a;font-weight:700">▲ +18%</td>
+      <td data-dark-color="#4ade80" style="color:#00834a;font-weight:700">▲ +18%</td>
       <td>4분기 EPS 가이던스 예상치 대폭 상회</td>
     </tr>
     <tr>
       <td>🔗 Corning</td>
       <td><span class="tag beat">모멘텀</span></td>
-      <td style="color:#00834a;font-weight:700">▲ +17%</td>
+      <td data-dark-color="#4ade80" style="color:#00834a;font-weight:700">▲ +17%</td>
       <td>Nvidia와 광학 제조 공장 3곳 공동 설립</td>
     </tr>
     <tr>
       <td>🌐 Arista Networks</td>
       <td><span class="tag miss">소폭 미달</span></td>
-      <td style="color:#c0253f;font-weight:700">▼ -12%</td>
+      <td data-dark-color="#f87171" style="color:#c0253f;font-weight:700">▼ -12%</td>
       <td>조정 매출총이익률 62.4% (예상 62.7% 소폭 미달)</td>
     </tr>
   </tbody>
@@ -589,11 +612,21 @@
     };
   }
   function _applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme==='dark');
-    if (typeof _buildChart==='function') _buildChart();
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    // data-dark-color 인라인 처리
+    if (theme === 'dark') {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = el.getAttribute('data-dark-color');
+      });
+    } else {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = '';
+      });
+    }
+    if (typeof _buildChart === 'function') _buildChart();
   }
   (function(){
-    var t=new URLSearchParams(window.location.search).get('theme')||'light';
+    var t=new URLSearchParams(window.location.search).get('theme')||'dark';
     _applyTheme(t);
     window.addEventListener('message',function(e){
       if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);

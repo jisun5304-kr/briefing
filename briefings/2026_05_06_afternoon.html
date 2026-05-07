@@ -439,8 +439,31 @@
   html.dark td { color: #dce6f5 !important; }
   html.dark th { color: #8fa4c0 !important; }
 
-  </style>
-<!-- v20260507100156 -->
+  
+  /* 섹터 이름 클래스 */
+  .sector-name {
+    font-size: 12px;
+    color: #4a5568;
+  }
+  html.dark .sector-name {
+    color: #94a3b8 !important;
+  }
+  html.dark .sector-name.neutral {
+    color: #6b80a0 !important;
+  }
+
+  /* 테이블 줄색 완전 통일 */
+  html.dark table { background: #131e33; }
+  html.dark table tbody tr { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(even) { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(odd)  { background: #131e33 !important; }
+  html.dark table tbody tr:hover           { background: #1a2940 !important; }
+  html.dark table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
+  html.dark table th { background: #0f1928 !important; color: #8fa4c0 !important; border-color: #1e2e4a !important; }
+  html.dark table tr:nth-child(even) td   { background: #131e33 !important; }
+
+</style>
+<!-- v202605071321 -->
 </head>
 <body>
 
@@ -564,8 +587,8 @@
     <span class="stock-tag hot">🚀 급등</span>
     <div class="stock-name">삼성전자</div>
     <div class="stock-code">005930 · 코스피</div>
-    <div class="stock-stat"><span>종가</span><span style="color:#00834a;font-weight:700">26만원대 (사상 최초)</span></div>
-    <div class="stock-stat"><span>등락률</span><span style="color:#00834a;font-weight:700">▲ +14.41%</span></div>
+    <div class="stock-stat"><span>종가</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">26만원대 (사상 최초)</span></div>
+    <div class="stock-stat"><span>등락률</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">▲ +14.41%</span></div>
     <div class="stock-stat"><span>시가총액</span><span>1조 달러 돌파 — 글로벌 1조달러 클럽 입성</span></div>
     <div class="stock-stat"><span>이슈</span><span>애플 칩 공급 협의 소식</span></div>
   </div>
@@ -573,8 +596,8 @@
     <span class="stock-tag hot">🚀 급등</span>
     <div class="stock-name">SK하이닉스</div>
     <div class="stock-code">000660 · 코스피</div>
-    <div class="stock-stat"><span>종가</span><span style="color:#00834a;font-weight:700">160만원대 (사상 최초)</span></div>
-    <div class="stock-stat"><span>등락률</span><span style="color:#00834a;font-weight:700">▲ +10.64%</span></div>
+    <div class="stock-stat"><span>종가</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">160만원대 (사상 최초)</span></div>
+    <div class="stock-stat"><span>등락률</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">▲ +10.64%</span></div>
     <div class="stock-stat"><span>목표주가</span><span>230만원 (유진투자증권)</span></div>
     <div class="stock-stat"><span>이슈</span><span>HBM 공급 부족 2027년까지 지속 전망</span></div>
   </div>
@@ -582,7 +605,7 @@
     <span class="stock-tag limit">⬆️ 상한가</span>
     <div class="stock-name">SKC · 파인디앤씨</div>
     <div class="stock-code">코스피 / 코스닥</div>
-    <div class="stock-stat"><span>등락률</span><span style="color:#92670a;font-weight:700">▲ +30.00% (상한가)</span></div>
+    <div class="stock-stat"><span>등락률</span><span data-dark-color="#fbbf24" style="color:#92670a;font-weight:700">▲ +30.00% (상한가)</span></div>
     <div class="stock-stat"><span>이유</span><span>애플 차기 칩 생산 — 삼성·인텔 협의 소식</span></div>
     <div class="stock-stat"><span>관련 테마</span><span>유리기판 · 반도체 소재</span></div>
   </div>
@@ -590,8 +613,8 @@
     <span class="stock-tag watch">⚠️ 소외</span>
     <div class="stock-name">코스닥 제약·바이오</div>
     <div class="stock-code">알테오젠 · 리가켐바이오 등</div>
-    <div class="stock-stat"><span>알테오젠</span><span style="color:#c0253f;font-weight:700">▼ -2.55%</span></div>
-    <div class="stock-stat"><span>리가켐바이오</span><span style="color:#c0253f;font-weight:700">▼ -2.59%</span></div>
+    <div class="stock-stat"><span>알테오젠</span><span data-dark-color="#f87171" style="color:#c0253f;font-weight:700">▼ -2.55%</span></div>
+    <div class="stock-stat"><span>리가켐바이오</span><span data-dark-color="#f87171" style="color:#c0253f;font-weight:700">▼ -2.59%</span></div>
     <div class="stock-stat"><span>이유</span><span>반도체로 수급 이탈 · 테마 소외</span></div>
   </div>
 </div>
@@ -642,11 +665,21 @@
     };
   }
   function _applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme==='dark');
-    if (typeof _buildChart==='function') _buildChart();
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    // data-dark-color 인라인 처리
+    if (theme === 'dark') {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = el.getAttribute('data-dark-color');
+      });
+    } else {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = '';
+      });
+    }
+    if (typeof _buildChart === 'function') _buildChart();
   }
   (function(){
-    var t=new URLSearchParams(window.location.search).get('theme')||'light';
+    var t=new URLSearchParams(window.location.search).get('theme')||'dark';
     _applyTheme(t);
     window.addEventListener('message',function(e){
       if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);

@@ -461,8 +461,31 @@
   html.dark td { color: #dce6f5 !important; }
   html.dark th { color: #8fa4c0 !important; }
 
-  </style>
-<!-- v20260507125349 -->
+  
+  /* 섹터 이름 클래스 */
+  .sector-name {
+    font-size: 12px;
+    color: #4a5568;
+  }
+  html.dark .sector-name {
+    color: #94a3b8 !important;
+  }
+  html.dark .sector-name.neutral {
+    color: #6b80a0 !important;
+  }
+
+  /* 테이블 줄색 완전 통일 */
+  html.dark table { background: #131e33; }
+  html.dark table tbody tr { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(even) { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(odd)  { background: #131e33 !important; }
+  html.dark table tbody tr:hover           { background: #1a2940 !important; }
+  html.dark table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
+  html.dark table th { background: #0f1928 !important; color: #8fa4c0 !important; border-color: #1e2e4a !important; }
+  html.dark table tr:nth-child(even) td   { background: #131e33 !important; }
+
+</style>
+<!-- v202605071321 -->
 </head>
 <body>
 
@@ -586,12 +609,12 @@
     <span class="stock-tag watch">👀 주목</span>
     <div class="stock-name">삼성전자</div>
     <div class="stock-code">005930 · 코스피 시총 1위</div>
-    <div class="stock-stat"><span>오늘 등락</span><span style="color:#00834a;font-weight:700">+9.25%</span></div>
+    <div class="stock-stat"><span>오늘 등락</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">+9.25%</span></div>
     <div class="stock-stat"><span>현재가</span><span>약 24만 9천원</span></div>
     <div class="stock-stat"><span>52주 위치</span><span>신고권 (역사적 고점)</span></div>
     <div class="stock-stat"><span>상승 이유</span><span>AMD 호실적 → AI 칩 수요 연동</span></div>
     <div class="rsi-wrap">
-      <div class="rsi-label"><span>RSI (70 넘으면 단기 과열)</span><span style="color:#92670a;font-weight:700">~68 ⚠️</span></div>
+      <div class="rsi-label"><span>RSI (70 넘으면 단기 과열)</span><span data-dark-color="#fbbf24" style="color:#92670a;font-weight:700">~68 ⚠️</span></div>
       <div class="rsi-track">
         <div class="rsi-fill" style="width:68%;background:linear-gradient(90deg,#00a65a,#f59e0b)"></div>
         <div class="rsi-dot" style="left:68%;background:#f59e0b"></div>
@@ -604,12 +627,12 @@
     <span class="stock-tag watch">👀 주목</span>
     <div class="stock-name">SK하이닉스</div>
     <div class="stock-code">000660 · HBM 메모리 세계 1위</div>
-    <div class="stock-stat"><span>오늘 등락</span><span style="color:#00834a;font-weight:700">+10.23%</span></div>
+    <div class="stock-stat"><span>오늘 등락</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">+10.23%</span></div>
     <div class="stock-stat"><span>현재가</span><span>약 158만 5천원</span></div>
     <div class="stock-stat"><span>52주 위치</span><span>최상단 (사상 최고가)</span></div>
     <div class="stock-stat"><span>상승 이유</span><span>AI 서버용 HBM 수요 폭발</span></div>
     <div class="rsi-wrap">
-      <div class="rsi-label"><span>RSI (70 이상 = 단기 과열)</span><span style="color:#c0253f;font-weight:700">~73 ⚠️ 과열!</span></div>
+      <div class="rsi-label"><span>RSI (70 이상 = 단기 과열)</span><span data-dark-color="#f87171" style="color:#c0253f;font-weight:700">~73 ⚠️ 과열!</span></div>
       <div class="rsi-track">
         <div class="rsi-fill" style="width:73%;background:linear-gradient(90deg,#00a65a,#e02f55)"></div>
         <div class="rsi-dot" style="left:73%;background:#e02f55"></div>
@@ -622,12 +645,12 @@
     <span class="stock-tag watch">👀 주목</span>
     <div class="stock-name">AMD</div>
     <div class="stock-code">AMD · 나스닥 · 미국 반도체</div>
-    <div class="stock-stat"><span>실적</span><span style="color:#00834a;font-weight:700">어닝 서프라이즈 🎉</span></div>
-    <div class="stock-stat"><span>시간외 등락</span><span style="color:#00834a;font-weight:700">+약 10%</span></div>
+    <div class="stock-stat"><span>실적</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">어닝 서프라이즈 🎉</span></div>
+    <div class="stock-stat"><span>시간외 등락</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">+약 10%</span></div>
     <div class="stock-stat"><span>상승 이유</span><span>AI GPU 칩 수요 폭증 + 가이던스 상향</span></div>
     <div class="stock-stat"><span>국내 영향</span><span>반도체주 연동 상승 촉매</span></div>
     <div class="rsi-wrap">
-      <div class="rsi-label"><span>RSI</span><span style="color:#00834a;font-weight:700">~65 (강세권)</span></div>
+      <div class="rsi-label"><span>RSI</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">~65 (강세권)</span></div>
       <div class="rsi-track">
         <div class="rsi-fill" style="width:65%;background:#00a65a"></div>
         <div class="rsi-dot" style="left:65%;background:#00a65a"></div>
@@ -640,8 +663,8 @@
     <span class="stock-tag caution">⚠️ 조심</span>
     <div class="stock-name">쿠팡 Inc</div>
     <div class="stock-code">CPNG · NYSE · 한국 이커머스 대표</div>
-    <div class="stock-stat"><span>1Q 실적</span><span style="color:#c0253f;font-weight:700">어닝 쇼크 😱</span></div>
-    <div class="stock-stat"><span>영업손실</span><span style="color:#c0253f;font-weight:700">-3,545억원 적자 전환</span></div>
+    <div class="stock-stat"><span>1Q 실적</span><span data-dark-color="#f87171" style="color:#c0253f;font-weight:700">어닝 쇼크 😱</span></div>
+    <div class="stock-stat"><span>영업손실</span><span data-dark-color="#f87171" style="color:#c0253f;font-weight:700">-3,545억원 적자 전환</span></div>
     <div class="stock-stat"><span>원인</span><span>정보유출 사태 + 해외 투자 급증</span></div>
     <div class="stock-stat"><span>매출 성장</span><span>+8% (두 자릿수 성장 첫 붕괴)</span></div>
     <div class="rsi-wrap">
@@ -681,11 +704,21 @@
     };
   }
   function _applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme==='dark');
-    if (typeof _buildChart==='function') _buildChart();
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    // data-dark-color 인라인 처리
+    if (theme === 'dark') {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = el.getAttribute('data-dark-color');
+      });
+    } else {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = '';
+      });
+    }
+    if (typeof _buildChart === 'function') _buildChart();
   }
   (function(){
-    var t=new URLSearchParams(window.location.search).get('theme')||'light';
+    var t=new URLSearchParams(window.location.search).get('theme')||'dark';
     _applyTheme(t);
     window.addEventListener('message',function(e){
       if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);

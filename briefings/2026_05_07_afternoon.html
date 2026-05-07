@@ -491,8 +491,31 @@
   html.dark td { color: #dce6f5 !important; }
   html.dark th { color: #8fa4c0 !important; }
 
-  </style>
-<!-- v20260507100156 -->
+  
+  /* 섹터 이름 클래스 */
+  .sector-name {
+    font-size: 12px;
+    color: #4a5568;
+  }
+  html.dark .sector-name {
+    color: #94a3b8 !important;
+  }
+  html.dark .sector-name.neutral {
+    color: #6b80a0 !important;
+  }
+
+  /* 테이블 줄색 완전 통일 */
+  html.dark table { background: #131e33; }
+  html.dark table tbody tr { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(even) { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(odd)  { background: #131e33 !important; }
+  html.dark table tbody tr:hover           { background: #1a2940 !important; }
+  html.dark table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
+  html.dark table th { background: #0f1928 !important; color: #8fa4c0 !important; border-color: #1e2e4a !important; }
+  html.dark table tr:nth-child(even) td   { background: #131e33 !important; }
+
+</style>
+<!-- v202605071321 -->
 </head>
 <body>
 <div class="page">
@@ -657,7 +680,7 @@
           <td style="color:#555;">SK하이닉스 지분 가치 연동 상승</td>
         </tr>
         <tr style="background:#fdf5f5;">
-          <td><strong style="color:#c0392b;">⚠ 쿠팡</strong></td>
+          <td><strong data-dark-color="#f87171" style="color:#c0392b;">⚠ 쿠팡</strong></td>
           <td>하락</td>
           <td class="down" style="font-weight:600;">▼ 약세 지속</td>
           <td style="color:#555;">1Q 영업손실 3,545억 쇼크 영향 지속</td>
@@ -668,12 +691,12 @@
 
     <div style="font-size:13px;font-weight:600;color:#166534;margin-bottom:10px;">업종별 흐름</div>
     <div class="sector-grid">
-      <div class="sector-row"><span style="color:#555;">반도체·전기전자</span><span class="up" style="font-weight:700;">강세 지속 ↑</span></div>
-      <div class="sector-row"><span style="color:#555;">자동차</span><span class="up" style="font-weight:700;">+6%대 급등 ↑</span></div>
-      <div class="sector-row"><span style="color:#555;">증권</span><span class="up" style="font-weight:700;">동반 강세 ↑</span></div>
-      <div class="sector-row"><span style="color:#555;">부동산·오락·문화</span><span class="down" style="font-weight:700;">약세 지속 ↓</span></div>
-      <div class="sector-row"><span style="color:#555;">통신·음식료·담배</span><span class="down" style="font-weight:700;">소폭 하락 ↓</span></div>
-      <div class="sector-row"><span style="color:#555;">에너지</span><span style="color:#888;font-weight:700;">유가 하락 영향 ↔</span></div>
+      <div class="sector-row"><span class="sector-name">반도체·전기전자</span><span class="up" style="font-weight:700;">강세 지속 ↑</span></div>
+      <div class="sector-row"><span class="sector-name">자동차</span><span class="up" style="font-weight:700;">+6%대 급등 ↑</span></div>
+      <div class="sector-row"><span class="sector-name">증권</span><span class="up" style="font-weight:700;">동반 강세 ↑</span></div>
+      <div class="sector-row"><span class="sector-name">부동산·오락·문화</span><span class="down" style="font-weight:700;">약세 지속 ↓</span></div>
+      <div class="sector-row"><span class="sector-name">통신·음식료·담배</span><span class="down" style="font-weight:700;">소폭 하락 ↓</span></div>
+      <div class="sector-row"><span class="sector-name">에너지</span><span style="color:#888;font-weight:700;">유가 하락 영향 ↔</span></div>
     </div>
   </div>
 
@@ -687,17 +710,17 @@
     <div class="three-col">
       <div class="stat-card">
         <div class="sl">내일(5/8) 핵심 이벤트</div>
-        <div class="sv" style="color:#c0392b; font-size:15px;">美 고용보고서</div>
+        <div class="sv" data-dark-color="#f87171" style="color:#c0392b; font-size:15px;">美 고용보고서</div>
         <div class="sd">예상: 5.5~6.2만명. 예상치 크게 상회 시 금리 동결 압력 → 증시 변동성</div>
       </div>
       <div class="stat-card">
         <div class="sl">미·이란 협상 진행</div>
-        <div class="sv" style="color:#166534; font-size:15px;">종전 기대 ↑</div>
+        <div class="sv" data-dark-color="#4ade80" style="color:#166534; font-size:15px;">종전 기대 ↑</div>
         <div class="sd">합의 발표 시 유가 추가 하락 → 글로벌 증시 추가 호재</div>
       </div>
       <div class="stat-card">
         <div class="sl">오늘 밤 미국 개장</div>
-        <div class="sv" style="color:#2E5EA0; font-size:15px;">야간 주목</div>
+        <div class="sv" data-dark-color="#60a5fa" style="color:#2E5EA0; font-size:15px;">야간 주목</div>
         <div class="sd">미국 선물 방향 및 고용보고서 전 포지셔닝 확인 필요</div>
       </div>
     </div>
@@ -735,11 +758,21 @@
     };
   }
   function _applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme==='dark');
-    if (typeof _buildChart==='function') _buildChart();
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    // data-dark-color 인라인 처리
+    if (theme === 'dark') {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = el.getAttribute('data-dark-color');
+      });
+    } else {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = '';
+      });
+    }
+    if (typeof _buildChart === 'function') _buildChart();
   }
   (function(){
-    var t=new URLSearchParams(window.location.search).get('theme')||'light';
+    var t=new URLSearchParams(window.location.search).get('theme')||'dark';
     _applyTheme(t);
     window.addEventListener('message',function(e){
       if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);

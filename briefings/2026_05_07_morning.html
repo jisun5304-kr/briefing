@@ -492,8 +492,31 @@
   html.dark td { color: #dce6f5 !important; }
   html.dark th { color: #8fa4c0 !important; }
 
-  </style>
-<!-- v20260507100156 -->
+  
+  /* 섹터 이름 클래스 */
+  .sector-name {
+    font-size: 12px;
+    color: #4a5568;
+  }
+  html.dark .sector-name {
+    color: #94a3b8 !important;
+  }
+  html.dark .sector-name.neutral {
+    color: #6b80a0 !important;
+  }
+
+  /* 테이블 줄색 완전 통일 */
+  html.dark table { background: #131e33; }
+  html.dark table tbody tr { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(even) { background: #131e33 !important; }
+  html.dark table tbody tr:nth-child(odd)  { background: #131e33 !important; }
+  html.dark table tbody tr:hover           { background: #1a2940 !important; }
+  html.dark table td { background: #131e33 !important; color: #dce6f5 !important; border-color: #1e2e4a !important; }
+  html.dark table th { background: #0f1928 !important; color: #8fa4c0 !important; border-color: #1e2e4a !important; }
+  html.dark table tr:nth-child(even) td   { background: #131e33 !important; }
+
+</style>
+<!-- v202605071321 -->
 </head>
 <body>
 <div class="page">
@@ -541,12 +564,12 @@
 
     <div style="font-size:13px;font-weight:600;color:#1B3A6B;margin-bottom:8px;">🔑 핵심 이유</div>
     <div class="sector-grid">
-      <div class="sector-row"><span style="color:#555;">AMD 어닝 서프라이즈</span><span class="up" style="font-weight:700;">+18.6%</span></div>
-      <div class="sector-row"><span style="color:#555;">필라델피아 반도체지수</span><span class="up" style="font-weight:700;">+4.5% 신고가</span></div>
-      <div class="sector-row"><span style="color:#555;">월트디즈니</span><span class="up" style="font-weight:700;">+7.5%</span></div>
-      <div class="sector-row"><span style="color:#555;">우버</span><span class="up" style="font-weight:700;">+8.5%</span></div>
-      <div class="sector-row"><span style="color:#555;">국제유가 (WTI)</span><span class="down" style="font-weight:700;">-7%대 ↓</span></div>
-      <div class="sector-row"><span style="color:#555;">미·이란 종전 기대</span><span class="badge badge-up">핵심 호재</span></div>
+      <div class="sector-row"><span class="sector-name">AMD 어닝 서프라이즈</span><span class="up" style="font-weight:700;">+18.6%</span></div>
+      <div class="sector-row"><span class="sector-name">필라델피아 반도체지수</span><span class="up" style="font-weight:700;">+4.5% 신고가</span></div>
+      <div class="sector-row"><span class="sector-name">월트디즈니</span><span class="up" style="font-weight:700;">+7.5%</span></div>
+      <div class="sector-row"><span class="sector-name">우버</span><span class="up" style="font-weight:700;">+8.5%</span></div>
+      <div class="sector-row"><span class="sector-name">국제유가 (WTI)</span><span class="down" style="font-weight:700;">-7%대 ↓</span></div>
+      <div class="sector-row"><span class="sector-name">미·이란 종전 기대</span><span class="badge badge-up">핵심 호재</span></div>
     </div>
 
     <div class="note-box note-blue">
@@ -569,21 +592,21 @@
       </thead>
       <tbody>
         <tr>
-          <td style="color:#C0392B;font-weight:600;">5/8 (금)</td>
+          <td data-dark-color="#f87171" style="color:#C0392B;font-weight:600;">5/8 (금)</td>
           <td style="font-weight:600;">미국 비농업 고용보고서 (NFP)</td>
-          <td><span style="color:#C0392B;font-weight:700;">★★★</span></td>
+          <td><span data-dark-color="#f87171" style="color:#C0392B;font-weight:700;">★★★</span></td>
           <td style="color:#555;">예상 5.5~6.2만명. 결과에 따라 연준 금리 방향 변동 가능</td>
         </tr>
         <tr>
           <td>5/7 (오늘)</td>
           <td>ADP 민간고용 결과 반영</td>
-          <td><span style="color:#E0A800;font-weight:700;">★★</span></td>
+          <td><span data-dark-color="#fbbf24" style="color:#E0A800;font-weight:700;">★★</span></td>
           <td style="color:#555;">10.9만명 증가로 예상치 상회 → 연준 금리 동결 압력</td>
         </tr>
         <tr>
           <td>5월 말</td>
           <td>엔비디아 실적 발표 (예고)</td>
-          <td><span style="color:#2E5EA0;font-weight:700;">★★</span></td>
+          <td><span data-dark-color="#60a5fa" style="color:#2E5EA0;font-weight:700;">★★</span></td>
           <td style="color:#555;">국내 반도체주 다음 변곡점. 선반영 기대감 퍼지는 중</td>
         </tr>
       </tbody>
@@ -676,7 +699,7 @@
           <td>266,000원</td>
           <td class="up" style="font-weight:600;">▲ +14.4%</td>
           <td><span class="badge badge-up" style="font-size:11px;">신고가권</span></td>
-          <td style="color:#C0392B;font-weight:600;">75+ (과열)</td>
+          <td data-dark-color="#f87171" style="color:#C0392B;font-weight:600;">75+ (과열)</td>
           <td>300,000원</td>
           <td><span class="action-pill pill-split">분할매수</span></td>
         </tr>
@@ -685,7 +708,7 @@
           <td>160만1천원</td>
           <td class="up" style="font-weight:600;">▲ +10.6%</td>
           <td><span class="badge badge-up" style="font-size:11px;">신고가권</span></td>
-          <td style="color:#C0392B;font-weight:600;">73+ (과열)</td>
+          <td data-dark-color="#f87171" style="color:#C0392B;font-weight:600;">73+ (과열)</td>
           <td>180만원</td>
           <td><span class="action-pill pill-split">분할매수</span></td>
         </tr>
@@ -708,7 +731,7 @@
           <td><span class="action-pill pill-watch">관망</span></td>
         </tr>
         <tr style="background:#fdf5f5;">
-          <td><strong style="color:#C0392B;">⚠ 쿠팡</strong></td>
+          <td><strong data-dark-color="#f87171" style="color:#C0392B;">⚠ 쿠팡</strong></td>
           <td>하락세</td>
           <td class="down" style="font-weight:600;">▼ -3~4% (시외)</td>
           <td><span class="badge badge-danger" style="font-size:11px;">불확실</span></td>
@@ -722,7 +745,7 @@
 
     <div class="rsi-box">
       <strong>💡 RSI란?</strong> — 주가가 얼마나 빠르게 많이 올랐는지 보여주는 숫자 (0~100).<br>
-      <strong style="color:#C0392B;">70 이상</strong> = 너무 과열 (단기 하락 가능성 높음) &nbsp;/&nbsp; <strong style="color:#2E5EA0;">30 이하</strong> = 너무 많이 떨어짐 (반등 가능성)<br>
+      <strong data-dark-color="#f87171" style="color:#C0392B;">70 이상</strong> = 너무 과열 (단기 하락 가능성 높음) &nbsp;/&nbsp; <strong data-dark-color="#60a5fa" style="color:#2E5EA0;">30 이하</strong> = 너무 많이 떨어짐 (반등 가능성)<br>
       삼성전자·SK하이닉스는 현재 <strong>과열 구간</strong>이에요. 한 번에 사기보다 나눠서 사는 분할매수가 안전합니다.
     </div>
 
@@ -755,11 +778,21 @@
     };
   }
   function _applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme==='dark');
-    if (typeof _buildChart==='function') _buildChart();
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    // data-dark-color 인라인 처리
+    if (theme === 'dark') {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = el.getAttribute('data-dark-color');
+      });
+    } else {
+      document.querySelectorAll('[data-dark-color]').forEach(el => {
+        el.style.color = '';
+      });
+    }
+    if (typeof _buildChart === 'function') _buildChart();
   }
   (function(){
-    var t=new URLSearchParams(window.location.search).get('theme')||'light';
+    var t=new URLSearchParams(window.location.search).get('theme')||'dark';
     _applyTheme(t);
     window.addEventListener('message',function(e){
       if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);
