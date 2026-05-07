@@ -407,6 +407,38 @@
   html.dark table tr:nth-child(even) td { background: #131e33 !important; }
   html.dark table tr:hover td { background: #1a2940 !important; }
 
+  
+  /* ══ 인라인 style 색상 다크모드 오버라이드 ══ */
+  /* 어두운 색 → 밝은 버전 */
+  html.dark [style*="color:#555"]    { color: #c8d8ef !important; }
+  html.dark [style*="color:#888"]    { color: #8fa4c0 !important; }
+  html.dark [style*="color:#8a9ab8"] { color: #8fa4c0 !important; }
+  html.dark [style*="color:#92670a"] { color: #fbbf24 !important; }
+  html.dark [style*="color:#166534"] { color: #4ade80 !important; }
+  html.dark [style*="color:#1B3A6B"] { color: #60a5fa !important; }
+  html.dark [style*="color:#2E5EA0"] { color: #60a5fa !important; }
+  html.dark [style*="color:#00834a"] { color: #4ade80 !important; }
+  html.dark [style*="color:#721c24"] { color: #f87171 !important; }
+  html.dark [style*="color:#C0392B"] { color: #f87171 !important; }
+  html.dark [style*="color:#c0392b"] { color: #f87171 !important; }
+  html.dark [style*="color:#c0253f"] { color: #f87171 !important; }
+  html.dark [style*="color:#E0A800"] { color: #fbbf24 !important; }
+
+  /* 밝은 배경 → 어두운 버전 */
+  html.dark [style*="background:#fdf5f5"] { background: rgba(185,28,28,0.1) !important; }
+  html.dark [style*="background:#f8d7da"] { background: rgba(185,28,28,0.15) !important; }
+
+  /* 인라인으로 지정된 업다운 색상 */
+  html.dark td[style*="color:#00834a"],
+  html.dark td[style*="color:#166534"] { color: #4ade80 !important; }
+  html.dark td[style*="color:#C0392B"],
+  html.dark td[style*="color:#c0392b"],
+  html.dark td[style*="color:#c0253f"] { color: #f87171 !important; }
+
+  /* 테이블 td 기본 텍스트 */
+  html.dark td { color: #dce6f5 !important; }
+  html.dark th { color: #8fa4c0 !important; }
+
   </style>
 <!-- v20260507100156 -->
 </head>
