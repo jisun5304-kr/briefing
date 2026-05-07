@@ -22,6 +22,40 @@
       --red:      #ef4444;
     }
 
+    /* 라이트 모드 */
+    body.light {
+      --bg:       #f0f4fa;
+      --surface:  #ffffff;
+      --border:   #dde3ef;
+      --muted:    #c0cce0;
+      --text:     #1a2236;
+      --dim:      #6b80a0;
+      --accent:   #2563eb;
+      --accent2:  #d97706;
+      --green:    #16a34a;
+      --red:      #dc2626;
+    }
+
+    body.light #auth-screen {
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, #c7d9f8 0%, var(--bg) 70%);
+    }
+
+    /* 토글 버튼 */
+    .theme-toggle {
+      background: var(--border);
+      border: 1px solid var(--muted);
+      border-radius: 20px;
+      padding: 5px 14px;
+      color: var(--dim);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
     body {
       font-family: 'Noto Sans KR', sans-serif;
       background: var(--bg);
@@ -527,6 +561,7 @@
       시황 브리핑
     </div>
     <div class="topbar-spacer"></div>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>
     <div class="role-chip" id="role-chip">구독자</div>
     <button class="logout-btn" onclick="logout()">로그아웃</button>
   </header>
@@ -711,8 +746,21 @@ function logout() {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+// 테마 토글
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light');
+  localStorage.setItem('briefing_theme', isLight ? 'light' : 'dark');
+  document.getElementById('theme-toggle').textContent = isLight ? '☀️ 라이트' : '🌙 다크';
+}
+
 // 자동 로그인 (이미 인증된 경우)
 (function() {
+  // 테마 복원
+  if (localStorage.getItem('briefing_theme') === 'light') {
+    document.body.classList.add('light');
+    const btn = document.getElementById('theme-toggle');
+    if (btn) btn.textContent = '☀️ 라이트';
+  }
   const saved = localStorage.getItem('briefing_role');
   if (saved === 'admin' || saved === 'viewer') launchApp(saved);
 })();
