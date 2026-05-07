@@ -634,10 +634,29 @@
     .modal-close-btn:hover { background: var(--red); }
 
     #briefing-frame { flex: 1; border: none; width: 100%; }
+    
+    /* 항상 표시되는 테마 토글 (우상단 고정) */
+.theme-toggle-fixed {
+  position: fixed;
+  top: 14px; right: 20px;
+  z-index: 300;
+  background: var(--border);
+  border: 1px solid var(--muted);
+  border-radius: 20px;
+  padding: 6px 14px;
+  color: var(--dim);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  transition: all 0.2s;
+}
+.theme-toggle-fixed:hover { border-color: var(--accent); color: var(--accent); }
   </style>
 </head>
 <body>
 
+  <button class="theme-toggle-fixed" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>
+  
 <!-- ──────── AUTH SCREEN ──────── -->
 <div id="auth-screen">
   <div class="auth-card">
@@ -669,7 +688,7 @@
       시황 브리핑
     </div>
     <div class="topbar-spacer"></div>
-    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>
+    <!-- <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>-->
     <div class="role-chip" id="role-chip">구독자</div>
     <button class="logout-btn" onclick="logout()">로그아웃</button>
   </header>
