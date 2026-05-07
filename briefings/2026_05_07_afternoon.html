@@ -6,6 +6,44 @@
 <title>2026-05-07 오후 마감 브리핑</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
+
+  /* ── 라이트 모드 (기본값) ── */
+  :root {
+    --bg:#f4f6fb; --surface:#ffffff; --border:#dde3ef; --thead:#eef1f7;
+    --row-hover:#f8faff; --text:#1a2236; --dim:#5a6e8c; --muted:#8a9ab8;
+    --summary-bg:#eff6ff; --summary-border:#93c5fd; --summary-text:#1e3a5f;
+    --spotlight-bg:#ecfdf5; --spotlight-border:#34d399; --spotlight-text:#00834a; --spotlight-sub:#1a2236;
+    --card-shadow:0 1px 4px rgba(0,0,0,0.06); --chart-grid:#eef1f7; --chart-text:#5a6e8c;
+    --chart-tooltip-bg:#ffffff; --chart-tooltip-title:#1a2236; --chart-tooltip-border:#dde3ef;
+    --accent-header:#b8720a; --badge-bg:#dbeafe; --badge-border:#2563eb; --badge-text:#2563eb;
+    --section-bar:#2563eb; --section-text:#5a6e8c;
+    --imp-high-bg:#fee2e8; --imp-high-text:#be1a39; --imp-mid-bg:#fef3c7; --imp-mid-text:#92670a;
+    --imp-low-bg:#e5eaf5; --imp-low-text:#5a6e8c; --watch-bg:#d1fae5; --watch-text:#006b42;
+    --caution-bg:#fee2e2; --caution-text:#b91c1c; --verdict-split-bg:#dbeafe; --verdict-split-text:#1d4ed8;
+    --verdict-watch-bg:#f1f5f9; --verdict-watch-text:#5a6e8c;
+    --news-bg:linear-gradient(135deg,#fff7ed,#fef3c7); --news-border:#fbbf24;
+    --news-title:#92670a; --news-text:#78350f; --disclaimer-border:#dde3ef;
+  }
+  /* ── 다크 모드 ── */
+  html.dark {
+    --bg:#0b1120; --surface:#131e33; --border:#1e2e4a; --thead:#0f1928;
+    --row-hover:#1a2940; --text:#dce6f5; --dim:#6b80a0; --muted:#4a5e80;
+    --summary-bg:rgba(37,99,235,0.1); --summary-border:rgba(37,99,235,0.35); --summary-text:#a0b8d8;
+    --spotlight-bg:rgba(34,197,94,0.08); --spotlight-border:rgba(52,211,153,0.4);
+    --spotlight-text:#4ade80; --spotlight-sub:#dce6f5;
+    --card-shadow:0 1px 6px rgba(0,0,0,0.3); --chart-grid:#1e2e4a; --chart-text:#6b80a0;
+    --chart-tooltip-bg:#131e33; --chart-tooltip-title:#dce6f5; --chart-tooltip-border:#1e2e4a;
+    --accent-header:#f59e0b; --badge-bg:rgba(37,99,235,0.15); --badge-border:rgba(37,99,235,0.5); --badge-text:#60a5fa;
+    --section-bar:#3b82f6; --section-text:#6b80a0;
+    --imp-high-bg:rgba(190,26,57,0.2); --imp-high-text:#f87171; --imp-mid-bg:rgba(146,103,10,0.2); --imp-mid-text:#fbbf24;
+    --imp-low-bg:rgba(90,110,140,0.2); --imp-low-text:#6b80a0; --watch-bg:rgba(0,107,66,0.2); --watch-text:#4ade80;
+    --caution-bg:rgba(185,28,28,0.2); --caution-text:#f87171; --verdict-split-bg:rgba(29,78,216,0.15);
+    --verdict-split-text:#60a5fa; --verdict-watch-bg:rgba(90,110,140,0.15); --verdict-watch-text:#6b80a0;
+    --news-bg:rgba(146,103,10,0.1); --news-border:rgba(251,191,36,0.4); --news-title:#fbbf24; --news-text:#d4a843;
+    --disclaimer-border:#1e2e4a;
+  }
+
+
   /* ── 라이트 모드 (기본값) ── */
   :root {
     --bg:#f4f6fb; --surface:#ffffff; --border:#dde3ef; --thead:#eef1f7;
@@ -401,7 +439,6 @@
 
 <script>
 
-  /* ── 테마 함수 ── */
   let _chartInstance = null;
   function _getChartColors() {
     const d = document.documentElement.classList.contains('dark');
@@ -415,13 +452,6 @@
     document.documentElement.classList.toggle('dark', theme==='dark');
     if (typeof _buildChart==='function') _buildChart();
   }
-  (function(){
-    var t = new URLSearchParams(window.location.search).get('theme')||'light';
-    _applyTheme(t);
-    window.addEventListener('message', function(e){
-      if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);
-    });
-  })();
 
 // 이틀 등락률 비교 차트
   function _buildChart(){
@@ -482,6 +512,16 @@
     }
   });
 }
+
+  /* 초기 테마 & 리스너 */
+  (function(){
+    var t = new URLSearchParams(window.location.search).get('theme')||'light';
+    _applyTheme(t);
+    window.addEventListener('message', function(e){
+      if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);
+    });
+  })();
+
 </script>
 </body>
 </html>

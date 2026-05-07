@@ -6,7 +6,7 @@
 <title>미국 장 시황 브리핑 — 2026.05.06</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@700&display=swap');
 
   /* ── 라이트 모드 (기본값) ── */
   :root {
@@ -43,7 +43,7 @@
     --news-bg:rgba(146,103,10,0.1); --news-border:rgba(251,191,36,0.4); --news-title:#fbbf24; --news-text:#d4a843;
     --disclaimer-border:#1e2e4a;
   }
-500;700;900&family=Oswald:wght@700&display=swap');
+
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
   
   body {
@@ -347,7 +347,6 @@
 
 <script>
 
-  /* ── 테마 함수 ── */
   let _chartInstance = null;
   function _getChartColors() {
     const d = document.documentElement.classList.contains('dark');
@@ -361,13 +360,6 @@
     document.documentElement.classList.toggle('dark', theme==='dark');
     if (typeof _buildChart==='function') _buildChart();
   }
-  (function(){
-    var t = new URLSearchParams(window.location.search).get('theme')||'light';
-    _applyTheme(t);
-    window.addEventListener('message', function(e){
-      if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);
-    });
-  })();
 
 function _buildChart(){
   var c=_getChartColors();
@@ -422,6 +414,16 @@ function _buildChart(){
   }
 });
 }
+
+  /* 초기 테마 & 리스너 */
+  (function(){
+    var t = new URLSearchParams(window.location.search).get('theme')||'light';
+    _applyTheme(t);
+    window.addEventListener('message', function(e){
+      if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme);
+    });
+  })();
+
 </script>
 </body>
 </html>
