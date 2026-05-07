@@ -87,8 +87,7 @@
     }
 
     .auth-logo .brand-icon {
-      width: 56px;
-      height: 56px;
+      width: 56px; height: 56px;
       background: linear-gradient(135deg, var(--accent) 0%, #6366f1 100%);
       border-radius: 14px;
       display: inline-flex;
@@ -106,11 +105,7 @@
       margin-bottom: 6px;
     }
 
-    .auth-logo p {
-      font-size: 12px;
-      color: var(--dim);
-      letter-spacing: 1px;
-    }
+    .auth-logo p { font-size: 12px; color: var(--dim); letter-spacing: 1px; }
 
     .tab-row {
       display: flex;
@@ -135,10 +130,7 @@
       transition: all 0.2s;
     }
 
-    .tab-btn.active {
-      background: var(--accent);
-      color: #fff;
-    }
+    .tab-btn.active { background: var(--accent); color: #fff; }
 
     .form-label {
       display: block;
@@ -204,7 +196,6 @@
     /* ──────────── APP SHELL ──────────── */
     #main-app { display: none; min-height: 100vh; }
 
-    /* Topbar */
     .topbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -267,14 +258,12 @@
     }
     .logout-btn:hover { color: var(--red); border-color: var(--red); }
 
-    /* Content */
     .app-content {
       margin-top: 60px;
       padding: 48px 48px 80px;
       max-width: 1100px;
     }
 
-    /* Section header */
     .page-header {
       margin-bottom: 40px;
       border-bottom: 1px solid var(--border);
@@ -289,35 +278,206 @@
       margin-bottom: 6px;
     }
 
-    .page-sub {
-      font-size: 13px;
-      color: var(--dim);
+    .page-sub { font-size: 13px; color: var(--dim); }
+
+    /* Admin panel */
+    .admin-box {
+      background: var(--surface);
+      border: 1px solid rgba(245,158,11,0.4);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
     }
 
-    /* Date group */
-    .date-group { margin-bottom: 48px; }
+    .admin-box-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
 
-    .date-tag {
-      display: inline-flex;
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-family: monospace;
+      font-size: 18px;
+      color: #4ade80;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .admin-instructions { font-size: 12px; color: var(--dim); line-height: 2; }
+    .admin-instructions code {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--accent2);
+    }
+
+    /* ──────────── CALENDAR ──────────── */
+    .cal-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 36px;
+    }
+
+    .cal-header {
+      display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .cal-month-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      color: var(--text);
+      letter-spacing: 2px;
+    }
+
+    .cal-nav-btn {
+      background: var(--border);
+      border: none;
+      color: var(--dim);
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .cal-nav-btn:hover { background: var(--accent); color: #fff; }
+
+    .cal-dow-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .cal-dow {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--dim);
+      letter-spacing: 1px;
+      padding: 6px 0;
+    }
+    .cal-dow:first-child { color: #ef4444; }  /* 일 */
+    .cal-dow:last-child  { color: #60a5fa; }  /* 토 */
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .cal-cell {
+      aspect-ratio: 1;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: default;
+      transition: all 0.18s;
+      position: relative;
+      padding: 4px;
+    }
+
+    .cal-cell.empty { background: transparent; }
+
+    .cal-cell.has-data {
+      cursor: pointer;
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+    .cal-cell.has-data:hover {
+      border-color: var(--accent);
+      background: rgba(59,130,246,0.08);
+    }
+
+    .cal-cell.no-data {
+      background: transparent;
+    }
+
+    .cal-cell.today .cal-num {
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      width: 26px; height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cal-cell.selected {
+      background: rgba(59,130,246,0.15) !important;
+      border: 1.5px solid var(--accent) !important;
+    }
+
+    .cal-num {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .cal-cell:nth-child(7n+1) .cal-num { color: #ef4444; } /* 일요일 */
+    .cal-cell:nth-child(7n)   .cal-num { color: #60a5fa; } /* 토요일 */
+    .cal-cell.selected .cal-num,
+    .cal-cell.today .cal-num  { color: inherit; }
+
+    .cal-dots {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cal-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+    .cal-dot.ready   { background: var(--green); }
+    .cal-dot.waiting { background: var(--muted); }
+
+    /* ──────────── DAY SESSIONS (선택된 날 카드) ──────────── */
+    .day-sessions-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .day-sessions-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      color: var(--text);
+      letter-spacing: 1px;
+    }
+
+    .day-sessions-badge {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--dim);
-      text-transform: uppercase;
-      margin-bottom: 18px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(59,130,246,0.15);
+      color: var(--accent);
     }
 
-    .date-tag::before {
-      content: '';
-      display: inline-block;
-      width: 3px; height: 14px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-
-    /* Session cards */
     .session-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -343,9 +503,7 @@
       transition: background 0.25s;
     }
 
-    .session-card.ready {
-      cursor: pointer;
-    }
+    .session-card.ready { cursor: pointer; }
 
     .session-card.ready:hover {
       border-color: var(--accent);
@@ -355,10 +513,7 @@
 
     .session-card.ready:hover::before { background: var(--accent); }
 
-    .session-card.not-ready {
-      opacity: 0.45;
-    }
-
+    .session-card.not-ready { opacity: 0.45; }
     .session-card.not-ready::before { background: var(--muted); }
 
     .session-emoji {
@@ -375,11 +530,7 @@
       margin-bottom: 4px;
     }
 
-    .session-time {
-      font-size: 12px;
-      color: var(--dim);
-      margin-bottom: 18px;
-    }
+    .session-time { font-size: 12px; color: var(--dim); margin-bottom: 18px; }
 
     .session-status {
       display: inline-flex;
@@ -408,53 +559,14 @@
       transform: translateX(3px);
     }
 
-    /* Admin panel */
-    .admin-box {
-      background: var(--surface);
-      border: 1px solid rgba(245,158,11,0.4);
-      border-radius: 16px;
-      padding: 28px 32px;
-      margin-bottom: 40px;
-    }
-
-    .admin-box-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent2);
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .code-block {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 20px;
-      font-family: monospace;
-      font-size: 18px;
-      color: #4ade80;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
-      display: inline-block;
-    }
-
-    .admin-instructions {
-      font-size: 12px;
+    /* 날짜 없을 때 빈 상태 */
+    .empty-day {
+      text-align: center;
+      padding: 48px 0;
       color: var(--dim);
-      line-height: 2;
+      font-size: 14px;
     }
-
-    .admin-instructions code {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 1px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      color: var(--accent2);
-    }
+    .empty-day .empty-icon { font-size: 40px; margin-bottom: 12px; }
 
     /* ──────────── MODAL ──────────── */
     #modal {
@@ -521,11 +633,7 @@
 
     .modal-close-btn:hover { background: var(--red); }
 
-    #briefing-frame {
-      flex: 1;
-      border: none;
-      width: 100%;
-    }
+    #briefing-frame { flex: 1; border: none; width: 100%; }
   </style>
 </head>
 <body>
@@ -567,7 +675,7 @@
   </header>
 
   <div class="app-content">
-    <!-- Admin 안내 (관리자에게만 표시) -->
+    <!-- Admin 안내 -->
     <div class="admin-box" id="admin-box" style="display:none">
       <div class="admin-box-title">⚙️ 관리자 패널 — 구독자에게 초대코드를 공유하세요</div>
       <div>
@@ -582,12 +690,33 @@
       </div>
     </div>
 
-    <!-- 시황 정보 -->
+    <!-- 페이지 헤더 -->
     <div class="page-header">
       <div class="page-title">시황 정보</div>
       <div class="page-sub" id="today-sub"></div>
     </div>
-    <div id="briefings-list"></div>
+
+    <!-- 캘린더 -->
+    <div class="cal-wrap">
+      <div class="cal-header">
+        <button class="cal-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
+        <div class="cal-month-label" id="cal-month-label"></div>
+        <button class="cal-nav-btn" onclick="changeMonth(1)">&#8250;</button>
+      </div>
+      <div class="cal-dow-row">
+        <div class="cal-dow">일</div>
+        <div class="cal-dow">월</div>
+        <div class="cal-dow">화</div>
+        <div class="cal-dow">수</div>
+        <div class="cal-dow">목</div>
+        <div class="cal-dow">금</div>
+        <div class="cal-dow">토</div>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+    </div>
+
+    <!-- 선택된 날의 세션 카드 -->
+    <div id="day-sessions-area"></div>
   </div>
 </div>
 
@@ -608,8 +737,8 @@
 // ══════════════════════════════════════════════════
 
 const CONFIG = {
-  adminPassword: 'jisun0754',   // 👑 관리자 비밀번호
-  inviteCode:    'brief2026'     // 🔑 구독자 초대코드 (공유할 코드)
+  adminPassword: 'jisun0754',
+  inviteCode:    'brief2026'
 };
 
 // 브리핑 목록 — 새 날짜 추가 시 항목을 아래에 추가하세요
@@ -618,34 +747,167 @@ const BRIEFINGS = [
     date:  '2026-05-06',
     label: '2026년 5월 6일 (수)',
     sessions: [
-      { period: '오전', emoji: '🌅', time: '08:30', file: 'briefings/2026_05_06_morning.html', ready: true  },
-      { period: '오후', emoji: '☀️', time: '16:00', file: 'briefings/2026_05_06_afternoon.html', ready: true },
-      { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_06_night.html',    ready: true },
+      { period: '오전', emoji: '🌅', time: '08:30', file: 'briefings/2026_05_06_morning.html',   ready: true  },
+      { period: '오후', emoji: '☀️', time: '16:00', file: 'briefings/2026_05_06_afternoon.html', ready: true  },
+      { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_06_night.html',     ready: true  },
     ]
-  }
-    {
+  },
+  {
     date:  '2026-05-07',
     label: '2026년 5월 7일 (목)',
     sessions: [
-      { period: '오전', emoji: '🌅', time: '08:30', file: 'briefings/2026_05_07_morning.html', ready: true  },
+      { period: '오전', emoji: '🌅', time: '08:30', file: 'briefings/2026_05_07_morning.html',   ready: true  },
       { period: '오후', emoji: '☀️', time: '16:00', file: 'briefings/2026_05_07_afternoon.html', ready: false },
-      { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_07_night.html',    ready: false },
+      { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_07_night.html',     ready: false },
     ]
   }
-  // 새 날짜 추가 예시 ↓ (이 주석 바로 아래에 붙여넣기)
+  // 새 날짜 추가 예시 ↓
   // ,{
-  //   date:  '2026-05-07',
-  //   label: '2026년 5월 7일 (목)',
+  //   date:  '2026-05-08',
+  //   label: '2026년 5월 8일 (금)',
   //   sessions: [
-  //     { period: '오전', emoji: '🌅', time: '08:30', file: 'briefings/2026_05_07_morning.html',   ready: true  },
-  //     { period: '오후', emoji: '☀️', time: '16:00', file: 'briefings/2026_05_07_afternoon.html', ready: false },
-  //     { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_07_night.html',    ready: false },
+  //     { period: '오전', emoji: '🌅', time: '08:30', file: 'briefings/2026_05_08_morning.html',   ready: false },
+  //     { period: '오후', emoji: '☀️', time: '16:00', file: 'briefings/2026_05_08_afternoon.html', ready: false },
+  //     { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_08_night.html',     ready: false },
   //   ]
   // }
 ];
 
 // ══════════════════════════════════════════════════
-//  기능 코드 (수정 불필요)
+//  캘린더 상태
+// ══════════════════════════════════════════════════
+
+let calYear, calMonth, selectedDate;
+
+// BRIEFINGS를 날짜 키로 빠르게 찾기
+const briefingMap = {};
+BRIEFINGS.forEach(b => { briefingMap[b.date] = b; });
+
+// ══════════════════════════════════════════════════
+//  캘린더 렌더링
+// ══════════════════════════════════════════════════
+
+function renderCalendar() {
+  const grid = document.getElementById('cal-grid');
+  const label = document.getElementById('cal-month-label');
+  grid.innerHTML = '';
+
+  label.textContent = `${calYear}년 ${calMonth + 1}월`;
+
+  const firstDay = new Date(calYear, calMonth, 1).getDay(); // 0=일
+  const lastDate = new Date(calYear, calMonth + 1, 0).getDate();
+  const today = new Date();
+  const todayStr = toDateStr(today.getFullYear(), today.getMonth(), today.getDate());
+
+  // 빈 셀 채우기 (1일 이전)
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement('div');
+    empty.className = 'cal-cell empty';
+    grid.appendChild(empty);
+  }
+
+  // 날짜 셀
+  for (let d = 1; d <= lastDate; d++) {
+    const dateStr = toDateStr(calYear, calMonth, d);
+    const briefing = briefingMap[dateStr];
+    const cell = document.createElement('div');
+    const isToday = dateStr === todayStr;
+    const isSelected = dateStr === selectedDate;
+
+    cell.className = 'cal-cell' +
+      (briefing ? ' has-data' : ' no-data') +
+      (isToday    ? ' today'    : '') +
+      (isSelected ? ' selected' : '');
+
+    // 날짜 숫자
+    const numEl = document.createElement('div');
+    numEl.className = 'cal-num';
+    numEl.textContent = d;
+    cell.appendChild(numEl);
+
+    // 브리핑 있으면 점 표시
+    if (briefing) {
+      const dots = document.createElement('div');
+      dots.className = 'cal-dots';
+      briefing.sessions.forEach(s => {
+        const dot = document.createElement('div');
+        dot.className = 'cal-dot ' + (s.ready ? 'ready' : 'waiting');
+        dots.appendChild(dot);
+      });
+      cell.appendChild(dots);
+
+      cell.onclick = () => selectDate(dateStr);
+    }
+
+    grid.appendChild(cell);
+  }
+}
+
+function toDateStr(y, m, d) {
+  return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+}
+
+function changeMonth(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0)  { calMonth = 11; calYear--; }
+  renderCalendar();
+}
+
+function selectDate(dateStr) {
+  selectedDate = dateStr;
+  renderCalendar();
+  renderDaySessions(dateStr);
+}
+
+// ══════════════════════════════════════════════════
+//  선택 날짜 세션 카드 렌더링
+// ══════════════════════════════════════════════════
+
+function renderDaySessions(dateStr) {
+  const area = document.getElementById('day-sessions-area');
+  const briefing = briefingMap[dateStr];
+
+  if (!briefing) {
+    area.innerHTML = `
+      <div class="empty-day">
+        <div class="empty-icon">📭</div>
+        해당 날짜의 브리핑이 없습니다.
+      </div>`;
+    return;
+  }
+
+  area.innerHTML = `
+    <div class="day-sessions-header">
+      <div class="day-sessions-label">${briefing.label}</div>
+      <div class="day-sessions-badge">
+        ${briefing.sessions.filter(s=>s.ready).length} / ${briefing.sessions.length} 업로드됨
+      </div>
+    </div>
+    <div class="session-row">
+      ${briefing.sessions.map(s => `
+        <div class="session-card ${s.ready ? 'ready' : 'not-ready'}"
+             ${s.ready ? `onclick="openBriefing('${s.file}','${briefing.label} ${s.period}')"` : ''}>
+          <span class="session-emoji">${s.emoji}</span>
+          <div class="session-title">${s.period}</div>
+          <div class="session-time">${s.time} 브리핑</div>
+          <div class="session-status ${s.ready ? 'status-ready' : 'status-waiting'}">
+            ${s.ready ? '● 열람 가능' : '○ 준비 중'}
+          </div>
+          ${s.ready ? '<span class="open-icon">→</span>' : ''}
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+// 가장 최근 브리핑 날짜 자동 선택
+function selectLatestDate() {
+  const dates = Object.keys(briefingMap).sort().reverse();
+  if (dates.length > 0) selectDate(dates[0]);
+}
+
+// ══════════════════════════════════════════════════
+//  기능 코드
 // ══════════════════════════════════════════════════
 
 let activeTab = 'viewer';
@@ -654,8 +916,8 @@ function switchTab(t) {
   activeTab = t;
   document.getElementById('tab-v').classList.toggle('active', t === 'viewer');
   document.getElementById('tab-a').classList.toggle('active', t === 'admin');
-  document.getElementById('lbl').textContent        = t === 'viewer' ? '초대코드' : '관리자 비밀번호';
-  document.getElementById('pw-input').placeholder   = t === 'viewer' ? '초대코드를 입력하세요' : '비밀번호를 입력하세요';
+  document.getElementById('lbl').textContent      = t === 'viewer' ? '초대코드' : '관리자 비밀번호';
+  document.getElementById('pw-input').placeholder = t === 'viewer' ? '초대코드를 입력하세요' : '비밀번호를 입력하세요';
   document.getElementById('err-msg').classList.remove('show');
   document.getElementById('pw-input').classList.remove('shake');
   document.getElementById('pw-input').value = '';
@@ -676,7 +938,7 @@ function tryLogin() {
     launchApp(role);
   } else {
     inp.classList.remove('shake');
-    void inp.offsetWidth; // reflow for re-trigger
+    void inp.offsetWidth;
     inp.classList.add('shake');
     err.classList.add('show');
     inp.value = '';
@@ -691,8 +953,8 @@ function launchApp(role) {
   if (role === 'admin') {
     chip.textContent = '👑 관리자';
     chip.classList.add('admin');
-    document.getElementById('admin-box').style.display    = 'block';
-    document.getElementById('show-invite').textContent    = CONFIG.inviteCode;
+    document.getElementById('admin-box').style.display = 'block';
+    document.getElementById('show-invite').textContent = CONFIG.inviteCode;
   } else {
     chip.textContent = '📖 구독자';
   }
@@ -702,42 +964,16 @@ function launchApp(role) {
   document.getElementById('today-sub').textContent =
     `오늘: ${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 (${days[d.getDay()]})`;
 
-  renderBriefings();
-}
-
-function renderBriefings() {
-  const list = document.getElementById('briefings-list');
-  list.innerHTML = '';
-
-  // 최신 날짜가 위에 오도록 정렬
-  const sorted = [...BRIEFINGS].sort((a,b) => b.date.localeCompare(a.date));
-
-  sorted.forEach(day => {
-    const g = document.createElement('div');
-    g.className = 'date-group';
-    g.innerHTML = `
-      <div class="date-tag">${day.label}</div>
-      <div class="session-row">
-        ${day.sessions.map(s => `
-          <div class="session-card ${s.ready ? 'ready' : 'not-ready'}"
-               ${s.ready ? `onclick="openBriefing('${s.file}','${day.label} ${s.period}')"` : ''}>
-            <span class="session-emoji">${s.emoji}</span>
-            <div class="session-title">${s.period}</div>
-            <div class="session-time">${s.time} 브리핑</div>
-            <div class="session-status ${s.ready ? 'status-ready' : 'status-waiting'}">
-              ${s.ready ? '● 열람 가능' : '○ 준비 중'}
-            </div>
-            ${s.ready ? '<span class="open-icon">→</span>' : ''}
-          </div>
-        `).join('')}
-      </div>`;
-    list.appendChild(g);
-  });
+  // 캘린더 초기화 — 오늘 날짜 기준으로 열기
+  calYear  = d.getFullYear();
+  calMonth = d.getMonth();
+  renderCalendar();
+  selectLatestDate();
 }
 
 function openBriefing(file, title) {
-  document.getElementById('modal-title').textContent    = title;
-  document.getElementById('briefing-frame').src         = file;
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('briefing-frame').src      = file;
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -755,16 +991,14 @@ function logout() {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// 테마 토글
 function toggleTheme() {
   const isLight = document.body.classList.toggle('light');
   localStorage.setItem('briefing_theme', isLight ? 'light' : 'dark');
   document.getElementById('theme-toggle').textContent = isLight ? '☀️ 라이트' : '🌙 다크';
 }
 
-// 자동 로그인 (이미 인증된 경우)
+// 자동 로그인
 (function() {
-  // 테마 복원
   if (localStorage.getItem('briefing_theme') === 'light') {
     document.body.classList.add('light');
     const btn = document.getElementById('theme-toggle');
