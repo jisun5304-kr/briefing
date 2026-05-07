@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-05-07 오전 시황 브리핑</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: #f5f5f3; color: #222; font-size: 14px; line-height: 1.7; }
+  .page { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
+  .title-block { background: #1B3A6B; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; color: #fff; }
+  .title-block h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .title-block .meta { font-size: 13px; opacity: 0.75; }
+  .badge-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+  .badge-up { background: #d4edda; color: #1a5c1a; }
+  .badge-warn { background: #fff3cd; color: #7a5200; }
+  .badge-info { background: #d1ecf1; color: #0c5460; }
+  .badge-danger { background: #f8d7da; color: #721c24; }
+  .section { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 18px; border: 1px solid #e8e8e5; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #f0f0ee; }
+  .section-num { background: #1B3A6B; color: #fff; font-size: 13px; font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-title { font-size: 16px; font-weight: 700; color: #1B3A6B; }
+  .index-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .index-card { border: 1px solid #e8e8e5; border-radius: 10px; padding: 14px 16px; }
+  .index-card .name { font-size: 12px; color: #888; margin-bottom: 4px; }
+  .index-card .val { font-size: 22px; font-weight: 700; color: #222; margin-bottom: 2px; }
+  .index-card .chg { font-size: 13px; font-weight: 600; }
+  .up { color: #1a7a3a; }
+  .down { color: #c0392b; }
+  .neutral { color: #7a7a7a; }
+  .chart-wrap { position: relative; width: 100%; height: 200px; margin-bottom: 20px; }
+  .sector-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
+  .sector-row { display: flex; justify-content: space-between; align-items: center; background: #f8f8f6; border-radius: 8px; padding: 9px 14px; font-size: 13px; }
+  .note-box { border-radius: 10px; padding: 14px 18px; font-size: 13px; line-height: 1.65; margin-top: 12px; }
+  .note-blue { background: #e8f1fb; color: #1a3a6b; border-left: 4px solid #2E5EA0; }
+  .note-green { background: #e8f5ea; color: #1a4a1a; border-left: 4px solid #2D6A4F; }
+  .note-amber { background: #fff8e1; color: #5a3e00; border-left: 4px solid #E0A800; }
+  .note-red { background: #fdf0f0; color: #6a1a1a; border-left: 4px solid #C0392B; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; }
+  th { background: #1B3A6B; color: #fff; padding: 9px 12px; text-align: left; font-weight: 600; }
+  th:first-child { border-radius: 6px 0 0 0; }
+  th:last-child { border-radius: 0 6px 0 0; }
+  td { padding: 9px 12px; border-bottom: 1px solid #f0f0ee; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafaf8; }
+  .action-pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .pill-split { background: #d1ecf1; color: #0c5460; }
+  .pill-watch { background: #fff3cd; color: #7a5200; }
+  .pill-caution { background: #f8d7da; color: #721c24; }
+  .outlook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .outlook-card { border-radius: 10px; padding: 14px 16px; }
+  .outlook-card .ol { font-size: 11px; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .outlook-card .ov { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .outlook-card .od { font-size: 12px; line-height: 1.5; }
+  .oc-green { background: #e8f5ea; }
+  .oc-green .ol, .oc-green .ov { color: #1a5c1a; }
+  .oc-green .od { color: #2d6a4f; }
+  .oc-blue { background: #e8f1fb; }
+  .oc-blue .ol, .oc-blue .ov { color: #1a3a6b; }
+  .oc-blue .od { color: #2e5ea0; }
+  .oc-amber { background: #fff8e1; }
+  .oc-amber .ol, .oc-amber .ov { color: #7a5200; }
+  .oc-amber .od { color: #a07000; }
+  .supply-wrap { margin-bottom: 14px; }
+  .supply-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+  .supply-lbl { width: 52px; color: #888; flex-shrink: 0; }
+  .supply-track { flex: 1; height: 8px; background: #f0f0ee; border-radius: 4px; overflow: hidden; }
+  .supply-fill { height: 100%; border-radius: 4px; }
+  .sf-foreign { background: #2E5EA0; }
+  .sf-inst { background: #2D6A4F; }
+  .sf-indiv { background: #C0392B; }
+  .supply-val { width: 90px; text-align: right; font-weight: 600; font-size: 12px; }
+  .event-list { display: flex; flex-direction: column; gap: 10px; }
+  .event-item { display: flex; gap: 12px; padding: 12px 14px; border-radius: 10px; background: #f8f8f6; font-size: 13px; align-items: flex-start; }
+  .event-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .dot-red { background: #C0392B; }
+  .dot-blue { background: #2E5EA0; }
+  .dot-green { background: #2D6A4F; }
+  .event-label { font-weight: 600; color: #222; margin-bottom: 3px; }
+  .event-desc { color: #555; line-height: 1.55; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+  .rsi-box { background: #f8f8f6; border-radius: 10px; padding: 14px 18px; font-size: 13px; margin-top: 12px; }
+  .rsi-box strong { color: #1B3A6B; }
+  .tip-row { display: flex; gap: 6px; align-items: flex-start; margin-bottom: 6px; font-size: 13px; }
+  .tip-row:last-child { margin-bottom: 0; }
+  .tip-icon { flex-shrink: 0; margin-top: 1px; }
+  .disclaimer { font-size: 11px; color: #aaa; margin-top: 24px; padding-top: 14px; border-top: 1px solid #e8e8e5; line-height: 1.6; }
+  @media (max-width: 600px) {
+    .index-grid { grid-template-columns: repeat(2, 1fr); }
+    .outlook-grid { grid-template-columns: 1fr; }
+    .sector-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 제목 -->
+  <div class="title-block">
+    <h1>📊 오전 시황 브리핑</h1>
+    <div class="meta">2026년 5월 7일 (목) &nbsp;|&nbsp; 오전 8:00 통합 브리핑</div>
+    <div class="badge-row">
+      <span class="badge badge-up">미국 3대 지수 ↑ 신고가</span>
+      <span class="badge badge-up">코스피 7,384pt 신고가</span>
+      <span class="badge badge-info">외국인 역대 최대 매수</span>
+      <span class="badge badge-warn">내일 고용보고서 주목</span>
+    </div>
+  </div>
+
+  <!-- ① 미국 시장 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">①</div>
+      <div class="section-title">미국 시장 마감 결과 &nbsp;<span style="font-size:13px;font-weight:400;color:#888;">(5월 6일 현지 기준)</span></div>
+    </div>
+
+    <div class="index-grid">
+      <div class="index-card">
+        <div class="name">다우존스</div>
+        <div class="val">49,910</div>
+        <div class="chg up">▲ +1.24% &nbsp;(+612p)</div>
+      </div>
+      <div class="index-card" style="border-color:#2E5EA0;">
+        <div class="name">S&amp;P 500 &nbsp;<span class="badge badge-up" style="font-size:10px;vertical-align:middle;">신고가</span></div>
+        <div class="val">7,365</div>
+        <div class="chg up">▲ +1.46% &nbsp;(+105p)</div>
+      </div>
+      <div class="index-card" style="border-color:#2E5EA0;">
+        <div class="name">나스닥 &nbsp;<span class="badge badge-up" style="font-size:10px;vertical-align:middle;">신고가</span></div>
+        <div class="val">25,838</div>
+        <div class="chg up">▲ +2.02% &nbsp;(+512p)</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <canvas id="indexChart" role="img" aria-label="미국 4대 지수 등락률. 다우 +1.24%, S&P500 +1.46%, 나스닥 +2.02%, 필라델피아반도체 +4.50%">다우 +1.24%, S&P500 +1.46%, 나스닥 +2.02%, 필라델피아반도체 +4.50%</canvas>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;color:#1B3A6B;margin-bottom:8px;">🔑 핵심 이유</div>
+    <div class="sector-grid">
+      <div class="sector-row"><span style="color:#555;">AMD 어닝 서프라이즈</span><span class="up" style="font-weight:700;">+18.6%</span></div>
+      <div class="sector-row"><span style="color:#555;">필라델피아 반도체지수</span><span class="up" style="font-weight:700;">+4.5% 신고가</span></div>
+      <div class="sector-row"><span style="color:#555;">월트디즈니</span><span class="up" style="font-weight:700;">+7.5%</span></div>
+      <div class="sector-row"><span style="color:#555;">우버</span><span class="up" style="font-weight:700;">+8.5%</span></div>
+      <div class="sector-row"><span style="color:#555;">국제유가 (WTI)</span><span class="down" style="font-weight:700;">-7%대 ↓</span></div>
+      <div class="sector-row"><span style="color:#555;">미·이란 종전 기대</span><span class="badge badge-up">핵심 호재</span></div>
+    </div>
+
+    <div class="note-box note-blue">
+      <strong>📌 쉽게 말하면</strong> — AMD라는 반도체 회사가 "AI 덕분에 매출이 폭발했어!"라고 깜짝 발표하면서 반도체·AI 주식 전체가 급등했어요. 동시에 미국-이란 전쟁 종식 기대로 유가가 떨어지며 시장 전체가 밝은 분위기였습니다.
+    </div>
+  </div>
+
+  <!-- ② 주요 일정 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">②</div>
+      <div class="section-title">오늘의 주요 일정 및 이벤트</div>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;color:#1B3A6B;margin-bottom:10px;">경제 지표 일정</div>
+    <table>
+      <thead>
+        <tr><th>날짜</th><th>항목</th><th>중요도</th><th>내용</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:#C0392B;font-weight:600;">5/8 (금)</td>
+          <td style="font-weight:600;">미국 비농업 고용보고서 (NFP)</td>
+          <td><span style="color:#C0392B;font-weight:700;">★★★</span></td>
+          <td style="color:#555;">예상 5.5~6.2만명. 결과에 따라 연준 금리 방향 변동 가능</td>
+        </tr>
+        <tr>
+          <td>5/7 (오늘)</td>
+          <td>ADP 민간고용 결과 반영</td>
+          <td><span style="color:#E0A800;font-weight:700;">★★</span></td>
+          <td style="color:#555;">10.9만명 증가로 예상치 상회 → 연준 금리 동결 압력</td>
+        </tr>
+        <tr>
+          <td>5월 말</td>
+          <td>엔비디아 실적 발표 (예고)</td>
+          <td><span style="color:#2E5EA0;font-weight:700;">★★</span></td>
+          <td style="color:#555;">국내 반도체주 다음 변곡점. 선반영 기대감 퍼지는 중</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="event-list">
+      <div class="event-item">
+        <span class="event-dot dot-red"></span>
+        <div>
+          <div class="event-label">쿠팡 1분기 실적 쇼크</div>
+          <div class="event-desc">영업손실 3,545억원 — 예상치의 5배 이상. 개인정보 유출 보상금 12억 달러(약 1조6850억원) 지급 영향. 시간외 주가 -3~4% 하락.</div>
+        </div>
+      </div>
+      <div class="event-item">
+        <span class="event-dot dot-blue"></span>
+        <div>
+          <div class="event-label">S&amp;P 500 기업 실적 시즌 진행 중</div>
+          <div class="event-desc">5월 1일 기준 실적 발표 기업의 80% 이상이 예상치를 웃돌며 4년 만에 최강 이익 성장 궤도 진입.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 국내 개장 전망 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">③</div>
+      <div class="section-title">오늘 국내 개장 전망</div>
+    </div>
+
+    <div class="outlook-grid">
+      <div class="outlook-card oc-green">
+        <div class="ol">코스피 방향</div>
+        <div class="ov">상승 우세 ↑</div>
+        <div class="od">전일 7,384pt 신고가. 추가 상승 vs 단기 차익 실현 혼재 예상</div>
+      </div>
+      <div class="outlook-card oc-blue">
+        <div class="ol">원/달러 환율</div>
+        <div class="ov">1,476원대</div>
+        <div class="od">이란 휴전 기대 → 달러 약세 → 원화 강세 가능. 외국인 매수 유리</div>
+      </div>
+      <div class="outlook-card oc-amber">
+        <div class="ol">코스닥 방향</div>
+        <div class="ov">혼조 ↔</div>
+        <div class="od">대형 반도체주 쏠림 지속. 중소형주는 종목별 차별화</div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;color:#1B3A6B;margin-bottom:10px;">외국인·기관·개인 수급 예측</div>
+    <div class="supply-wrap">
+      <div class="supply-row">
+        <span class="supply-lbl">외국인</span>
+        <div class="supply-track"><div class="supply-fill sf-foreign" style="width:95%"></div></div>
+        <span class="supply-val up">강력 순매수 ↑↑↑</span>
+      </div>
+      <div class="supply-row">
+        <span class="supply-lbl">기관</span>
+        <div class="supply-track"><div class="supply-fill sf-inst" style="width:55%"></div></div>
+        <span class="supply-val up">순매수 ↑</span>
+      </div>
+      <div class="supply-row">
+        <span class="supply-lbl">개인</span>
+        <div class="supply-track"><div class="supply-fill sf-indiv" style="width:75%"></div></div>
+        <span class="supply-val down">차익 실현 ↓</span>
+      </div>
+      <div style="font-size:12px;color:#888;margin-top:6px;">전일 외국인 역대 최대 순매수 3조1,878억원 — 삼성전자만 3조967억원 매수.</div>
+    </div>
+
+    <div class="note-box note-green">
+      <strong>📌 쉽게 말하면</strong> — 외국인이 역사상 가장 많은 돈을 어제 한국 반도체주에 쏟아부었어요. 이 흐름이 오늘도 이어지면 추가 상승이 가능하지만, 너무 빠르게 오른 만큼 개인 투자자들의 "이쯤에서 팔자" 물량이 오후에 나올 수 있어요.
+    </div>
+  </div>
+
+  <!-- ④ 눈여겨볼 종목 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">④</div>
+      <div class="section-title">오늘 눈여겨볼 종목 + 조심할 종목</div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>종목</th><th>현재가</th><th>전일 등락</th><th>52주 위치</th><th>RSI</th><th>목표가</th><th>판단</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>삼성전자</strong></td>
+          <td>266,000원</td>
+          <td class="up" style="font-weight:600;">▲ +14.4%</td>
+          <td><span class="badge badge-up" style="font-size:11px;">신고가권</span></td>
+          <td style="color:#C0392B;font-weight:600;">75+ (과열)</td>
+          <td>300,000원</td>
+          <td><span class="action-pill pill-split">분할매수</span></td>
+        </tr>
+        <tr>
+          <td><strong>SK하이닉스</strong></td>
+          <td>160만1천원</td>
+          <td class="up" style="font-weight:600;">▲ +10.6%</td>
+          <td><span class="badge badge-up" style="font-size:11px;">신고가권</span></td>
+          <td style="color:#C0392B;font-weight:600;">73+ (과열)</td>
+          <td>180만원</td>
+          <td><span class="action-pill pill-split">분할매수</span></td>
+        </tr>
+        <tr>
+          <td><strong>삼성전기</strong></td>
+          <td>실시간 확인</td>
+          <td class="up">동반 강세</td>
+          <td><span class="badge badge-info" style="font-size:11px;">중상단</span></td>
+          <td>55~65</td>
+          <td>—</td>
+          <td><span class="action-pill pill-split">분할매수</span></td>
+        </tr>
+        <tr>
+          <td><strong>LG이노텍</strong></td>
+          <td>실시간 확인</td>
+          <td class="up">동반 강세</td>
+          <td><span class="badge badge-info" style="font-size:11px;">중상단</span></td>
+          <td>55~65</td>
+          <td>—</td>
+          <td><span class="action-pill pill-watch">관망</span></td>
+        </tr>
+        <tr style="background:#fdf5f5;">
+          <td><strong style="color:#C0392B;">⚠ 쿠팡</strong></td>
+          <td>하락세</td>
+          <td class="down" style="font-weight:600;">▼ -3~4% (시외)</td>
+          <td><span class="badge badge-danger" style="font-size:11px;">불확실</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="action-pill" style="background:#f8d7da;color:#721c24;">조심</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="rsi-box">
+      <strong>💡 RSI란?</strong> — 주가가 얼마나 빠르게 많이 올랐는지 보여주는 숫자 (0~100).<br>
+      <strong style="color:#C0392B;">70 이상</strong> = 너무 과열 (단기 하락 가능성 높음) &nbsp;/&nbsp; <strong style="color:#2E5EA0;">30 이하</strong> = 너무 많이 떨어짐 (반등 가능성)<br>
+      삼성전자·SK하이닉스는 현재 <strong>과열 구간</strong>이에요. 한 번에 사기보다 나눠서 사는 분할매수가 안전합니다.
+    </div>
+
+    <div class="two-col" style="margin-top:14px;">
+      <div class="note-box note-green" style="margin-top:0;">
+        <strong>👀 눈여겨볼 포인트</strong><br>
+        반도체 후방주 (삼성전기·LG이노텍·대덕전자) 매수세 확산 여부. AI 밸류체인 순환매 신호 시작 가능성.
+      </div>
+      <div class="note-box note-red" style="margin-top:0;">
+        <strong>⚠️ 리스크 요인</strong><br>
+        내일(5/8) 비농업 고용보고서 경계감. 단기 과열에 따른 오후 차익 실현 물량 주의.
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    ※ 본 브리핑은 투자 참고 정보 제공 목적이며, 특정 종목의 매수·매도를 권유하지 않습니다. 현재가·RSI는 전일 종가 기준 추정치로 실시간 정보와 다를 수 있습니다. 투자 결과는 투자자 본인의 책임입니다.
+  </div>
+</div>
+
+<script>
+  const ctx = document.getElementById('indexChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['다우존스', 'S&P 500', '나스닥', '필라델피아\n반도체'],
+      datasets: [{
+        label: '등락률 (%)',
+        data: [1.24, 1.46, 2.02, 4.50],
+        backgroundColor: ['#B5D4F4', '#85B7EB', '#378ADD', '#1B3A6B'],
+        borderRadius: 6,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (c) => ' +' + c.parsed.y.toFixed(2) + '%' } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 12 }, color: '#888' } },
+        y: {
+          min: 0, max: 6,
+          grid: { color: 'rgba(0,0,0,0.06)' },
+          ticks: { callback: (v) => '+' + v + '%', font: { size: 11 }, color: '#888' }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
