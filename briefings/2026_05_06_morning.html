@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)file:///C:/Users/Usery/Downloads/morning_brief_may6_2.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>오전 시황 브리핑 — 2026.05.06</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { color-scheme: light only; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    background: #f4f6fb !important;
+    color: #1a2236 !important;
+    padding: 20px;
+    font-size: 13px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #dde3ef;
+  }
+  .header h1 { font-family: 'Oswald', sans-serif; font-size: 26px; letter-spacing: 1px; color: #b8720a; }
+  .header p { color: #5a6e8c; font-size: 12px; margin-top: 4px; }
+
+  .badge {
+    background: #dbeafe;
+    border: 1px solid #2563eb;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: #2563eb;
+    font-weight: 700;
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #5a6e8c;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px; height: 14px;
+    border-radius: 2px;
+    background: #2563eb;
+    flex-shrink: 0;
+  }
+
+  .index-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 18px; }
+  .index-card {
+    background: #ffffff;
+    border: 1px solid #dde3ef;
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .index-card::after {
+    content: ''; position: absolute; top:0; left:0; right:0; height:4px; border-radius:12px 12px 0 0;
+  }
+  .index-card.up::after { background: #00a65a; }
+  .index-card.down::after { background: #e02f55; }
+  .index-card .label { font-size: 11px; color: #5a6e8c; font-weight: 700; margin-bottom: 8px; }
+  .index-card .value { font-family: 'Oswald', sans-serif; font-size: 24px; color: #1a2236; }
+  .index-card .change { font-size: 13px; font-weight: 700; margin-top: 5px; }
+  .index-card .change.up  { color: #00834a; }
+  .index-card .change.down { color: #c0253f; }
+  .index-card .emoji { font-size: 20px; position: absolute; right: 14px; top: 16px; }
+
+  .chart-wrap {
+    background: #ffffff;
+    border: 1px solid #dde3ef;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .summary-box {
+    background: #eff6ff;
+    border: 1px solid #93c5fd;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 18px;
+  }
+  .summary-box p { font-size: 13px; line-height: 1.9; color: #1e3a5f; }
+  .hl { color: #b8720a; font-weight: 700; }
+
+  .sector-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+  .sector-row {
+    background: #ffffff;
+    border: 1px solid #dde3ef;
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .sector-row .name { font-size: 12px; color: #1a2236; }
+  .sector-row .pct { font-size: 14px; font-weight: 700; }
+  .pct.up   { color: #00834a; }
+  .pct.down { color: #c0253f; }
+
+  .data-table { width: 100%; border-collapse: collapse; margin-bottom: 18px; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .data-table thead tr { background: #eef1f7; }
+  .data-table th { color: #5a6e8c; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 10px 12px; text-align: left; border-bottom: 1px solid #dde3ef; }
+  .data-table td { padding: 11px 12px; font-size: 12px; border-bottom: 1px solid #eef1f7; background: #ffffff; color: #1a2236; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: #f8faff; }
+
+  .imp { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .imp.high { background: #fee2e8; color: #be1a39; }
+  .imp.mid  { background: #fef3c7; color: #92670a; }
+  .imp.low  { background: #e5eaf5; color: #5a6e8c; }
+
+  .arrow-up   { color: #00834a; font-weight: 700; }
+  .arrow-down { color: #c0253f; font-weight: 700; }
+
+  .kospi-spotlight {
+    background: #ecfdf5;
+    border: 2px solid #34d399;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 18px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,166,90,0.1);
+  }
+  .kospi-spotlight .big { font-family: 'Oswald', sans-serif; font-size: 44px; color: #00834a; line-height: 1; }
+  .kospi-spotlight .headline { font-size: 17px; color: #1a2236; margin-top: 8px; font-weight: 700; }
+  .kospi-spotlight .note { font-size: 13px; color: #00834a; margin-top: 8px; font-weight: 700; }
+  .kospi-spotlight .sub { font-size: 12px; color: #5a6e8c; margin-top: 6px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+  .info-card { background: #ffffff; border: 1px solid #dde3ef; border-radius: 12px; padding: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .info-card .title { font-size: 12px; color: #5a6e8c; font-weight: 700; margin-bottom: 10px; }
+  .info-item { display: flex; justify-content: space-between; align-items: flex-start; font-size: 12px; margin-bottom: 8px; gap: 8px; }
+  .info-item .k { color: #5a6e8c; flex-shrink: 0; }
+  .info-item .v { font-weight: 700; color: #1a2236; text-align: right; }
+  .info-item .v.up   { color: #00834a; }
+  .info-item .v.down { color: #c0253f; }
+  .note-small { font-size: 10px; color: #8a9ab8; margin-top: 6px; }
+
+  .stock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+  .stock-card { background: #ffffff; border: 1px solid #dde3ef; border-radius: 12px; padding: 16px; position: relative; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .stock-card.watch   { border-color: #6ee7b7; border-width: 1.5px; }
+  .stock-card.caution { border-color: #fca5a5; border-width: 1.5px; }
+  .stock-tag { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
+  .stock-tag.watch   { background: #d1fae5; color: #006b42; }
+  .stock-tag.caution { background: #fee2e2; color: #b91c1c; }
+  .stock-name { font-size: 16px; font-weight: 700; color: #1a2236; margin-bottom: 2px; }
+  .stock-code { font-size: 10px; color: #8a9ab8; margin-bottom: 10px; }
+  .stock-stat { display: flex; justify-content: space-between; font-size: 12px; color: #5a6e8c; margin-top: 7px; }
+  .stock-stat span:last-child { color: #1a2236; font-weight: 600; }
+  .verdict { margin-top: 12px; padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; text-align: center; }
+  .verdict.split  { background: #dbeafe; color: #1d4ed8; }
+  .verdict.watch2 { background: #f1f5f9; color: #5a6e8c; }
+
+  .rsi-wrap { margin-top: 10px; }
+  .rsi-label { display: flex; justify-content: space-between; font-size: 10px; color: #8a9ab8; margin-bottom: 4px; }
+  .rsi-track { height: 8px; border-radius: 4px; background: #e5eaf5; position: relative; }
+  .rsi-fill  { position: absolute; left:0; top:0; height:100%; border-radius:4px; }
+  .rsi-dot   { position: absolute; top:-3px; width:14px; height:14px; border-radius:50%; border:2px solid #ffffff; transform:translateX(-50%); }
+
+  .disclaimer { text-align: center; font-size: 11px; color: #8a9ab8; margin-top: 20px; padding-top: 14px; border-top: 1px solid #dde3ef; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>📈 오전 통합 브리핑</h1>
+    <p>2026년 5월 6일 (수) · 오전 8:00 시황 리포트</p>
+  </div>
+  <div class="badge">🟢 오늘 시황</div>
+</div>
+
+<div class="section-title">① 미국 시장 마감 결과 (5월 5일 현지 기준)</div>
+
+<div class="index-grid">
+  <div class="index-card up">
+    <span class="emoji">🟢</span>
+    <div class="label">S&amp;P 500 (미국 대표 500대 기업)</div>
+    <div class="value">7,259.22</div>
+    <div class="change up">▲ +0.81% — 사상 최고치!</div>
+  </div>
+  <div class="index-card up">
+    <span class="emoji">🟢</span>
+    <div class="label">나스닥 (기술주 중심 지수)</div>
+    <div class="value">25,326.13</div>
+    <div class="change up">▲ +1.03% — 사상 최고치!</div>
+  </div>
+  <div class="index-card up">
+    <span class="emoji">🟢</span>
+    <div class="label">다우존스 (30대 기업 지수)</div>
+    <div class="value">49,298.25</div>
+    <div class="change up">▲ +0.73%</div>
+  </div>
+</div>
+
+<div class="chart-wrap">
+  <div class="section-title" style="margin-bottom:14px;">최근 3거래일 S&amp;P500 vs 나스닥 흐름</div>
+  <canvas id="spChart" height="372" style="display: block; box-sizing: border-box; height: 248px; width: 826px;" width="1240"></canvas>
+</div>
+
+<div class="summary-box">
+  <p>
+    📌 <span class="hl">왜 올랐나요? — 쉽게 설명</span><br>
+    ① 미국·이란 전쟁 휴전 유지 → "전쟁이 더 커지지 않겠구나"라는 안도감<br>
+    ② 그 결과 <span class="hl">유가(기름값)가 -3.9% 하락</span> → 물가 걱정 완화 → 주식에 호재<br>
+    ③ AMD(미국 반도체 기업)가 <span class="hl">AI 칩 깜짝 호실적</span> 발표 → 장 마감 후 +10% 급등<br>
+    ④ S&amp;P500 기업 중 <span class="hl">85%가 예상보다 좋은 실적</span> 기록 → 시장 전반에 자신감
+  </p>
+</div>
+
+<div class="section-title">주요 섹터 흐름</div>
+<div class="sector-grid">
+  <div class="sector-row"><span class="name">💾 반도체·AI 칩</span><span class="pct up">+4.23%🔥</span></div>
+  <div class="sector-row"><span class="name">🤖 AI·빅테크</span><span class="pct up">강세↑</span></div>
+  <div class="sector-row"><span class="name">🏥 바이오·제약</span><span class="pct up">소폭 강세</span></div>
+  <div class="sector-row"><span class="name">⛽ 에너지·정유</span><span class="pct down">유가↓ 약세</span></div>
+  <div class="sector-row"><span class="name">🛒 이커머스·결제</span><span class="pct down">혼조 (약세)</span></div>
+  <div class="sector-row"><span class="name">🏭 산업재·방산</span><span class="pct up">중립~강세</span></div>
+</div>
+
+<div class="section-title">② 오늘 주요 일정 및 이벤트</div>
+<table class="data-table">
+  <thead>
+    <tr><th>시간</th><th>항목</th><th>내용</th><th>중요도</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>오늘 확인됨</td><td>🇺🇸 AMD 실적</td><td>AI GPU 덕분에 깜짝 호실적 · 시간외 +10% 급등</td><td><span class="imp high">★★★ 높음</span></td></tr>
+    <tr><td>오늘 확인됨</td><td>🇰🇷 쿠팡 Inc 실적</td><td>1Q 영업손실 3,545억원 — 예상보다 훨씬 나쁨 (어닝 쇼크)</td><td><span class="imp high">★★★ 높음</span></td></tr>
+    <tr><td>어제 발표</td><td>🇺🇸 JOLTS 구인 건수</td><td>3월 687만건 · 고용 강세 → 금리 인하 기대 낮춤</td><td><span class="imp mid">★★ 보통</span></td></tr>
+    <tr><td>이번 주 목요일</td><td>🇺🇸 FOMC 의사록</td><td>연준(미국 중앙은행)이 금리를 왜 동결했는지 이유 공개</td><td><span class="imp mid">★★ 보통</span></td></tr>
+    <tr><td>오늘 밤 예정</td><td>🇺🇸 추가 실적 발표</td><td>주요 기업 실적 발표 계속 예정 (개별 확인 권장)</td><td><span class="imp low">★ 낮음</span></td></tr>
+  </tbody>
+</table>
+
+<div class="section-title">③ 오늘 국내 개장 — 역사적 순간!</div>
+
+<div class="kospi-spotlight">
+  <div class="big">🎉 코스피 7,000 돌파!</div>
+  <div class="headline">사상 최초 7,000선 돌파 — 개장가 7,259pt</div>
+  <div class="note">▲ +322pt (+4.64%) · 외국인·개인 동반 순매수</div>
+  <div class="sub">삼성전자 +9.25% · SK하이닉스 +10.23% 급등 주도</div>
+</div>
+
+<div class="two-col">
+  <div class="info-card">
+    <div class="title">💱 원·달러 환율 (외환 시세)</div>
+    <div class="info-item"><span class="k">현재 수준</span><span class="v">약 1,475원대</span></div>
+    <div class="info-item"><span class="k">방향</span><span class="v up">원화 강세 (원화 ↑)</span></div>
+    <div class="info-item"><span class="k">이유</span><span class="v">반도체 수출 호조 + 금리 인상 기대</span></div>
+    <div class="info-item"><span class="k">주가 영향</span><span class="v up">외국인 유입 유리 ✅</span></div>
+    <div class="note-small">📝 환율 하락 = 원화 강세 = 외국인이 더 많이 들어옴</div>
+  </div>
+  <div class="info-card">
+    <div class="title">🌊 수급 흐름 (누가 사고 있나?)</div>
+    <div class="info-item"><span class="k">외국인</span><span class="v up">▲ 2조 9천억 순매수 (역대 3위)</span></div>
+    <div class="info-item"><span class="k">기관</span><span class="v up">▲ 매수 우위</span></div>
+    <div class="info-item"><span class="k">개인</span><span class="v up">▲ 동반 순매수</span></div>
+    <div class="info-item"><span class="k">분위기</span><span class="v up">🔥 모두 사는 장!</span></div>
+    <div class="note-small">📝 순매수 = 판 것보다 산 것이 더 많음</div>
+  </div>
+</div>
+
+<table class="data-table">
+  <thead>
+    <tr><th>투자자</th><th>방향</th><th>주목 종목</th><th>코멘트</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>🌍 외국인</td><td><span class="arrow-up">▲ 대규모 매수</span></td><td>삼성전자, SK하이닉스</td><td>AI·반도체 전략적 매집</td></tr>
+    <tr><td>🏢 기관</td><td><span class="arrow-up">▲ 매수 우위</span></td><td>반도체·증권주</td><td>펀드 중심 추가 매수</td></tr>
+    <tr><td>👤 개인</td><td><span class="arrow-up">▲ 순매수</span></td><td>반도체 대형주</td><td>7000피 돌파에 참여</td></tr>
+  </tbody>
+</table>
+
+<div class="section-title">④ 오늘 눈여겨볼 종목 &amp; 조심할 종목</div>
+
+<div class="stock-grid">
+  <div class="stock-card watch">
+    <span class="stock-tag watch">👀 주목</span>
+    <div class="stock-name">삼성전자</div>
+    <div class="stock-code">005930 · 코스피 시총 1위</div>
+    <div class="stock-stat"><span>오늘 등락</span><span style="color:#00834a;font-weight:700">+9.25%</span></div>
+    <div class="stock-stat"><span>현재가</span><span>약 24만 9천원</span></div>
+    <div class="stock-stat"><span>52주 위치</span><span>신고권 (역사적 고점)</span></div>
+    <div class="stock-stat"><span>상승 이유</span><span>AMD 호실적 → AI 칩 수요 연동</span></div>
+    <div class="rsi-wrap">
+      <div class="rsi-label"><span>RSI (70 넘으면 단기 과열)</span><span style="color:#92670a;font-weight:700">~68 ⚠️</span></div>
+      <div class="rsi-track">
+        <div class="rsi-fill" style="width:68%;background:linear-gradient(90deg,#00a65a,#f59e0b)"></div>
+        <div class="rsi-dot" style="left:68%;background:#f59e0b"></div>
+      </div>
+    </div>
+    <div class="verdict split">⚖️ 분할매수 — 한 번에 다 사지 말고 나눠서 진입</div>
+  </div>
+
+  <div class="stock-card watch">
+    <span class="stock-tag watch">👀 주목</span>
+    <div class="stock-name">SK하이닉스</div>
+    <div class="stock-code">000660 · HBM 메모리 세계 1위</div>
+    <div class="stock-stat"><span>오늘 등락</span><span style="color:#00834a;font-weight:700">+10.23%</span></div>
+    <div class="stock-stat"><span>현재가</span><span>약 158만 5천원</span></div>
+    <div class="stock-stat"><span>52주 위치</span><span>최상단 (사상 최고가)</span></div>
+    <div class="stock-stat"><span>상승 이유</span><span>AI 서버용 HBM 수요 폭발</span></div>
+    <div class="rsi-wrap">
+      <div class="rsi-label"><span>RSI (70 이상 = 단기 과열)</span><span style="color:#c0253f;font-weight:700">~73 ⚠️ 과열!</span></div>
+      <div class="rsi-track">
+        <div class="rsi-fill" style="width:73%;background:linear-gradient(90deg,#00a65a,#e02f55)"></div>
+        <div class="rsi-dot" style="left:73%;background:#e02f55"></div>
+      </div>
+    </div>
+    <div class="verdict split">⚖️ 분할매수 — RSI 과열권, 숨고르기 후 분할 진입 추천</div>
+  </div>
+
+  <div class="stock-card watch">
+    <span class="stock-tag watch">👀 주목</span>
+    <div class="stock-name">AMD</div>
+    <div class="stock-code">AMD · 나스닥 · 미국 반도체</div>
+    <div class="stock-stat"><span>실적</span><span style="color:#00834a;font-weight:700">어닝 서프라이즈 🎉</span></div>
+    <div class="stock-stat"><span>시간외 등락</span><span style="color:#00834a;font-weight:700">+약 10%</span></div>
+    <div class="stock-stat"><span>상승 이유</span><span>AI GPU 칩 수요 폭증 + 가이던스 상향</span></div>
+    <div class="stock-stat"><span>국내 영향</span><span>반도체주 연동 상승 촉매</span></div>
+    <div class="rsi-wrap">
+      <div class="rsi-label"><span>RSI</span><span style="color:#00834a;font-weight:700">~65 (강세권)</span></div>
+      <div class="rsi-track">
+        <div class="rsi-fill" style="width:65%;background:#00a65a"></div>
+        <div class="rsi-dot" style="left:65%;background:#00a65a"></div>
+      </div>
+    </div>
+    <div class="verdict split">⚖️ 분할매수 — 실적 모멘텀 강력, 단기 급등 감안해 분할 접근</div>
+  </div>
+
+  <div class="stock-card caution">
+    <span class="stock-tag caution">⚠️ 조심</span>
+    <div class="stock-name">쿠팡 Inc</div>
+    <div class="stock-code">CPNG · NYSE · 한국 이커머스 대표</div>
+    <div class="stock-stat"><span>1Q 실적</span><span style="color:#c0253f;font-weight:700">어닝 쇼크 😱</span></div>
+    <div class="stock-stat"><span>영업손실</span><span style="color:#c0253f;font-weight:700">-3,545억원 적자 전환</span></div>
+    <div class="stock-stat"><span>원인</span><span>정보유출 사태 + 해외 투자 급증</span></div>
+    <div class="stock-stat"><span>매출 성장</span><span>+8% (두 자릿수 성장 첫 붕괴)</span></div>
+    <div class="rsi-wrap">
+      <div class="rsi-label"><span>RSI</span><span style="color:#8a9ab8;font-weight:700">~38 (약세권)</span></div>
+      <div class="rsi-track">
+        <div class="rsi-fill" style="width:38%;background:#e02f55"></div>
+        <div class="rsi-dot" style="left:38%;background:#e02f55"></div>
+      </div>
+    </div>
+    <div class="verdict watch2">🕐 관망 — 주가 반응 추가 확인 필요, 하락 가능성 있음</div>
+  </div>
+</div>
+
+<div class="section-title">📋 오늘의 핵심 요약</div>
+<div class="summary-box">
+  <p>
+    🇺🇸 미국은 <span class="hl">나스닥·S&amp;P500 모두 사상 최고치</span>를 기록했습니다. 이란 휴전 유지 + 유가 하락 + AMD 깜짝 실적이 삼박자를 이뤘습니다.<br><br>
+    🇰🇷 오늘 코스피는 <span class="hl">사상 처음으로 7,000선을 돌파</span>하는 역사적 순간을 맞이했습니다. 삼성전자·SK하이닉스가 10% 내외로 급등하며 장을 이끌고 있습니다.<br><br>
+    ⚠️ 단, 두 반도체 주 모두 <span class="hl">RSI가 과열 구간</span>에 진입했습니다. <span class="hl">분할매수(나눠서 사기)</span>로 접근하는 것이 안전하며, 오후 차익 실현 물량에 따른 장중 변동성에 주의하세요.
+  </p>
+</div>
+
+<div class="disclaimer">
+  ⚠️ 본 브리핑은 투자 정보 제공 목적이며, 특정 종목의 매수·매도 권유가 아닙니다.<br>
+  모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.
+</div>
+
+<script>
+const ctx = document.getElementById('spChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['5/1 (금)', '5/4 (월) 하락', '5/5 (화) 반등'],
+    datasets: [
+      {
+        label: 'S&P 500',
+        data: [7230.12, 7200.75, 7259.22],
+        borderColor: '#2563eb',
+        backgroundColor: 'rgba(37,99,235,0.08)',
+        tension: 0.4, fill: true,
+        pointBackgroundColor: ['#2563eb','#e02f55','#00a65a'],
+        pointRadius: 7, pointHoverRadius: 9,
+      },
+      {
+        label: '나스닥 (스케일 조정)',
+        data: [25114.44/3.47, 25067.80/3.47, 25326.13/3.47],
+        borderColor: '#00a65a',
+        backgroundColor: 'rgba(0,166,90,0.05)',
+        tension: 0.4, fill: false,
+        borderDash: [5,4],
+        pointBackgroundColor: ['#00a65a','#e02f55','#00a65a'],
+        pointRadius: 7,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#5a6e8c', font: { size: 12 }, padding: 20 } },
+      tooltip: {
+        backgroundColor: '#ffffff',
+        titleColor: '#1a2236',
+        bodyColor: '#1a2236',
+        borderColor: '#dde3ef',
+        borderWidth: 1,
+        callbacks: {
+          label: function(c) {
+            if(c.dataset.label.includes('나스닥')) return `나스닥: ${(c.raw*3.47).toLocaleString('ko-KR',{maximumFractionDigits:2})}`;
+            return `S&P 500: ${c.raw.toLocaleString('ko-KR',{maximumFractionDigits:2})}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: { ticks: { color: '#5a6e8c', font:{size:12} }, grid: { color: '#eef1f7' } },
+      y: { ticks: { color: '#5a6e8c', font:{size:12} }, grid: { color: '#eef1f7' } }
+    }
+  }
+});
+</script>
+
+
+</body></html>
