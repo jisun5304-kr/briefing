@@ -3,440 +3,448 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026-05-07 오후 마감 브리핑</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<title>2026-05-07 오후 시황 브리핑</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
-  :root {
-    --bg:#f5f5f3; --surface:#ffffff; --border:#e0e0dc; --thead:#f0f0ee;
-    --row-hover:#f8f8f6; --text:#222222; --dim:#666666; --muted:#aaaaaa;
-    --card-shadow:0 1px 4px rgba(0,0,0,0.06);
-    --chart-grid:#e8e8e4; --chart-text:#666666;
-    --chart-tooltip-bg:#ffffff; --chart-tooltip-title:#222222; --chart-tooltip-border:#e0e0dc;
-  }
-  html.dark {
-    --bg:#0b1120; --surface:#131e33; --border:#1e2e4a; --thead:#0f1928;
-    --row-hover:#1a2940; --text:#dce6f5; --dim:#8fa4c0; --muted:#5a7090;
-    --card-shadow:0 1px 6px rgba(0,0,0,0.4);
-    --chart-grid:#1e2e4a; --chart-text:#6b80a0;
-    --chart-tooltip-bg:#131e33; --chart-tooltip-title:#dce6f5; --chart-tooltip-border:#1e2e4a;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { transition:background 0.25s,color 0.25s; font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background:var(--bg); color:var(--text); font-size: 14px; line-height: 1.7; }
-  .page { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
-  .title-block { background: linear-gradient(135deg, #14532d 0%, #166534 100%); border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; color: #fff; }
-  .title-block h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
-  .title-block .meta { font-size: 13px; opacity: 0.75; }
-  .badge-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-  .badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
-  .badge-up { background: #d4edda; color: #1a5c1a; }
-  .badge-warn { background: #fff3cd; color: #7a5200; }
-  .badge-info { background: #d1ecf1; color: #0c5460; }
-  .badge-danger { background: #f8d7da; color: #721c24; }
-  .badge-white { background: rgba(255,255,255,0.2); color: #fff; }
-  .section { background:var(--surface); border-radius: 12px; padding: 24px 28px; margin-bottom: 18px; border: 1px solid #e8e8e5; }
-  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #f0f0ee; }
-  .section-num { background: #166534; color: #fff; font-size: 13px; font-weight: 700; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .section-title { font-size: 16px; font-weight: 700; color: #166534; }
-  .index-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
-  .index-card { border: 1px solid #e8e8e5; border-radius: 10px; padding: 14px 16px; }
-  .index-card.highlight { border-color: #166534; background: #f0fdf4; }
-  .index-card .name { font-size: 12px; color: #888; margin-bottom: 4px; }
-  .index-card .val { font-size: 22px; font-weight: 700; color:var(--text); margin-bottom: 2px; }
-  .index-card .chg { font-size: 13px; font-weight: 600; }
-  .index-card .sub { font-size: 11px; color: #888; margin-top: 2px; }
-  .up { color: #1a7a3a; }
-  .down { color: #c0392b; }
-  .chart-wrap { position: relative; width: 100%; height: 200px; margin-bottom: 16px; }
-  .milestone-box { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 1px solid #6ee7b7; border-radius: 10px; padding: 16px 20px; margin-bottom: 16px; text-align: center; }
-  .milestone-box .star { font-size: 28px; margin-bottom: 6px; }
-  .milestone-box .headline { font-size: 18px; font-weight: 700; color: #065f46; margin-bottom: 4px; }
-  .milestone-box .sub { font-size: 13px; color: #047857; }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 16px; }
-  th { background: #166534; color: #fff; padding: 9px 12px; text-align: left; font-weight: 600; }
-  th:first-child { border-radius: 6px 0 0 0; }
-  th:last-child { border-radius: 0 6px 0 0; }
-  td { padding: 9px 12px; border-bottom: 1px solid #f0f0ee; vertical-align: middle; }
-  tr:last-child td { border-bottom: none; }
-  tr:nth-child(even) td { background:var(--bg); }
-  .supply-wrap { margin-bottom: 14px; }
-  .supply-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; }
-  .supply-lbl { width: 52px; color: #888; flex-shrink: 0; }
-  .supply-track { flex: 1; height: 8px; background:var(--thead); border-radius: 4px; overflow: hidden; }
-  .supply-fill { height: 100%; border-radius: 4px; }
-  .sf-buy { background: #2D6A4F; }
-  .sf-sell { background: #C0392B; }
-  .supply-val { width: 110px; text-align: right; font-weight: 600; font-size: 12px; }
-  .sector-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
-  .sector-row { display: flex; justify-content: space-between; align-items: center; background:var(--row-hover); border-radius: 8px; padding: 9px 14px; font-size: 13px; }
-  .note-box { border-radius: 10px; padding: 14px 18px; font-size: 13px; line-height: 1.65; margin-top: 12px; }
-  .note-green { background: #e8f5ea; color: #1a4a1a; border-left: 4px solid #2D6A4F; }
-  .note-amber { background: #fff8e1; color: #5a3e00; border-left: 4px solid #E0A800; }
-  .note-blue { background: #e8f1fb; color: #1a3a6b; border-left: 4px solid #2E5EA0; }
-  .note-red { background: #fdf0f0; color: #6a1a1a; border-left: 4px solid #C0392B; }
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
-  .stat-card { border-radius: 10px; padding: 14px 16px; border: 1px solid #e8e8e5; }
-  .stat-card .sl { font-size: 11px; color: #888; margin-bottom: 3px; }
-  .stat-card .sv { font-size: 18px; font-weight: 700; }
-  .stat-card .sd { font-size: 11px; color: #888; margin-top: 3px; }
-  .event-item { display: flex; gap: 12px; padding: 12px 14px; border-radius: 10px; background:var(--row-hover); font-size: 13px; align-items: flex-start; margin-bottom: 8px; }
-  .event-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
-  .dot-red { background: #C0392B; }
-  .dot-green { background: #2D6A4F; }
-  .dot-amber { background: #E0A800; }
-  .dot-blue { background: #2E5EA0; }
-  .event-label { font-weight: 600; color:var(--text); margin-bottom: 3px; }
-  .event-desc { color: #555; line-height: 1.55; }
-  .data-note { font-size: 11px; color:var(--muted); background:var(--bg); border: 1px solid #e8e8e5; border-radius: 8px; padding: 8px 12px; margin-bottom: 16px; }
-  .disclaimer { font-size: 11px; color:var(--muted); margin-top: 24px; padding-top: 14px; border-top: 1px solid #e8e8e5; line-height: 1.6; }
-  .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; margin-bottom: 18px; }
-  .table-wrap table { min-width: 480px; margin-bottom: 0; }
-  .sector-name { font-size: 12px; color: #4a5568; }
-  .badge, .badge-up, .badge-warn, .badge-info, .badge-danger { white-space: nowrap; }
-  .sector-row { flex-wrap: nowrap; min-height: 40px; }
-  .sector-row .sector-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
-  @media (max-width: 600px) {
-    .index-grid, .two-col, .three-col { grid-template-columns: 1fr; }
-    .sector-grid { grid-template-columns: 1fr; }
-    .index-card .val { font-size: 18px !important; }
-    .section { padding: 16px; }
-    .title-block h1 { font-size: 20px; }
-    .supply-val { width: auto; font-size: 11px; }
-  }
-
-  /* 다크모드 */
-  html.dark body { background:#0b1120 !important; color:#dce6f5 !important; }
-  html.dark .section { background:#131e33 !important; border-color:#1e2e4a !important; }
-  html.dark .section-num { background:#3b82f6 !important; }
-  html.dark .section-title { color:#8fa4c0 !important; }
-  html.dark .index-card { background:var(--surface); border-color:#1e2e4a !important; }
-  html.dark .index-card.highlight { background:rgba(34,197,94,0.07) !important; border-color:rgba(34,197,94,0.3) !important; }
-  html.dark .index-card .name { color:#8fa4c0 !important; }
-  html.dark .index-card .val { color:#dce6f5 !important; }
-  html.dark .index-card .sub { color:#6b80a0 !important; }
-  html.dark .up   { color:#4ade80 !important; }
-  html.dark .down { color:#f87171 !important; }
-  html.dark .note-green { background:rgba(34,197,94,0.08) !important; color:#4ade80 !important; border-color:rgba(34,197,94,0.25) !important; }
-  html.dark .note-amber { background:rgba(245,158,11,0.08) !important; color:#fbbf24 !important; border-color:rgba(245,158,11,0.25) !important; }
-  html.dark .note-blue  { background:rgba(37,99,235,0.08) !important; color:#60a5fa !important; border-color:rgba(37,99,235,0.25) !important; }
-  html.dark .note-red   { background:rgba(239,68,68,0.08) !important; color:#f87171 !important; border-color:rgba(239,68,68,0.25) !important; }
-  html.dark .note-green *, html.dark .note-blue *, html.dark .note-amber *, html.dark .note-red * { color: inherit !important; }
-  html.dark .badge-up     { background:rgba(34,197,94,0.15) !important; color:#4ade80 !important; }
-  html.dark .badge-warn   { background:rgba(245,158,11,0.15) !important; color:#fbbf24 !important; }
-  html.dark .badge-info   { background:rgba(37,99,235,0.15) !important; color:#60a5fa !important; }
-  html.dark .badge-danger { background:rgba(239,68,68,0.15) !important; color:#f87171 !important; }
-  html.dark .event-item   { background:#131e33 !important; }
-  html.dark .event-label  { color:#8fa4c0 !important; }
-  html.dark .event-desc   { color:#dce6f5 !important; }
-  html.dark .supply-track { background:#1e2e4a !important; }
-  html.dark .supply-lbl   { color:#8fa4c0 !important; }
-  html.dark .supply-val   { color:#dce6f5 !important; }
-  html.dark .milestone-box { background:rgba(34,197,94,0.07) !important; border-color:rgba(34,197,94,0.25) !important; }
-  html.dark .milestone-box .headline { color:#dce6f5 !important; }
-  html.dark .milestone-box .sub { color:#4ade80 !important; }
-  html.dark .stat-card { background:#131e33 !important; border-color:#1e2e4a !important; }
-  html.dark .stat-card .sl, html.dark .stat-card .sd { color:#8fa4c0 !important; }
-  html.dark .sector-row { background:#131e33 !important; }
-  html.dark .sector-name { color:#c8d8ef !important; }
-  html.dark .title-block { filter: brightness(0.75) saturate(0.8) !important; }
-  html.dark table { background:#131e33; }
-  html.dark table tbody tr { background:#131e33 !important; }
-  html.dark table td { background:#131e33 !important; color:#dce6f5 !important; border-color:#1e2e4a !important; }
-  html.dark table th { background:#0f1928 !important; color:#8fa4c0 !important; border-color:#1e2e4a !important; }
-  html.dark table tr:hover td { background:#1a2940 !important; }
-  html.dark td { color:#dce6f5 !important; }
-  html.dark th { color:#8fa4c0 !important; }
-  html.dark .data-note { background:#0f1928 !important; color:#4a5e80 !important; }
-  html.dark .disclaimer { color:#4a5e80 !important; border-color:#1e2e4a !important; }
-  html.dark [style*="color:#555"]    { color:#c8d8ef !important; }
-  html.dark [style*="color:#888"]    { color:#8fa4c0 !important; }
-  html.dark [style*="color:#166534"] { color:#4ade80 !important; }
-  html.dark [style*="color:#2E5EA0"] { color:#60a5fa !important; }
-  html.dark [style*="color:#C0392B"] { color:#f87171 !important; }
-  html.dark [style*="color:#c0392b"] { color:#f87171 !important; }
-  html.dark [style*="color:#E0A800"] { color:#fbbf24 !important; }
-  html.dark [style*="background:#fdf5f5"] { background:rgba(185,28,28,0.1) !important; }
-  html.dark td[style*="color:#166534"] { color:#4ade80 !important; }
-  html.dark td[style*="color:#C0392B"], html.dark td[style*="color:#c0392b"] { color:#f87171 !important; }
+:root{
+  --bg:#f4f6fb; --surface:#ffffff; --border:#dde3ef; --thead:#eef1f7;
+  --row-hover:#f8faff; --text:#1a2236; --dim:#5a6e8c; --muted:#8a9ab8;
+  --summary-bg:#eff6ff; --summary-border:#93c5fd; --summary-text:#1e3a5f;
+  --card-shadow:0 1px 4px rgba(0,0,0,0.06);
+  --chart-grid:#eef1f7; --chart-text:#5a6e8c;
+  --chart-tooltip-bg:#ffffff; --chart-tooltip-title:#1a2236; --chart-tooltip-border:#dde3ef;
+}
+html.dark{
+  --bg:#0b1120; --surface:#131e33; --border:#1e2e4a; --thead:#0f1928;
+  --row-hover:#1a2940; --text:#dce6f5; --dim:#8fa4c0; --muted:#5a7090;
+  --summary-bg:rgba(59,130,246,0.08); --summary-border:#3b82f6; --summary-text:#dce6f5;
+  --chart-grid:#1e2e4a; --chart-text:#c8d8ef;
+  --chart-tooltip-bg:#131e33; --chart-tooltip-title:#dce6f5; --chart-tooltip-border:#1e2e4a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;font-size:14px;line-height:1.5;padding:16px}
+.container{max-width:900px;margin:0 auto}
+.header{margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.header .date{font-size:13px;color:var(--dim);margin-bottom:4px}
+.header h1{margin:0;font-size:20px;font-weight:700}
+.section{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:14px;box-shadow:var(--card-shadow)}
+.section-title{font-size:11px;font-weight:700;color:var(--dim);letter-spacing:0.5px;margin-bottom:10px;text-transform:uppercase}
+.summary-box{background:var(--summary-bg);border-left:4px solid var(--summary-border);padding:12px 16px;border-radius:6px}
+.summary-box.warn{border-left-color:#fbbf24;background:rgba(251,191,36,0.08)}
+html.dark .summary-box.warn{background:rgba(251,191,36,0.10)}
+.summary-box .icon{font-size:18px;margin-right:6px}
+.summary-box .lead{font-weight:700;font-size:15px;color:var(--summary-text);margin-bottom:6px}
+.summary-box .driver{color:var(--summary-text);margin-bottom:4px;font-size:13px}
+.summary-box .watch{color:var(--summary-text);font-size:13px;opacity:0.9}
+.summary-box .deep{color:var(--summary-text);margin-top:8px;padding-top:8px;border-top:1px solid var(--summary-border);font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);font-size:12px}
+td{padding:10px;border-bottom:1px solid var(--border);color:var(--text)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--row-hover)}
+.up{color:#dc2626}
+.down{color:#2563eb}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.note-explain{margin-top:6px;padding:8px 12px;border-left:3px solid var(--summary-border);background:var(--summary-bg);color:var(--summary-text);font-size:13px;line-height:1.5;border-radius:4px}
+.note-explain .note-meaning{font-weight:600}
+.note-explain .note-impact{color:var(--dim);margin-top:2px}
+html.dark .note-explain{border-left-color:#3b82f6;background:rgba(59,130,246,0.08);color:#dce6f5}
+html.dark .note-explain .note-impact{color:#a8b8d0}
+.macro-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.macro-card{background:var(--thead);border-radius:6px;padding:12px}
+.macro-card .label{font-size:11px;color:var(--dim);margin-bottom:4px}
+.macro-card .val{font-size:16px;font-weight:700}
+.macro-card .chg{font-size:12px;margin-top:2px}
+.event-list{list-style:none;padding:0;margin:0}
+.event-list li{padding:8px 0;border-bottom:1px dashed var(--border);font-size:13px}
+.event-list li:last-child{border-bottom:none}
+.event-time{display:inline-block;width:60px;font-weight:600;color:var(--dim)}
+.event-imp{margin-left:6px;color:#fbbf24}
+.scenario{padding:10px 14px;border-radius:6px;margin-bottom:8px;font-size:13px}
+.scenario-up{background:rgba(220,38,38,0.06);border-left:3px solid #dc2626}
+.scenario-down{background:rgba(37,99,235,0.06);border-left:3px solid #2563eb}
+html.dark .scenario-up{background:rgba(248,113,113,0.10);border-left-color:#f87171}
+html.dark .scenario-down{background:rgba(96,165,250,0.10);border-left-color:#60a5fa}
+html.dark .up{color:#f87171}
+html.dark .down{color:#60a5fa}
+html.dark table td{background:#131e33;color:#dce6f5}
+.scenario-title{font-weight:700;margin-bottom:4px}
+.disclaimer{font-size:11px;color:var(--muted);text-align:center;padding:14px;margin-top:18px;border-top:1px solid var(--border);line-height:1.6}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;background:var(--thead);color:var(--dim);margin-right:4px;white-space:nowrap}
+.tag-trigger{background:#fee2e2;color:#dc2626}
+html.dark .tag-trigger{background:rgba(248,113,113,0.15);color:#f87171}
+.chart-box{position:relative;height:240px;margin:14px 0 6px}
+.flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.flow-card{background:var(--thead);border-radius:6px;padding:10px 12px;text-align:center}
+.flow-card .label{font-size:11px;color:var(--dim);margin-bottom:4px}
+.flow-card .val{font-size:15px;font-weight:700}
+.flow-card.buy .val{color:#dc2626}
+.flow-card.sell .val{color:#2563eb}
+html.dark .flow-card.buy .val{color:#f87171}
+html.dark .flow-card.sell .val{color:#60a5fa}
+@media(max-width:600px){
+  body{padding:12px;font-size:13px}
+  .header h1{font-size:17px}
+  table{font-size:12px}
+  th,td{padding:7px 6px}
+  .macro-grid{gap:8px}
+  .macro-card{padding:10px}
+  .macro-card .val{font-size:14px}
+  .summary-box .lead{font-size:14px}
+  .flow-grid{grid-template-columns:1fr;gap:6px}
+  .chart-box{height:200px}
+}
 </style>
 </head>
 <body>
-<div class="page">
-
-  <div class="title-block">
-    <h1>🔔 오후 마감 브리핑</h1>
-    <div class="meta">2026년 5월 7일 (목) &nbsp;|&nbsp; 오후 4:00 마감 결과 정리</div>
-    <div class="badge-row">
-      <span class="badge badge-white">코스피 사상 첫 7,500선 돌파</span>
-      <span class="badge badge-white">이틀 연속 역대 최고치</span>
-      <span class="badge badge-white">개인 '동학 개미' 귀환</span>
-    </div>
+<div class="container">
+  <div class="header">
+    <div class="date">2026년 5월 7일 (목) · ☀️ 오후 세션 · <strong>심층형</strong></div>
+    <h1>한국장 마감 정리 + 미국 선물·환율로 본 간접 전망</h1>
   </div>
 
-  <div class="data-note">
-    ⚠️ 오후 2시 13분 기준 장중 데이터를 토대로 작성된 브리핑입니다. 마감 종가(3:30 기준)와 세부 수치는 소폭 다를 수 있습니다. 정확한 종가는 증권사 앱에서 확인해 주세요.
-  </div>
-
-  <div class="milestone-box">
-    <div class="star">🏆</div>
-    <div class="headline">코스피 7,500선 — 사상 최초 돌파!</div>
-    <div class="sub">장중 고점 7,531.88 &nbsp;·&nbsp; 이틀 연속 역대 최고 기록 경신 &nbsp;·&nbsp; 연초 대비 +약 30%</div>
-  </div>
-
+  <!-- ① 한 줄 요약 (심층형) -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-num">①</div>
-      <div class="section-title">코스피 · 코스닥 마감 결과</div>
-    </div>
-    <div class="index-grid">
-      <div class="index-card highlight">
-        <div class="name">코스피 &nbsp;<span class="badge badge-up" style="font-size:10px;">이틀 연속 신고가</span></div>
-        <div class="val">7,445 <span style="font-size:14px;">선</span></div>
-        <div class="chg up">▲ +0.82%  (약 +60pt)</div>
-        <div class="sub">장중 고점 7,531.88  /  개장 7,499.07</div>
-      </div>
-      <div class="index-card">
-        <div class="name">코스닥</div>
-        <div class="val">1,210</div>
-        <div class="chg" style="color:#888;">→ 혼조 (보합권)</div>
-        <div class="sub">대형주 쏠림에 중소형주 차별화 지속</div>
-      </div>
-    </div>
-    <div class="chart-wrap">
-      <canvas id="indexHistChart" role="img" aria-label="코스피 최근 이틀 등락률. 5월6일 +6.45%, 5월7일 +0.82%"></canvas>
-    </div>
-    <div class="note-box note-green">
-      <strong>📌 쉽게 말하면</strong> — 어제 6.4%나 한꺼번에 폭등했으니 오늘은 숨 고르기 장세예요. 그래도 장중에 사상 처음으로 7,500선을 넘었고, 결국 상승 마감했어요. 이틀 연속 역대 최고치를 새로 쓴 겁니다.
+    <div class="section-title">① 한 줄 요약</div>
+    <div class="summary-box warn">
+      <div class="lead"><span class="icon">⚖️</span>코스피 사상 최고 7,490 vs 외인 -7.17조 역대 최대 매도 — 개미가 외인을 받아낸 하루</div>
+      <div class="driver">• <strong>핵심 동인</strong>: 미국 기술주 랠리 동조(상방), 외국인 차익실현 매도(하방), 개인·기관 적극 매수(방어)</div>
+      <div class="watch">• <strong>관전 포인트</strong>: 외인 매도 지속 가능성, 코스닥 약세 전환, 환율 1,454원 안정성</div>
+      <div class="deep">• <strong>시장 해석</strong>: 코스피 이틀 연속 사상 최고는 분명한 강세 신호이나, 그 동력이 외국인이 아닌 '개인 5.99조 + 기관 1.10조'라는 점이 이례적. 외국인의 7조원대 순매도(역대 1위 경신)는 단순 차익실현 또는 환차익 결제 수요 가능성. 코스닥은 -0.91% 하락하며 차별화 양상.</div>
+      <div class="deep">• <strong>시나리오 분기</strong>: (상방) 외인 매도가 일회성이고 다시 매수 전환 시 → 8,000선 시도 / (하방) 외인 매도 연속 시 + 개인 차익실현 가세 시 → 단기 조정 가능</div>
     </div>
   </div>
 
+  <!-- ② 주요 지수 (심층형 - 차트 포함) -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-num">②</div>
-      <div class="section-title">오늘의 핵심 이슈</div>
-    </div>
-    <div class="event-item">
-      <span class="event-dot dot-green"></span>
-      <div>
-        <div class="event-label">🕊️ 미·이란 종전 MOU 협상 본격화</div>
-        <div class="event-desc">미국과 이란이 핵농축 중단·제재 해제 등 14개 항을 담은 합의문 협상 중. 트럼프 "합의 가능성 매우 높다" 발언. 호르무즈해협 봉쇄 해제 기대 → 유가 안정 → 증시 호재.</div>
-      </div>
-    </div>
-    <div class="event-item">
-      <span class="event-dot dot-amber"></span>
-      <div>
-        <div class="event-label">⚖️ 개인 vs 외국인 — 수급 역전</div>
-        <div class="event-desc">오전 중 외국인이 순매도로 전환(1조1532억원 매도)하고 개인이 1조1651억원 순매수로 맞받아침. 어제의 '외국인 주도 장세'에서 오늘은 '개인 동학 개미 귀환' 장세로 바뀐 것이 특징.</div>
-      </div>
-    </div>
-    <div class="event-item">
-      <span class="event-dot dot-red"></span>
-      <div>
-        <div class="event-label">⚠️ 단기 과열 경고음 — '5월 매도' 경계</div>
-        <div class="event-desc">코스피 20일 이격도(평균 대비 얼마나 벗어났는지)가 과열 구간 진입. 일각에서 "Sell in May(5월에 팔아라)" 현상 경계. 당장은 아니어도 7~8월 조정 가능성 거론.</div>
-      </div>
-    </div>
-    <div class="event-item">
-      <span class="event-dot dot-blue"></span>
-      <div>
-        <div class="event-label">🇯🇵 일본 닛케이도 +5.66% 급등</div>
-        <div class="event-desc">이란 종전 기대와 엔화 강세 완화 영향. 아시아 전반이 강세였으나 한국이 가장 높은 수익률 기록 중(연초 대비 G20 1위).</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">③</div>
-      <div class="section-title">투자자별 수급 흐름 (오전 기준)</div>
-    </div>
-    <div class="supply-wrap">
-      <div style="font-size:13px;font-weight:600;color:#166534;margin-bottom:10px;">오늘 코스피 수급 방향</div>
-      <div class="supply-row">
-        <span class="supply-lbl">외국인</span>
-        <div class="supply-track"><div class="supply-fill sf-sell" style="width:80%"></div></div>
-        <span class="supply-val down">-1조1,532억 순매도 ↓</span>
-      </div>
-      <div class="supply-row">
-        <span class="supply-lbl">기관</span>
-        <div class="supply-track"><div class="supply-fill sf-sell" style="width:15%"></div></div>
-        <span class="supply-val down">-204억 소폭 매도 ↓</span>
-      </div>
-      <div class="supply-row">
-        <span class="supply-lbl">개인</span>
-        <div class="supply-track"><div class="supply-fill sf-buy" style="width:85%"></div></div>
-        <span class="supply-val up">+5조6,562억 순매수 ↑↑↑</span>
-      </div>
-    </div>
-    <div class="note-box note-amber">
-      <strong>📌 수급 해석</strong> — 어제는 외국인이 주도, 오늘은 개인이 주도하는 장세예요. 외국인이 어제 많이 샀으니 오늘은 일부 팔아서 수익을 챙기는 것이고, 오히려 개인 투자자들이 "아직 더 오를 것"이라며 대규모로 매수한 모습이에요. 이를 '동학 개미 귀환'이라고 부릅니다.
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-num">④</div>
-      <div class="section-title">주요 종목 마감 결과</div>
-    </div>
-    <div class="table-wrap">
+    <div class="section-title">② 주요 지수 <span class="tag tag-trigger">트리거 ⓐ</span></div>
     <table>
       <thead>
-        <tr><th>종목</th><th>종가(추정)</th><th>전일 대비</th><th>특이사항</th></tr>
+        <tr><th>지수</th><th class="num">종가</th><th class="num">등락(pt)</th><th class="num">등락률</th><th>코멘트</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>삼성전자</strong></td><td>276,500원</td><td class="up" style="font-weight:600;">▲ +3.95%</td><td style="color:#555;">연이틀 신고가. AI·HBM 수요 지속 기대</td></tr>
-        <tr><td><strong>SK하이닉스</strong></td><td>163만8천원</td><td class="up" style="font-weight:600;">▲ +2.31%</td><td style="color:#555;">160만 돌파 유지. 목표가 177만 상향 유지</td></tr>
-        <tr><td><strong>현대차</strong></td><td>참고 요망</td><td class="up" style="font-weight:600;">▲ +6.95%</td><td style="color:#555;">오늘 급등주. 미·이란 종전→중동 수출 기대감</td></tr>
-        <tr><td><strong>SK스퀘어</strong></td><td>참고 요망</td><td class="up">강세 지속</td><td style="color:#555;">SK하이닉스 지분 가치 연동 상승</td></tr>
-        <tr style="background:#fdf5f5;"><td><strong data-dark-color="#f87171" style="color:#c0392b;">⚠ 쿠팡</strong></td><td>하락</td><td class="down" style="font-weight:600;">▼ 약세 지속</td><td style="color:#555;">1Q 영업손실 3,545억 쇼크 영향 지속</td></tr>
+        <tr>
+          <td><strong>코스피</strong></td>
+          <td class="num">7,490.05</td>
+          <td class="num up">▲ +105.49</td>
+          <td class="num up">▲ +1.43%</td>
+          <td>사상 최고 재경신</td>
+        </tr>
+        <tr>
+          <td><strong>코스닥</strong></td>
+          <td class="num">1,199.18</td>
+          <td class="num down">▼ -10.99</td>
+          <td class="num down">▼ -0.91%</td>
+          <td>차별화 약세</td>
+        </tr>
+        <tr>
+          <td>S&amp;P 500 선물</td>
+          <td class="num">7,360선</td>
+          <td class="num down">▼ 소폭 하락</td>
+          <td class="num down">▼ -0.1%대</td>
+          <td>전일 사상 최고 후 숨고르기</td>
+        </tr>
+        <tr>
+          <td>나스닥 선물</td>
+          <td class="num">25,800선</td>
+          <td class="num down">▼ 소폭 하락</td>
+          <td class="num down">▼ -0.2%대</td>
+          <td>오늘 밤 미국장 보합 출발 가능</td>
+        </tr>
       </tbody>
     </table>
+    <div class="note-explain">
+      <div class="note-meaning">코스피 ▲ 7,490.05 (+1.43%) — 트리거 ⓐ 발동, 사상 최고치</div>
+      <div class="note-impact">2월 25일 6,000선 돌파 후 70일 만에 7,000 돌파(5/6) → 다음날 7,500선 시도. 단기 상승 속도가 매우 가팔라 변동성 확대 위험. 코스피·코스닥 차별화는 시총 상위 반도체 쏠림 현상의 신호.</div>
     </div>
-    <div style="font-size:13px;font-weight:600;color:#166534;margin-bottom:10px;">업종별 흐름</div>
-    <div class="sector-grid">
-      <div class="sector-row"><span class="sector-name">반도체·전기전자</span><span class="up" style="font-weight:700;">강세 지속 ↑</span></div>
-      <div class="sector-row"><span class="sector-name">자동차</span><span class="up" style="font-weight:700;">+6%대 급등 ↑</span></div>
-      <div class="sector-row"><span class="sector-name">증권</span><span class="up" style="font-weight:700;">동반 강세 ↑</span></div>
-      <div class="sector-row"><span class="sector-name">부동산·오락·문화</span><span class="down" style="font-weight:700;">약세 지속 ↓</span></div>
-      <div class="sector-row"><span class="sector-name">통신·음식료·담배</span><span class="down" style="font-weight:700;">소폭 하락 ↓</span></div>
-      <div class="sector-row"><span class="sector-name">에너지</span><span style="color:#888;font-weight:700;">유가 하락 영향 ↔</span></div>
+
+    <h4 style="margin:18px 0 8px;font-size:13px;color:var(--dim)">📈 코스피 일중 추이 (장중 변동)</h4>
+    <div class="chart-box"><canvas id="kospiChart"></canvas></div>
+    <p style="font-size:12px;color:var(--dim);margin:0">
+      ※ 09:00 갭상승 출발(7,499) → 장중 7,531 신고가 → 7,250선까지 밀린 뒤 → 후반 상승, 7,490 마감.
+    </p>
+  </div>
+
+  <!-- ④ 주요 종목 (오후 우선 블록) -->
+  <div class="section">
+    <div class="section-title">④ 주요 종목 <span class="tag tag-trigger">트리거 ⓓ</span></div>
+
+    <h4 style="margin:0 0 8px;font-size:13px;color:var(--dim)">🔼 KOSPI 시총 상위 종목</h4>
+    <table>
+      <thead>
+        <tr><th>종목</th><th class="num">종가</th><th class="num">등락률</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>삼성전자</td><td class="num">271,500원</td><td class="num up">▲ +2.07%</td></tr>
+        <tr><td>SK하이닉스</td><td class="num">1,654,000원</td><td class="num up">▲ +3.31%</td></tr>
+        <tr><td>고려아연</td><td class="num">—</td><td class="num down">▼ -10.70%</td></tr>
+        <tr><td>한화에어로스페이스</td><td class="num">—</td><td class="num down">▼ -8.09%</td></tr>
+        <tr><td>미래에셋증권</td><td class="num">—</td><td class="num down">▼ -5.73%</td></tr>
+      </tbody>
+    </table>
+    <div class="note-explain">
+      <div class="note-meaning">고려아연 ▼ -10.70% / 한화에어로스페이스 ▼ -8.09% — 트리거 ⓓ 발동</div>
+      <div class="note-impact">반도체(삼성전자·SK하이닉스) 외 시총 상위 종목 일제 하락. 방산(한화에어로) 약세는 중동 휴전 영향, 비철금속(고려아연) 급락은 수급·종목별 이슈 점검 필요. 시장 전체는 강세지만 개별 종목 양극화 심화.</div>
+    </div>
+
+    <h4 style="margin:18px 0 8px;font-size:13px;color:var(--dim)">📊 KOSDAQ 주요 종목</h4>
+    <table>
+      <thead>
+        <tr><th>종목</th><th class="num">등락률</th><th>비고</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>에코프로비엠</td><td class="num up">▲ +6.03%</td><td>2차전지 강세</td></tr>
+        <tr><td>에코프로</td><td class="num up">▲ +4.49%</td><td>—</td></tr>
+        <tr><td>레인보우로보틱스</td><td class="num up">▲ +2.48%</td><td>로봇 테마</td></tr>
+        <tr><td>HLB</td><td class="num up">▲ +1.31%</td><td>—</td></tr>
+        <tr><td>알테오젠</td><td class="num down">▼ -2.55%</td><td>바이오 약세</td></tr>
+        <tr><td>케어젠</td><td class="num down">▼ -4.17%</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="margin:18px 0 8px;font-size:13px;color:var(--dim)">💰 외국인·기관 수급 (KOSPI, 역대급 수급)</h4>
+    <div class="flow-grid">
+      <div class="flow-card sell">
+        <div class="label">외국인 순매도</div>
+        <div class="val">-7조 1,724억</div>
+        <div style="font-size:11px;color:var(--dim);margin-top:4px">역대 1위 경신</div>
+      </div>
+      <div class="flow-card buy">
+        <div class="label">개인 순매수</div>
+        <div class="val">+5조 9,913억</div>
+        <div style="font-size:11px;color:var(--dim);margin-top:4px">역대 4위</div>
+      </div>
+      <div class="flow-card buy">
+        <div class="label">기관 순매수</div>
+        <div class="val">+1조 984억</div>
+        <div style="font-size:11px;color:var(--dim);margin-top:4px">금투 약 2조 ETF 매수</div>
+      </div>
+    </div>
+    <div class="note-explain" style="margin-top:14px">
+      <div class="note-meaning">외국인 순매도 -7.17조 — 역대 최대 (이전 기록: 2/27 -7.08조)</div>
+      <div class="note-impact">외인 매도 자체는 부담 요인이나, 그럼에도 코스피가 상승 마감한 점은 개인 자금력의 강함을 시사. 다만 외인 매도가 며칠 더 이어질 경우 개인 매수 여력 한계 도달 가능 → 다음 1~2거래일 외인 수급 방향이 단기 변곡점.</div>
     </div>
   </div>
 
+  <!-- ③ 섹터·테마 (심층형 - 막대 차트) -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-num">⑤</div>
-      <div class="section-title">내일 전망 &amp; 오늘 밤 체크포인트</div>
+    <div class="section-title">③ 섹터·테마 <span class="tag">표준</span></div>
+
+    <h4 style="margin:0 0 8px;font-size:13px;color:var(--dim)">📊 KOSPI 업종별 등락률 Top 5</h4>
+    <div class="chart-box" style="height:280px"><canvas id="sectorChart"></canvas></div>
+
+    <table style="margin-top:10px">
+      <thead><tr><th>구분</th><th>섹터/테마</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td><strong style="color:#dc2626" data-dark-color="#f87171">강세</strong></td><td>일반서비스 (+4.96%)</td><td>플랫폼·콘텐츠</td></tr>
+        <tr><td><strong style="color:#dc2626" data-dark-color="#f87171">강세</strong></td><td>유통 (+4.23%)</td><td>리오프닝 기대</td></tr>
+        <tr><td><strong style="color:#dc2626" data-dark-color="#f87171">강세</strong></td><td>운송·창고 (+3.80%)</td><td>물류 회복</td></tr>
+        <tr><td><strong style="color:#dc2626" data-dark-color="#f87171">테마 강세</strong></td><td>AI·반도체</td><td>삼성전자·SK하이닉스 동반 강세</td></tr>
+        <tr><td><strong style="color:#dc2626" data-dark-color="#f87171">테마 강세</strong></td><td>2차전지</td><td>에코프로 형제 급등</td></tr>
+        <tr><td><strong style="color:#2563eb" data-dark-color="#60a5fa">약세</strong></td><td>증권 (-4.56%)</td><td>미래에셋증권 -5.73%</td></tr>
+        <tr><td><strong style="color:#2563eb" data-dark-color="#60a5fa">약세</strong></td><td>금속 (-3.46%)</td><td>고려아연 -10.70%</td></tr>
+        <tr><td><strong style="color:#2563eb" data-dark-color="#60a5fa">테마 약세</strong></td><td>K-방산</td><td>중동 휴전 → 한화에어로 -8.09%</td></tr>
+      </tbody>
+    </table>
+    <div class="note-explain">
+      <div class="note-meaning">증권 -4.56% / 금속 -3.46% — 트리거 ⓒ 발동</div>
+      <div class="note-impact">방산·금속·증권 약세는 중동 휴전(방산), 환율 안정(금속), 외인 매도 수수료 부담(증권)이 복합 작용한 결과. 시장 전체 강세 속 업종 로테이션이 명확해진 신호.</div>
     </div>
-    <div class="three-col">
-      <div class="stat-card">
-        <div class="sl">내일(5/8) 핵심 이벤트</div>
-        <div class="sv" data-dark-color="#f87171" style="color:#c0392b; font-size:15px;">美 고용보고서</div>
-        <div class="sd">예상: 5.5~6.2만명. 예상치 크게 상회 시 금리 동결 압력 → 증시 변동성</div>
+  </div>
+
+  <!-- ⑤ 거시·이벤트 -->
+  <div class="section">
+    <div class="section-title">⑤ 거시·이벤트</div>
+    <div class="macro-grid" style="margin-bottom:14px">
+      <div class="macro-card">
+        <div class="label">원/달러 환율 (오늘 종가)</div>
+        <div class="val">1,454.0원</div>
+        <div class="chg down">▼ -1.1원 (-0.08%)</div>
       </div>
-      <div class="stat-card">
-        <div class="sl">미·이란 협상 진행</div>
-        <div class="sv" data-dark-color="#4ade80" style="color:#166534; font-size:15px;">종전 기대 ↑</div>
-        <div class="sd">합의 발표 시 유가 추가 하락 → 글로벌 증시 추가 호재</div>
+      <div class="macro-card">
+        <div class="label">미국 10년물 (전일)</div>
+        <div class="val">약 4.05%</div>
+        <div class="chg down">▼ 유가 하락 영향</div>
       </div>
-      <div class="stat-card">
-        <div class="sl">오늘 밤 미국 개장</div>
-        <div class="sv" data-dark-color="#60a5fa" style="color:#2E5EA0; font-size:15px;">야간 주목</div>
-        <div class="sd">미국 선물 방향 및 고용보고서 전 포지셔닝 확인 필요</div>
+      <div class="macro-card">
+        <div class="label">WTI 유가 (전일)</div>
+        <div class="val">$60대 후반</div>
+        <div class="chg down">▼ 7% 이상 급락</div>
+      </div>
+      <div class="macro-card">
+        <div class="label">달러인덱스 (전일)</div>
+        <div class="val">약 99.2</div>
+        <div class="chg down">▼ 약세</div>
       </div>
     </div>
-    <div class="two-col" style="margin-top:14px;">
-      <div class="note-box note-green" style="margin-top:0;">
-        <strong>🐂 강세 요인</strong><br>
-        미·이란 종전 기대 지속 / 반도체 AI 슈퍼사이클 / 코스피 밸류에이션 여전히 '딥밸류' 구간 (PER 7.18배)
-      </div>
-      <div class="note-box note-red" style="margin-top:0;">
-        <strong>🐻 주의 요인</strong><br>
-        단기 과열 (20일 이격도 부담권) / 고용보고서 결과에 따른 급변동 가능 / '5월 매도' 시즌 경계
-      </div>
+    <p style="font-size:12px;color:var(--dim);margin:0 0 10px">
+      ※ 환율은 1,448원에서 출발 후 외인 매도로 낙폭 축소, 1,454원 마감. 종전 메시지 효과로 4월 2일 1,519원 고점 대비 하락 추세 지속.
+    </p>
+
+    <h4 style="margin:14px 0 8px;font-size:13px;color:var(--dim)">📅 오늘+내일 이벤트 캘린더</h4>
+    <ul class="event-list">
+      <li><span class="event-time">22:30</span> 미국 신규 실업수당 청구 건수<span class="event-imp">⭐⭐</span></li>
+      <li><span class="event-time">23:30</span> 미국 증시 개장<span class="event-imp">⭐⭐</span></li>
+      <li><span class="event-time">5/8 23:00</span> 미국 4월 미시간대 소비자심리지수<span class="event-imp">⭐⭐</span></li>
+      <li><span class="event-time">주중</span> ⭐⭐⭐ 다음주 FOMC 의사록 공개 예정</li>
+    </ul>
+  </div>
+
+  <!-- ⑥ 다음 시장 관전 포인트 (심층형) -->
+  <div class="section">
+    <div class="section-title">⑥ 다음 시장 관전 포인트 (오늘 밤 미국장 + 내일 한국장)</div>
+    <div class="scenario scenario-up">
+      <div class="scenario-title">📈 상방 변수</div>
+      <div>① 미국 기술주 모멘텀 지속 (마이크론·인텔 강세 영향 잔존)</div>
+      <div>② 환율 1,450원 초반 안정 시 외인 환차손 부담 완화</div>
+      <div>③ 개인·기관 매수 여력 잔존 (개인 예탁금 130조원대 보유)</div>
     </div>
-    <div class="note-box note-blue" style="margin-top:12px;">
-      <strong>💡 초보자를 위한 오늘의 교훈</strong> — 주식은 하루에 이렇게 많이 오를 수도 있어요. 하지만 "이미 많이 올랐으니 지금 사야 해!"는 위험한 생각이에요. 지금처럼 단기 과열 신호가 나올 때는 분할 매수 (조금씩 나눠 사기)나 관망이 현명합니다. 내일 고용보고서라는 큰 이벤트가 있으니, 결과를 보고 판단하는 것도 좋은 전략이에요.
+    <div class="scenario scenario-down">
+      <div class="scenario-title">📉 하방 변수</div>
+      <div>① 외인 매도 연속화 — 7조 매도가 일시적인지 추세인지가 핵심</div>
+      <div>② 코스피 단기 급등 피로감 — 70일간 6,000→7,500</div>
+      <div>③ 코스닥 차별화 약세 — 중소형 자금 이탈 신호 가능</div>
+    </div>
+    <div class="scenario" style="background:var(--summary-bg);border-left:3px solid var(--summary-border);color:var(--summary-text);margin-top:12px">
+      <div class="scenario-title">🎯 시나리오 분기</div>
+      <div><strong>X 발생 시</strong> (외인 매수 전환 + 환율 1,440원대 진입) → 코스피 8,000 시도 (메리츠증권 연내 목표가)</div>
+      <div><strong>Y 발생 시</strong> (외인 매도 누적 -10조 + 환율 1,460원 재돌파) → 단기 조정 7,200선 지지 점검</div>
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;background:var(--thead);border-radius:6px;font-size:12px;color:var(--dim)">
+      <strong>주시할 종목·섹터</strong>: 삼성전자(반도체 슈퍼사이클), SK하이닉스(HBM), 에코프로(2차전지), 한화에어로(방산 회복 가능성), 고려아연(낙폭 과대 반등 여부)
     </div>
   </div>
 
   <div class="disclaimer">
-    ※ 본 브리핑은 오후 2:13 기준 장중 데이터 및 언론 보도를 바탕으로 작성되었으며, 투자 참고 정보 제공 목적입니다. 특정 종목의 매수·매도를 권유하지 않습니다. 투자 결과는 투자자 본인의 책임입니다.
+    본 브리핑은 정보 제공을 목적으로 하며, 투자 권유나 자문이 아닙니다.<br>
+    모든 투자 판단과 책임은 본인에게 있습니다.
   </div>
 </div>
 
 <script>
-  var _chartInstance = null;
-  function _getChartColors() {
-    const d = document.documentElement.classList.contains('dark');
-    return {
-      grid: d?'#1e2e4a':'#e8e8e4',
-      text: d?'#c8d8ef':'#666666',
-      tooltipBg: d?'#131e33':'#ffffff',
-      tooltipTitle: d?'#dce6f5':'#222222',
-      tooltipBorder: d?'#1e2e4a':'#e0e0dc',
-      barKospi:  d ? ['#4ade80','#86efac'] : ['#2D6A4F','#74C69D'],
-      barKosdaq: d ? ['#f87171','#9ca3af'] : ['#E74C3C','#AAAAAA'],
-    };
-  }
-  function _applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    if (theme === 'dark') {
-      document.querySelectorAll('[data-dark-color]').forEach(el => { el.style.color = el.getAttribute('data-dark-color'); });
-    } else {
-      document.querySelectorAll('[data-dark-color]').forEach(el => { el.style.color = ''; });
-    }
-    if (typeof _buildChart === 'function') _buildChart();
-  }
-  (function(){
-    var t=new URLSearchParams(window.location.search).get('theme')||'dark';
-    _applyTheme(t);
-    window.addEventListener('message',function(e){ if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme); });
-  })();
+function _getChartColors(){
+  const d = document.documentElement.classList.contains('dark');
+  return {
+    grid: d?'#1e2e4a':'#eef1f7',
+    text: d?'#c8d8ef':'#5a6e8c',
+    tooltipBg: d?'#131e33':'#ffffff',
+    tooltipTitle: d?'#dce6f5':'#1a2236',
+    tooltipBorder: d?'#1e2e4a':'#dde3ef',
+    barUp: d?'#f87171':'#dc2626',
+    barDown: d?'#60a5fa':'#2563eb',
+    line: d?'#60a5fa':'#2563eb',
+    lineFill: d?'rgba(96,165,250,0.10)':'rgba(37,99,235,0.08)'
+  };
+}
 
-  function _buildChart(){
-    var c=_getChartColors();
-    const ctx = document.getElementById('indexHistChart').getContext('2d');
-    if(_chartInstance)_chartInstance.destroy();
-    _chartInstance=new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['5/6 (어제)', '5/7 (오늘)'],
-        datasets: [
-          {
-            label: '코스피 등락률 (%)',
-            data: [6.45, 0.82],
-            backgroundColor: c.barKospi,
-            borderRadius: 8,
-            borderSkipped: false
-          },
-          {
-            label: '코스닥 등락률 (%)',
-            data: [-0.30, 0],
-            backgroundColor: c.barKosdaq,
-            borderRadius: 8,
-            borderSkipped: false
-          }
-        ]
+let _kospiChart, _sectorChart;
+
+function _buildChart(){
+  const c = _getChartColors();
+
+  // 코스피 일중 추이
+  const kospiCtx = document.getElementById('kospiChart');
+  if(kospiCtx){
+    if(_kospiChart) _kospiChart.destroy();
+    _kospiChart = new Chart(kospiCtx, {
+      type:'line',
+      data:{
+        labels:['09:00','09:30','10:00','11:00','12:00','13:00','13:30','14:00','14:30','15:00','15:30'],
+        datasets:[{
+          label:'코스피',
+          data:[7499, 7531, 7480, 7350, 7280, 7250, 7270, 7320, 7400, 7460, 7490],
+          borderColor:c.line,
+          backgroundColor:c.lineFill,
+          fill:true,
+          tension:0.3,
+          pointRadius:3,
+          pointBackgroundColor:c.line
+        }]
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        aspectRatio: 2,
-        plugins: {
-          legend: {
-            display: true,
-            position: 'top',
-            labels: { font: { size: 12 }, color: c.text, boxWidth: 12 }
-          },
-          tooltip: {
-            callbacks: {
-              label: (ctx) => {
-                const v = ctx.parsed.y;
-                return ' ' + (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
-              }
-            }
+      options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{
+          legend:{labels:{color:c.text,font:{size:12}}},
+          tooltip:{
+            backgroundColor:c.tooltipBg,
+            titleColor:c.tooltipTitle,
+            borderColor:c.tooltipBorder,
+            borderWidth:1,
+            bodyColor:c.tooltipTitle
           }
         },
-        scales: {
-          x: {
-            grid: { display: false },
-            ticks: { font: { size: 13 }, color: c.text }
-          },
-          y: {
-            min: -1, max: 8,
-            afterFit: (scale) => { scale.width = 52; },
-            grid: { color: c.grid },
-            ticks: {
-              callback: (v) => (v >= 0 ? '+' : '') + v + '%',
-              font: { size: 11 }, color: c.text
-            }
+        scales:{
+          x:{ticks:{color:c.text},grid:{color:c.grid}},
+          y:{
+            afterFit:(scale)=>{scale.width=52;},
+            ticks:{color:c.text},
+            grid:{color:c.grid}
           }
         }
       }
     });
   }
-  _buildChart();
+
+  // 섹터 차트
+  const sectorCtx = document.getElementById('sectorChart');
+  if(sectorCtx){
+    if(_sectorChart) _sectorChart.destroy();
+    _sectorChart = new Chart(sectorCtx, {
+      type:'bar',
+      data:{
+        labels:['일반서비스','유통','운송창고','전기전자','통신','건설','금속','증권'],
+        datasets:[{
+          label:'등락률(%)',
+          data:[4.96, 4.23, 3.80, 2.50, 1.80, -1.20, -3.46, -4.56],
+          backgroundColor:function(ctx){
+            const v = ctx.raw;
+            return v>=0 ? c.barUp : c.barDown;
+          }
+        }]
+      },
+      options:{
+        indexAxis:'y',
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{
+          legend:{display:false},
+          tooltip:{
+            backgroundColor:c.tooltipBg,
+            titleColor:c.tooltipTitle,
+            borderColor:c.tooltipBorder,
+            borderWidth:1,
+            bodyColor:c.tooltipTitle
+          }
+        },
+        scales:{
+          x:{ticks:{color:c.text,callback:(v)=>v+'%'},grid:{color:c.grid}},
+          y:{
+            afterFit:(scale)=>{scale.width=80;},
+            ticks:{color:c.text},
+            grid:{color:c.grid}
+          }
+        }
+      }
+    });
+  }
+}
+
+function _applyTheme(theme){
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+  document.querySelectorAll('[data-dark-color]').forEach(el => {
+    el.style.color = (theme === 'dark') ? el.getAttribute('data-dark-color') : '';
+  });
+  if(typeof _buildChart === 'function') _buildChart();
+}
+
+(function(){
+  var t = new URLSearchParams(window.location.search).get('theme') || 'dark';
+  _applyTheme(t);
+  window.addEventListener('message', function(e){
+    if(e.data && e.data.type === 'theme') _applyTheme(e.data.theme);
+  });
+})();
 </script>
 </body>
 </html>
