@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>시황 브리핑 — 5월 7일 오전</title>
+<title>시황 브리핑 — 5월 8일 오전</title>
 <style>
 :root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
 html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
@@ -48,55 +48,55 @@ tr:hover td{background:var(--row-hover)}
 .bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
 .bullet-list li:last-child{border-bottom:none}
 .event-table td:first-child{font-size:12px;white-space:nowrap;color:var(--dim);width:130px}
-.star-high{background:var(--up-bg)}
+.star-high{background:var(--warn-bg)}
 .disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+.caution-box{background:var(--down-bg);border:1px solid var(--down);border-radius:6px;padding:10px 14px;margin-bottom:12px;font-size:12.5px;color:var(--down)}
 </style>
 </head>
 <body>
 
 <!-- ① 한 줄 요약 -->
 <div class="section">
-  <div class="card bar-info">
+  <div class="card bar-down">
     <div class="card-inner">
-      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 5/7 (목) 07:30</div>
-      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 뉴욕 사상 최고치 재경신 — 코스피 7,500 도전 분위기</div>
-      <div style="font-size:13px;color:var(--dim)">간밤 뉴욕 증시가 S&amp;P500·나스닥·다우 모두 사상 최고치를 갈아치웠다. 미국·이란 종전 협상 기대감 지속 + AI 실적 랠리. 어제 코스피 7,000 돌파에 이어 오늘 7,500 도전 가능성.</div>
-      <div style="margin-top:8px;font-size:12.5px;color:var(--info);font-weight:600">📌 오늘 장에서 볼 것: 외국인 순매수 연속성 여부, 코스닥 바이오 회복 여부</div>
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 5/8 (금) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 미국 하락 여파 — 코스피 하락 출발 예상, 협상 불확실성 경계</div>
+      <div style="font-size:13px;color:var(--dim)">간밤 뉴욕 증시가 미·이란 협상 불확실성에 3대 지수 모두 하락 마감했다. 이란 측 "배상 없인 협상 없다" 강경 입장이 부각되며 유가도 낙폭을 일부 회복. 오늘 코스피 하락 출발 가능성이 높으며, 오늘 밤 NFP(고용) 발표가 최대 관전 포인트.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--down);font-weight:600">⚠️ 오늘 장에서 볼 것: 코스피 하락 낙폭 수준 (7,300선 방어 여부), 외국인 수급 방향 전환 여부</div>
     </div>
   </div>
 </div>
 
 <!-- ② 주요 지수 -->
 <div class="section">
-  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(5/6 미국 마감 기준)</span></h2>
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(5/7 미국 마감 기준)</span></h2>
   <div class="index-grid">
-    <div class="index-card up">
-      <div class="signal up"></div>
+    <div class="index-card down">
+      <div class="signal down"></div>
       <div class="index-name">S&amp;P 500</div>
-      <div class="index-val">7,365</div>
-      <div class="index-chg up">▲ +1.46%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">사상 최고치</div>
+      <div class="index-val">7,337</div>
+      <div class="index-chg down">▼ -0.38%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장중 신고가 후 하락</div>
     </div>
-    <div class="index-card up">
-      <div class="signal up"></div>
+    <div class="index-card down">
+      <div class="signal down"></div>
       <div class="index-name">나스닥</div>
-      <div class="index-val">25,838</div>
-      <div class="index-chg up">▲ +2.02%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">사상 최고치</div>
+      <div class="index-val">25,806</div>
+      <div class="index-chg down">▼ -0.13%</div>
     </div>
-    <div class="index-card up">
-      <div class="signal up"></div>
+    <div class="index-card down">
+      <div class="signal down"></div>
       <div class="index-name">다우</div>
-      <div class="index-val">49,910</div>
-      <div class="index-chg up">▲ +1.24%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">+612pt · 50,000 근접</div>
+      <div class="index-val">49,596</div>
+      <div class="index-chg down">▼ -0.63%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">-313pt</div>
     </div>
   </div>
-  <div class="card bar-up">
+  <div class="card bar-down">
     <div class="card-inner">
       <div class="note-explain">
-        <div class="meaning">S&amp;P500 +1.46% — 미·이란 종전 합의 임박 보도 + AI 실적 랠리</div>
-        <div class="impact">→ Axios "핵 농축 모라토리엄 포함 합의 임박" 보도. ARM +13%, Corning +17%. 이틀 연속 뉴욕 신고가 → 오늘 코스피 강세 출발 가능성 높음.</div>
+        <div class="meaning">미국 3대 지수 동반 하락 — 이틀 연속 신고가 후 조정</div>
+        <div class="impact">→ 이란 고위 관리 강경 입장 + 반도체주 차익 실현(마이크론·AMD -4%). 오늘 코스피 -1~2% 하락 출발 가능. 장중 7,300선 방어가 관건.</div>
       </div>
     </div>
   </div>
@@ -105,65 +105,71 @@ tr:hover td{background:var(--row-hover)}
 <!-- ⑤ 거시·이벤트 -->
 <div class="section">
   <h2>⑤ 거시·이벤트</h2>
-  <div class="card bar-info">
+  <div class="card bar-warn">
     <div class="card-info-corner">
       <button class="info-btn" onclick="togglePanel('p-macro')">i</button>
       <div class="info-panel" id="p-macro">
         <h4>거시 지표 용어</h4>
         <dl>
-          <dt>WTI 유가</dt><dd>미국산 원유 기준 가격. 종전 협상 기대로 하락세.</dd>
-          <dt>달러인덱스(DXY)</dt><dd>달러 강도 지수. 낮을수록 원화 강세 → 외국인 매수 유리.</dd>
-          <dt>NFP (비농업 고용)</dt><dd>미국 노동부가 매달 발표하는 취업자 수 변화. 예상보다 강하면 금리 인하 기대 약화 가능.</dd>
+          <dt>WTI 유가</dt><dd>미국산 원유 기준가. 협상 불확실성에 낙폭 회복 중. 오늘 방향이 시장 분위기를 좌우할 수 있음.</dd>
+          <dt>달러인덱스(DXY)</dt><dd>달러 강도 지수. 높아지면 원화 약세 → 외국인 이탈 압력.</dd>
+          <dt>NFP (비농업 고용)</dt><dd>미국 노동부 발표 취업자 수 변화. 강하면 금리 인하 기대 약화 → 주식 하방 압력. 약하면 경기 둔화 우려.</dd>
         </dl>
         <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
       </div>
     </div>
     <div class="card-inner">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-        <div><div style="font-size:11px;color:var(--dim)">WTI 유가</div><div style="font-size:15px;font-weight:700;color:var(--up)">▼ 하락 지속</div><div style="font-size:12px;color:var(--dim)">협상 기대 → 공급 우려 완화</div></div>
-        <div><div style="font-size:11px;color:var(--dim)">달러인덱스(DXY)</div><div style="font-size:15px;font-weight:700">약세 유지</div><div style="font-size:12px;color:var(--dim)">원화 강세 지지 중</div></div>
+        <div><div style="font-size:11px;color:var(--dim)">원/달러 환율</div><div style="font-size:15px;font-weight:700;color:var(--warn)">▲ 1,458~1,470원대</div><div style="font-size:12px;color:var(--dim)">달러 강세 전환 (원화 약세)</div></div>
+        <div><div style="font-size:11px;color:var(--dim)">WTI 유가</div><div style="font-size:15px;font-weight:700;color:var(--warn)">$94.81</div><div style="font-size:12px;color:var(--dim)">낙폭 일부 회복</div></div>
+        <div><div style="font-size:11px;color:var(--dim)">달러인덱스(DXY)</div><div style="font-size:15px;font-weight:700">97.89</div><div style="font-size:12px;color:var(--dim)">달러 강세 전환</div></div>
+        <div><div style="font-size:11px;color:var(--dim)">미국 10년물 금리</div><div style="font-size:15px;font-weight:700">~4.4%대</div><div style="font-size:12px;color:var(--dim)">안정적 유지</div></div>
       </div>
       <table class="event-table">
         <thead><tr><th>날짜·시간</th><th>이벤트</th><th>중요도</th></tr></thead>
         <tbody>
-          <tr><td>5/7 (목) 21:30</td><td>미국 신규 실업수당 청구건수 (결과: 20만건 — 예상 하회)</td><td>⭐⭐</td></tr>
-          <tr><td>5/7 (목) 21:30</td><td>미국 1분기 생산성 (결과: +0.8%, 예상 하회)</td><td>⭐</td></tr>
-          <tr class="star-high"><td>5/8 (금) 21:30</td><td>미국 4월 비농업 고용(NFP) — 시장 최대 관심</td><td>⭐⭐⭐</td></tr>
-          <tr><td>5/7~5/8</td><td>미국·이란 종전 협상 최종 결과</td><td>⭐⭐⭐</td></tr>
+          <tr><td>5/8 (금) 장중</td><td>미국·이란 종전 협상 추가 진전 여부</td><td>⭐⭐⭐</td></tr>
+          <tr class="star-high"><td>5/8 (금) 21:30</td><td>미국 4월 비농업 고용(NFP) 발표</td><td>⭐⭐⭐</td></tr>
+          <tr><td>5/8 (금) 21:30</td><td>미국 4월 실업률</td><td>⭐⭐</td></tr>
+          <tr><td>다음주 화</td><td>미국 4월 CPI (소비자물가) 발표 예정</td><td>⭐⭐⭐</td></tr>
         </tbody>
       </table>
+      <div class="note-explain" style="margin-top:10px">
+        <div class="meaning">⭐⭐⭐ 오늘 밤 NFP — 시장 향방 결정할 핵심 지표</div>
+        <div class="impact">→ 고용이 예상보다 강하면 금리 인하 기대 약화 → 주식 추가 하방 압력. 약하면 금리 인하 기대 강화 → 반등 가능성. 오늘 한국장도 NFP 전 관망 흐름 가능.</div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- ③ 업종·테마 -->
 <div class="section">
-  <h2>③ 미국 간밤 주요 흐름</h2>
+  <h2>③ 업종·테마 흐름 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 간밤 기준)</span></h2>
   <div class="card bar-info">
     <div class="card-inner">
       <ul class="bullet-list">
-        <li>💻 <strong>IT·반도체</strong> — AI 관련주 전반 강세, 엔비디아·AMD·마이크론 등 반도체 상승</li>
-        <li>🏗️ <strong>소재·인프라</strong> — Corning +17% (엔비디아와 광통신 공장 3개 MOU)</li>
-        <li>🚀 <strong>방산·우주</strong> — HawkEye 360 IPO +28% 강세 데뷔</li>
-        <li>💊 <strong>AMD</strong> — CEO 리사 수 "에이전틱 AI가 CPU 수요 폭증" 발언</li>
+        <li>💻 <strong>반도체</strong> — 마이크론·AMD·램리서치 -4% 차익 실현. 오늘 한국 반도체주 하방 압력 가능</li>
+        <li>🏦 <strong>금융</strong> — 씨티그룹 +1% (자사주 매입), 경기 우려 속 방어주 부각</li>
+        <li>⚡ <strong>에너지</strong> — 유가 낙폭 회복 → 에너지주 소폭 강세</li>
+        <li>🏗️ <strong>인프라·소재</strong> — Caterpillar -2.29%, Chevron -2.10% 약세</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- ④ 주요 종목 (M7) -->
+<!-- ④ 주요 종목 -->
 <div class="section">
-  <h2>④ 미국 주요 종목 M7</h2>
+  <h2>④ 미국 주요 종목 M7 <span style="font-size:11px;font-weight:400;color:var(--dim)">(5/7 마감)</span></h2>
   <div class="card bar-info">
     <div class="card-inner">
       <table>
-        <thead><tr><th>종목</th><th>방향</th><th>특이사항</th></tr></thead>
+        <thead><tr><th>종목</th><th>등락</th><th>비고</th></tr></thead>
         <tbody>
-          <tr><td>애플</td><td class="up-txt">▲ 사상 최고치</td><td style="font-size:12px;color:var(--dim)">1분기 어닝 서프라이즈 효과 지속</td></tr>
-          <tr><td>엔비디아</td><td class="up-txt">▲ 강세</td><td style="font-size:12px;color:var(--dim)">Corning 광통신 공장 MOU</td></tr>
-          <tr><td>마이크로소프트</td><td class="up-txt">▲ 강세</td><td style="font-size:12px;color:var(--dim)">클라우드·AI 수요</td></tr>
-          <tr><td>알파벳</td><td class="up-txt">▲ 사상 최고치</td><td style="font-size:12px;color:var(--dim)">IPO 이후 최고가</td></tr>
-          <tr><td>아마존</td><td>혼조</td><td style="font-size:12px;color:var(--dim)">차익 실현 부분 출회</td></tr>
+          <tr><td>애플</td><td class="up-txt">▲ 사상 최고치</td><td style="font-size:12px;color:var(--dim)">상대적 강세 유지</td></tr>
+          <tr><td>마이크로소프트</td><td class="up-txt">▲ +2.38%</td><td style="font-size:12px;color:var(--dim)">Salesforce와 동반 강세</td></tr>
+          <tr><td>아마존</td><td class="down-txt">▼ 하락</td><td style="font-size:12px;color:var(--dim)">차익 실현</td></tr>
+          <tr><td>엔비디아</td><td>혼조</td><td style="font-size:12px;color:var(--dim)">반도체 전반 차익 실현 흐름</td></tr>
+          <tr><td>구글·메타·테슬라</td><td>혼조</td><td style="font-size:12px;color:var(--dim)">개별 이슈</td></tr>
         </tbody>
       </table>
     </div>
@@ -177,9 +183,9 @@ tr:hover td{background:var(--row-hover)}
     <div class="card-inner">
       <div style="font-weight:700;color:var(--up);margin-bottom:6px">기회 요인</div>
       <ul class="bullet-list">
-        <li>뉴욕 이틀 연속 신고가 → 코스피 7,500 도전 가능</li>
-        <li>외국인 3일 연속 순매수 진입 시 코스피 상승 탄력 강화</li>
-        <li>종전 협상 공식 타결 시 유가 급락 → 전 자산 리스크온</li>
+        <li>하락 출발 후 저가 매수 유입 → 낙폭 제한 가능</li>
+        <li>협상 재개 소식 → 유가 재하락 → 시장 반전 가능</li>
+        <li>오늘 밤 NFP 약세 시 → 금리 인하 기대 강화 → 주식 반등</li>
       </ul>
     </div>
   </div>
@@ -187,9 +193,10 @@ tr:hover td{background:var(--row-hover)}
     <div class="card-inner">
       <div style="font-weight:700;color:var(--down);margin-bottom:6px">위험 요인</div>
       <ul class="bullet-list">
-        <li>이틀 급등 후 단기 과열 — 외국인 차익 실현 매물 출회 가능</li>
-        <li>협상 결렬 시 유가 급등 재연</li>
-        <li>내일 NFP 강세 우려 → 오늘 미리 위험 회피 가능성</li>
+        <li>코스피 7,300선 하회 시 추가 하방 압력</li>
+        <li>외국인 3일 연속 대규모 매도 지속 가능성</li>
+        <li>NFP 강세 → 금리 인하 기대 약화 → 성장주 하방 압력</li>
+        <li>이란 협상 완전 결렬 → 유가 $100 재돌파 가능성</li>
       </ul>
     </div>
   </div>

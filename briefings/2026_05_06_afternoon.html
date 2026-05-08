@@ -3,359 +3,319 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>국내 장 마감 브리핑 — 2026.05.06</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<title>시황 브리핑 — 5월 6일 오후</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@700&display=swap');
-  :root {
-    --bg:#f4f6fb; --surface:#ffffff; --border:#dde3ef; --thead:#eef1f7;
-    --row-hover:#f8faff; --text:#1a2236; --dim:#5a6e8c; --muted:#8a9ab8;
-    --summary-bg:#eff6ff; --summary-border:#93c5fd; --summary-text:#1e3a5f;
-    --card-shadow:0 1px 4px rgba(0,0,0,0.06);
-    --chart-grid:#eef1f7; --chart-text:#5a6e8c;
-    --chart-tooltip-bg:#ffffff; --chart-tooltip-title:#1a2236; --chart-tooltip-border:#dde3ef;
-    --section-bar:#2563eb;
-  }
-  html.dark {
-    --bg:#0b1120; --surface:#131e33; --border:#1e2e4a; --thead:#0f1928;
-    --row-hover:#1a2940; --text:#dce6f5; --dim:#8fa4c0; --muted:#5a7090;
-    --summary-bg:rgba(37,99,235,0.08); --summary-border:rgba(37,99,235,0.3); --summary-text:#a0b8d8;
-    --card-shadow:0 1px 6px rgba(0,0,0,0.4);
-    --chart-grid:#1e2e4a; --chart-text:#6b80a0;
-    --chart-tooltip-bg:#131e33; --chart-tooltip-title:#dce6f5; --chart-tooltip-border:#1e2e4a;
-    --section-bar:#3b82f6;
-  }
-  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  body { transition:background 0.25s,color 0.25s; font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--text); padding:20px; font-size:13px; max-width:860px; margin:0 auto; }
-  .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; padding-bottom:14px; border-bottom:2px solid var(--border); flex-wrap:wrap; }
-  .header h1 { font-family:'Oswald',sans-serif; font-size:24px; letter-spacing:1px; color:#b8720a; }
-  .header p { color:var(--dim); font-size:12px; margin-top:3px; }
-  .badge { background:#fef3c7; border:1px solid #f59e0b; border-radius:20px; padding:7px 14px; font-size:11px; color:#92670a; font-weight:700; }
-  .section-title { font-size:11px; font-weight:700; letter-spacing:2px; color:var(--dim); text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
-  .section-title::before { content:''; display:inline-block; width:3px; height:14px; border-radius:2px; background:#2563eb; flex-shrink:0; }
-  .hero { background:linear-gradient(135deg,#ecfdf5,#d1fae5); border:2px solid #34d399; border-radius:14px; padding:22px; margin-bottom:18px; text-align:center; box-shadow:0 2px 10px rgba(0,166,90,0.1); }
-  .hero .big { font-family:'Oswald',sans-serif; font-size:42px; color:#00834a; line-height:1; }
-  .hero .headline { font-size:16px; color:var(--text); margin-top:8px; font-weight:700; }
-  .hero .stats { display:flex; justify-content:center; gap:24px; margin-top:12px; flex-wrap:wrap; }
-  .hero .stat { text-align:center; }
-  .hero .stat .val { font-family:'Oswald',sans-serif; font-size:18px; color:#00834a; }
-  .hero .stat .lbl { font-size:10px; color:var(--dim); margin-top:2px; }
-  .index-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
-  .index-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; position:relative; overflow:hidden; box-shadow:var(--card-shadow); }
-  .index-card::after { content:''; position:absolute; top:0; left:0; right:0; height:4px; border-radius:12px 12px 0 0; }
-  .index-card.up::after { background:#00a65a; }
-  .index-card.down::after { background:#e02f55; }
-  .index-card .label { font-size:11px; color:var(--dim); font-weight:700; margin-bottom:6px; }
-  .index-card .value { font-family:'Oswald',sans-serif; font-size:26px; color:var(--text); }
-  .index-card .change { font-size:13px; font-weight:700; margin-top:4px; }
-  .change.up { color:#00834a; } .change.down { color:#c0253f; }
-  .index-card .sub { font-size:11px; color:var(--muted); margin-top:4px; }
-  .index-card .emoji { font-size:22px; position:absolute; right:14px; top:14px; }
-  .timeline { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:18px; box-shadow:var(--card-shadow); }
-  .tl-list { list-style:none; }
-  .tl-item { display:flex; gap:14px; align-items:flex-start; padding:8px 0; border-bottom:1px solid #f0f4ff; }
-  .tl-item:last-child { border-bottom:none; }
-  .tl-time { font-family:'Oswald',sans-serif; font-size:13px; color:#2563eb; min-width:54px; margin-top:1px; }
-  .tl-text { font-size:12px; line-height:1.6; color:var(--text); }
-  .tl-text strong { color:#00834a; }
-  .chart-wrap { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:18px; box-shadow:var(--card-shadow); }
-  .data-table { width:100%; border-collapse:collapse; margin-bottom:18px; border-radius:12px; overflow:hidden; box-shadow:var(--card-shadow); }
-  .data-table thead tr { background:var(--thead); }
-  .data-table th { color:var(--dim); font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); }
-  .data-table td { padding:11px 12px; font-size:12px; border-bottom:1px solid var(--border); background:var(--surface); color:var(--text); }
-  .data-table tr:last-child td { border-bottom:none; }
-  .data-table tr:hover td { background:var(--row-hover); }
-  .arrow-up { color:#00834a; font-weight:700; }
-  .arrow-down { color:#c0253f; font-weight:700; }
-  .stock-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
-  .stock-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:14px; position:relative; box-shadow:var(--card-shadow); }
-  .stock-card.hot { border-color:#6ee7b7; border-width:1.5px; }
-  .stock-card.limit { border-color:#fbbf24; border-width:1.5px; }
-  .stock-card.watch { border-color:#fca5a5; border-width:1.5px; }
-  .stock-tag { position:absolute; top:11px; right:11px; font-size:10px; font-weight:700; padding:2px 9px; border-radius:11px; }
-  .stock-tag.hot { background:#d1fae5; color:#006b42; }
-  .stock-tag.limit { background:#fef3c7; color:#92670a; }
-  .stock-tag.watch { background:#fee2e2; color:#b91c1c; }
-  .stock-name { font-size:15px; font-weight:700; color:var(--text); margin-bottom:2px; }
-  .stock-code { font-size:10px; color:var(--muted); margin-bottom:8px; }
-  .stock-stat { display:flex; justify-content:space-between; font-size:12px; color:var(--dim); margin-top:6px; }
-  .stock-stat span:last-child { color:var(--text); font-weight:600; }
-  .info-box { background:#eff6ff; border:1px solid #93c5fd; border-radius:12px; padding:14px 16px; margin-bottom:18px; }
-  .info-box p { font-size:13px; line-height:1.9; color:#1e3a5f; }
-  .hl { color:#b8720a; font-weight:700; }
-  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
-  .info-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:14px; box-shadow:var(--card-shadow); }
-  .info-card .title { font-size:12px; color:var(--dim); font-weight:700; margin-bottom:10px; }
-  .info-item { display:flex; justify-content:space-between; align-items:center; font-size:12px; margin-bottom:7px; }
-  .info-item .k { color:var(--dim); }
-  .info-item .v { font-weight:700; color:var(--text); }
-  .info-item .v.up { color:#00834a; }
-  .info-item .v.down { color:#c0253f; }
-  .disclaimer { text-align:center; font-size:11px; color:var(--muted); margin-top:20px; padding-top:14px; border-top:1px solid var(--border); }
-  .table-wrap { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:12px; margin-bottom:18px; }
-  .table-wrap table, .table-wrap .data-table { min-width:480px; margin-bottom:0; }
-  @media (max-width:700px) { body{padding:14px 12px 32px;} .header{flex-direction:column;align-items:flex-start;gap:10px;} .index-grid{grid-template-columns:repeat(2,1fr);} .two-col{grid-template-columns:1fr;} .stock-grid{grid-template-columns:1fr;} }
-  @media (max-width:480px) { .index-grid{grid-template-columns:1fr 1fr;} .index-card .value{font-size:18px;} .hero .big{font-size:30px;} }
-  html.dark body { background:#0b1120 !important; color:#dce6f5 !important; }
-  html.dark .index-card, html.dark .chart-wrap, html.dark .timeline, html.dark .info-card, html.dark .info-box, html.dark .stock-card, html.dark .two-col>div { background:#131e33 !important; border-color:#1e2e4a !important; }
-  html.dark .data-table thead tr { background:#0f1928 !important; }
-  html.dark .data-table th { color:#8fa4c0 !important; border-color:#1e2e4a !important; }
-  html.dark .data-table td { background:#131e33 !important; color:#dce6f5 !important; border-color:#1e2e4a !important; }
-  html.dark .data-table tr:hover td { background:#1a2940 !important; }
-  html.dark .index-card .label, html.dark .index-card .sub, html.dark .header p, html.dark .section-title { color:#8fa4c0 !important; }
-  html.dark .index-card .value, html.dark .header h1 { color:#dce6f5 !important; }
-  html.dark .section-title::before { background:#3b82f6 !important; }
-  html.dark .summary-box, html.dark .info-box { background:rgba(37,99,235,0.08) !important; border-color:rgba(37,99,235,0.3) !important; }
-  html.dark .info-box p { color:#c8d8ef !important; }
-  html.dark .stock-tag.hot { background:rgba(0,107,66,0.2) !important; color:#4ade80 !important; }
-  html.dark .stock-tag.limit { background:rgba(146,103,10,0.2) !important; color:#fbbf24 !important; }
-  html.dark .stock-tag.watch { background:rgba(185,28,28,0.2) !important; color:#f87171 !important; }
-  html.dark .stock-name { color:#dce6f5 !important; }
-  html.dark .stock-code { color:#6b80a0 !important; }
-  html.dark .disclaimer { color:#4a5e80 !important; border-color:#1e2e4a !important; }
-  html.dark .hero { background:rgba(34,197,94,0.07) !important; border-color:rgba(34,197,94,0.3) !important; }
-  html.dark .hero .big { color:#4ade80 !important; }
-  html.dark .hero .headline { color:#dce6f5 !important; }
-  html.dark .tl-time { color:#60a5fa !important; }
-  html.dark .tl-text { color:#c8d8ef !important; }
-  html.dark .tl-text strong { color:#4ade80 !important; }
-  html.dark .info-item .k { color:#6b80a0 !important; }
-  html.dark .info-item .v { color:#dce6f5 !important; }
-  html.dark .change.up, html.dark .arrow-up { color:#4ade80 !important; }
-  html.dark .change.down, html.dark .arrow-down { color:#f87171 !important; }
-  html.dark .hl { color:#fbbf24 !important; }
-  html.dark .stock-stat { color:#8fa4c0 !important; }
-  html.dark .stock-stat span:last-child { color:#c8d8ef !important; }
-  html.dark .header h1 { color:#f59e0b !important; }
-  html.dark table { background:#131e33; }
-  html.dark table tbody tr { background:#131e33 !important; }
-  html.dark table td { background:#131e33 !important; color:#dce6f5 !important; border-color:#1e2e4a !important; }
-  html.dark table th { background:#0f1928 !important; color:#8fa4c0 !important; border-color:#1e2e4a !important; }
-  html.dark table tr:hover td { background:#1a2940 !important; }
-  html.dark td { color:#dce6f5 !important; }
-  html.dark th { color:#8fa4c0 !important; }
-  html.dark [style*="color:#00834a"] { color:#4ade80 !important; }
-  html.dark [style*="color:#c0253f"] { color:#f87171 !important; }
-  html.dark [style*="color:#92670a"] { color:#fbbf24 !important; }
-  html.dark [style*="color:#8a9ab8"] { color:#8fa4c0 !important; }
-  html.dark [style*="background:#fdf5f5"] { background:rgba(185,28,28,0.1) !important; }
-  .badge, .stock-tag { white-space:nowrap; }
-  .index-card .value { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .stock-stat { flex-wrap:nowrap; gap:4px; }
-  .data-table th, .data-table td:first-child { white-space:nowrap; }
-  @media (max-width:600px) { .index-card .value{font-size:18px!important;} .stock-stat{font-size:11px!important;} .section-title{font-size:10px!important;} .badge{font-size:9px!important;padding:2px 6px!important;} }
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px;color:var(--text)}
+h3{font-size:13px;font-weight:600;color:var(--dim);margin-bottom:8px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;overflow:visible;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+/* 강조 배너 */
+.banner{border-radius:8px;padding:14px 18px;margin-bottom:16px;border:1px solid var(--warn);background:var(--warn-bg);position:relative}
+.banner-title{font-size:17px;font-weight:800;color:var(--warn)}
+.banner-sub{font-size:12.5px;color:var(--dim);margin-top:4px}
+/* 지수 그리드 */
+.index-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative;overflow:visible}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}
+.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:22px;font-weight:800;color:var(--text)}
+.index-chg{font-size:13px;font-weight:700;margin-top:3px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}
+.note-explain{margin-top:10px;padding:8px 12px;border-left:3px solid var(--summary-border);background:var(--summary-bg);color:var(--summary-text);font-size:12.5px;line-height:1.5;border-radius:4px}
+.note-explain .meaning{font-weight:600}.note-explain .impact{color:var(--dim);margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}
+.card-info-corner{position:absolute;top:12px;right:12px;z-index:5}
+.info-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--info-bg);color:var(--info);font-size:11px;font-weight:700;cursor:pointer;border:none;user-select:none;transition:background .15s}
+.info-btn:hover{background:var(--info);color:#fff}
+.info-panel{display:none;position:absolute;top:38px;right:8px;width:min(320px,calc(100vw - 48px));background:var(--surface);border:1px solid var(--info);border-radius:8px;padding:14px 16px;box-shadow:0 8px 24px rgba(0,0,0,.15);z-index:50;font-size:13px;line-height:1.55}
+.info-panel.open{display:block}
+.info-panel h4{margin:0 0 8px;font-size:13px;font-weight:700;color:var(--info)}
+.info-panel dl{margin:0}
+.info-panel dt{font-weight:600;color:var(--text);margin-top:8px;font-size:12.5px}
+.info-panel dt:first-child{margin-top:0}
+.info-panel dd{margin:2px 0 0;color:var(--dim);font-size:12.5px}
+.info-panel .close-hint{margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);text-align:right}
+/* 종목 카드 */
+.stock-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px 12px 18px;position:relative;overflow:visible;margin-bottom:10px}
+.stock-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px;background:var(--up)}
+.stock-card.down-card::before{background:var(--down)}
+.stock-name{font-size:15px;font-weight:700}
+.stock-price{font-size:22px;font-weight:800;margin:4px 0}
+.stock-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;margin-bottom:6px}
+.badge-info{background:var(--info-bg);color:var(--info)}
+/* 52주 바 */
+.bar52-wrap{margin:8px 0;position:relative}
+.bar52-track{height:6px;background:var(--border);border-radius:3px;position:relative}
+.bar52-fill{height:6px;border-radius:3px;background:linear-gradient(to right,var(--info),var(--up))}
+.bar52-marker{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--up);border:2px solid var(--surface);transform:translateX(-50%)}
+.bar52-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:4px}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.two-col{grid-template-columns:1fr}}
+.col-head{font-size:12px;font-weight:700;padding:6px 10px;border-radius:6px;margin-bottom:6px}
+.col-head.up{background:var(--up-bg);color:var(--up)}.col-head.down{background:var(--down-bg);color:var(--down)}
+.sector-item{padding:5px 0;font-size:12.5px;border-bottom:1px solid var(--border)}
+.sector-item:last-child{border-bottom:none}
+.sector-item .pct{float:right;font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div>
-    <h1>🇰🇷 국내 장 마감 브리핑</h1>
-    <p>2026년 5월 6일 (수) · 오후 3:30 마감 결과</p>
-  </div>
-  <div class="badge">🔔 마감시황</div>
+<!-- 강조 배너 -->
+<div class="banner">
+  <div class="banner-title">🏆 코스피 7,000 돌파 — 사상 최초</div>
+  <div class="banner-sub">2026년 5월 6일 장 중 7,311 고점, 종가 7,384.56 기록. 코스피가 S&amp;P500을 약 19pt 추월.</div>
 </div>
 
-<div class="hero">
-  <div class="big">🎉 코스피 7,384.56</div>
-  <div class="headline">사상 최초 7,000 돌파 · 종가 역대 최고치 경신</div>
-  <div class="stats">
-    <div class="stat"><div class="val">+6.45%</div><div class="lbl">일간 등락률</div></div>
-    <div class="stat"><div class="val">+447.57pt</div><div class="lbl">상승 포인트</div></div>
-    <div class="stat"><div class="val">7,426.60</div><div class="lbl">장중 최고가</div></div>
-    <div class="stat"><div class="val">58조 1,745억</div><div class="lbl">거래대금</div></div>
-  </div>
-</div>
-
-<div class="section-title">지수 마감 결과</div>
-<div class="index-grid">
-  <div class="index-card up">
-    <span class="emoji">🚀</span>
-    <div class="label">코스피 (대형주 시장)</div>
-    <div class="value">7,384.56</div>
-    <div class="change up">▲ +447.57pt (+6.45%)</div>
-    <div class="sub">장중 최고 7,426.60 · 역대 2번째 상승폭</div>
-  </div>
-  <div class="index-card down">
-    <span class="emoji">😐</span>
-    <div class="label">코스닥 (중소형 기술주)</div>
-    <div class="value">1,210.17</div>
-    <div class="change down">▼ -3.57pt (-0.29%)</div>
-    <div class="sub">대형주 쏠림에 소외 · 약보합 마감</div>
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 5/6 (수) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 반도체 주도 역사적 폭등 — 코스피 최초 7,000 돌파</div>
+      <div style="font-size:13px;color:var(--dim)">삼성전자 +15%, SK하이닉스 +11% 급등이 코스피 전체를 끌어올렸다. 외국인 3조원대 순매수가 지수 급등을 견인. 코스닥은 외국인·기관 매도에 눌려 혼조.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--warn);font-weight:600">📌 오늘 밤 볼 것: 미국 장 지속 상승 시 내일 추가 랠리 가능성 vs. 외국인 차익 실현 규모</div>
+    </div>
   </div>
 </div>
 
-<div class="chart-wrap">
-  <div class="section-title" style="margin-bottom:14px;">오늘 코스피 장중 흐름 (시간대별)</div>
-  <canvas id="intradayChart"></canvas>
+<!-- ② 주요 지수 -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(15:30 종가)</span></h2>
+  <div class="index-grid">
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val" data-dark-color="#dce6f5">7,384.56</div>
+      <div class="index-chg up">▲ +6.45%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">+448pt | 사상 최고치</div>
+    </div>
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,210.17</div>
+      <div class="index-chg down">▼ -0.29%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">-3.5pt</div>
+    </div>
+  </div>
+  <!-- 미국 선물 -->
+  <div class="card bar-info" style="margin-bottom:12px">
+    <div class="card-info-corner">
+      <button class="info-btn" onclick="togglePanel('p-fut')">i</button>
+      <div class="info-panel" id="p-fut">
+        <h4>선물 지수란?</h4>
+        <dl>
+          <dt>S&amp;P500 선물 / 나스닥 선물</dt>
+          <dd>미국장 정규 개장(오후 11:30) 전에 미리 거래되는 가격. 오늘 밤 미국장이 어떻게 시작될지 가늠하는 도구.</dd>
+        </dl>
+        <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+      </div>
+    </div>
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:6px">🇺🇸 미국 선물 (오후 기준)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><div style="font-size:11px;color:var(--dim)">S&amp;P500 선물</div><div style="font-weight:700;color:var(--up)">▲ 강세</div></div>
+        <div><div style="font-size:11px;color:var(--dim)">나스닥 선물</div><div style="font-weight:700;color:var(--up)">▲ 강세</div></div>
+      </div>
+      <div style="font-size:11.5px;color:var(--dim);margin-top:6px">미국·이란 종전 기대감 지속 → 오늘 밤 미국장 강세 출발 가능성 높음</div>
+    </div>
+  </div>
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div class="note-explain">
+        <div class="meaning">코스피 +6.45% — 트리거 발동 (지수 ±2% 이상, 심층 해설)</div>
+        <div class="impact">→ 외국인 3조1천억원 순매수가 주도. 삼성전자 장중 +16%, SK하이닉스 장중 +11%. 시가총액이 6경원을 돌파하며 코스피가 S&amp;P500을 약 10년 만에 추월. 단 코스닥은 외국인·기관 동반 매도로 하락 — 대형주 집중 쏠림 현상.</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="section-title">오늘 장중 타임라인</div>
-<div class="timeline">
-  <ul class="tl-list">
-    <li class="tl-item"><span class="tl-time">09:00</span><span class="tl-text"><strong>7,093.01로 개장</strong> — 개장과 동시에 7,000선 돌파! '칠천피' 시대 개막</span></li>
-    <li class="tl-item"><span class="tl-time">09:00:40</span><span class="tl-text"><strong>7,200선 돌파</strong> — 개장 40초 만에 200선 추가 돌파</span></li>
-    <li class="tl-item"><span class="tl-time">09:02:40</span><span class="tl-text"><strong>7,300선 돌파</strong> — 개장 2분 40초 만에 300선 돌파</span></li>
-    <li class="tl-item"><span class="tl-time">09:06</span><span class="tl-text"><strong>매수 사이드카 발동</strong> — 선물 가격 5% 이상 급등으로 5분간 프로그램 매수 일시 정지 (안전장치)</span></li>
-    <li class="tl-item"><span class="tl-time">12:19</span><span class="tl-text"><strong>장중 최고 7,426.60 터치</strong> — 역대 최고가 경신</span></li>
-    <li class="tl-item"><span class="tl-time">15:30</span><span class="tl-text"><strong>7,384.56 마감</strong> — 종가 기준 역대 최고치 · 하루 상승폭 역대 2위</span></li>
-  </ul>
-</div>
-
-<div class="section-title">수급 흐름 (누가 얼마나 샀나?)</div>
-<div class="table-wrap">
-<table class="data-table">
-  <thead><tr><th>투자자</th><th>코스피</th><th>코스닥</th><th>코멘트</th></tr></thead>
-  <tbody>
-    <tr><td>🌍 외국인</td><td><span class="arrow-up">▲ 3조 1,357억 매수</span></td><td><span class="arrow-down">▼ 632억 매도</span></td><td><strong>역대 단일일 최대 매수</strong> 경신</td></tr>
-    <tr><td>🏢 기관</td><td><span class="arrow-down">▼ 2조 3,133억 매도</span></td><td><span class="arrow-down">▼ 5,438억 매도</span></td><td>차익 실현에 집중</td></tr>
-    <tr><td>👤 개인</td><td><span class="arrow-down">▼ 5,715억 매도</span></td><td><span class="arrow-up">▲ 6,094억 매수</span></td><td>코스피 차익실현 · 코스닥 저가매수</td></tr>
-  </tbody>
-</table>
-</div>
-
-<div class="info-box" style="margin-bottom:18px;">
-  <p>📌 <span class="hl">수급 핵심 포인트</span><br>
-  외국인이 혼자서 3조원 넘게 사들이며 지수를 끌어올렸습니다. <span class="hl">IBKR(미국 온라인 증권사)의 한국 주식 직접 매수 서비스</span>가 이번 주부터 시작되면서 해외 개인투자자들의 유입이 급격히 늘어난 것도 큰 원인입니다. 기관·개인은 많이 오른 주식을 팔아 이익을 실현(차익실현)했습니다.</p>
-</div>
-
-<div class="section-title">오늘의 주요 종목</div>
-<div class="stock-grid">
-  <div class="stock-card hot">
-    <span class="stock-tag hot">🚀 급등</span>
+<!-- ④ 주요 종목 (오후 세션 우선) -->
+<div class="section">
+  <h2>④ 주요 종목</h2>
+  <!-- 강조 종목 카드 -->
+  <div class="stock-card">
+    <div class="card-info-corner">
+      <button class="info-btn" onclick="togglePanel('p-52w')">i</button>
+      <div class="info-panel" id="p-52w">
+        <h4>종목 카드 용어</h4>
+        <dl>
+          <dt>1년 최저/최고 (52주 위치)</dt><dd>지난 1년 동안의 가격 범위에서 지금이 어디쯤인지 보여줍니다. 오른쪽일수록 1년 고점 근처.</dd>
+          <dt>관심 라벨</dt><dd>작성자가 주목할 만하다고 판단한 종목입니다. 매수 추천이 아닙니다.</dd>
+        </dl>
+        <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+      </div>
+    </div>
+    <span class="stock-badge badge-info">관심</span>
     <div class="stock-name">삼성전자</div>
-    <div class="stock-code">005930 · 코스피</div>
-    <div class="stock-stat"><span>종가</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">26만원대 (사상 최초)</span></div>
-    <div class="stock-stat"><span>등락률</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">▲ +14.41%</span></div>
-    <div class="stock-stat"><span>시가총액</span><span>1조 달러 돌파 — 글로벌 1조달러 클럽 입성</span></div>
-    <div class="stock-stat"><span>이슈</span><span>애플 칩 공급 협의 소식</span></div>
+    <div class="stock-price up-txt">▲ 장중 270,000원 (+16%)</div>
+    <div style="font-size:12px;color:var(--dim);margin-bottom:6px">시가총액 1,500조원 돌파 — 아시아 반도체 기업 두 번째로 1조 달러 달성</div>
+    <div class="bar52-wrap">
+      <div class="bar52-track">
+        <div class="bar52-fill" style="width:88%"></div>
+        <div class="bar52-marker" style="left:88%"></div>
+      </div>
+      <div class="bar52-labels"><span>1년 최저</span><span>1년 최고 근처 ▶</span></div>
+    </div>
+    <div class="note-explain">
+      <div class="meaning">HBM 수요 폭증 + 1분기 실적 서프라이즈</div>
+      <div class="impact">→ 반도체 슈퍼사이클 본격화 기대감. 외국인 매집 지속 여부가 핵심 변수.</div>
+    </div>
   </div>
-  <div class="stock-card hot">
-    <span class="stock-tag hot">🚀 급등</span>
+
+  <div class="stock-card">
+    <span class="stock-badge badge-info">관심</span>
     <div class="stock-name">SK하이닉스</div>
-    <div class="stock-code">000660 · 코스피</div>
-    <div class="stock-stat"><span>종가</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">160만원대 (사상 최초)</span></div>
-    <div class="stock-stat"><span>등락률</span><span data-dark-color="#4ade80" style="color:#00834a;font-weight:700">▲ +10.64%</span></div>
-    <div class="stock-stat"><span>목표주가</span><span>230만원 (유진투자증권)</span></div>
-    <div class="stock-stat"><span>이슈</span><span>HBM 공급 부족 2027년까지 지속 전망</span></div>
+    <div class="stock-price up-txt">▲ 장중 +11%</div>
+    <div style="font-size:12px;color:var(--dim)">시가총액 1,100조원 돌파. 글로벌 16위 기업으로 부상</div>
+    <div class="note-explain" style="margin-top:8px">
+      <div class="meaning">HBM 점유율 확대 기대</div>
+      <div class="impact">→ AI 데이터센터 수요 급증 직접 수혜. 삼성전자와 함께 코스피 랠리 양대 엔진.</div>
+    </div>
   </div>
-  <div class="stock-card limit">
-    <span class="stock-tag limit">⬆️ 상한가</span>
-    <div class="stock-name">SKC · 파인디앤씨</div>
-    <div class="stock-code">코스피 / 코스닥</div>
-    <div class="stock-stat"><span>등락률</span><span data-dark-color="#fbbf24" style="color:#92670a;font-weight:700">▲ +30.00% (상한가)</span></div>
-    <div class="stock-stat"><span>이유</span><span>애플 차기 칩 생산 — 삼성·인텔 협의 소식</span></div>
-    <div class="stock-stat"><span>관련 테마</span><span>유리기판 · 반도체 소재</span></div>
+
+  <div class="card bar-info">
+    <div class="card-inner">
+      <h3>📊 코스피 업종별 주요 등락</h3>
+      <table>
+        <thead><tr><th>종목</th><th>등락률</th></tr></thead>
+        <tbody>
+          <tr><td>두산에너빌리티</td><td class="up-txt">▲ 강세</td></tr>
+          <tr><td>HD현대중공업</td><td class="up-txt">▲ 강세</td></tr>
+          <tr><td>현대차</td><td class="up-txt">▲ +2.23%</td></tr>
+          <tr><td>LG에너지솔루션</td><td class="up-txt">▲ +2.33%</td></tr>
+          <tr><td>SK스퀘어</td><td class="up-txt">▲ +9.89%</td></tr>
+          <tr><td>한화에어로스페이스</td><td class="up-txt">▲ 강세</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="stock-card watch">
-    <span class="stock-tag watch">⚠️ 소외</span>
-    <div class="stock-name">코스닥 제약·바이오</div>
-    <div class="stock-code">알테오젠 · 리가켐바이오 등</div>
-    <div class="stock-stat"><span>알테오젠</span><span data-dark-color="#f87171" style="color:#c0253f;font-weight:700">▼ -2.55%</span></div>
-    <div class="stock-stat"><span>리가켐바이오</span><span data-dark-color="#f87171" style="color:#c0253f;font-weight:700">▼ -2.59%</span></div>
-    <div class="stock-stat"><span>이유</span><span>반도체로 수급 이탈 · 테마 소외</span></div>
+
+  <div class="card bar-down">
+    <div class="card-inner">
+      <h3>코스닥 시총 상위 (혼조)</h3>
+      <table>
+        <thead><tr><th>종목</th><th>등락률</th></tr></thead>
+        <tbody>
+          <tr><td>에코프로</td><td class="up-txt">▲ +4.49%</td></tr>
+          <tr><td>에코프로비엠</td><td class="up-txt">▲ +6.03%</td></tr>
+          <tr><td>레인보우로보틱스</td><td class="up-txt">▲ +2.48%</td></tr>
+          <tr><td>HLB</td><td class="up-txt">▲ +1.31%</td></tr>
+          <tr><td>알테오젠</td><td class="down-txt">▼ -2.55%</td></tr>
+          <tr><td>에이비엘바이오</td><td class="down-txt">▼ -3.70%</td></tr>
+          <tr><td>리노공업</td><td class="down-txt">▼ -3.39%</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
-<div class="section-title">환율 & 채권</div>
-<div class="two-col">
-  <div class="info-card">
-    <div class="title">💱 달러/원 환율</div>
-    <div class="info-item"><span class="k">종가</span><span class="v up">1,455.1원</span></div>
-    <div class="info-item"><span class="k">등락</span><span class="v up">▼ -21.4원 (원화 강세)</span></div>
-    <div class="info-item"><span class="k">의미</span><span class="v">약 3개월 만의 최저 환율</span></div>
-    <div style="font-size:10px;color:#8a9ab8;margin-top:6px;">📝 환율 하락 = 원화 강세 = 외국인 유입 유리</div>
-  </div>
-  <div class="info-card">
-    <div class="title">📊 국채 금리</div>
-    <div class="info-item"><span class="k">국채 3년물</span><span class="v">3.595% (▼ -2.0bp)</span></div>
-    <div class="info-item"><span class="k">국채 10년물</span><span class="v">3.932% (보합)</span></div>
-    <div class="info-item"><span class="k">방향</span><span class="v up">금리 소폭 하락 → 채권 강세</span></div>
-    <div style="font-size:10px;color:#8a9ab8;margin-top:6px;">📝 금리 하락 = 주식에 유리한 환경</div>
+<!-- ③ 업종·테마 -->
+<div class="section">
+  <h2>③ 업종·테마 흐름</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <div class="two-col">
+        <div>
+          <div class="col-head up">💪 강세 업종</div>
+          <div class="sector-item">💻 반도체 <span class="pct up-txt">▲ 주도</span></div>
+          <div class="sector-item">🚗 자동차 <span class="pct up-txt">▲ 강세</span></div>
+          <div class="sector-item">⚡ 전기·에너지 <span class="pct up-txt">▲ 강세</span></div>
+          <div class="sector-item">🏗️ 건설·원전 <span class="pct up-txt">▲ 동반 강세</span></div>
+        </div>
+        <div>
+          <div class="col-head down">📉 약세 업종</div>
+          <div class="sector-item">🧬 바이오 (코스닥) <span class="pct down-txt">▼ 혼조</span></div>
+          <div class="sector-item">💊 제약 <span class="pct down-txt">▼ 약세</span></div>
+        </div>
+      </div>
+      <div class="note-explain" style="margin-top:10px">
+        <div class="meaning">💡 오늘의 특징: 대형 기술주 vs 코스닥 바이오 양극화</div>
+        <div class="impact">→ 외국인 자금이 반도체 대형주에 집중되며 코스닥 바이오에서 자금 이탈. 수급의 '쏠림' 현상 주시 필요.</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="section-title">📋 오늘의 핵심 요약</div>
-<div class="info-box">
-  <p>🏆 코스피가 사상 처음으로 <span class="hl">7,000선을 돌파하고 7,384.56에 마감</span>하며 역대 최고가를 경신했습니다.<br><br>
-  💡 오늘 장의 3가지 키워드: <span class="hl">①외국인 역대 최대 매수</span> · <span class="hl">②삼성전자 1조달러 클럽</span> · <span class="hl">③IBKR 해외 직접투자 개방</span><br><br>
-  ⚠️ 코스닥은 대형주로의 수급 쏠림에 소외되어 약보합 마감. <span class="hl">단기 급등 후 차익실현 물량 주의</span>가 필요합니다.</p>
+<!-- ⑤ 거시 -->
+<div class="section">
+  <h2>⑤ 거시 지표</h2>
+  <div class="card bar-info">
+    <div class="card-info-corner">
+      <button class="info-btn" onclick="togglePanel('p-macro')">i</button>
+      <div class="info-panel" id="p-macro">
+        <h4>거시 지표 용어</h4>
+        <dl>
+          <dt>원/달러 환율</dt><dd>원화 대비 달러 가격. 높을수록 달러 강세 → 외국인 이탈 압력.</dd>
+          <dt>WTI 유가</dt><dd>미국산 원유 기준 가격. 하락 시 에너지 비용 감소 → 인플레이션 안정.</dd>
+        </dl>
+        <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+      </div>
+    </div>
+    <div class="card-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><div style="font-size:11px;color:var(--dim)">원/달러 환율</div><div style="font-size:15px;font-weight:700">▼ 1,455원</div><div style="font-size:12px;color:var(--up)">원화 강세 (외국인 매수 유입)</div></div>
+        <div><div style="font-size:11px;color:var(--dim)">WTI 유가</div><div style="font-size:15px;font-weight:700;color:var(--up)">▼ $102</div><div style="font-size:12px;color:var(--dim)">협상 기대에 하락</div></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="disclaimer">
-  ⚠️ 본 브리핑은 투자 정보 제공 목적이며, 특정 종목의 매수·매도 권유가 아닙니다.<br>
-  모든 투자 결정은 본인의 판단과 책임 하에 이루어져야 합니다.
+<!-- ⑥ 관전 포인트 -->
+<div class="section">
+  <h2>⑥ 오늘 밤 / 내일 장에서 볼 것</h2>
+  <div class="card bar-up" style="margin-bottom:8px">
+    <div class="card-inner">
+      <div style="font-weight:700;color:var(--up);margin-bottom:6px">기회 요인</div>
+      <ul class="bullet-list">
+        <li>미국 AI·반도체주 강세 지속 시 내일 삼성전자·SK하이닉스 추가 상승 가능</li>
+        <li>외국인 추가 매수 진입 시 코스피 7,400~7,500 도전 가능</li>
+        <li>유가 안정 → 인플레 압력 감소 → 한은 금리 인하 기대 강화</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-weight:700;color:var(--down);margin-bottom:6px">위험 요인</div>
+      <ul class="bullet-list">
+        <li>단기 급등 후 외국인 차익 실현 가능성 — 오늘 +6.45%는 단기 과열 신호</li>
+        <li>호르무즈 해협 협상 재결렬 시 유가 급반등 가능</li>
+        <li>코스닥 자금 이탈 지속 시 중소형주 약세 심화</li>
+      </ul>
+    </div>
+  </div>
 </div>
+
+<div class="disclaimer">본 브리핑은 정보 제공을 목적으로 하며, 투자 권유나 자문이 아닙니다. 모든 투자 판단과 책임은 본인에게 있습니다.</div>
 
 <script>
-  var _chartInstance = null;
-  function _getChartColors() {
-    const d = document.documentElement.classList.contains('dark');
-    return {
-      grid: d?'#1e2e4a':'#eef1f7',
-      text: d?'#c8d8ef':'#5a6e8c',
-      tooltipBg: d?'#131e33':'#ffffff',
-      tooltipTitle: d?'#dce6f5':'#1a2236',
-      tooltipBorder: d?'#1e2e4a':'#dde3ef'
-    };
-  }
-  function _applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    if (theme === 'dark') {
-      document.querySelectorAll('[data-dark-color]').forEach(el => { el.style.color = el.getAttribute('data-dark-color'); });
-    } else {
-      document.querySelectorAll('[data-dark-color]').forEach(el => { el.style.color = ''; });
-    }
-    if (typeof _buildChart === 'function') _buildChart();
-  }
-  (function(){
-    var t=new URLSearchParams(window.location.search).get('theme')||'dark';
-    _applyTheme(t);
-    window.addEventListener('message',function(e){ if(e.data&&e.data.type==='theme') _applyTheme(e.data.theme); });
-  })();
-
-  function _buildChart(){
-    var c=_getChartColors();
-    const ctx = document.getElementById('intradayChart').getContext('2d');
-    if(_chartInstance)_chartInstance.destroy();
-    _chartInstance=new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30'],
-        datasets: [{
-          label: '코스피 장중 흐름',
-          data: [7093,7180,7240,7300,7330,7350,7380,7426,7400,7370,7360,7370,7380,7384],
-          borderColor: '#00a65a', backgroundColor: 'rgba(0,166,90,0.08)',
-          tension: 0.4, fill: true,
-          pointBackgroundColor: (ctx) => {
-            const idx = ctx.dataIndex;
-            if(idx===0) return '#2563eb';
-            if(idx===7) return '#e02f55';
-            if(idx===13) return '#00a65a';
-            return 'rgba(0,166,90,0.4)';
-          },
-          pointRadius: (ctx) => [0,7].includes(ctx.dataIndex)||ctx.dataIndex===13 ? 7 : 3,
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: true, aspectRatio: 2,
-        plugins: {
-          legend: { labels: { color:c.text, font:{size:12} } },
-          tooltip: { backgroundColor:c.tooltipBg, titleColor:c.tooltipTitle, bodyColor:c.tooltipTitle, borderColor:c.tooltipBorder, borderWidth:1 }
-        },
-        scales: {
-          x: { ticks:{ color:c.text, font:{size:10} }, grid:{ color:c.grid } },
-          y: {
-            afterFit: (scale) => { scale.width = 52; },
-            ticks:{ color:c.text, font:{size:10}, callback: v => v.toLocaleString('ko-KR') },
-            grid:{ color:c.grid },
-            min: 6900, max: 7500
-          }
-        }
-      }
-    });
-  }
-  _buildChart();
+function togglePanel(id){document.querySelectorAll('.info-panel.open').forEach(p=>{if(p.id!==id)p.classList.remove('open')});const p=document.getElementById(id);if(p)p.classList.toggle('open')}
+document.addEventListener('click',function(e){if(!e.target.closest('.info-btn')&&!e.target.closest('.info-panel'))document.querySelectorAll('.info-panel.open').forEach(p=>p.classList.remove('open'))});
+function _applyTheme(t){
+  document.documentElement.classList.toggle('dark',t==='dark');
+  if(t==='dark'){document.querySelectorAll('[data-dark-color]').forEach(el=>el.style.color=el.getAttribute('data-dark-color'))}
+  else{document.querySelectorAll('[data-dark-color]').forEach(el=>el.style.color='')}
+}
+(function(){var t=new URLSearchParams(window.location.search).get('theme')||'dark';_applyTheme(t);window.addEventListener('message',function(e){if(e.data&&e.data.type==='theme')_applyTheme(e.data.theme)})})();
 </script>
 </body>
 </html>
