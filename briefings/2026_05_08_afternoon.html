@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5/8 (금) 오후 시황 브리핑</title>
+<style>
+/* ── CSS 변수 ── */
+:root {
+  --bg: #f5f5f3; --surface: #ffffff; --border: #e0e0dc;
+  --thead: #f0f0ee; --row-hover: #f8f8f6;
+  --text: #222222; --dim: #666666; --muted: #aaaaaa;
+  --summary-bg: #eff6ff; --summary-border: #93c5fd; --summary-text: #1e3a5f;
+  --card-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  --up: #16a34a; --up-bg: rgba(22,163,74,0.08);
+  --down: #dc2626; --down-bg: rgba(220,38,38,0.08);
+  --info: #3b82f6; --info-bg: rgba(59,130,246,0.08);
+  --warn: #d97706; --warn-bg: rgba(217,119,6,0.08);
+}
+html.dark {
+  --bg: #0b1120; --surface: #131e33; --border: #1e2e4a;
+  --thead: #0f1928; --row-hover: #1a2940;
+  --text: #dce6f5; --dim: #8fa4c0; --muted: #5a7090;
+  --summary-bg: rgba(59,130,246,0.08); --summary-border: #3b82f6; --summary-text: #dce6f5;
+  --card-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  --up: #4ade80; --up-bg: rgba(74,222,128,0.10);
+  --down: #f87171; --down-bg: rgba(248,113,113,0.10);
+  --info: #3b82f6; --info-bg: rgba(59,130,246,0.10);
+  --warn: #fbbf24; --warn-bg: rgba(251,191,36,0.10);
+}
+html.dark table td { background: #131e33 !important; color: #dce6f5 !important; }
+html.dark table th { background: #0f1928 !important; color: #8fa4c0 !important; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; font-size: 14px; line-height: 1.6; padding: 20px; max-width: 780px; margin: 0 auto; }
+
+/* ── 카드 베이스 ── */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 16px;
+  box-shadow: var(--card-shadow); position: relative;
+  overflow: visible; margin-bottom: 12px;
+}
+.card.bar-up::before, .card.bar-down::before,
+.card.bar-info::before, .card.bar-warn::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; border-radius: 8px 0 0 8px;
+}
+.card.bar-up::before   { background: var(--up); }
+.card.bar-down::before { background: var(--down); }
+.card.bar-info::before { background: var(--info); }
+.card.bar-warn::before { background: var(--warn); }
+
+/* ── 섹션 타이틀 ── */
+.section-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--dim); text-transform: uppercase;
+  margin: 22px 0 8px; padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.block-num {
+  display: inline-block; background: var(--info); color: #fff;
+  font-size: 10px; font-weight: 700; border-radius: 4px;
+  padding: 1px 6px; margin-right: 6px; vertical-align: middle;
+}
+
+/* ── 한 줄 요약 카드 ── */
+.summary-icon { font-size: 22px; margin-right: 10px; }
+.summary-text { font-size: 15px; font-weight: 600; line-height: 1.5; }
+.summary-sub  { font-size: 12.5px; color: var(--dim); margin-top: 4px; }
+
+/* ── 지수 카드 가로 나열 ── */
+.index-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; }
+.index-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px 14px;
+  box-shadow: var(--card-shadow); position: relative; overflow: visible;
+}
+.index-card.bar-up::before  { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:8px 0 0 8px; background:var(--up); }
+.index-card.bar-down::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:8px 0 0 8px; background:var(--down); }
+.index-card .ic-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.index-card .ic-name { font-size:11px; color:var(--dim); font-weight:600; }
+.index-card .ic-val  { font-size:20px; font-weight:700; }
+.index-card .ic-chg  { font-size:13px; font-weight:600; margin-top:2px; }
+.ic-chg.up   { color: var(--up); }
+.ic-chg.down { color: var(--down); }
+.ic-chg.gray { color: var(--muted); }
+.signal { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.signal.up   { background:var(--up);   box-shadow:0 0 8px rgba(74,222,128,0.5); }
+.signal.down { background:var(--down); box-shadow:0 0 8px rgba(248,113,113,0.5); }
+.signal.gray { background:var(--muted); }
+
+/* ── 해설 박스 ── */
+.note-explain {
+  margin-top: 10px; padding: 8px 12px;
+  border-left: 3px solid var(--summary-border);
+  background: var(--summary-bg); color: var(--summary-text);
+  font-size: 12.5px; line-height: 1.5; border-radius: 4px;
+}
+.note-explain .meaning { font-weight: 600; }
+.note-explain .impact  { color: var(--dim); margin-top: 2px; }
+
+/* ── 표 ── */
+table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:10px; }
+th { background:var(--thead); color:var(--dim); font-size:11px; font-weight:600; padding:7px 10px; text-align:left; white-space:nowrap; }
+td { padding:7px 10px; border-bottom:1px solid var(--border); background:var(--surface); }
+tr:hover td { background:var(--row-hover); }
+.up-text   { color:var(--up); font-weight:600; }
+.down-text { color:var(--down); font-weight:600; }
+.muted-text{ color:var(--muted); }
+
+/* ── 업종 2열 ── */
+.sector-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.sector-col-head {
+  font-size:11px; font-weight:700; padding:5px 8px;
+  border-radius:5px; margin-bottom:8px;
+}
+.sector-col-head.up   { background:var(--up-bg); color:var(--up); }
+.sector-col-head.down { background:var(--down-bg); color:var(--down); }
+.sector-item {
+  display:flex; align-items:flex-start; gap:6px;
+  padding:7px 0; border-bottom:1px solid var(--border); font-size:13px;
+}
+.sector-item:last-child { border-bottom:none; }
+.sector-item .emoji { font-size:15px; flex-shrink:0; }
+.sector-item .sname { font-weight:600; }
+.sector-item .scomment { color:var(--dim); font-size:12px; margin-top:1px; }
+
+/* ── 종목 카드 (D) ── */
+.stock-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:8px; padding:14px 16px;
+  box-shadow:var(--card-shadow); position:relative; overflow:visible;
+  margin-bottom:10px;
+}
+.stock-card::before {
+  content:''; position:absolute; left:0; top:0; bottom:0;
+  width:4px; border-radius:8px 0 0 8px;
+}
+.stock-card.up::before   { background:var(--up); }
+.stock-card.down::before { background:var(--down); }
+.stock-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.stock-name { font-size:15px; font-weight:700; }
+.badge {
+  font-size:10px; font-weight:700; padding:2px 7px;
+  border-radius:20px; white-space:nowrap;
+}
+.badge.interest { background:var(--info-bg); color:var(--info); }
+.badge.caution  { background:var(--warn-bg); color:var(--warn); }
+.stock-price { font-size:18px; font-weight:700; margin-bottom:2px; }
+.stock-chg { font-size:13px; font-weight:600; }
+.stock-desc { font-size:12.5px; color:var(--dim); margin-top:6px; }
+
+/* ── 52주 막대 ── */
+.week52 { margin-top:10px; }
+.week52-label { display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-bottom:4px; }
+.week52-track {
+  height:6px; background:var(--border); border-radius:10px; position:relative;
+}
+.week52-fill {
+  height:100%; border-radius:10px;
+  background: linear-gradient(to right, var(--info), var(--up));
+}
+.week52-marker {
+  position:absolute; top:50%; transform:translate(-50%,-50%);
+  width:12px; height:12px; border-radius:50%;
+  background:var(--up); border:2px solid var(--surface);
+  box-shadow:0 0 4px rgba(0,0,0,0.2);
+}
+
+/* ── 결론 박스 (F) ── */
+.conclusion-pair { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.conc-title { font-size:11px; font-weight:700; margin-bottom:8px; }
+.conc-title.up   { color:var(--up); }
+.conc-title.down { color:var(--down); }
+.conc-list { list-style:none; padding:0; }
+.conc-list li { font-size:13px; color:var(--dim); padding:4px 0; border-bottom:1px solid var(--border); display:flex; gap:6px; }
+.conc-list li:last-child { border-bottom:none; }
+
+/* ── ℹ️ 툴팁 ── */
+.info-btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:18px; height:18px; border-radius:50%;
+  background:var(--info-bg); color:var(--info);
+  font-size:11px; font-weight:700;
+  cursor:pointer; border:none; user-select:none;
+  transition:background 0.15s;
+}
+.info-btn:hover { background:var(--info); color:white; }
+.info-btn.inline { width:14px; height:14px; font-size:10px; margin-left:4px; vertical-align:middle; }
+.card-info-corner { position:absolute; top:12px; right:12px; z-index:5; }
+.info-panel {
+  display:none; position:absolute; top:38px; right:8px;
+  width:min(320px, calc(100vw - 48px));
+  background:var(--surface); border:1px solid var(--info);
+  border-radius:8px; padding:14px 16px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.15);
+  z-index:50; font-size:13px; line-height:1.55;
+}
+.info-panel.open { display:block; }
+.info-panel h4 { margin:0 0 8px 0; font-size:13px; font-weight:700; color:var(--info); }
+.info-panel dl { margin:0; }
+.info-panel dt { font-weight:600; color:var(--text); margin-top:8px; font-size:12.5px; }
+.info-panel dt:first-child { margin-top:0; }
+.info-panel dd { margin:2px 0 0 0; color:var(--dim); font-size:12.5px; }
+.info-panel .close-hint { margin-top:12px; padding-top:10px; border-top:1px solid var(--border); font-size:11px; color:var(--muted); text-align:right; }
+
+/* ── 거시 카드 해석형 ── */
+.macro-row { display:flex; align-items:center; gap:8px; padding:8px 0; border-bottom:1px solid var(--border); }
+.macro-row:last-child { border-bottom:none; }
+.macro-name { font-size:12px; color:var(--dim); min-width:100px; }
+.macro-val  { font-weight:700; font-size:14px; }
+.macro-interp { font-size:12.5px; color:var(--dim); margin-left:auto; text-align:right; }
+
+/* ── 경고 배지 ── */
+.warn-badge {
+  display:inline-block; background:var(--warn-bg); color:var(--warn);
+  font-size:11px; font-weight:700; padding:2px 8px;
+  border-radius:4px; margin-left:6px;
+}
+
+/* ── 공통 투자 주의문 ── */
+.disclaimer {
+  margin-top:28px; padding:10px 14px;
+  background:var(--thead); border-radius:6px;
+  font-size:11.5px; color:var(--muted); line-height:1.6; text-align:center;
+}
+
+/* ── 이벤트 캘린더 ── */
+.event-row { display:flex; gap:8px; padding:7px 0; border-bottom:1px solid var(--border); align-items:flex-start; }
+.event-row:last-child { border-bottom:none; }
+.event-time { font-size:12px; color:var(--dim); min-width:80px; font-weight:600; white-space:nowrap; }
+.event-name { font-size:13px; flex:1; }
+.event-stars { font-size:12px; white-space:nowrap; }
+.event-row.star3 { background:var(--warn-bg); margin:0 -16px; padding:7px 16px; border-radius:4px; }
+
+/* ── 모바일 ── */
+@media(max-width:560px){
+  .index-row { grid-template-columns:1fr; }
+  .sector-grid { grid-template-columns:1fr; }
+  .conclusion-pair { grid-template-columns:1fr; }
+  .ic-val { font-size:16px !important; }
+  .section-title { font-size:10px !important; }
+  .badge { font-size:9px !important; }
+  body { padding:14px; }
+}
+
+/* ── 헤더 ── */
+.brief-header { margin-bottom:18px; }
+.brief-date { font-size:12px; color:var(--dim); margin-bottom:4px; }
+.brief-title { font-size:20px; font-weight:800; }
+.brief-session {
+  display:inline-block; background:var(--info-bg); color:var(--info);
+  font-size:11px; font-weight:700; padding:2px 8px;
+  border-radius:4px; margin-top:4px;
+}
+.divider { border:none; border-top:1px solid var(--border); margin:20px 0; }
+</style>
+</head>
+<body>
+
+<div class="brief-header">
+  <div class="brief-date">2026년 5월 8일 금요일</div>
+  <div class="brief-title">오후 시황 브리핑</div>
+  <span class="brief-session">☀️ 오후 세션 — 한국장 마감 정리</span>
+</div>
+
+<!-- ①  한 줄 요약 -->
+<div class="section-title"><span class="block-num">①</span> 오늘 한 줄 요약</div>
+<div class="card bar-info">
+  <div style="display:flex; align-items:flex-start; gap:10px;">
+    <span class="summary-icon">⚖️</span>
+    <div>
+      <div class="summary-text">외국인이 5조 넘게 팔았지만, 코스피 또 최고치 — 오늘의 주인공은 자동차·로봇</div>
+      <div class="summary-sub" style="margin-top:6px;">
+        ✦ 시장을 움직인 이유: 보스턴 다이내믹스 나스닥 상장 추진 소식 → 현대차그룹주 전체 폭등
+      </div>
+      <div class="summary-sub">
+        ✦ 오늘 밤 볼 것: 미국 선물 방향 + 중동 종전 협상 뉴스 흐름
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ 업종 흐름 (트리거 발동 — 자동차·로봇 섹터 급등) -->
+<div class="section-title"><span class="block-num">③</span> 업종 흐름
+  <span class="warn-badge">⚡ 섹터 트리거 발동</span>
+</div>
+
+<div class="card bar-up">
+  <div class="card-info-corner">
+    <button class="info-btn" onclick="togglePanel('p-sector')">i</button>
+    <div class="info-panel" id="p-sector">
+      <h4>💡 용어 설명</h4>
+      <dl>
+        <dt>피지컬 AI</dt>
+        <dd>로봇처럼 몸을 가진 인공지능. 소프트웨어 AI(챗봇 등)와 달리 현실 세계에서 직접 움직이는 AI를 뜻함.</dd>
+        <dt>밸류체인</dt>
+        <dd>어떤 제품이 만들어지기까지 연결된 모든 회사 고리. "로봇 밸류체인" = 로봇 만드는 데 관련된 부품·소프트웨어 회사 전체.</dd>
+        <dt>순환매</dt>
+        <dd>돈이 한 업종에서 다른 업종으로 옮겨 다니는 흐름. 반도체에서 빠진 돈이 자동차로 들어오는 식.</dd>
+      </dl>
+      <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+    </div>
+  </div>
+
+  <div class="sector-grid">
+    <div>
+      <div class="sector-col-head up">🟢 오늘 강한 업종</div>
+      <div class="sector-item">
+        <span class="emoji">🚗</span>
+        <div>
+          <div class="sname">자동차·로봇</div>
+          <div class="scomment">보스턴 다이내믹스 나스닥 상장 추진 소식. 현대차그룹 전체 폭등.</div>
+          <div class="up-text" style="font-size:12px; margin-top:2px;">현대오토에버 +29.97% / 현대모비스 +15.29%</div>
+        </div>
+      </div>
+      <div class="sector-item">
+        <span class="emoji">💾</span>
+        <div>
+          <div class="sname">반도체</div>
+          <div class="scomment">차익 실현 물량 나왔지만 전반적으로 견조한 흐름 유지.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sector-col-head down">🔴 오늘 약한 업종</div>
+      <div class="sector-item">
+        <span class="emoji">🏗️</span>
+        <div>
+          <div class="sname">건설</div>
+          <div class="scomment">중동 종전 협상 기대가 꺾이면서 재건 수혜 기대감 소멸.</div>
+          <div class="down-text" style="font-size:12px; margin-top:2px;">GS건설 -5.08% / DL이앤씨 -4.89%</div>
+        </div>
+      </div>
+      <div class="sector-item">
+        <span class="emoji">🚢</span>
+        <div>
+          <div class="sname">조선·반도체 장비</div>
+          <div class="scomment">단기 급등 이후 오른 주식 팔아 수익 챙기는 흐름.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-explain">
+    <div class="meaning">✦ 왜 자동차·로봇이 폭등했나요?</div>
+    <div class="impact">보스턴 다이내믹스(현대차 계열)가 휴머노이드 로봇 '아틀라스' 신형 공개 후, 나스닥 상장이 이르면 다음 달 결정될 것이란 소식이 나왔습니다. → 현대차그룹 전체가 '피지컬 AI(몸을 가진 AI) 기업'으로 재평가받으며 그룹주 전반에 매수세가 몰렸습니다.</div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 -->
+<div class="section-title"><span class="block-num">②</span> 주요 지수 (15:30 종가)</div>
+
+<div class="index-row">
+  <div class="index-card bar-up">
+    <div class="ic-top">
+      <span class="ic-name">KOSPI</span>
+      <span class="signal up"></span>
+    </div>
+    <div class="ic-val">7,498.00</div>
+    <div class="ic-chg up">▲ +7.95pt (+0.11%)</div>
+    <div style="font-size:11px; color:var(--muted); margin-top:4px;">종가 기준 사상 최고치 경신 🏆</div>
+  </div>
+  <div class="index-card bar-up">
+    <div class="ic-top">
+      <span class="ic-name">KOSDAQ</span>
+      <span class="signal up"></span>
+    </div>
+    <div class="ic-val">1,207.72</div>
+    <div class="ic-chg up">▲ +8.54pt (+0.71%)</div>
+    <div style="font-size:11px; color:var(--muted); margin-top:4px;">3거래일 만에 상승 전환</div>
+  </div>
+  <div class="index-card bar-info">
+    <div class="ic-top">
+      <span class="ic-name">S&P500 선물
+        <span style="position:relative; display:inline-block;">
+          <button class="info-btn inline" onclick="togglePanel('p-futures')">i</button>
+          <div class="info-panel" id="p-futures">
+            <h4>💡 선물이란?</h4>
+            <dl>
+              <dt>선물 (Futures)</dt>
+              <dd>아직 열리지 않은 미국 장이 "어떻게 시작될지" 미리 보여주는 지표. 코스피 마감 시점에 미국 선물이 오르면 → 오늘 밤 미국장 강세 기대, 반대면 약세 가능성.</dd>
+            </dl>
+            <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+          </div>
+        </span>
+      </span>
+      <span class="signal gray"></span>
+    </div>
+    <div class="ic-val muted-text">확인 중</div>
+    <div class="ic-chg gray">출처 확인 후 업데이트</div>
+  </div>
+  <div class="index-card bar-info">
+    <div class="ic-top">
+      <span class="ic-name">나스닥 선물</span>
+      <span class="signal gray"></span>
+    </div>
+    <div class="ic-val muted-text">확인 중</div>
+    <div class="ic-chg gray">출처 확인 후 업데이트</div>
+  </div>
+</div>
+
+<div class="card bar-info" style="font-size:13px;">
+  <strong>💸 오늘 수급 (큰손은 어디로?)</strong>
+  <span style="position:relative; display:inline-block;">
+    <button class="info-btn inline" onclick="togglePanel('p-supply')">i</button>
+    <div class="info-panel" id="p-supply">
+      <h4>💡 수급 용어 설명</h4>
+      <dl>
+        <dt>외국인·기관</dt>
+        <dd>시장에 큰 영향을 미치는 '큰손' 투자자. 외국인은 해외에서 한국 주식을 사는 투자자, 기관은 자산운용사·연기금 등 국내 전문 투자자.</dd>
+        <dt>순매수 / 순매도</dt>
+        <dd>산 금액 - 판 금액. 플러스면 순매수(더 많이 삼), 마이너스면 순매도(더 많이 팖).</dd>
+        <dt>차익 실현</dt>
+        <dd>오른 주식을 팔아서 수익을 챙기는 것. 오를 때 팔기 때문에 지수에는 하방 압력.</dd>
+      </dl>
+      <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+    </div>
+  </span>
+
+  <table style="margin-top:10px;">
+    <thead>
+      <tr>
+        <th>시장</th>
+        <th>외국인</th>
+        <th>기관</th>
+        <th>개인</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>코스피</strong></td>
+        <td class="down-text">▼ -5조5,900억</td>
+        <td class="up-text">▲ +1조5,475억</td>
+        <td class="up-text">▲ +3조9,753억</td>
+      </tr>
+      <tr>
+        <td><strong>코스닥</strong></td>
+        <td class="up-text">▲ +4,044억</td>
+        <td class="up-text">▲ +803억</td>
+        <td class="down-text">▼ -4,738억</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note-explain" style="margin-top:8px;">
+    <div class="meaning">✦ 외국인이 5조나 팔았는데 지수가 왜 올랐나요?</div>
+    <div class="impact">장 초반 2.28%까지 밀렸으나, 오른 주식을 싸게 사려는 개인 매수세가 대거 유입됐고 기관도 오후에 '사자'로 전환하면서 지수를 끌어올렸습니다. → 외국인의 '오른 만큼 팔기'가 계속될 수 있어 주시 필요.</div>
+  </div>
+</div>
+
+<!-- ④ 주요 종목 -->
+<div class="section-title"><span class="block-num">④</span> 주요 종목</div>
+
+<div style="font-size:12px; color:var(--dim); margin-bottom:8px;">💡 강조 종목 (오늘 가장 눈에 띈 종목)</div>
+
+<div class="stock-card up">
+  <div class="stock-top">
+    <span class="stock-name">현대차 그룹주</span>
+    <span class="badge interest">관심</span>
+  </div>
+  <div style="display:flex; gap:16px; flex-wrap:wrap;">
+    <div>
+      <div style="font-size:11px; color:var(--dim);">현대오토에버</div>
+      <div class="up-text" style="font-size:16px; font-weight:700;">+29.97%</div>
+    </div>
+    <div>
+      <div style="font-size:11px; color:var(--dim);">현대무벡스</div>
+      <div class="up-text" style="font-size:16px; font-weight:700;">+22.42%</div>
+    </div>
+    <div>
+      <div style="font-size:11px; color:var(--dim);">현대모비스</div>
+      <div class="up-text" style="font-size:16px; font-weight:700;">+15.29%</div>
+    </div>
+    <div>
+      <div style="font-size:11px; color:var(--dim);">현대차</div>
+      <div class="up-text" style="font-size:16px; font-weight:700;">+7.17%</div>
+    </div>
+    <div>
+      <div style="font-size:11px; color:var(--dim);">기아</div>
+      <div class="up-text" style="font-size:16px; font-weight:700;">+4.38%</div>
+    </div>
+  </div>
+  <div class="stock-desc">보스턴 다이내믹스 나스닥 상장 추진 + 아틀라스 로봇 신형 공개 → 그룹 전체가 '로봇·피지컬AI 기업'으로 재조명. <span class="badge caution" style="margin-left:4px;">단기 급등 주의</span></div>
+</div>
+
+<div class="stock-card up" style="margin-top:4px;">
+  <div class="stock-top">
+    <span class="stock-name">코스닥 로봇주</span>
+    <span class="badge interest">관심</span>
+  </div>
+  <div style="display:flex; gap:16px; flex-wrap:wrap;">
+    <div>
+      <div style="font-size:11px; color:var(--dim);">레인보우로보틱스</div>
+      <div class="up-text" style="font-size:16px; font-weight:700;">+12.48%</div>
+    </div>
+    <div>
+      <div style="font-size:11px; color:var(--dim);">코오롱티슈진</div>
+      <div class="up-text" style="font-size:16px; font-weight:700;">+11.52%</div>
+    </div>
+  </div>
+  <div class="stock-desc">로봇 테마 흐름에 함께 따라 오르는 매수(동조 매수) 흐름. 코스닥에서도 관련 종목 강세.</div>
+</div>
+
+<div style="font-size:12px; color:var(--dim); margin:14px 0 6px;">📉 오늘 약했던 종목</div>
+<table>
+  <thead>
+    <tr><th>종목</th><th>등락률</th><th>사유</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>GS건설</td><td class="down-text">▼ -5.08%</td><td style="color:var(--dim); font-size:12.5px;">중동 재건 기대 소멸</td></tr>
+    <tr><td>DL이앤씨</td><td class="down-text">▼ -4.89%</td><td style="color:var(--dim); font-size:12.5px;">중동 종전 협상 불확실</td></tr>
+    <tr><td>삼성E&A</td><td class="down-text">▼ -3.11%</td><td style="color:var(--dim); font-size:12.5px;">동일</td></tr>
+    <tr><td>태영건설</td><td class="down-text">▼ -2.68%</td><td style="color:var(--dim); font-size:12.5px;">동일</td></tr>
+  </tbody>
+</table>
+
+<!-- ⑤ 거시·이벤트 -->
+<div class="section-title"><span class="block-num">⑤</span> 거시 지표 · 이벤트</div>
+
+<div class="card bar-info">
+  <div class="card-info-corner">
+    <button class="info-btn" onclick="togglePanel('p-macro')">i</button>
+    <div class="info-panel" id="p-macro">
+      <h4>💡 거시 지표 용어</h4>
+      <dl>
+        <dt>원/달러 환율</dt>
+        <dd>1달러를 사는 데 원화가 얼마나 드는지. 환율이 오르면 달러가 비싸진다는 뜻 = 달러 강세. 외국인이 한국에서 돈 빼기가 쉬워져 코스피에 하방 압력.</dd>
+        <dt>WTI 유가</dt>
+        <dd>미국산 원유 가격 기준. 유가가 오르면 운송·제조비 상승 → 기업 이익에 부담. 중동 정세와 밀접.</dd>
+        <dt>미국 10년물 국채금리</dt>
+        <dd>미국 정부가 10년 동안 빌리는 돈의 이자율. 금리가 오르면 안전한 채권 매력이 높아져 주식에서 돈이 빠져나갈 수 있음.</dd>
+        <dt>달러인덱스 (DXY)</dt>
+        <dd>달러가 전 세계 주요 통화 대비 얼마나 강한지 보여주는 숫자. 올라가면 달러 강세, 신흥국(한국 포함) 주식에 불리한 환경.</dd>
+      </dl>
+      <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+    </div>
+  </div>
+
+  <div style="font-weight:700; margin-bottom:10px; padding-right:30px;">오늘 거시 지표</div>
+
+  <div class="macro-row">
+    <span class="macro-name">원/달러 환율</span>
+    <span class="macro-val up-text">▲ 1,471.7원</span>
+    <span class="macro-interp">달러 강세. 외국인 이탈 압력 가능</span>
+  </div>
+  <div class="macro-row">
+    <span class="macro-name">WTI 유가</span>
+    <span class="macro-val down-text">▼ $94.81</span>
+    <span class="macro-interp">중동 협상 기대 소폭 반영</span>
+  </div>
+  <div class="macro-row">
+    <span class="macro-name">미국 10년물</span>
+    <span class="macro-val muted-text">— 확인 필요</span>
+    <span class="macro-interp">출처 확인 후 업데이트</span>
+  </div>
+  <div class="macro-row">
+    <span class="macro-name">달러인덱스(DXY)</span>
+    <span class="macro-val muted-text">— 확인 필요</span>
+    <span class="macro-interp">출처 확인 후 업데이트</span>
+  </div>
+
+  <div class="note-explain">
+    <div class="meaning">✦ 환율 1,471원 — 왜 갑자기 올랐나요?</div>
+    <div class="impact">미국·이란 종전 협상이 불확실해지면서 안전자산인 달러를 찾는 수요가 늘었습니다. → 달러 강세 = 원화 약세 = 환율 상승. 외국인이 한국 주식을 팔고 달러로 바꾸는 흐름이 이어질 경우 추가 상승 가능.</div>
+  </div>
+</div>
+
+<div class="card bar-warn" style="margin-top:10px;">
+  <div style="font-weight:700; margin-bottom:10px;">
+    📅 이벤트 캘린더
+    <span style="position:relative; display:inline-block;">
+      <button class="info-btn inline" onclick="togglePanel('p-stars')">i</button>
+      <div class="info-panel" id="p-stars">
+        <h4>💡 중요도 별표 기준</h4>
+        <dl>
+          <dt>⭐ (1개)</dt><dd>시장에 미치는 영향 낮음. 참고 수준.</dd>
+          <dt>⭐⭐ (2개)</dt><dd>시장에 영향 있을 수 있음. 주시 필요.</dd>
+          <dt>⭐⭐⭐ (3개)</dt><dd>시장 방향을 바꿀 수 있는 초대형 이벤트. 발표 전후 변동성 급증 가능.</dd>
+        </dl>
+        <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+      </div>
+    </span>
+  </div>
+
+  <div class="event-row">
+    <span class="event-time">5/8 (금) 밤</span>
+    <span class="event-name">중동 종전 협상 관련 뉴스 주시</span>
+    <span class="event-stars">⭐⭐</span>
+  </div>
+  <div class="event-row">
+    <span class="event-time">5/8 (금) 23:30</span>
+    <span class="event-name">미국 주요 경제지표 발표 여부 확인 필요</span>
+    <span class="event-stars muted-text">확인 중</span>
+  </div>
+  <div style="font-size:12px; color:var(--muted); margin-top:8px;">※ 오늘 밤 ⭐⭐⭐ 예정 이벤트는 현재 확인된 것 없음. 추가 확인 권장.</div>
+</div>
+
+<!-- ⑥ 오늘 밤 미국장 관전 포인트 -->
+<div class="section-title"><span class="block-num">⑥</span> 오늘 밤 미국장 — 볼 것들</div>
+
+<div class="conclusion-pair">
+  <div class="card bar-up">
+    <div class="conc-title up">↑ 기회 요인</div>
+    <ul class="conc-list">
+      <li><span>📌</span>보스턴 다이내믹스 나스닥 상장 관련 미국 언론 반응 → 로봇·AI 테마 미국 연장 가능성</li>
+      <li><span>📌</span>코스피 4거래일 연속 상승 → 상승 기세 유지 중, 모멘텀(흐름) 살아있음</li>
+      <li><span>📌</span>중동 종전 협상 진전 뉴스 나오면 건설·에너지주 반등 가능</li>
+    </ul>
+  </div>
+  <div class="card bar-down">
+    <div class="conc-title down">↓ 위험 요인</div>
+    <ul class="conc-list">
+      <li><span>📌</span>외국인 코스피 5조5천억 순매도 — 오른 주식 팔기 압력 지속 가능성</li>
+      <li><span>📌</span>환율 1,471원대 급등 — 달러 강세 지속 시 외국인 추가 이탈 압력</li>
+      <li><span>📌</span>중동 협상 불확실성 장기화 시 건설·방산 관련 변동성 확대 가능</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card bar-info" style="margin-top:4px;">
+  <strong>🔍 핵심 체크 포인트</strong>
+  <ul style="margin-top:8px; padding-left:16px; font-size:13px; color:var(--dim); line-height:2;">
+    <li>미국 S&P500·나스닥 선물 방향 (23:00~23:30)</li>
+    <li>보스턴 다이내믹스 관련 미국 빅테크·로봇 업종 반응</li>
+    <li>원/달러 환율 야간 흐름 — 1,480원 이상 진입 여부</li>
+  </ul>
+</div>
+
+<hr class="divider">
+<div class="disclaimer">
+  본 브리핑은 정보 제공을 목적으로 하며, 투자 권유나 자문이 아닙니다.<br>
+  모든 투자 판단과 책임은 본인에게 있습니다.
+</div>
+
+<script>
+function togglePanel(id) {
+  document.querySelectorAll('.info-panel.open').forEach(p => {
+    if (p.id !== id) p.classList.remove('open');
+  });
+  const panel = document.getElementById(id);
+  if (panel) panel.classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.info-btn') && !e.target.closest('.info-panel')) {
+    document.querySelectorAll('.info-panel.open').forEach(p => p.classList.remove('open'));
+  }
+});
+
+function _applyTheme(theme) {
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+  if (theme === 'dark') {
+    document.querySelectorAll('[data-dark-color]').forEach(el => {
+      el.style.color = el.getAttribute('data-dark-color');
+    });
+  } else {
+    document.querySelectorAll('[data-dark-color]').forEach(el => {
+      el.style.color = '';
+    });
+  }
+}
+(function(){
+  var t = new URLSearchParams(window.location.search).get('theme') || 'dark';
+  _applyTheme(t);
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'theme') _applyTheme(e.data.theme);
+  });
+})();
+</script>
+</body>
+</html>
