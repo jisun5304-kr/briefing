@@ -349,22 +349,18 @@
 
     /* 모바일 768px 이하 */
     @media (max-width: 768px) {
-      /* 세로 스크롤 레이아웃으로 전환 */
       .app-layout {
         flex-direction: column;
         height: auto;
         overflow: visible;
       }
-      /* 왼쪽 패널 → 전체 너비 세로 스크롤 */
       .left-panel {
         width: 100%; border-right: none;
         overflow-y: visible;
         padding: 16px 14px 20px;
       }
-      /* 오른쪽 패널은 모바일에서 숨김 (바텀시트로 대체) */
       .right-panel { display: none; }
 
-      /* 캘린더 크기 원복 */
       .cal-wrap { padding: 16px 14px; }
       .cal-num  { font-size: 13px; }
       .cal-cell.today .cal-num { width: 24px; height: 24px; }
@@ -372,7 +368,6 @@
       .cal-nav-btn { width: 30px; height: 30px; font-size: 15px; }
       .cal-dot { width: 5px; height: 5px; }
 
-      /* 세션 버튼 더 크게 */
       .session-card   { padding: 14px 10px; border-radius: 12px; gap: 5px; }
       .session-emoji  { font-size: 24px; }
       .session-title  { font-size: 17px; }
@@ -529,9 +524,9 @@ const BRIEFINGS = [
     date: '2026-05-07',
     label: '2026년 5월 7일 (목)',
     sessions: [
-      { period: '오전', emoji: '🌅', time: '07:30', file: 'briefings/2026_05_07_morning.html', ready: true },
-      { period: '오후', emoji: '☀️', time: '16:00', file: 'briefings/2026_05_07_afternoon.html', ready: true },
-      { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_07_night.html', ready: true },
+      { period: '오전', emoji: '🌅', time: '07:30', file: 'briefings/2026_05_07_morning.html',   ready: true  },
+      { period: '오후', emoji: '☀️', time: '16:00', file: 'briefings/2026_05_07_afternoon.html', ready: true  },
+      { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_07_night.html',     ready: true  },
     ]
   },
   {
@@ -539,17 +534,10 @@ const BRIEFINGS = [
     label: '2026년 5월 8일 (금)',
     sessions: [
       { period: '오전', emoji: '🌅', time: '07:30', file: 'briefings/2026_05_08_morning.html',   ready: true  },
-      { period: '오후', emoji: '☀️', time: '16:00', file: 'briefings/2026_05_08_afternoon.html', ready: false  },
+      { period: '오후', emoji: '☀️', time: '16:00', file: 'briefings/2026_05_08_afternoon.html', ready: false },
       { period: '밤',   emoji: '🌙', time: '23:00', file: 'briefings/2026_05_08_night.html',     ready: false },
     ]
-  };
-
-  // 새 날짜 추가:
-  // ,{ date:'2026-05-08', label:'2026년 5월 8일 (금)', sessions:[
-  //   { period:'오전', emoji:'🌅', time:'08:30', file:'briefings/2026_05_08_morning.html',   ready:false },
-  //   { period:'오후', emoji:'☀️', time:'16:00', file:'briefings/2026_05_08_afternoon.html', ready:false },
-  //   { period:'밤',   emoji:'🌙', time:'23:00', file:'briefings/2026_05_08_night.html',     ready:false },
-  // ]}
+  },
 ];
 
 /* ══ 유틸 ══ */
@@ -648,7 +636,6 @@ function openBriefing(file,title,period) {
   const card=document.getElementById(`session-${period}`);
   if (card) card.classList.add('active-session');
 
-  // 현재 테마를 URL 파라미터로 전달 (iframe 최초 로드 시 색상 일치)
   const theme=document.body.classList.contains('light')?'light':'dark';
   const fileWithTheme=`${file}?theme=${theme}`;
 
@@ -744,7 +731,6 @@ function toggleTheme() {
   localStorage.setItem('briefing_theme',isLight?'light':'dark');
   document.getElementById('theme-toggle').textContent=isLight?'☀️ 라이트':'🌙 다크';
 
-  // 열려 있는 iframe에도 테마 전달
   const theme=isLight?'light':'dark';
   [
     document.getElementById('briefing-frame'),
