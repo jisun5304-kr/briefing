@@ -168,13 +168,14 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 18px 20px;
   box-shadow: var(--card-shadow);
   position: relative;
   overflow: visible;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .index-card::before {
   content: '';
@@ -187,37 +188,37 @@ body {
 .index-card.down::before { background: var(--down); }
 .index-card.flat::before { background: var(--muted); }
 .index-name {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--dim);
   letter-spacing: 0.03em;
+  margin-bottom: 4px;
 }
 .index-val {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--text);
 }
 .index-change {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
 }
 .index-change.up { color: var(--up); }
 .index-change.down { color: var(--down); }
 .index-change.flat { color: var(--muted); }
 .index-pt {
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--dim);
+  margin-top: 2px;
 }
 .signal {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
-.signal.up { background: var(--up); box-shadow: 0 0 8px rgba(74,222,128,0.5); }
-.signal.down { background: var(--down); box-shadow: 0 0 8px rgba(248,113,113,0.5); }
+.signal.up { background: var(--up); box-shadow: 0 0 10px rgba(74,222,128,0.6); }
+.signal.down { background: var(--down); box-shadow: 0 0 10px rgba(248,113,113,0.6); }
 .signal.flat { background: var(--muted); }
 
 /* 해설 박스 */
@@ -468,18 +469,26 @@ html.dark table td { background: #131e33 !important; color: #dce6f5 !important; 
 <div class="block-title">② 주요 지수 — 한국장 최종 마감</div>
 <div class="index-row">
   <div class="index-card up">
-    <div class="signal up"></div>
-    <div class="index-name">코스피</div>
-    <div class="index-val">7,498.00</div>
-    <div class="index-change up">▲ +0.11%</div>
-    <div class="index-pt">+7.95pt</div>
+    <div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">7,498.00</div>
+      <div class="index-pt">+7.95pt</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="index-change up">▲ +0.11%</div>
+      <div class="signal up" style="margin-left:auto; margin-top:8px;"></div>
+    </div>
   </div>
   <div class="index-card up">
-    <div class="signal up"></div>
-    <div class="index-name">코스닥</div>
-    <div class="index-val">1,207.72</div>
-    <div class="index-change up">▲ +0.71%</div>
-    <div class="index-pt">+8.54pt</div>
+    <div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,207.72</div>
+      <div class="index-pt">+8.54pt</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="index-change up">▲ +0.71%</div>
+      <div class="signal up" style="margin-left:auto; margin-top:8px;"></div>
+    </div>
   </div>
 </div>
 
