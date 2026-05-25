@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 2026.05.21 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;overflow:visible;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<div class="card bar-up">
+<div class="card-inner">
+<h2>🚀 KOSPI +8.42% 폭등! 7,815.59 마감 — 사이드카 발동, 역사적 하루</h2>
+<p>삼성전자 특별 성과급 잠정합의 + 이란-미국 평화 합의 기대 + AI 메모리 투자 기대가 한꺼번에 터지며 KOSPI 8% 넘게 폭등. 장중 사이드카(상승) 발동. 기관 2.3조원 순매수. "개미도 잘 먹고 갑니다" — 개인 투자자 환호.</p>
+</div>
+</div>
+
+<div class="section">
+<h2>주요 지수</h2>
+<div class="index-grid">
+<div class="index-card up">
+<div class="signal up"></div>
+<div class="index-name">KOSPI 종가</div>
+<div class="index-val">7,815.59</div>
+<div class="index-chg up">+8.42%</div>
+</div>
+<div class="index-card up">
+<div class="signal up"></div>
+<div class="index-name">KOSDAQ</div>
+<div class="index-val">2,398</div>
+<div class="index-chg up">+8.26%</div>
+</div>
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">USD/KRW</div>
+<div class="index-val">1,510</div>
+<div class="index-chg down">+12원</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>폭등 핵심 동인</h2>
+<div class="card bar-up">
+<div class="card-inner">
+<ul class="bullet-list">
+<li>🔥 삼성전자 노사 특별 성과급 잠정합의 — 경영 안정 + 주주가치 신호</li>
+<li>🔥 이란-미국 정전/평화 합의 기대 재점화 — 글로벌 리스크 프리미엄 급감</li>
+<li>🔥 AI 메모리 반도체 투자 기대 폭발 — HBM·DDR5 수주 기대감</li>
+<li>🟢 기관 +2.3조원 순매수 — 연기금·자산운용사 대규모 베팅</li>
+<li>🟢 개인 +1.1조원 순매수 — "개미도 잘 먹고 갑니다"</li>
+<li>🔴 외국인 -8,500억 순매도 유지 — 그러나 시장 영향 제한적</li>
+<li>⚡ 사이드카(상승) 발동 — 선물 5% 이상 급등 시 프로그램 매매 일시중단</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>주요 종목 등락</h2>
+<table>
+<thead><tr><th>종목</th><th>종가</th><th>등락률</th><th>비고</th></tr></thead>
+<tbody>
+<tr><td>삼성전자</td><td>128,500원</td><td class="up-txt">+9.8%</td><td>성과급 합의 + AI 투자 수혜</td></tr>
+<tr><td>SK하이닉스</td><td>285,000원</td><td class="up-txt">+11.2%</td><td>HBM 기대, 기관 집중 매수</td></tr>
+<tr><td>삼성SDI</td><td>485,000원</td><td class="up-txt">+7.5%</td><td>그룹 전반 수혜</td></tr>
+<tr><td>한미반도체</td><td>152,000원</td><td class="up-txt">+14.8%</td><td>HBM 장비주 폭등</td></tr>
+<tr><td>현대차</td><td>312,000원</td><td class="up-txt">+5.2%</td><td>수출주 동반 강세</td></tr>
+<tr><td>HD한국조선</td><td>268,000원</td><td class="up-txt">+3.1%</td><td>전 업종 동반 상승</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2>수급 분석</h2>
+<div class="card bar-info">
+<div class="card-inner">
+<ul class="bullet-list">
+<li>기관 +2.3조 — 연기금 주도 대규모 매수, 3일 연속 순매수</li>
+<li>개인 +1.1조 — 개인 투자자도 적극 참여, "개미도 잘 먹고 갑니다"</li>
+<li>외국인 -8,500억 — 매도세 유지, 그러나 시장 방향 결정력 상실</li>
+<li>거래대금 42조원 — 5/15 폭락 이후 최대, 엄청난 거래 활력</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>금야 및 내일 관전 포인트</h2>
+<div class="card bar-warn">
+<div class="card-inner">
+<ul class="bullet-list">
+<li>급등 후 차익실현 매물 출회 가능성 — 내일 조정 여부</li>
+<li>미국 시장 반응 확인 — 한국 시장 급등에 대한 연쇄 효과</li>
+<li>외국인 순매수 전환 시 추가 상승 여력 확대</li>
+<li>이란-미국 합의 공식 발표 여부 — 추가 촉매 가능</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="disclaimer">
+본 브리핑은 투자 참고 자료이며, 투자 판단의 최종 책임은 투자자 본인에게 있습니다.
+</div>
+
+</body>
+</html>

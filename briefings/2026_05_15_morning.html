@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 2026.05.15 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;overflow:visible;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- 요약 -->
+<div class="card bar-down">
+<div class="card-inner">
+<h2>5/15 오전 브리핑 — 트리플 악재 폭탄! KOSPI 급락 출발 경고</h2>
+<p>트럼프-시진핑 회담 결렬, 이란 협상 붕괴, 일본 인플레 쇼크 — 3대 악재가 동시에 터졌다. 미 증시 선물 급락 중. KOSPI 대폭 갭다운 출발 불가피.</p>
+</div>
+</div>
+
+<!-- 주요 지수 -->
+<div class="index-grid">
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">S&P 500 선물</div>
+<div class="index-val">7,380</div>
+<div class="index-chg down">-1.3%</div>
+</div>
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">나스닥 선물</div>
+<div class="index-val">26,150</div>
+<div class="index-chg down">-1.4%</div>
+</div>
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">KOSPI 예상 시가</div>
+<div class="index-val">7,700</div>
+<div class="index-chg down">-3.3%</div>
+</div>
+</div>
+
+<!-- 핵심 재료 -->
+<div class="section">
+<h2>핵심 재료</h2>
+<ul class="bullet-list">
+<li>트럼프-시진핑 정상회담 성과 없이 종료 — "건설적이었다"는 외교적 수사만 남겨</li>
+<li>추가 관세 유예 합의 실패 — 7월 관세 인상 재개 우려 급부상</li>
+<li>이란-미국 평화협상 공식 결렬 — 중동 군사적 긴장 고조, 유가 $76 돌파</li>
+<li>일본 CPI +4.1% 쇼크 — 아시아 인플레이션 확산 우려, 엔화 급등</li>
+<li>VIX 25 돌파 — 극심한 공포 구간 진입, 패닉 매도 가능성</li>
+</ul>
+</div>
+
+<!-- 섹터/종목 -->
+<div class="section">
+<h2>금일 하락 위험 종목</h2>
+<table>
+<thead><tr><th>종목</th><th>전일 종가</th><th>예상 영향</th></tr></thead>
+<tbody>
+<tr><td>삼성전자</td><td>108,500원</td><td class="down-txt">중국 수출 관세 리스크 직격탄</td></tr>
+<tr><td>SK하이닉스</td><td>283,500원</td><td class="down-txt">글로벌 리스크오프 + 차익실현</td></tr>
+<tr><td>현대차</td><td>319,000원</td><td class="down-txt">미중 관세 → 글로벌 수요 둔화 우려</td></tr>
+<tr><td>에코프로비엠</td><td>312,000원</td><td class="down-txt">성장주 전반 매도 압력</td></tr>
+<tr><td>한국전력</td><td>28,500원</td><td class="up-txt">유틸리티 방어주 선호 가능</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- 관전 포인트 -->
+<div class="section">
+<h2>오늘 관전 포인트</h2>
+<ul class="bullet-list">
+<li>사이드카·서킷브레이커 발동 가능성 — 5% 이상 급락 시 매매 일시 중단</li>
+<li>KOSPI 7,500 지지 여부: 이탈 시 7,300대까지 하락 시나리오</li>
+<li>외국인 대규모 매도 예상 — 오늘 순매도 규모가 향후 방향 결정</li>
+<li>오후 미국 시장 개장 전까지 추가 뉴스 흐름 주시 필요</li>
+</ul>
+</div>
+
+<div class="disclaimer">본 브리핑은 투자 참고용이며, 투자 판단의 최종 책임은 투자자 본인에게 있습니다.</div>
+</body>
+</html>

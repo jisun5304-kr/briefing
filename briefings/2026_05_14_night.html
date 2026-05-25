@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 2026.05.14 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;overflow:visible;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- 요약 -->
+<div class="card bar-warn">
+<div class="card-inner">
+<h2>5/14 밤 브리핑 — 트럼프-시진핑 회담 진행 중, 미 증시 관망세</h2>
+<p>트럼프-시진핑 정상회담이 진행 중인 가운데 미 증시는 관망세로 보합 마감. 이란 협상 결렬 보도와 일본 인플레 쇼크가 복합 불확실성 조성. 내일 변동성 확대 경고.</p>
+</div>
+</div>
+
+<!-- 주요 지수 -->
+<div class="index-grid">
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">S&P 500</div>
+<div class="index-val">7,480</div>
+<div class="index-chg down">-0.29%</div>
+</div>
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">나스닥</div>
+<div class="index-val">26,520</div>
+<div class="index-chg down">-0.43%</div>
+</div>
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">다우존스</div>
+<div class="index-val">49,950</div>
+<div class="index-chg down">-0.23%</div>
+</div>
+</div>
+
+<!-- 핵심 재료 -->
+<div class="section">
+<h2>핵심 재료</h2>
+<ul class="bullet-list">
+<li>트럼프-시진핑 회담 진행 중 — 시장은 "기대 낮추기" 분위기, 획기적 합의 회의론</li>
+<li>이란-미국 평화협상 사실상 결렬 보도 — 중동 지정학 리스크 부각</li>
+<li>일본 4월 CPI 전년비 +4.1% (예상 +3.6%) — 미일 동시 인플레 쇼크 우려</li>
+<li>국제유가 WTI $74.20 (+2.5%) — 이란 리스크에 유가 급등</li>
+<li>VIX 지수 18.5 → 22.3 급등 — 공포지수 상승, 변동성 확대 경고</li>
+</ul>
+</div>
+
+<!-- 섹터/종목 -->
+<div class="section">
+<h2>미국 주요 종목 동향</h2>
+<table>
+<thead><tr><th>종목</th><th>등락률</th><th>비고</th></tr></thead>
+<tbody>
+<tr><td>엔비디아</td><td class="down-txt">-1.2%</td><td>차익실현 + 회담 불확실성</td></tr>
+<tr><td>애플</td><td class="down-txt">-0.8%</td><td>중국 관세 우려 재부각</td></tr>
+<tr><td>엑슨모빌</td><td class="up-txt">+2.8%</td><td>유가 급등 수혜</td></tr>
+<tr><td>록히드마틴</td><td class="up-txt">+1.9%</td><td>이란 리스크 → 방산주 강세</td></tr>
+<tr><td>세레브라스</td><td class="down-txt">-5.2%</td><td>IPO 첫날 +99% 후 차익실현</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- 내일 관전 포인트 -->
+<div class="section">
+<h2>내일 관전 포인트</h2>
+<ul class="bullet-list">
+<li>트럼프-시진핑 회담 결과 발표 — 합의 실패 시 글로벌 증시 급락 가능</li>
+<li>이란 상황 + 유가 동향: 추가 상승 시 인플레 우려 가중</li>
+<li>KOSPI 7,960 지지력: 악재 동시 출현 시 7,500대까지 급락 시나리오 존재</li>
+<li>일본 인플레 쇼크: 아시아 통화 약세 전이 여부</li>
+</ul>
+</div>
+
+<div class="disclaimer">본 브리핑은 투자 참고용이며, 투자 판단의 최종 책임은 투자자 본인에게 있습니다.</div>
+</body>
+</html>

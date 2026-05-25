@@ -1,4 +1,4 @@
-# update.ps1 - briefings 폴더를 스캔하여 manifest.json 생성 후 GitHub에 push
+﻿# update.ps1 - briefings 폴더를 스캔하여 manifest.json 생성 후 GitHub에 push
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $root

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 2026.05.11 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;overflow:visible;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- 요약 -->
+<div class="card bar-warn">
+<div class="card-inner">
+<h2>5/11 밤 브리핑 — 미국 선물 약보합 출발, 내일 CPI 발표 주목</h2>
+<p>일요일 밤 미국 선물시장이 소폭 하락 출발. 내일 4월 CPI 발표를 앞두고 관망세가 짙다. KOSPI는 금주 7,350선에서 추가 상승 모멘텀을 모색 중.</p>
+</div>
+</div>
+
+<!-- 주요 지수 -->
+<div class="index-grid">
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">S&P 500 선물</div>
+<div class="index-val">7,418</div>
+<div class="index-chg down">-0.12%</div>
+</div>
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">나스닥 선물</div>
+<div class="index-val">26,180</div>
+<div class="index-chg down">-0.18%</div>
+</div>
+<div class="index-card up">
+<div class="signal up"></div>
+<div class="index-name">KOSPI (금일 종가)</div>
+<div class="index-val">7,350</div>
+<div class="index-chg up">+0.3%</div>
+</div>
+</div>
+
+<!-- 핵심 재료 -->
+<div class="section">
+<h2>핵심 재료</h2>
+<ul class="bullet-list">
+<li>내일 미국 4월 소비자물가지수(CPI) 발표 — 시장 컨센서스 상회 시 금리인하 기대 후퇴 우려</li>
+<li>외국인 연간 순매도 61조원 지속 중, KOSPI 80% 랠리에도 불구하고 매도 기조 유지</li>
+<li>반도체 섹터 실적 모멘텀 여전 — 삼성전자 영업이익 컨센서스 332조원, SK하이닉스 247조원</li>
+<li>이란-미국 평화협상 불확실성 확대, 지정학적 리스크 변수로 부상</li>
+<li>USD/KRW 1,475원대 유지, 원화 약세 지속</li>
+</ul>
+</div>
+
+<!-- 섹터/종목 -->
+<div class="section">
+<h2>주간 주요 종목 동향</h2>
+<table>
+<thead><tr><th>종목</th><th>최근 등락</th><th>비고</th></tr></thead>
+<tbody>
+<tr><td>삼성전자</td><td class="up-txt">+14.41% (5/6)</td><td>외국인 -11.3조 순매도에도 강세</td></tr>
+<tr><td>SK하이닉스</td><td class="up-txt">+10.64% (5/6)</td><td>DRAM/NAND 슈퍼사이클 수혜</td></tr>
+<tr><td>현대차</td><td class="up-txt">+2.1%</td><td>미국 관세 리스크 완화 기대</td></tr>
+<tr><td>네이버</td><td class="down-txt">-1.2%</td><td>AI 투자비용 부담 우려</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- 내일 관전 포인트 -->
+<div class="section">
+<h2>내일 관전 포인트</h2>
+<ul class="bullet-list">
+<li>미국 4월 CPI 발표 (한국시간 내일 21:30) — 핵심 변수</li>
+<li>KOSPI 7,400 돌파 여부: 외국인 수급 전환 시 추가 상승 가능</li>
+<li>반도체주 추가 랠리 가능성 vs 차익실현 매물 출회</li>
+</ul>
+</div>
+
+<div class="disclaimer">본 브리핑은 투자 참고용이며, 투자 판단의 최종 책임은 투자자 본인에게 있습니다.</div>
+</body>
+</html>
