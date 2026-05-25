@@ -216,29 +216,29 @@
                      ]
     },
     {
-        "date":  "2026-05-16",
-        "label":  "2026년 5월 16일 (토)",
+        "date":  "2026-05-18",
+        "label":  "2026년 5월 18일 (월)",
         "sessions":  [
                          {
                              "time":  "07:30",
                              "emoji":  "🌅",
                              "period":  "오전",
                              "ready":  true,
-                             "file":  "briefings/2026_05_16_morning.html"
+                             "file":  "briefings/2026_05_18_morning.html"
                          },
                          {
                              "time":  "16:00",
                              "emoji":  "☀️",
                              "period":  "오후",
                              "ready":  true,
-                             "file":  "briefings/2026_05_16_afternoon.html"
+                             "file":  "briefings/2026_05_18_afternoon.html"
                          },
                          {
                              "time":  "23:00",
                              "emoji":  "🌙",
                              "period":  "밤",
                              "ready":  true,
-                             "file":  "briefings/2026_05_16_night.html"
+                             "file":  "briefings/2026_05_18_night.html"
                          }
                      ]
     },
@@ -347,33 +347,6 @@
                              "period":  "밤",
                              "ready":  true,
                              "file":  "briefings/2026_05_22_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-23",
-        "label":  "2026년 5월 23일 (토)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_23_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_23_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_23_night.html"
                          }
                      ]
     }

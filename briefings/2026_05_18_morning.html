@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>시황 브리핑 — 2026.05.16 밤</title>
+<title>시황 브리핑 — 2026.05.18 오전</title>
 <style>
 :root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
 html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
@@ -44,75 +44,93 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
 </head>
 <body>
 
-<!-- 요약 -->
-<div class="card bar-up">
+<!-- 1. Summary -->
+<div class="card bar-warn">
 <div class="card-inner">
-<h2>5/16 밤 브리핑 — 미 증시 반등 마감, 주간 폭풍 마무리. 다음 주 회복 기대</h2>
-<p>미 증시가 +0.6% 반등하며 한 주를 마무리. 미중 6월 실무협의 합의 보도에 안도 매수 유입. KOSPI는 극적인 한 주를 마감했고 다음 주 추가 반등이 기대된다.</p>
+<h2>오전 시황 요약</h2>
+<p>금요일 KOSPI -6.1% 폭락 이후 월요일 개장. 미중 6월 무역회담 기대감에 소폭 반등 출발 예상되나, 외국인 매도 압력 지속으로 불확실성 상존.</p>
 </div>
 </div>
 
-<!-- 주요 지수 -->
+<!-- 2. Major Indices -->
+<div class="section">
+<h2>주요 지수</h2>
 <div class="index-grid">
 <div class="index-card up">
 <div class="signal up"></div>
-<div class="index-name">S&P 500</div>
-<div class="index-val">7,453</div>
-<div class="index-chg up">+0.60%</div>
+<div class="index-name">KOSPI (예상 개장)</div>
+<div class="index-val">7,520</div>
+<div class="index-chg up">+40 (+0.5%)</div>
 </div>
-<div class="index-card up">
-<div class="signal up"></div>
-<div class="index-name">나스닥</div>
-<div class="index-val">26,390</div>
-<div class="index-chg up">+0.63%</div>
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">S&P 500 (전일)</div>
+<div class="index-val">7,408.50</div>
+<div class="index-chg down">-92.82 (-1.24%)</div>
 </div>
-<div class="index-card up">
-<div class="signal up"></div>
-<div class="index-name">다우존스</div>
-<div class="index-val">49,780</div>
-<div class="index-chg up">+0.51%</div>
+<div class="index-card down">
+<div class="signal down"></div>
+<div class="index-name">USD/KRW</div>
+<div class="index-val">1,490</div>
+<div class="index-chg down">+8 (+0.5%)</div>
+</div>
 </div>
 </div>
 
-<!-- 핵심 재료 -->
+<!-- 3. Key Market Drivers -->
 <div class="section">
 <h2>핵심 재료</h2>
+<div class="card">
 <ul class="bullet-list">
-<li>미중 6월 실무협의 공식 확인 — 양측 "건설적 논의 계속" 합의, 시장 안도</li>
-<li>미 증시 전일 급락 후 반등: 기술주 저가매수 유입, 엔비디아 +2.1%</li>
-<li>VIX 22.3 → 19.8로 하락 — 공포 지수 진정, 변동성 축소</li>
-<li>국제유가 WTI $73.80 (-1.5%) — 이란 긴장 소폭 완화</li>
-<li>주간 정리: S&P 500 주간 -0.3%, KOSPI 주간 +3.4% (월 7,350 → 금 7,602)</li>
+<li>미중 6월 무역회담 개최 가능성 보도 — 양측 긍정적 수사 확인</li>
+<li>금요일 사이드카 발동 후 기술적 반등 기대감 유입</li>
+<li>외국인 순매도 기조 지속 전망 — 지난주 -2.8조원 순매도</li>
+<li>이란 핵협상 결렬 여파 지속, 유가 불안정(WTI $78.40)</li>
+<li>일본 CPI 3.8% 서프라이즈 — BOJ 추가 긴축 우려 아시아 전반 압박</li>
+<li>원/달러 환율 1,490원대 — 외국인 이탈 가속 요인</li>
 </ul>
 </div>
+</div>
 
-<!-- 섹터/종목 -->
+<!-- 4. Sector/Stock Highlights -->
 <div class="section">
-<h2>미국 주요 종목 동향</h2>
+<h2>업종/종목 포인트</h2>
+<div class="card">
 <table>
-<thead><tr><th>종목</th><th>등락률</th><th>비고</th></tr></thead>
+<thead>
+<tr><th>종목</th><th>예상 방향</th><th>코멘트</th></tr>
+</thead>
 <tbody>
-<tr><td>엔비디아</td><td class="up-txt">+2.1%</td><td>전일 -3.2% 후 기술적 반등</td></tr>
-<tr><td>애플</td><td class="up-txt">+1.3%</td><td>미중 협의 재개 → 공급망 우려 완화</td></tr>
-<tr><td>시스코</td><td class="up-txt">+1.8%</td><td>실적 모멘텀 지속</td></tr>
-<tr><td>마이크론</td><td class="up-txt">+1.5%</td><td>메모리 수요 펀더멘털 재확인</td></tr>
-<tr><td>세레브라스</td><td class="up-txt">+8.2%</td><td>IPO 후 조정 마치고 재상승</td></tr>
+<tr><td>삼성전자</td><td class="down-txt">약세</td><td>외국인 매도 집중, DRAM 가격 하락 우려</td></tr>
+<tr><td>SK하이닉스</td><td class="up-txt">상대 강세</td><td>HBM 수요 모멘텀, AI 투자 확대 수혜</td></tr>
+<tr><td>현대차</td><td class="up-txt">반등 시도</td><td>미중 갈등 완화 시 수출 기대감</td></tr>
+<tr><td>방산주</td><td class="up-txt">강세</td><td>이란 리스크 지속 → 한화에어로 등 관심</td></tr>
+<tr><td>2차전지</td><td class="down-txt">약세</td><td>리튬 가격 하락세, 수급 부담</td></tr>
 </tbody>
 </table>
 </div>
-
-<!-- 다음 주 관전 포인트 -->
-<div class="section">
-<h2>다음 주 관전 포인트</h2>
-<ul class="bullet-list">
-<li>KOSPI 7,700~7,800 회복 시도 — 이번 주 폭락분 50% 되돌림 목표</li>
-<li>미중 실무협의 구체적 일정·의제 발표 여부</li>
-<li>이란 상황 주말 전개: 군사적 충돌 없을 시 월요일 추가 반등</li>
-<li>반도체 실적 시즌 계속: SK하이닉스·삼성전자 펀더멘털은 여전히 견고</li>
-<li>주간 요약: 8,000 터치 후 6% 폭락, 다시 반등 — 극한의 변동성 주간 마무리</li>
-</ul>
 </div>
 
-<div class="disclaimer">본 브리핑은 투자 참고용이며, 투자 판단의 최종 책임은 투자자 본인에게 있습니다.</div>
+<!-- 5. Tomorrow Watchpoints -->
+<div class="section">
+<h2>금일 주요 관전 포인트</h2>
+<div class="card bar-info">
+<div class="card-inner">
+<ul class="bullet-list">
+<li>개장 후 외국인 순매수/매도 전환 여부 (09:00~10:00 집중 모니터링)</li>
+<li>기관 프로그램 매수 유입 강도 — 반등 지속성 판단 핵심</li>
+<li>KOSPI 7,500 지지선 안착 여부</li>
+<li>미중 무역회담 관련 추가 발언 및 일정 구체화</li>
+<li>원/달러 환율 1,500원 돌파 시 추가 하방 리스크</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 6. Disclaimer -->
+<div class="disclaimer">
+본 브리핑은 시장 정보 공유 목적으로 작성되었으며, 투자 권유가 아닙니다. 투자 판단의 책임은 본인에게 있습니다.
+</div>
+
 </body>
 </html>
