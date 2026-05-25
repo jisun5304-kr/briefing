@@ -48,12 +48,12 @@ foreach ($f in $files) {
 # 3. 세션 정렬 (오전→오후→밤) 및 날짜 정렬
 $order = @{ '오전' = 0; '오후' = 1; '밤' = 2 }
 $result = $days.Values | Sort-Object { $_.date } | ForEach-Object {
-    $_.sessions = $_.sessions | Sort-Object { $order[$_.period] }
+    $_.sessions = @($_.sessions | Sort-Object { $order[$_.period] })
     $_
 }
 
 # 4. manifest.json 저장
-$json = $result | ConvertTo-Json -Depth 4
+$json = @($result) | ConvertTo-Json -Depth 4
 [System.IO.File]::WriteAllText("$root\briefings\manifest.json", $json, [System.Text.Encoding]::UTF8)
 Write-Host "[OK] manifest.json 생성 완료 ($($files.Count)개 파일 반영)" -ForegroundColor Green
 

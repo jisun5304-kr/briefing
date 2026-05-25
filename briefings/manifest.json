@@ -353,12 +353,14 @@
     {
         "date":  "2026-05-25",
         "label":  "2026년 5월 25일 (월)",
-        "sessions":  {
-                         "time":  "07:30",
-                         "emoji":  "🌅",
-                         "period":  "오전",
-                         "ready":  true,
-                         "file":  "briefings/2026_05_25_morning.html"
-                     }
+        "sessions":  [
+                         {
+                             "time":  "07:30",
+                             "emoji":  "🌅",
+                             "period":  "오전",
+                             "ready":  true,
+                             "file":  "briefings/2026_05_25_morning.html"
+                         }
+                     ]
     }
 ]
