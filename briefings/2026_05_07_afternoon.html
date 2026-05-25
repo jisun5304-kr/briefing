@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 5월 7일 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;overflow:visible;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative;overflow:visible}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:22px;font-weight:800}
+.index-chg{font-size:13px;font-weight:700;margin-top:3px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}
+.note-explain{margin-top:10px;padding:8px 12px;border-left:3px solid var(--summary-border);background:var(--summary-bg);color:var(--summary-text);font-size:12.5px;line-height:1.5;border-radius:4px}
+.note-explain .meaning{font-weight:600}.note-explain .impact{color:var(--dim);margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}
+.card-info-corner{position:absolute;top:12px;right:12px;z-index:5}
+.info-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--info-bg);color:var(--info);font-size:11px;font-weight:700;cursor:pointer;border:none;transition:background .15s}
+.info-btn:hover{background:var(--info);color:#fff}
+.info-panel{display:none;position:absolute;top:38px;right:8px;width:min(320px,calc(100vw - 48px));background:var(--surface);border:1px solid var(--info);border-radius:8px;padding:14px 16px;box-shadow:0 8px 24px rgba(0,0,0,.15);z-index:50;font-size:13px;line-height:1.55}
+.info-panel.open{display:block}
+.info-panel h4{margin:0 0 8px;font-size:13px;font-weight:700;color:var(--info)}
+.info-panel dl{margin:0}
+.info-panel dt{font-weight:600;color:var(--text);margin-top:8px;font-size:12.5px}
+.info-panel dt:first-child{margin-top:0}
+.info-panel dd{margin:2px 0 0;color:var(--dim);font-size:12.5px}
+.info-panel .close-hint{margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);text-align:right}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.two-col{grid-template-columns:1fr}}
+.col-head{font-size:12px;font-weight:700;padding:6px 10px;border-radius:6px;margin-bottom:6px}
+.col-head.up{background:var(--up-bg);color:var(--up)}.col-head.down{background:var(--down-bg);color:var(--down)}
+.sector-item{padding:5px 0;font-size:12.5px;border-bottom:1px solid var(--border)}
+.sector-item:last-child{border-bottom:none}
+.sector-item .pct{float:right;font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 5/7 (목) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 코스피 사상 최고치 재경신 — 외국인 역대 최대 매도에도 개인·기관이 지수 떠받쳤다</div>
+      <div style="font-size:13px;color:var(--dim)">장 초반 7,500선 돌파(7,531.88 고점)했지만 외국인이 역대 최대 규모로 팔면서 변동성 확대. 개인이 6조원 순매수로 방어하며 7,490으로 마감. 코스닥은 이틀 연속 하락.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--warn);font-weight:600">📌 오늘 밤 볼 것: 미국·이란 협상 최종 타결 여부, 내일 NFP 대비 리스크 관리</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(15:30 종가)</span></h2>
+  <div class="index-grid">
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">7,490.05</div>
+      <div class="index-chg up">▲ +1.43%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">+105pt | 장중 7,531 신고가</div>
+    </div>
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,199.18</div>
+      <div class="index-chg down">▼ -0.91%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">-10.99pt | 이틀 연속 하락</div>
+    </div>
+  </div>
+  <!-- 미국 선물 -->
+  <div class="card bar-info" style="margin-bottom:12px">
+    <div class="card-info-corner">
+      <button class="info-btn" onclick="togglePanel('p-fut')">i</button>
+      <div class="info-panel" id="p-fut">
+        <h4>선물 지수란?</h4>
+        <dl>
+          <dt>S&P500 선물 / 나스닥 선물</dt>
+          <dd>미국장 정규 개장(오후 11:30) 전에 미리 거래되는 가격. 오늘 밤 미국장 방향을 가늠하는 도구.</dd>
+        </dl>
+        <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+      </div>
+    </div>
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:6px">🇺🇸 미국 선물 (오후 기준)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><div style="font-size:11px;color:var(--dim)">S&P500 선물</div><div style="font-weight:700;color:var(--warn)">⚠️ 혼조·약세 전환</div></div>
+        <div><div style="font-size:11px;color:var(--dim)">나스닥 선물</div><div style="font-weight:700;color:var(--warn)">⚠️ 혼조</div></div>
+      </div>
+      <div style="font-size:11.5px;color:var(--dim);margin-top:6px">협상 불확실성 재부각 → 오늘 밤 미국장 변동성 주의</div>
+    </div>
+  </div>
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div class="note-explain">
+        <div class="meaning">코스피 +1.43% — 외국인 역대 최대 매도에도 개인·기관이 방어</div>
+        <div class="impact">→ 외국인 -7.15조원(역대 최대 순매도)에도 개인 +5.99조원, 기관 +1.1조원이 지수를 떠받쳤다. 이례적 장세. 두 번째 이틀 연속 개인 주도 상승은 변동성 확대 신호로도 해석 가능.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 주요 종목 -->
+<div class="section">
+  <h2>④ 주요 종목</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <h2 style="font-size:13px;margin-bottom:8px">코스피 시총 상위 등락</h2>
+      <table>
+        <thead><tr><th>종목</th><th>등락</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>두산에너빌리티</td><td class="up-txt">▲ +7.40%</td><td style="font-size:12px;color:var(--dim)">원전·건설 강세</td></tr>
+          <tr><td>HD현대중공업</td><td class="up-txt">▲ +6.94%</td><td style="font-size:12px;color:var(--dim)">방산·중공업 수주 기대</td></tr>
+          <tr><td>현대차</td><td class="up-txt">▲ +4.0%</td><td style="font-size:12px;color:var(--dim)">글로벌 판매 호조</td></tr>
+          <tr><td>삼성전자</td><td class="up-txt">▲ +2%대</td><td style="font-size:12px;color:var(--dim)">연속 강세</td></tr>
+          <tr><td>SK하이닉스</td><td class="up-txt">▲ +3%대</td><td style="font-size:12px;color:var(--dim)">HBM 수요 지속</td></tr>
+          <tr><td>한화에어로스페이스</td><td class="down-txt">▼ -8.09%</td><td style="font-size:12px;color:var(--dim)">차익 실현</td></tr>
+          <tr><td>삼성바이오로직스</td><td class="down-txt">▼ -0.47%</td><td style="font-size:12px;color:var(--dim)">소폭 약세</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card bar-down">
+    <div class="card-inner">
+      <h2 style="font-size:13px;margin-bottom:8px">코스닥 특징 (상한가 속출)</h2>
+      <table>
+        <thead><tr><th>종목</th><th>등락</th></tr></thead>
+        <tbody>
+          <tr><td>젠큐릭스</td><td class="up-txt">▲ +30.00%</td></tr>
+          <tr><td>희림</td><td class="up-txt">▲ +29.97%</td></tr>
+          <tr><td>빛샘전자</td><td class="up-txt">▲ +29.93%</td></tr>
+          <tr><td>코오롱티슈진</td><td class="up-txt">▲ 강세</td></tr>
+          <tr><td>에코프로</td><td class="down-txt">▼ -1.90%</td></tr>
+          <tr><td>알테오젠</td><td class="down-txt">▼ -1.93%</td></tr>
+          <tr><td>HLB</td><td class="down-txt">▼ -3.57%</td></tr>
+        </tbody>
+      </table>
+      <div class="note-explain">
+        <div class="meaning">💡 코스닥: 지수는 하락했지만 개별 상한가 속출</div>
+        <div class="impact">→ 바이오·광통신·로봇 부품주로 수급 집중. 지수 전체가 아닌 테마별 차별화 장세. 선별적 매수 흐름.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수급 카드 -->
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <div style="font-size:13px;font-weight:700;margin-bottom:8px">
+        💡 큰손 수급 (코스피 기준)
+        <span style="position:relative;display:inline-block;">
+          <button class="info-btn" onclick="togglePanel('p-supply')" style="margin-left:4px">i</button>
+          <div class="info-panel" id="p-supply">
+            <h4>수급이란?</h4>
+            <dl>
+              <dt>외국인·기관 순매수</dt><dd>산 금액에서 판 금액을 뺀 값. (+)면 사는 쪽, (-)면 파는 쪽이 우세.</dd>
+              <dt>큰손</dt><dd>외국인(해외 자금)과 기관(펀드·증권사 등)을 가리킵니다. 개인보다 정보력·자금력이 크기 때문에 시장 방향 파악에 참고합니다.</dd>
+            </dl>
+            <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+          </div>
+        </span>
+      </div>
+      <table>
+        <thead><tr><th>주체</th><th>코스피</th><th>코스닥</th></tr></thead>
+        <tbody>
+          <tr><td>외국인</td><td class="down-txt">▼ -7조1,526억 (역대 최대)</td><td class="up-txt">▲ +1,757억</td></tr>
+          <tr><td>기관</td><td class="up-txt">▲ +1조 981억</td><td class="down-txt">▼ -1,350억</td></tr>
+          <tr><td>개인</td><td class="up-txt">▲ +5조9,904억</td><td class="down-txt">▼ -124억</td></tr>
+        </tbody>
+      </table>
+      <div class="note-explain">
+        <div class="meaning">외국인 역대 최대 순매도 — 개인이 막아낸 날</div>
+        <div class="impact">→ 외국인이 어제 산 것을 오늘 전량 이상 팔았다. 개인의 역매수가 지수를 떠받쳤지만, 외국인 이탈이 지속될 경우 상승 동력이 약화될 수 있다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ 업종·테마 -->
+<div class="section">
+  <h2>③ 업종·테마 흐름</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <div class="two-col">
+        <div>
+          <div class="col-head up">💪 강세 업종</div>
+          <div class="sector-item">🏗️ 건설·엔지니어링 <span class="pct up-txt">▲ 주도</span></div>
+          <div class="sector-item">🚢 조선·중공업 <span class="pct up-txt">▲ 강세</span></div>
+          <div class="sector-item">🚗 자동차 <span class="pct up-txt">▲ 강세</span></div>
+          <div class="sector-item">💻 반도체 <span class="pct up-txt">▲ 지속</span></div>
+        </div>
+        <div>
+          <div class="col-head down">📉 약세 업종</div>
+          <div class="sector-item">🛡️ 방산 (차익실현) <span class="pct down-txt">▼ 약세</span></div>
+          <div class="sector-item">🧬 바이오 (코스닥) <span class="pct down-txt">▼ 혼조</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 거시 -->
+<div class="section">
+  <h2>⑤ 거시 지표</h2>
+  <div class="card bar-info">
+    <div class="card-info-corner">
+      <button class="info-btn" onclick="togglePanel('p-macro')">i</button>
+      <div class="info-panel" id="p-macro">
+        <h4>거시 지표 용어</h4>
+        <dl>
+          <dt>WTI 유가</dt><dd>종전 기대로 하락 중. 낮을수록 물가 안정 → 금리 인하 기대 강화.</dd>
+          <dt>원/달러 환율</dt><dd>하락하면 원화 강세 → 외국인이 한국 투자 시 환차익 기대.</dd>
+        </dl>
+        <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+      </div>
+    </div>
+    <div class="card-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><div style="font-size:11px;color:var(--dim)">원/달러 환율</div><div style="font-size:15px;font-weight:700;color:var(--up)">▼ 1,454원</div><div style="font-size:12px;color:var(--dim)">-1.1원 (원화 강세)</div></div>
+        <div><div style="font-size:11px;color:var(--dim)">WTI 유가</div><div style="font-size:15px;font-weight:700;color:var(--up)">▼ ~94달러</div><div style="font-size:12px;color:var(--dim)">협상 기대 지속 하락</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ 관전 포인트 -->
+<div class="section">
+  <h2>⑥ 오늘 밤 / 내일 장에서 볼 것</h2>
+  <div class="card bar-up" style="margin-bottom:8px">
+    <div class="card-inner">
+      <div style="font-weight:700;color:var(--up);margin-bottom:6px">기회 요인</div>
+      <ul class="bullet-list">
+        <li>종전 협상 타결 시 유가 급락 → 전 자산 리스크온 환경</li>
+        <li>미국 NFP 예상치 부합 시 금리 인하 기대 유지</li>
+        <li>외국인 순매도 잦아들 경우 코스피 추가 상승 탄력</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-weight:700;color:var(--down);margin-bottom:6px">위험 요인</div>
+      <ul class="bullet-list">
+        <li>외국인 연속 대규모 매도 지속 시 개인 역매수 한계 도달 가능</li>
+        <li>협상 결렬 → 유가 재급등 → 전 시장 리스크오프</li>
+        <li>내일 NFP 강세 시 금리 인하 기대 약화 → 성장주 하방 압력</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer">본 브리핑은 정보 제공을 목적으로 하며, 투자 권유나 자문이 아닙니다. 모든 투자 판단과 책임은 본인에게 있습니다.</div>
+
+<script>
+function togglePanel(id){document.querySelectorAll('.info-panel.open').forEach(p=>{if(p.id!==id)p.classList.remove('open')});const p=document.getElementById(id);if(p)p.classList.toggle('open')}
+document.addEventListener('click',function(e){if(!e.target.closest('.info-btn')&&!e.target.closest('.info-panel'))document.querySelectorAll('.info-panel.open').forEach(p=>p.classList.remove('open'))});
+function _applyTheme(t){document.documentElement.classList.toggle('dark',t==='dark')}
+(function(){var t=new URLSearchParams(window.location.search).get('theme')||'dark';_applyTheme(t);window.addEventListener('message',function(e){if(e.data&&e.data.type==='theme')_applyTheme(e.data.theme)})})();
+</script>
+</body>
+</html>

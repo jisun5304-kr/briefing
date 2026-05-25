@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5/11 오전 시황 브리핑</title>
+<style>
+/* ── 폰트 ── */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+/* ── CSS 변수 (라이트 기본) ── */
+:root {
+  --bg: #f5f5f3;
+  --surface: #ffffff;
+  --border: #e0e0dc;
+  --thead: #f0f0ee;
+  --row-hover: #f8f8f6;
+  --text: #222222;
+  --dim: #666666;
+  --muted: #aaaaaa;
+  --summary-bg: #eff6ff;
+  --summary-border: #93c5fd;
+  --summary-text: #1e3a5f;
+  --card-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  --chart-grid: #e8e8e4;
+  --chart-text: #666666;
+  --up: #16a34a;
+  --up-bg: rgba(22,163,74,0.08);
+  --down: #dc2626;
+  --down-bg: rgba(220,38,38,0.08);
+  --info: #3b82f6;
+  --info-bg: rgba(59,130,246,0.08);
+  --warn: #d97706;
+  --warn-bg: rgba(217,119,6,0.08);
+}
+html.dark {
+  --bg: #0b1120;
+  --surface: #131e33;
+  --border: #1e2e4a;
+  --thead: #0f1928;
+  --row-hover: #1a2940;
+  --text: #dce6f5;
+  --dim: #8fa4c0;
+  --muted: #5a7090;
+  --summary-bg: rgba(59,130,246,0.08);
+  --summary-border: #3b82f6;
+  --summary-text: #dce6f5;
+  --card-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  --chart-grid: #1e2e4a;
+  --chart-text: #c8d8ef;
+  --up: #4ade80;
+  --up-bg: rgba(74,222,128,0.10);
+  --down: #f87171;
+  --down-bg: rgba(248,113,113,0.10);
+  --info: #3b82f6;
+  --info-bg: rgba(59,130,246,0.10);
+  --warn: #fbbf24;
+  --warn-bg: rgba(251,191,36,0.10);
+}
+
+/* ── 리셋 & 베이스 ── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+  font-size: 14px;
+  line-height: 1.6;
+  transition: background 0.2s, color 0.2s;
+}
+@media (max-width: 768px) {
+  body { max-width: 780px; padding: 16px 14px 32px; }
+}
+
+/* ── 헤더 ── */
+.brief-header {
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--border);
+}
+.brief-meta { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.brief-title { font-size: 20px; font-weight: 700; color: var(--text); }
+.brief-session {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 6px;
+  font-size: 12px; font-weight: 600;
+  background: var(--info-bg); color: var(--info);
+  border: 1px solid var(--info);
+  border-radius: 20px; padding: 3px 10px;
+}
+
+/* ── 카드 베이스 ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: visible;
+  margin-bottom: 12px;
+}
+.card.bar-up::before,
+.card.bar-down::before,
+.card.bar-info::before,
+.card.bar-warn::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  border-radius: 8px 0 0 8px;
+}
+.card.bar-up::before   { background: var(--up); }
+.card.bar-down::before { background: var(--down); }
+.card.bar-info::before { background: var(--info); }
+.card.bar-warn::before { background: var(--warn); }
+.card-inner { padding-left: 8px; }
+
+/* ── 블록 제목 ── */
+.block-title {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.section-label {
+  font-size: 15px; font-weight: 700; color: var(--text);
+  margin-bottom: 4px;
+}
+.section-sub {
+  font-size: 12px; color: var(--dim); margin-bottom: 10px;
+}
+
+/* ── 결론 박스 (블록 ①·⑥) ── */
+.conclusion-box {
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: visible;
+}
+.conclusion-box.mixed { border-color: var(--info); background: var(--info-bg); }
+.conclusion-box.up    { border-color: var(--up);   background: var(--up-bg); }
+.conclusion-box.down  { border-color: var(--down); background: var(--down-bg); }
+.conclusion-icon { font-size: 22px; margin-right: 8px; }
+.conclusion-text { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.55; }
+.conclusion-sub  { font-size: 12.5px; color: var(--dim); margin-top: 6px; line-height: 1.5; }
+
+/* ── 지수 카드 행 ── */
+.index-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+@media (max-width: 600px) {
+  .index-row { grid-template-columns: 1fr; }
+}
+.index-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: visible;
+}
+.index-card.bar-up::before,
+.index-card.bar-down::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; border-radius: 8px 0 0 8px;
+}
+.index-card.bar-up::before   { background: var(--up); }
+.index-card.bar-down::before { background: var(--down); }
+.idx-header { display: flex; justify-content: space-between; align-items: center; padding-left: 8px; }
+.idx-name { font-size: 11px; font-weight: 700; color: var(--dim); }
+.signal { width: 10px; height: 10px; border-radius: 50%; }
+.signal.up   { background: var(--up);   box-shadow: 0 0 8px rgba(74,222,128,0.5); }
+.signal.down { background: var(--down); box-shadow: 0 0 8px rgba(248,113,113,0.5); }
+.idx-val { font-size: 20px; font-weight: 700; color: var(--text); padding-left: 8px; margin: 4px 0 2px; }
+.idx-chg { font-size: 12.5px; font-weight: 600; padding-left: 8px; }
+.idx-chg.up   { color: var(--up); }
+.idx-chg.down { color: var(--down); }
+.idx-pt { font-size: 11px; color: var(--dim); padding-left: 8px; }
+
+/* ── 해설 박스 ── */
+.note-explain {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--summary-border);
+  background: var(--summary-bg);
+  color: var(--summary-text);
+  font-size: 12.5px;
+  line-height: 1.55;
+  border-radius: 4px;
+}
+.note-explain .meaning { font-weight: 600; }
+.note-explain .impact  { color: var(--dim); margin-top: 2px; }
+
+/* ── 테이블 ── */
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 10px; }
+thead th {
+  background: var(--thead);
+  color: var(--dim);
+  font-weight: 600; font-size: 11.5px;
+  padding: 7px 10px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+tbody td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+tbody tr:hover td { background: var(--row-hover); }
+tbody tr:last-child td { border-bottom: none; }
+.td-up   { color: var(--up);   font-weight: 600; }
+.td-down { color: var(--down); font-weight: 600; }
+.td-dim  { color: var(--dim); font-size: 12px; }
+
+html.dark table td { background: #131e33 !important; color: #dce6f5 !important; }
+html.dark table tr:hover td { background: #1a2940 !important; }
+html.dark thead th { background: #0f1928 !important; color: #8fa4c0 !important; }
+
+/* ── 이벤트 캘린더 ── */
+.event-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.event-table th {
+  background: var(--thead); color: var(--dim);
+  font-size: 11px; font-weight: 600;
+  padding: 6px 10px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.event-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); }
+.event-table tr:last-child td { border-bottom: none; }
+.event-table tr.star3 td { background: var(--warn-bg); }
+html.dark .event-table td { background: #131e33; color: #dce6f5; }
+html.dark .event-table tr.star3 td { background: rgba(251,191,36,0.1); }
+html.dark .event-table th { background: #0f1928; color: #8fa4c0; }
+.imp { font-size: 12px; white-space: nowrap; }
+
+/* ── 업종 2열 리스트 ── */
+.sector-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-top: 8px;
+}
+@media (max-width: 560px) { .sector-grid { grid-template-columns: 1fr; } }
+.sector-col-title {
+  font-size: 11.5px; font-weight: 700;
+  padding: 5px 0 8px;
+  border-bottom: 2px solid;
+  margin-bottom: 8px;
+}
+.sector-col-title.up   { color: var(--up);   border-color: var(--up); }
+.sector-col-title.down { color: var(--down); border-color: var(--down); }
+.sector-item {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+.sector-item:last-child { border-bottom: none; }
+.sector-name { font-weight: 600; color: var(--text); }
+.sector-comment { color: var(--dim); font-size: 12px; }
+.sector-rate { font-weight: 700; font-size: 12px; }
+.sector-rate.up   { color: var(--up); }
+.sector-rate.down { color: var(--down); }
+
+/* ── 종목 카드 (D형) ── */
+.stock-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: visible;
+  margin-bottom: 10px;
+}
+.stock-card.bar-up::before,
+.stock-card.bar-down::before,
+.stock-card.bar-warn::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; border-radius: 8px 0 0 8px;
+}
+.stock-card.bar-up::before   { background: var(--up); }
+.stock-card.bar-down::before { background: var(--down); }
+.stock-card.bar-warn::before { background: var(--warn); }
+.sc-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-left: 8px; margin-bottom: 8px;
+}
+.sc-name { font-size: 15px; font-weight: 700; }
+.badge {
+  font-size: 10.5px; font-weight: 700;
+  padding: 2px 8px; border-radius: 20px;
+  white-space: nowrap;
+}
+.badge.info { background: var(--info-bg); color: var(--info); border: 1px solid var(--info); }
+.badge.warn { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn); }
+.sc-row { display: flex; justify-content: space-between; padding-left: 8px; margin-bottom: 6px; }
+.sc-price { font-size: 18px; font-weight: 700; }
+.sc-chg { font-size: 13px; font-weight: 600; }
+.sc-chg.up   { color: var(--up); }
+.sc-chg.down { color: var(--down); }
+
+/* 52주 위치 막대 */
+.week52-wrap { padding: 4px 8px 8px; }
+.week52-labels {
+  display: flex; justify-content: space-between;
+  font-size: 10.5px; color: var(--muted); margin-bottom: 4px;
+}
+.week52-bar {
+  position: relative; height: 6px;
+  background: var(--border); border-radius: 3px;
+}
+.week52-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(to right, var(--info), var(--up));
+}
+.week52-marker {
+  position: absolute; top: -3px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--up);
+  border: 2px solid var(--surface);
+  transform: translateX(-50%);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+/* ── 관전 포인트 카드 ── */
+.point-list { list-style: none; padding: 0; }
+.point-list li {
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px; line-height: 1.55;
+}
+.point-list li:last-child { border-bottom: none; }
+.point-icon { margin-right: 6px; }
+
+/* ── ℹ️ 툴팁 ── */
+.info-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--info-bg); color: var(--info);
+  font-size: 11px; font-weight: 700;
+  cursor: pointer; border: none; user-select: none;
+  transition: background 0.15s;
+  font-family: serif;
+}
+.info-btn:hover { background: var(--info); color: white; }
+.info-btn.inline { width: 14px; height: 14px; font-size: 10px; margin-left: 4px; vertical-align: middle; }
+.card-info-corner { position: absolute; top: 12px; right: 12px; z-index: 5; }
+.info-panel {
+  display: none;
+  position: absolute; top: 38px; right: 8px;
+  width: min(320px, calc(100vw - 48px));
+  background: var(--surface);
+  border: 1px solid var(--info);
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  z-index: 50;
+  font-size: 13px; line-height: 1.55;
+}
+.info-panel.open { display: block; }
+.info-panel h4 { margin: 0 0 8px 0; font-size: 13px; font-weight: 700; color: var(--info); }
+.info-panel dl { margin: 0; }
+.info-panel dt { font-weight: 600; color: var(--text); margin-top: 8px; font-size: 12.5px; }
+.info-panel dt:first-of-type { margin-top: 0; }
+.info-panel dd { margin: 2px 0 0 0; color: var(--dim); font-size: 12.5px; }
+.info-panel .close-hint {
+  margin-top: 12px; padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 11px; color: var(--muted); text-align: right;
+}
+
+/* ── 경고 배너 ── */
+.alert-banner {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px; font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── 주의문 ── */
+.disclaimer {
+  margin-top: 28px; padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11.5px; color: var(--muted);
+  line-height: 1.6;
+  background: var(--surface);
+}
+
+/* ── 구분선 ── */
+.divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+/* ── 기타 유틸 ── */
+.tag {
+  display: inline-block; font-size: 10.5px; font-weight: 600;
+  padding: 1px 7px; border-radius: 4px;
+  white-space: nowrap;
+}
+.tag.up   { background: var(--up-bg);   color: var(--up); }
+.tag.down { background: var(--down-bg); color: var(--down); }
+.tag.info { background: var(--info-bg); color: var(--info); }
+.tag.warn { background: var(--warn-bg); color: var(--warn); }
+.row-flex { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ── 헤더 ── -->
+<div class="brief-header">
+  <div class="brief-meta">2026년 5월 11일 (월)</div>
+  <div class="brief-title">📊 시황 브리핑</div>
+  <div class="brief-session">🌅 오전 07:30 — 미국장 마감 후 · 한국장 개장 전</div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ① 한 줄 요약 (블록 F — 결론 박스)
+     ════════════════════════════════════════ -->
+<div class="block-title">① 오늘 시장 한 줄 요약</div>
+
+<div class="conclusion-box mixed">
+  <div style="display:flex; align-items:flex-start; gap:10px;">
+    <span class="conclusion-icon">⚖️</span>
+    <div>
+      <div class="conclusion-text">
+        반도체 랠리로 코스피가 7,500 문턱까지 올라선 가운데,<br>
+        이번 주는 미국 물가 발표·미·중 정상회담이라는 두 고비 앞에서 숨 고르기 가능성.
+      </div>
+      <div class="conclusion-sub">
+        <strong>오늘 장에서 볼 것 :</strong> 지난주 13.6% 급등 후 차익 실현(오른 주식 팔아 수익 챙기는 흐름)이 나오는지 vs. 외국인 매수가 이어지는지. 삼성전자 노사 조정 첫날.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 강조 배너 — 코스피 13.6% 주간 급등 (트리거: ±3% 초과) -->
+<div class="alert-banner">
+  🚨 코스피 지난주 +13.63% — 주요국 중 유일한 두 자릿수 상승. 7,500선 사상 최초 터치.
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ⑤ 거시·이벤트 (⭐⭐⭐ 이벤트 임박 → ① 바로 다음으로 이동)
+     ════════════════════════════════════════ -->
+<hr class="divider">
+<div class="block-title">⑤ 거시 흐름 · 이번 주 일정</div>
+
+<!-- 거시 4종 카드 (해석형) -->
+<div class="card bar-info">
+  <div class="card-info-corner">
+    <button class="info-btn" onclick="togglePanel('p-macro')">i</button>
+    <div class="info-panel" id="p-macro">
+      <h4>용어 설명</h4>
+      <dl>
+        <dt>원/달러 환율</dt>
+        <dd>1달러를 사는 데 필요한 원화 금액. 높을수록 원화 가치 하락 → 외국인 자금이 빠져나가기 쉬움.</dd>
+        <dt>미국 10년물 국채금리</dt>
+        <dd>미국 정부가 10년간 빌리는 돈의 이자율. 높아지면 주식보다 채권이 매력적 → 증시 하방 압력.</dd>
+        <dt>WTI 유가</dt>
+        <dd>미국 원유 기준 가격. 높을수록 물가 상승 압력 → 금리 인하 기대 감소.</dd>
+        <dt>달러인덱스(DXY)</dt>
+        <dd>달러의 힘을 숫자로 나타낸 것. 오르면 달러 강세 → 원화·신흥국 통화 약세.</dd>
+      </dl>
+      <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+    </div>
+  </div>
+  <div class="card-inner">
+    <div class="section-label">거시 4종 흐름</div>
+    <div class="section-sub">5/9 미국장 마감 기준 방향 — 정확한 수치는 개장 후 확인 권장</div>
+    <table>
+      <thead>
+        <tr>
+          <th>지표</th>
+          <th>방향</th>
+          <th>오늘 시장에 미치는 영향</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>원/달러 환율</strong></td>
+          <td class="td-up">▼ 원화 강세</td>
+          <td class="td-dim">반도체 수출 호조로 달러 유입 → 외국인 자금 유입 기대 유지</td>
+        </tr>
+        <tr>
+          <td><strong>미국 10년물 금리</strong></td>
+          <td>→ 보합권</td>
+          <td class="td-dim">5/12 CPI 발표 전까지 방향 불확실. 주시 필요</td>
+        </tr>
+        <tr>
+          <td><strong>WTI 유가</strong></td>
+          <td class="td-up">▼ 하락 흐름</td>
+          <td class="td-dim">미-이란 종전 협상 기대감 → 에너지 가격 부담 완화</td>
+        </tr>
+        <tr>
+          <td><strong>달러인덱스(DXY)</strong></td>
+          <td class="td-up">▼ 약세</td>
+          <td class="td-dim">달러 약세 = 원화 강세와 같은 방향. 신흥국 자금 유리한 환경</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 이벤트 캘린더 -->
+<div class="card bar-warn">
+  <div class="card-inner">
+    <div class="section-label">이번 주 주요 일정</div>
+    <div class="section-sub" style="margin-bottom:8px;">오늘 + 내일 상세 / 이번 주 ⭐⭐⭐ 강조</div>
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th style="width:110px;">날짜·시간</th>
+          <th>이벤트</th>
+          <th style="width:70px; text-align:center;">중요도</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-dim">5/11 (월) 오전</td>
+          <td>삼성전자 노사 <strong>정부 사후조정 시작</strong> (11~12일)</td>
+          <td class="imp" style="text-align:center;">⭐⭐</td>
+        </tr>
+        <tr>
+          <td class="td-dim">5/11 (월) 장후</td>
+          <td>콘스텔레이션 에너지 실적 발표 (미국 원전 관련)</td>
+          <td class="imp" style="text-align:center;">⭐</td>
+        </tr>
+        <tr class="star3">
+          <td class="td-dim">5/12 (화) 21:30</td>
+          <td>
+            🔥 <strong>미국 CPI (소비자물가지수)</strong> 발표
+            <span style="position:relative; display:inline-block;">
+              <button class="info-btn inline" onclick="togglePanel('p-cpi')">i</button>
+              <div class="info-panel" id="p-cpi">
+                <h4>CPI란?</h4>
+                <dl>
+                  <dt>소비자물가지수 (CPI)</dt>
+                  <dd>우리가 사는 물건·서비스 가격이 얼마나 올랐는지 보여주는 지표. 높으면 물가 상승(인플레이션) 심화 → 미국 중앙은행이 금리를 내리기 어려움 → 증시 부담.</dd>
+                </dl>
+                <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+              </div>
+            </span>
+          </td>
+          <td class="imp" style="text-align:center;">⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td class="td-dim">5/12 (화) 개장전</td>
+          <td>디웨이브 퀀텀 실적 발표 (양자컴퓨팅)</td>
+          <td class="imp" style="text-align:center;">⭐</td>
+        </tr>
+        <tr>
+          <td class="td-dim">5/13 (수)</td>
+          <td>미국 PPI (생산자물가지수) 발표</td>
+          <td class="imp" style="text-align:center;">⭐⭐</td>
+        </tr>
+        <tr>
+          <td class="td-dim">5/13 (수) 장후</td>
+          <td>시스코 시스템즈 실적 (네트워킹 장비·AI 인프라)</td>
+          <td class="imp" style="text-align:center;">⭐</td>
+        </tr>
+        <tr class="star3">
+          <td class="td-dim">5/14~15 (목~금)</td>
+          <td>🔥 <strong>트럼프·시진핑 미·중 정상회담</strong> (베이징)
+            <span style="position:relative; display:inline-block;">
+              <button class="info-btn inline" onclick="togglePanel('p-summit')">i</button>
+              <div class="info-panel" id="p-summit">
+                <h4>미·중 정상회담</h4>
+                <dl>
+                  <dt>왜 시장이 주목하나요?</dt>
+                  <dd>미국과 중국의 무역 갈등이 풀리면 글로벌 공급망 안정 → 한국 반도체·소재 수출에 유리. 반대로 결렬되면 불확실성 확대.</dd>
+                  <dt>이번 회담 핵심</dt>
+                  <dd>약 10년 만의 미국 대통령 방중. 에너지·농산물 수입 확대 합의 여부와 호르무즈 해협 봉쇄 관련 논의가 핵심.</dd>
+                </dl>
+                <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+              </div>
+            </span>
+          </td>
+          <td class="imp" style="text-align:center;">⭐⭐⭐</td>
+        </tr>
+        <tr class="star3">
+          <td class="td-dim">5월 중</td>
+          <td>🔥 <strong>MSCI 5월 정기 리뷰</strong> (한국 편입·편출 결정)
+            <span style="position:relative; display:inline-block;">
+              <button class="info-btn inline" onclick="togglePanel('p-msci')">i</button>
+              <div class="info-panel" id="p-msci">
+                <h4>MSCI 정기 리뷰</h4>
+                <dl>
+                  <dt>MSCI란?</dt>
+                  <dd>전 세계 주식시장을 평가해 지수를 만드는 기관. 이 지수를 따라 투자하는 외국인 자금이 수백조 원.</dd>
+                  <dt>정기 리뷰가 중요한 이유</dt>
+                  <dd>한국 종목이 지수에 새로 편입되면 외국인 자금이 자동으로 들어옴. 편출되면 반대. 특히 삼성전자·SK하이닉스 비중 변화 주목.</dd>
+                </dl>
+                <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+              </div>
+            </span>
+          </td>
+          <td class="imp" style="text-align:center;">⭐⭐⭐</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note-explain" style="margin-top:12px;">
+      <div class="meaning">⚠️ 이번 주 핵심 — 5/12 CPI</div>
+      <div class="impact">물가가 예상보다 높게 나오면 미국 금리 인하 기대가 줄어들어 글로벌 증시에 부담. 반대로 낮으면 코스피 추가 상승 기회. CPI 발표 전후 변동성이 클 수 있습니다.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ② 주요 지수 (오전 세션 — 미국 3종)
+     ════════════════════════════════════════ -->
+<hr class="divider">
+<div class="block-title">② 주요 지수 — 미국장 마감 (5/9)</div>
+
+<div class="index-row">
+  <div class="index-card bar-up">
+    <div class="idx-header">
+      <span class="idx-name">S&amp;P 500</span>
+      <span class="signal up"></span>
+    </div>
+    <div class="idx-val">7,398.93</div>
+    <div class="idx-chg up">▲ +0.84%</div>
+    <div class="idx-pt">+61.72pt</div>
+  </div>
+  <div class="index-card bar-up">
+    <div class="idx-header">
+      <span class="idx-name">나스닥</span>
+      <span class="signal up"></span>
+    </div>
+    <div class="idx-val">26,247.08</div>
+    <div class="idx-chg up">▲ +1.71%</div>
+    <div class="idx-pt">신고가 경신</div>
+  </div>
+  <div class="index-card bar-up">
+    <div class="idx-header">
+      <span class="idx-name">다우존스</span>
+      <span class="signal up"></span>
+    </div>
+    <div class="idx-val">49,609.16</div>
+    <div class="idx-chg up">▲ +0.02%</div>
+    <div class="idx-pt">보합</div>
+  </div>
+</div>
+
+<div class="note-explain">
+  <div class="meaning">나스닥 +1.71% — 반도체가 이끈 상승</div>
+  <div class="impact">마이크론 +15.5%, AMD +11.4%, 인텔 +14.0% 폭등. AI 메모리 수요 기대 → SK하이닉스·삼성전자 연동 가능성. 다우는 보합권으로 기술주 vs 전통 업종 간 온도 차.</div>
+</div>
+
+<!-- M7 표 -->
+<div class="card bar-info" style="margin-top:14px;">
+  <div class="card-inner">
+    <div class="section-label">💡 미국 주요 종목 (M7 + 반도체)</div>
+    <table>
+      <thead>
+        <tr><th>종목</th><th style="text-align:right;">등락률</th><th class="td-dim">메모</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>마이크론</td><td class="td-up" style="text-align:right;">▲ +15.49%</td><td class="td-dim">AI 메모리 수요 폭발 기대</td></tr>
+        <tr><td>인텔</td><td class="td-up" style="text-align:right;">▲ +13.96%</td><td class="td-dim">애플 칩 생산 가능성 보도</td></tr>
+        <tr><td>AMD</td><td class="td-up" style="text-align:right;">▲ +11.44%</td><td class="td-dim">AI 에이전트 수요 발표</td></tr>
+        <tr><td>브로드컴</td><td class="td-up" style="text-align:right;">▲ +4.23%</td><td class="td-dim">AI 네트워킹 수혜</td></tr>
+        <tr><td>테슬라</td><td class="td-up" style="text-align:right;">▲ +4.02%</td><td class="td-dim">–</td></tr>
+        <tr><td>애플</td><td class="td-up" style="text-align:right;">▲ +2.05%</td><td class="td-dim">2Q 실적 호조 지속</td></tr>
+        <tr><td>엔비디아</td><td class="td-up" style="text-align:right;">▲ +1.75%</td><td class="td-dim">–</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 코스피·코스닥 (한국 직전 마감) -->
+<div class="block-title" style="margin-top:16px;">② 한국 지수 — 직전 마감 (5/8 금)</div>
+<div class="index-row" style="grid-template-columns: 1fr 1fr;">
+  <div class="index-card bar-up">
+    <div class="idx-header">
+      <span class="idx-name">코스피</span>
+      <span class="signal up"></span>
+    </div>
+    <div class="idx-val">7,498.00</div>
+    <div class="idx-chg up">주간 ▲ +13.63%</div>
+    <div class="idx-pt">사상 최고 — 7,500선 첫 터치</div>
+  </div>
+  <div class="index-card bar-up">
+    <div class="idx-header">
+      <span class="idx-name">코스닥</span>
+      <span class="signal up"></span>
+    </div>
+    <div class="idx-val">1,207.72</div>
+    <div class="idx-chg up">▲ +0.71%</div>
+    <div class="idx-pt">1,200선 박스권 횡보</div>
+  </div>
+</div>
+
+<div class="note-explain">
+  <div class="meaning">코스피 7,500 터치 — 코스닥과의 온도 차</div>
+  <div class="impact">코스피는 반도체 대형주 쏠림으로 연초 대비 71% 상승. 코스닥은 바이오 리스크로 28%에 그침. 같은 한국 시장이지만 두 지수의 분위기가 다릅니다.</div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ③ 업종·테마 동향
+     ════════════════════════════════════════ -->
+<hr class="divider">
+<div class="block-title">③ 업종·테마 동향 (지난주 기준)</div>
+
+<div class="card bar-info">
+  <div class="card-inner">
+    <div class="section-label">업종 흐름</div>
+    <div class="sector-grid">
+      <!-- 강세 -->
+      <div>
+        <div class="sector-col-title up">🟢 강세 업종</div>
+        <div class="sector-item">
+          <div class="row-flex">
+            <span class="sector-name">🔬 반도체</span>
+            <span class="sector-rate up">▲ 주도</span>
+          </div>
+          <div class="sector-comment">삼성 +21.8%, 하이닉스 +31.1%. AI 메모리 랠리 재점화</div>
+        </div>
+        <div class="sector-item">
+          <div class="row-flex">
+            <span class="sector-name">✈️ 방산</span>
+            <span class="sector-rate up">▲ 강세</span>
+          </div>
+          <div class="sector-comment">KF-21 '전투용 적합' 판정. K-방산 모멘텀 유지</div>
+        </div>
+        <div class="sector-item">
+          <div class="row-flex">
+            <span class="sector-name">⚛️ 원전</span>
+            <span class="sector-rate up">▲ 강세</span>
+          </div>
+          <div class="sector-comment">AI 전력 수요 연계 테마 지속. 콘스텔레이션 에너지 실적 주목</div>
+        </div>
+        <div class="sector-item">
+          <div class="row-flex">
+            <span class="sector-name">🤖 로봇</span>
+            <span class="sector-rate up">▲ 부각</span>
+          </div>
+          <div class="sector-comment">레인보우로보틱스 +12.5% 개별 강세</div>
+        </div>
+      </div>
+      <!-- 약세 -->
+      <div>
+        <div class="sector-col-title down">🔴 상대적 약세</div>
+        <div class="sector-item">
+          <div class="row-flex">
+            <span class="sector-name">💊 코스닥 바이오</span>
+            <span class="sector-rate down">▼ 약세</span>
+          </div>
+          <div class="sector-comment">알테오젠 -4.5%, 에코프로 -2.9%. 신뢰성 리스크 지속</div>
+        </div>
+        <div class="sector-item">
+          <div class="row-flex">
+            <span class="sector-name">🛒 소비주</span>
+            <span class="sector-rate down">▼ 소외</span>
+          </div>
+          <div class="sector-comment">반도체 쏠림 속 유동성 유입 부진. 하반기 반등 여부 주목</div>
+        </div>
+        <div class="sector-item">
+          <div class="row-flex">
+            <span class="sector-name">🛢️ 에너지</span>
+            <span class="sector-rate down">▼ 유가 하락</span>
+          </div>
+          <div class="sector-comment">이란 종전 협상 기대 → 공급 우려 완화 → 유가 하락 압력</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-explain" style="margin-top:12px;">
+      <div class="meaning">💡 자금 흐름 — 반도체에 집중, 나머지는 소외</div>
+      <div class="impact">개인·기관이 코스피를 4조~5조 원씩 순매수하는 동안 외국인은 5조 원 이상 팔았습니다. 외국인이 빠져나가도 지수가 오른 건 그만큼 내국인 자금이 강하다는 뜻. 단, 외국인 매도가 지속되면 부담 요인.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ④ 주목 종목
+     ════════════════════════════════════════ -->
+<hr class="divider">
+<div class="block-title">④ 주목 종목</div>
+
+<!-- 강조 종목 카드 — SK하이닉스 -->
+<div class="stock-card bar-up">
+  <div class="card-info-corner">
+    <button class="info-btn" onclick="togglePanel('p-hynix')">i</button>
+    <div class="info-panel" id="p-hynix">
+      <h4>용어 설명</h4>
+      <dl>
+        <dt>1년 최저 / 1년 최고 (52주 위치)</dt>
+        <dd>지난 1년간 가장 싸게 팔렸을 때와 가장 비쌌을 때 사이에서 지금이 어느 위치인지 보여줍니다. 100%에 가까울수록 최고가에 근접.</dd>
+        <dt>"관심" 라벨</dt>
+        <dd>작성자가 주목할 만하다고 분류한 종목입니다. 매수 추천이 아닙니다.</dd>
+      </dl>
+      <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+    </div>
+  </div>
+  <div class="sc-header">
+    <span class="sc-name">SK하이닉스</span>
+    <span class="badge info">관심</span>
+  </div>
+  <div class="sc-row">
+    <span class="sc-price">168만 6,000원</span>
+    <span class="sc-chg up">▲ +31.10% (주간)</span>
+  </div>
+  <div class="week52-wrap">
+    <div class="week52-labels">
+      <span>1년 최저</span>
+      <span>현재 위치 約 89%</span>
+      <span>1년 최고</span>
+    </div>
+    <div class="week52-bar">
+      <div class="week52-fill" style="width:89%;"></div>
+      <div class="week52-marker" style="left:89%;"></div>
+    </div>
+  </div>
+  <div class="note-explain" style="margin-top:8px;">
+    <div class="meaning">마이크론 +15.5% → 동조 매수(함께 따라 오르는 매수) 기대</div>
+    <div class="impact">미국 마이크론의 폭등은 HBM·DRAM 시장이 좋아진다는 신호. SK하이닉스가 HBM 시장 점유율 1위이므로 직접 수혜 가능성. 단, 이미 많이 오른 상태라 차익 실현 압력도 주시 필요.</div>
+  </div>
+</div>
+
+<!-- 강조 종목 카드 — 삼성전자 (⚠️ 파업 변수) -->
+<div class="stock-card bar-warn">
+  <div class="card-info-corner">
+    <button class="info-btn" onclick="togglePanel('p-samsung')">i</button>
+    <div class="info-panel" id="p-samsung">
+      <h4>용어 설명</h4>
+      <dl>
+        <dt>"경계" 라벨</dt>
+        <dd>변동성이 크거나 주의가 필요한 종목입니다. 매도 추천이 아닙니다.</dd>
+        <dt>정부 사후조정</dt>
+        <dd>노사 합의가 안 될 때 정부가 중간에 들어와 조정하는 절차. 최대 10일간 쟁의행위(파업)를 멈춰야 합니다.</dd>
+      </dl>
+      <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+    </div>
+  </div>
+  <div class="sc-header">
+    <span class="sc-name">삼성전자</span>
+    <span class="badge warn">경계</span>
+  </div>
+  <div class="sc-row">
+    <span class="sc-price">26만 8,500원</span>
+    <span class="sc-chg up">▲ +21.77% (주간)</span>
+  </div>
+  <div class="week52-wrap">
+    <div class="week52-labels">
+      <span>1년 최저</span>
+      <span>현재 위치 約 75%</span>
+      <span>1년 최고</span>
+    </div>
+    <div class="week52-bar">
+      <div class="week52-fill" style="width:75%;"></div>
+      <div class="week52-marker" style="left:75%;"></div>
+    </div>
+  </div>
+  <div class="note-explain" style="margin-top:8px;">
+    <div class="meaning">⚠️ 오늘부터 노사 정부 조정 — 파업 변수 주시</div>
+    <div class="impact">노조가 영업이익의 15% 성과급을 요구. 사측 불응 시 5/21 총파업 예고. 조정 결과가 오늘·내일 중 나올 수 있어 뉴스 주시 필요.</div>
+  </div>
+</div>
+
+<!-- Top 종목 표 -->
+<div class="card bar-info" style="margin-top:4px;">
+  <div class="card-inner">
+    <div class="section-label">💡 지난주 주요 등락 (5/4~8)</div>
+    <table>
+      <thead>
+        <tr><th>종목</th><th style="text-align:right;">주간 등락</th><th class="td-dim">특이사항</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>레인보우로보틱스</td><td class="td-up" style="text-align:right;">▲ +12.48%</td><td class="td-dim">로봇 테마 부각</td></tr>
+        <tr><td>코오롱티슈진</td><td class="td-up" style="text-align:right;">▲ +11.52%</td><td class="td-dim">바이오 내 개별 강세</td></tr>
+        <tr><td>에이비엘바이오</td><td class="td-up" style="text-align:right;">▲ +2.93%</td><td class="td-dim">–</td></tr>
+        <tr><td>리가켐바이오</td><td class="td-up" style="text-align:right;">▲ +2.41%</td><td class="td-dim">–</td></tr>
+        <tr><td>알테오젠</td><td class="td-down" style="text-align:right;">▼ -4.49%</td><td class="td-dim">로열티율 기대치 하회 충격</td></tr>
+        <tr><td>에코프로</td><td class="td-down" style="text-align:right;">▼ -2.94%</td><td class="td-dim">코스닥 바이오 약세 흐름</td></tr>
+      </tbody>
+    </table>
+    <div class="section-sub" style="margin-top:6px; font-size:11.5px;">※ 오늘 개장 후 순매수·순매도 Top 5는 HTS·MTS에서 실시간 확인 권장</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     ⑥ 오늘 장에서 볼 것 (관전 포인트)
+     ════════════════════════════════════════ -->
+<hr class="divider">
+<div class="block-title">⑥ 오늘 장에서 볼 것 — 관전 포인트</div>
+
+<div class="conclusion-box up" style="margin-bottom:10px;">
+  <div class="section-label" style="color: var(--up); margin-bottom:8px;">🟢 기회 요인</div>
+  <ul class="point-list">
+    <li><span class="point-icon">🔬</span>마이크론 +15.5% 폭등이 SK하이닉스·삼성전자로 이어지면 → 코스피 7,500 안착 가능</li>
+    <li><span class="point-icon">💵</span>원화 강세 + 달러 약세 환경이 유지되면 → 외국인 자금 재유입 기회</li>
+    <li><span class="point-icon">🤝</span>미·중 정상회담(5/14~15)에서 무역 완화 신호 나오면 → 추가 상승 동력</li>
+    <li><span class="point-icon">📊</span>MSCI 리뷰 결과 한국 비중 확대 → 외국인 패시브 자금(지수 따라 자동 투자되는 돈) 유입</li>
+  </ul>
+</div>
+
+<div class="conclusion-box down">
+  <div class="section-label" style="color: var(--down); margin-bottom:8px;">🔴 위험 요인</div>
+  <ul class="point-list">
+    <li><span class="point-icon">📉</span>5/12 미국 CPI가 예상보다 높게 나오면 → 금리 인하 기대 후퇴 → 글로벌 증시 하방 압력</li>
+    <li><span class="point-icon">🚫</span>미·중 정상회담 결렬 또는 성과 없음 → 무역 갈등 재부각 → 반도체 수출 우려</li>
+    <li><span class="point-icon">🏭</span>삼성전자 노사 조정 실패 + 5/21 파업 현실화 → 생산 차질 우려로 단기 주가 충격 가능</li>
+    <li><span class="point-icon">📦</span>지난주 13.6% 급등 후 오른 주식 팔아 수익 챙기는 흐름(차익 실현) 나올 경우 → 숨 고르기 압력</li>
+  </ul>
+</div>
+
+<div class="card bar-warn" style="margin-top:4px;">
+  <div class="card-inner">
+    <div class="row-flex" style="margin-bottom:4px;">
+      <strong>🎯 이번 주 핵심 체크</strong>
+    </div>
+    <div style="font-size:13px; line-height:1.7; color:var(--text);">
+      <strong>5/12 (화) 21:30</strong> — 미국 CPI 발표. 이번 주 가장 중요한 순간입니다.<br>
+      <strong>오늘 장중</strong> — 외국인이 사는지 vs. 파는지 수급(큰손의 돈 흐름) 확인.
+      <span style="position:relative; display:inline-block;">
+        <button class="info-btn inline" onclick="togglePanel('p-suip')">i</button>
+        <div class="info-panel" id="p-suip">
+          <h4>수급(큰손 순매수)</h4>
+          <dl>
+            <dt>외국인·기관 순매수</dt>
+            <dd>큰손들이 산 금액 - 판 금액. 플러스면 사고 있다는 뜻. 지난주엔 외국인이 5조 원을 팔았는데도 지수가 올랐습니다. 오늘 방향이 중요한 이유입니다.</dd>
+          </dl>
+          <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+        </div>
+      </span>
+      <br>
+      <strong>오늘 뉴스</strong> — 삼성전자 노사 정부 사후조정 첫날 결과.
+    </div>
+  </div>
+</div>
+
+
+<!-- ── 투자 주의문 ── -->
+<div class="disclaimer">
+  ⚠️ 본 브리핑은 정보 제공을 목적으로 하며, 투자 권유나 자문이 아닙니다. 모든 투자 판단과 책임은 본인에게 있습니다.
+</div>
+
+
+<!-- ── JavaScript ── -->
+<script>
+// ℹ️ 툴팁
+function togglePanel(id) {
+  document.querySelectorAll('.info-panel.open').forEach(p => {
+    if (p.id !== id) p.classList.remove('open');
+  });
+  const panel = document.getElementById(id);
+  if (panel) panel.classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.info-btn') && !e.target.closest('.info-panel')) {
+    document.querySelectorAll('.info-panel.open').forEach(p => p.classList.remove('open'));
+  }
+});
+
+// 테마 적용
+function _applyTheme(theme) {
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+}
+(function(){
+  var t = new URLSearchParams(window.location.search).get('theme') || 'dark';
+  _applyTheme(t);
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'theme') _applyTheme(e.data.theme);
+  });
+})();
+</script>
+</body>
+</html>

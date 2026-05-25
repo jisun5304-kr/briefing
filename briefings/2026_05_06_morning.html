@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 5월 6일 오전</title>
+<style>
+:root {
+  --bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;
+  --row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;
+  --summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;
+  --card-shadow:0 1px 4px rgba(0,0,0,.06);
+  --up:#16a34a;--up-bg:rgba(22,163,74,.08);
+  --down:#dc2626;--down-bg:rgba(220,38,38,.08);
+  --info:#3b82f6;--info-bg:rgba(59,130,246,.08);
+  --warn:#d97706;--warn-bg:rgba(217,119,6,.08);
+}
+html.dark {
+  --bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;
+  --row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;
+  --summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;
+  --card-shadow:0 1px 4px rgba(0,0,0,.3);
+  --up:#4ade80;--up-bg:rgba(74,222,128,.10);
+  --down:#f87171;--down-bg:rgba(248,113,113,.10);
+  --info:#3b82f6;--info-bg:rgba(59,130,246,.10);
+  --warn:#fbbf24;--warn-bg:rgba(251,191,36,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px;color:var(--text)}
+h3{font-size:13px;font-weight:600;color:var(--dim);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;overflow:visible;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}
+.card.bar-down::before{background:var(--down)}
+.card.bar-info::before{background:var(--info)}
+.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative;overflow:visible}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}
+.index-card.down::before{background:var(--down)}
+.index-card .signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.index-card .signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}
+.index-card .signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700;color:var(--text)}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}
+.index-chg.down{color:var(--down)}
+.note-explain{margin-top:10px;padding:8px 12px;border-left:3px solid var(--summary-border);background:var(--summary-bg);color:var(--summary-text);font-size:12.5px;line-height:1.5;border-radius:4px}
+.note-explain .meaning{font-weight:600}
+.note-explain .impact{color:var(--dim);margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}
+.down-txt{color:var(--down);font-weight:600}
+.card-info-corner{position:absolute;top:12px;right:12px;z-index:5}
+.info-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--info-bg);color:var(--info);font-size:11px;font-weight:700;cursor:pointer;border:none;user-select:none;transition:background .15s}
+.info-btn:hover{background:var(--info);color:#fff}
+.info-panel{display:none;position:absolute;top:38px;right:8px;width:min(320px,calc(100vw - 48px));background:var(--surface);border:1px solid var(--info);border-radius:8px;padding:14px 16px;box-shadow:0 8px 24px rgba(0,0,0,.15);z-index:50;font-size:13px;line-height:1.55}
+.info-panel.open{display:block}
+.info-panel h4{margin:0 0 8px;font-size:13px;font-weight:700;color:var(--info)}
+.info-panel dl{margin:0}
+.info-panel dt{font-weight:600;color:var(--text);margin-top:8px;font-size:12.5px}
+.info-panel dt:first-child{margin-top:0}
+.info-panel dd{margin:2px 0 0;color:var(--dim);font-size:12.5px}
+.info-panel .close-hint{margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);text-align:right}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:600;margin-right:4px}
+.tag-up{background:var(--up-bg);color:var(--up)}
+.tag-down{background:var(--down-bg);color:var(--down)}
+.tag-info{background:var(--info-bg);color:var(--info)}
+.tag-warn{background:var(--warn-bg);color:var(--warn)}
+.event-table td:first-child{font-size:12px;white-space:nowrap;color:var(--dim);width:120px}
+.star-high{background:var(--up-bg)}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.two-col{grid-template-columns:1fr}}
+.col-head{font-size:12px;font-weight:700;padding:6px 10px;border-radius:6px;margin-bottom:6px}
+.col-head.up{background:var(--up-bg);color:var(--up)}
+.col-head.down{background:var(--down-bg);color:var(--down)}
+.sector-item{padding:5px 0;font-size:12.5px;border-bottom:1px solid var(--border)}
+.sector-item:last-child{border-bottom:none}
+.sector-item .pct{float:right;font-weight:600}
+</style>
+</head>
+<body>
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-info">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 5/6 (수) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 미국 강세 마감 — 한국장 상승 개장 기대</div>
+      <div style="font-size:13px;color:var(--dim)">기업 실적 호조 + 유가 하락이 뉴욕 증시를 사상 최고치로 끌어올렸다. 호르무즈 해협 긴장이 일단락되며 오늘 코스피 개장에도 긍정적 분위기가 조성됐다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--info);font-weight:600">📌 오늘 장에서 볼 것: 삼성전자·SK하이닉스 반도체 랠리 한국 전이 여부, 외국인 수급 방향</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (미국 3종) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(5/5 미국 마감 기준)</span></h2>
+  <div class="index-grid">
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,259</div>
+      <div class="index-chg up">▲ +0.81%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">사상 최고치</div>
+    </div>
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,326</div>
+      <div class="index-chg up">▲ +1.03%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">사상 최고치</div>
+    </div>
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우</div>
+      <div class="index-val">49,298</div>
+      <div class="index-chg up">▲ +0.73%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">+356pt</div>
+    </div>
+  </div>
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div class="note-explain">
+        <div class="meaning">S&amp;P500·나스닥 동시 사상 최고치</div>
+        <div class="impact">→ AI 관련 기업 실적 호조 + 유가 하락이 겹치며 전 업종 상승. 오늘 코스피에 강한 상승 압력 가능.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 거시·이벤트 -->
+<div class="section">
+  <h2>⑤ 거시·이벤트</h2>
+  <div class="card bar-info">
+    <div class="card-info-corner">
+      <button class="info-btn" onclick="togglePanel('p-macro')">i</button>
+      <div class="info-panel" id="p-macro">
+        <h4>거시 지표 용어</h4>
+        <dl>
+          <dt>WTI 유가</dt><dd>미국산 원유 기준 가격. 낮을수록 에너지 비용·물가 안정에 유리.</dd>
+          <dt>달러인덱스(DXY)</dt><dd>달러 강도를 나타내는 지수. 높을수록 달러 강세 → 원화 약세 압력.</dd>
+          <dt>미국 10년물 국채금리</dt><dd>장기 돈의 가격. 높을수록 주식 대비 채권 매력 증가 → 주식 하방 압력.</dd>
+        </dl>
+        <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+      </div>
+    </div>
+    <div class="card-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+        <div>
+          <div style="font-size:11px;color:var(--dim)">원/달러 환율</div>
+          <div style="font-size:15px;font-weight:700">1,461원대</div>
+          <div style="font-size:12px;color:var(--dim)">소폭 하락 (달러 약세)</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--dim)">WTI 유가</div>
+          <div style="font-size:15px;font-weight:700;color:var(--up)">▼ $102.27</div>
+          <div style="font-size:12px;color:var(--dim)">-3.9% 급락</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--dim)">미국 10년물</div>
+          <div style="font-size:15px;font-weight:700">~4.4%대</div>
+          <div style="font-size:12px;color:var(--dim)">안정적 유지</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--dim)">달러인덱스(DXY)</div>
+          <div style="font-size:15px;font-weight:700">약세 기조</div>
+          <div style="font-size:12px;color:var(--dim)">달러 약세 → 원화 지지</div>
+        </div>
+      </div>
+      <div class="note-explain">
+        <div class="meaning">유가 급락 — 호르무즈 해협 긴장 완화 신호</div>
+        <div class="impact">→ 미 국방부, 상선 2척 해협 통과 안전 확인. 에너지 가격 안정 → 인플레이션 압력 감소 → 금리 인하 기대 강화 가능.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card bar-info">
+    <div class="card-inner">
+      <h3 style="margin-bottom:10px">📅 이벤트 캘린더</h3>
+      <table class="event-table">
+        <thead><tr><th>날짜·시간</th><th>이벤트</th><th>중요도</th></tr></thead>
+        <tbody>
+          <tr><td>5/6 (수) 오전</td><td>한국 4월 소비자물가 발표</td><td>⭐⭐</td></tr>
+          <tr><td>5/6 (수) 장중</td><td>삼성전자·SK하이닉스 반도체 주도 여부</td><td>⭐⭐</td></tr>
+          <tr><td>5/7 (목) 21:30</td><td>미국 신규 실업수당 청구건수</td><td>⭐⭐</td></tr>
+          <tr class="star-high"><td>5/8 (금) 21:30</td><td>미국 4월 비농업 고용(NFP)</td><td>⭐⭐⭐</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ③ 업종·테마 -->
+<div class="section">
+  <h2>③ 업종·테마 흐름 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 간밤 기준)</span></h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <div class="two-col">
+        <div>
+          <div class="col-head up">💪 강세 업종</div>
+          <div class="sector-item">💻 IT·반도체 <span class="pct up-txt">▲ +2.2%</span></div>
+          <div class="sector-item">🏗️ 소재 <span class="pct up-txt">▲ +1.7%</span></div>
+          <div class="sector-item">🏭 산업재 <span class="pct up-txt">▲ +0.8%</span></div>
+        </div>
+        <div>
+          <div class="col-head down">📉 약세 업종</div>
+          <div class="sector-item">⚡ 에너지 <span class="pct down-txt">▼ (유가 하락)</span></div>
+        </div>
+      </div>
+      <div class="note-explain" style="margin-top:10px">
+        <div class="meaning">💡 오늘 한국장 주목 테마: AI·반도체</div>
+        <div class="impact">→ 간밤 나스닥 AI 관련주 일제 강세. 삼성전자·SK하이닉스에 매수세 유입 가능성 높음.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 주요 종목 (미국 M7) -->
+<div class="section">
+  <h2>④ 미국 주요 종목 M7</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <table>
+        <thead><tr><th>종목</th><th>등락</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>엔비디아</td><td class="up-txt">▲ 강세</td><td style="font-size:12px;color:var(--dim)">AI 반도체 수요 지속</td></tr>
+          <tr><td>애플</td><td class="up-txt">▲ 강세</td><td style="font-size:12px;color:var(--dim)">1분기 어닝 서프라이즈 효과 지속</td></tr>
+          <tr><td>마이크로소프트</td><td class="up-txt">▲ 강세</td><td style="font-size:12px;color:var(--dim)">AI 클라우드 수요</td></tr>
+          <tr><td>ARM홀딩스</td><td class="up-txt">▲ +13%</td><td style="font-size:12px;color:var(--dim)">실적 발표 기대감</td></tr>
+          <tr><td>테슬라 / 아마존 / 메타</td><td>혼조</td><td style="font-size:12px;color:var(--dim)">개별 실적 이슈</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ 관전 포인트 -->
+<div class="section">
+  <h2>⑥ 오늘 장에서 볼 것</h2>
+  <div class="card bar-up" style="margin-bottom:8px">
+    <div class="card-inner">
+      <div style="font-weight:700;color:var(--up);margin-bottom:6px">기회 요인 (상방)</div>
+      <ul class="bullet-list">
+        <li>미국 사상 최고치 → 코스피 동조 상승 가능</li>
+        <li>유가 하락으로 에너지 비용 부담 완화 → 기업 이익 개선 기대</li>
+        <li>반도체 랠리 한국 전이 시 삼성전자·SK하이닉스 강세 가능</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-weight:700;color:var(--down);margin-bottom:6px">위험 요인 (하방)</div>
+      <ul class="bullet-list">
+        <li>호르무즈 해협 협상 재긴장 시 유가 급등 재연 가능성</li>
+        <li>한국 4월 소비자물가 예상치 상회 시 한은 금리 인하 기대 약화</li>
+        <li>외국인 수급 불투명 — 방향 확인 필요</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer">본 브리핑은 정보 제공을 목적으로 하며, 투자 권유나 자문이 아닙니다. 모든 투자 판단과 책임은 본인에게 있습니다.</div>
+
+<script>
+function togglePanel(id){
+  document.querySelectorAll('.info-panel.open').forEach(p=>{if(p.id!==id)p.classList.remove('open')});
+  const p=document.getElementById(id);if(p)p.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.info-btn')&&!e.target.closest('.info-panel'))
+    document.querySelectorAll('.info-panel.open').forEach(p=>p.classList.remove('open'));
+});
+function _applyTheme(t){
+  document.documentElement.classList.toggle('dark',t==='dark');
+}
+(function(){
+  var t=new URLSearchParams(window.location.search).get('theme')||'dark';
+  _applyTheme(t);
+  window.addEventListener('message',function(e){if(e.data&&e.data.type==='theme')_applyTheme(e.data.theme);});
+})();
+</script>
+</body>
+</html>

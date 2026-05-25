@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 2026년 5월 8일 밤</title>
+<style>
+:root {
+  --bg: #f5f5f3;
+  --surface: #ffffff;
+  --border: #e0e0dc;
+  --thead: #f0f0ee;
+  --row-hover: #f8f8f6;
+  --text: #222222;
+  --dim: #666666;
+  --muted: #aaaaaa;
+  --summary-bg: #eff6ff;
+  --summary-border: #93c5fd;
+  --summary-text: #1e3a5f;
+  --card-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  --up: #16a34a;
+  --up-bg: rgba(22,163,74,0.08);
+  --down: #dc2626;
+  --down-bg: rgba(220,38,38,0.08);
+  --info: #3b82f6;
+  --info-bg: rgba(59,130,246,0.08);
+  --warn: #d97706;
+  --warn-bg: rgba(217,119,6,0.08);
+}
+html.dark {
+  --bg: #0b1120;
+  --surface: #131e33;
+  --border: #1e2e4a;
+  --thead: #0f1928;
+  --row-hover: #1a2940;
+  --text: #dce6f5;
+  --dim: #8fa4c0;
+  --muted: #5a7090;
+  --summary-bg: rgba(59,130,246,0.08);
+  --summary-border: #3b82f6;
+  --summary-text: #dce6f5;
+  --card-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  --up: #4ade80;
+  --up-bg: rgba(74,222,128,0.10);
+  --down: #f87171;
+  --down-bg: rgba(248,113,113,0.10);
+  --info: #3b82f6;
+  --info-bg: rgba(59,130,246,0.10);
+  --warn: #fbbf24;
+  --warn-bg: rgba(251,191,36,0.10);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  body { max-width: 780px; padding: 14px; }
+}
+
+/* 상단 메타 */
+.session-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.session-emoji { font-size: 22px; }
+.session-title { font-size: 18px; font-weight: 700; color: var(--text); }
+.session-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* 블록 제목 */
+.block-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  margin-top: 22px;
+}
+.block-title:first-of-type { margin-top: 0; }
+
+/* 카드 베이스 */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: visible;
+  margin-bottom: 10px;
+}
+.card.bar-up::before,
+.card.bar-down::before,
+.card.bar-info::before,
+.card.bar-warn::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  border-radius: 8px 0 0 8px;
+}
+.card.bar-up::before   { background: var(--up); }
+.card.bar-down::before { background: var(--down); }
+.card.bar-info::before { background: var(--info); }
+.card.bar-warn::before { background: var(--warn); }
+
+/* F. 결론 박스 (한 줄 요약) */
+.conclusion-card {
+  background: var(--info-bg);
+  border: 1px solid var(--summary-border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  position: relative;
+  overflow: visible;
+  margin-bottom: 10px;
+}
+.conclusion-card.bar-info::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  border-radius: 8px 0 0 8px;
+  background: var(--info);
+}
+.conclusion-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--info);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.conclusion-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--summary-text);
+  line-height: 1.5;
+}
+.conclusion-sub {
+  font-size: 12.5px;
+  color: var(--dim);
+  margin-top: 6px;
+}
+
+/* A. 지수 카드 그리드 */
+.index-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+@media (max-width: 600px) {
+  .index-row { grid-template-columns: 1fr; }
+}
+.index-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.index-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  border-radius: 8px 0 0 8px;
+}
+.index-card.up::before { background: var(--up); }
+.index-card.down::before { background: var(--down); }
+.index-card.flat::before { background: var(--muted); }
+.index-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.index-val {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 2px 0;
+}
+.index-change {
+  font-size: 13px;
+  font-weight: 700;
+}
+.index-change.up { color: var(--up); }
+.index-change.down { color: var(--down); }
+.index-change.flat { color: var(--muted); }
+.index-desc {
+  font-size: 11.5px;
+  color: var(--dim);
+  margin-top: 4px;
+}
+.signal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.signal.up { background: var(--up); box-shadow: 0 0 8px rgba(74,222,128,0.5); }
+.signal.down { background: var(--down); box-shadow: 0 0 8px rgba(248,113,113,0.5); }
+.signal.flat { background: var(--muted); }
+
+/* 해설 박스 */
+.note-explain {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--summary-border);
+  background: var(--summary-bg);
+  color: var(--summary-text);
+  font-size: 12.5px;
+  line-height: 1.5;
+  border-radius: 4px;
+}
+.note-explain .meaning { font-weight: 600; }
+.note-explain .impact { color: var(--dim); margin-top: 2px; }
+
+/* 거시 지표 — 해석형 */
+.macro-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.macro-row:last-child { border-bottom: none; }
+.macro-arrow { font-size: 18px; min-width: 24px; }
+.macro-label { font-size: 12px; font-weight: 700; color: var(--dim); margin-bottom: 2px; }
+.macro-text { font-size: 13px; color: var(--text); }
+
+/* 수급 흐름 */
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+@media (max-width: 560px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+.flow-item {
+  background: var(--thead);
+  border-radius: 6px;
+  padding: 10px 12px;
+  text-align: center;
+}
+.flow-who { font-size: 11px; color: var(--dim); font-weight: 600; margin-bottom: 4px; }
+.flow-amt { font-size: 14px; font-weight: 700; }
+.flow-amt.buy { color: var(--up); }
+.flow-amt.sell { color: var(--down); }
+
+/* 업종 흐름 — 좌우 2열 불릿 */
+.sector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 560px) {
+  .sector-grid { grid-template-columns: 1fr; }
+}
+.sector-col-header {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid;
+}
+.sector-col-header.up-hd { color: var(--up); border-color: var(--up); }
+.sector-col-header.dn-hd { color: var(--down); border-color: var(--down); }
+.sector-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+.sector-item:last-child { border-bottom: none; }
+.sector-name { color: var(--text); }
+.sector-rate { font-weight: 700; font-size: 12.5px; }
+.sector-rate.up { color: var(--up); }
+.sector-rate.dn { color: var(--down); }
+.sector-comment { font-size: 11px; color: var(--dim); }
+
+/* 관전 포인트 카드 */
+.watch-cards { display: flex; flex-direction: column; gap: 8px; }
+.watch-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  position: relative;
+  overflow: visible;
+  box-shadow: var(--card-shadow);
+}
+.watch-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  border-radius: 8px 0 0 8px;
+}
+.watch-card.up::before { background: var(--up); }
+.watch-card.down::before { background: var(--down); }
+.watch-label {
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+.watch-label.up { color: var(--up); }
+.watch-label.down { color: var(--down); }
+.watch-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.watch-list li {
+  font-size: 13px;
+  color: var(--text);
+  padding-left: 14px;
+  position: relative;
+}
+.watch-list li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  color: var(--dim);
+}
+
+/* ℹ️ 툴팁 */
+.info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--info-bg);
+  color: var(--info);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  transition: background 0.15s;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.info-btn:hover { background: var(--info); color: white; }
+.card-info-corner { position: absolute; top: 12px; right: 12px; z-index: 5; }
+.info-panel {
+  display: none;
+  position: absolute;
+  top: 38px; right: 8px;
+  width: min(320px, calc(100vw - 48px));
+  background: var(--surface);
+  border: 1px solid var(--info);
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  z-index: 50;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.info-panel.open { display: block; }
+.info-panel h4 { margin: 0 0 8px 0; font-size: 13px; font-weight: 700; color: var(--info); }
+.info-panel dl { margin: 0; }
+.info-panel dt { font-weight: 600; color: var(--text); margin-top: 8px; font-size: 12.5px; }
+.info-panel dt:first-child { margin-top: 0; }
+.info-panel dd { margin: 2px 0 0 0; color: var(--dim); font-size: 12.5px; }
+.info-panel .close-hint {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* 투자 주의문 */
+.disclaimer {
+  margin-top: 28px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: var(--thead);
+  color: var(--muted);
+  font-size: 11.5px;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+}
+
+/* 다크모드 테이블 */
+html.dark table td { background: #131e33 !important; color: #dce6f5 !important; }
+</style>
+</head>
+<body>
+
+<!-- 상단 헤더 -->
+<div class="session-header">
+  <span class="session-emoji">🌙</span>
+  <div>
+    <div class="session-title">밤 세션 브리핑</div>
+    <div class="session-sub">2026년 5월 8일 (금) · 23:00 발행 · 미국장 개장 준비</div>
+  </div>
+</div>
+
+<!-- ① 한 줄 요약 -->
+<div class="conclusion-card bar-info">
+  <div class="conclusion-title">⚖️ 오늘 시장 한 줄 요약</div>
+  <div class="conclusion-text">한국 증시 5일 연속 강세 마감 — 외국인 대규모 이탈에도 개인·기관이 받아냈다</div>
+  <div class="conclusion-sub">
+    코스피 7,498 (+0.11%) / 코스닥 1,207 (+0.71%)<br>
+    오늘 밤 미국장 관전 포인트 → 반도체 랠리 지속 여부 + 이란 협상 뉴스 흐름
+  </div>
+</div>
+
+<!-- ⑤ 거시·이벤트 — 환율 트리거 발동으로 ① 직후 배치 -->
+<div class="block-title">⑤ 거시 지표</div>
+<div class="card bar-warn">
+  <div class="card-info-corner">
+    <button class="info-btn" onclick="togglePanel('p-macro')">i</button>
+    <div class="info-panel" id="p-macro">
+      <h4>거시 지표 용어</h4>
+      <dl>
+        <dt>원/달러 환율</dt>
+        <dd>1달러를 사는 데 필요한 원화 금액. 높을수록 달러 강세 → 수입 물가↑, 외국인 자금 유출 압력↑</dd>
+      </dl>
+      <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+    </div>
+  </div>
+
+  <div class="macro-row">
+    <div class="macro-arrow">▲</div>
+    <div>
+      <div class="macro-label">원/달러 환율</div>
+      <div class="macro-text">1,471.7원 <span style="color:var(--down); font-weight:700;">(+17.7원, +1.22%)</span> — 달러 강세 신호</div>
+    </div>
+  </div>
+
+  <div class="note-explain" style="margin-top:12px;">
+    <div class="meaning">⚠️ 환율 트리거 발동 (±1% 기준 초과)</div>
+    <div class="impact">미·이란 종전 협상 불확실성에 안전자산 선호 → 달러 강세. 외국인 자금 유출 압력이 지속되면 코스피 하방 압력 가능.</div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (코스피·코스닥 — 밤 세션 기준) -->
+<div class="block-title">② 주요 지수 — 한국장 최종 마감</div>
+<div class="index-row">
+  <div class="index-card up">
+    <div class="signal up"></div>
+    <div class="index-name">코스피</div>
+    <div class="index-val">7,498.00</div>
+    <div class="index-change up">▲ +7.95pt (+0.11%)</div>
+    <div class="index-desc">5거래일 연속 상승 — 장 초반 급락 후 전량 만회</div>
+  </div>
+  <div class="index-card up">
+    <div class="signal up"></div>
+    <div class="index-name">코스닥</div>
+    <div class="index-val">1,207.72</div>
+    <div class="index-change up">▲ +8.54pt (+0.71%)</div>
+    <div class="index-desc">외국인·기관 동반 순매수로 상승 마감</div>
+  </div>
+</div>
+
+<div class="card bar-info" style="margin-top:0;">
+  <div style="font-size:12.5px; color:var(--dim); line-height:1.6;">
+    💡 <strong style="color:var(--text);">오늘 장 특징</strong><br>
+    코스피는 장 초반 7,318까지 2% 넘게 급락했으나, 개인·기관 동반 매수로 낙폭을 모두 만회하고 상승 마감. 4월 30일(6,598) 이후 단 6거래일 만에 900pt 상승한 상태로 가파른 단기 급등 부담이 남아있음.
+  </div>
+</div>
+
+<!-- ③ 업종·테마 -->
+<div class="block-title">③ 업종·테마 흐름</div>
+<div class="card bar-info">
+  <div class="sector-grid">
+    <div>
+      <div class="sector-col-header up-hd">💚 강세 업종</div>
+      <div class="sector-item">
+        <span class="sector-name">🤖 자동차·로봇</span>
+        <span class="sector-rate up">강세</span>
+      </div>
+      <div style="font-size:11px; color:var(--dim); padding:4px 0;">
+        보스턴 다이내믹스 나스닥 상장 추진 소식 → 현대차 그룹 계열 로봇주 매수세 자극
+      </div>
+      <div class="sector-item" style="margin-top:4px;">
+        <span class="sector-name">⚙️ 조선·방산</span>
+        <span class="sector-rate up">강세</span>
+      </div>
+    </div>
+    <div>
+      <div class="sector-col-header dn-hd">❤️ 약세 업종</div>
+      <div class="sector-item">
+        <span class="sector-name">💻 반도체·장비</span>
+        <span class="sector-rate dn">약세</span>
+      </div>
+      <div style="font-size:11px; color:var(--dim); padding:4px 0;">
+        미국 ARM 주가 10%↓ 여파, 필라델피아 반도체지수 -2.7% 하방 압력
+      </div>
+      <div class="sector-item" style="margin-top:4px;">
+        <span class="sector-name">🏦 금융·보험</span>
+        <span class="sector-rate dn">약세</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 수급 흐름 -->
+<div class="block-title">④ 큰손 수급 흐름</div>
+<div class="card bar-info">
+  <div style="font-size:12px; color:var(--dim); margin-bottom:10px;">
+    코스피 기준
+    <span style="position:relative; display:inline-block;">
+      <button class="info-btn" style="width:14px;height:14px;font-size:10px;" onclick="togglePanel('p-flow')">i</button>
+      <div class="info-panel" id="p-flow">
+        <h4>수급 용어</h4>
+        <dl>
+          <dt>순매수</dt>
+          <dd>산 금액 - 판 금액. 양수면 더 많이 샀다는 뜻.</dd>
+          <dt>외국인·기관</dt>
+          <dd>큰손 투자자. 이들의 방향이 지수 흐름에 큰 영향을 줌.</dd>
+        </dl>
+        <div class="close-hint">ℹ️ 다시 클릭하면 닫힘</div>
+      </div>
+    </span>
+  </div>
+  <div class="flow-grid">
+    <div class="flow-item">
+      <div class="flow-who">외국인</div>
+      <div class="flow-amt sell">▼ 5조5,900억</div>
+      <div style="font-size:10.5px; color:var(--muted); margin-top:2px;">순매도</div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-who">기관</div>
+      <div class="flow-amt buy">▲ 1조5,475억</div>
+      <div style="font-size:10.5px; color:var(--muted); margin-top:2px;">순매수</div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-who">개인</div>
+      <div class="flow-amt buy">▲ 3조9,753억</div>
+      <div style="font-size:10.5px; color:var(--muted); margin-top:2px;">순매수</div>
+    </div>
+  </div>
+  <div class="note-explain" style="margin-top:10px;">
+    <div class="meaning">외국인 이틀 합산 12조 원대 대규모 순매도</div>
+    <div class="impact">단기 급등에 따른 차익 실현으로 해석. 개인·기관이 받아내며 지수는 방어했으나, 외국인 매도 기조 지속 시 추가 상승 제한 가능성.</div>
+  </div>
+</div>
+
+<!-- ⑥ 다음 시장 관전 포인트 -->
+<div class="block-title">⑥ 오늘 밤 미국장 — 볼 것들</div>
+<div class="watch-cards">
+  <div class="watch-card up">
+    <div class="watch-label up">💚 기회 요인</div>
+    <ul class="watch-list">
+      <li>반도체 랠리가 미국장으로 이어지는지 — 마이크론·AMD 흐름 주시</li>
+      <li>미·이란 종전 협상 진전 소식 → 유가 안정 시 위험자산 선호 가능</li>
+    </ul>
+  </div>
+  <div class="watch-card down">
+    <div class="watch-label down">❤️ 위험 요인</div>
+    <ul class="watch-list">
+      <li>이란 협상 결렬 → 호르무즈 긴장 재확대 시 유가↑, 증시 하방 압력</li>
+      <li>달러 강세(환율 1,471원) 지속 → 외국인 자금 유출 기조 이어질 가능성</li>
+      <li>코스피 단기 급등(6일 만에 900pt) — 조정 압력 잠재</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 투자 주의문 -->
+<div class="disclaimer">
+  본 브리핑은 정보 제공을 목적으로 하며, 투자 권유나 자문이 아닙니다. 모든 투자 판단과 책임은 본인에게 있습니다.
+</div>
+
+<script>
+function togglePanel(id) {
+  document.querySelectorAll('.info-panel.open').forEach(p => {
+    if (p.id !== id) p.classList.remove('open');
+  });
+  const panel = document.getElementById(id);
+  if (panel) panel.classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.info-btn') && !e.target.closest('.info-panel')) {
+    document.querySelectorAll('.info-panel.open').forEach(p => p.classList.remove('open'));
+  }
+});
+
+function _applyTheme(theme) {
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+}
+(function(){
+  var t = new URLSearchParams(window.location.search).get('theme') || 'dark';
+  _applyTheme(t);
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'theme') _applyTheme(e.data.theme);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시황 브리핑</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:      #0b1120;
+      --surface: #131e33;
+      --border:  #1e2e4a;
+      --muted:   #3a4e6a;
+      --text:    #dce6f5;
+      --dim:     #6b80a0;
+      --accent:  #3b82f6;
+      --accent2: #f59e0b;
+      --green:   #22c55e;
+      --red:     #ef4444;
+      --topbar:  56px;
+    }
+    body.light {
+      --bg:      #f0f4fa;
+      --surface: #ffffff;
+      --border:  #dde3ef;
+      --muted:   #c0cce0;
+      --text:    #1a2236;
+      --dim:     #6b80a0;
+      --accent:  #2563eb;
+      --accent2: #d97706;
+      --green:   #16a34a;
+      --red:     #dc2626;
+    }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ── 상단바 ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--topbar);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 20px; gap: 10px; z-index: 300;
+    }
+    .topbar-logo {
+      font-family: 'Oswald', sans-serif; font-size: 17px;
+      color: var(--text); letter-spacing: 3px;
+      display: flex; align-items: center; gap: 9px;
+    }
+    .topbar-logo .dot {
+      width: 7px; height: 7px; background: var(--green);
+      border-radius: 50%; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .topbar-spacer { flex: 1; }
+    .role-chip {
+      font-size: 11px; font-weight: 700; padding: 4px 12px;
+      border-radius: 20px; background: var(--border); color: var(--dim); letter-spacing: 1px;
+    }
+    .role-chip.admin { background: rgba(245,158,11,0.15); color: var(--accent2); }
+    .theme-toggle {
+      background: var(--border); border: 1px solid var(--muted);
+      border-radius: 20px; padding: 5px 13px; color: var(--dim);
+      font-size: 12px; cursor: pointer;
+      font-family: 'Noto Sans KR', sans-serif; transition: all 0.2s; white-space: nowrap;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+    .logout-btn {
+      font-size: 12px; color: var(--dim); background: none;
+      border: 1px solid var(--border); padding: 5px 12px; border-radius: 8px;
+      cursor: pointer; font-family: 'Noto Sans KR', sans-serif;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .logout-btn:hover { color: var(--red); border-color: var(--red); }
+
+    /* ── 로그인 화면 ── */
+    #auth-screen {
+      min-height: 100vh; padding-top: var(--topbar);
+      display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, #1a2e55 0%, var(--bg) 70%);
+    }
+    body.light #auth-screen {
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, #c7d9f8 0%, var(--bg) 70%);
+    }
+    .auth-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 48px 40px 40px; width: 400px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+    }
+    .auth-logo { text-align: center; margin-bottom: 32px; }
+    .auth-logo .brand-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--accent) 0%, #6366f1 100%);
+      border-radius: 14px; display: inline-flex;
+      align-items: center; justify-content: center;
+      font-size: 26px; margin-bottom: 14px;
+    }
+    .auth-logo h1 {
+      font-family: 'Oswald', sans-serif; font-size: 24px;
+      color: var(--text); letter-spacing: 3px; margin-bottom: 6px;
+    }
+    .auth-logo p { font-size: 12px; color: var(--dim); letter-spacing: 1px; }
+    .tab-row {
+      display: flex; background: var(--bg); border-radius: 10px;
+      padding: 4px; margin-bottom: 24px; border: 1px solid var(--border);
+    }
+    .tab-btn {
+      flex: 1; padding: 10px; border: none; background: transparent;
+      color: var(--dim); font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px; font-weight: 700; border-radius: 8px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .tab-btn.active { background: var(--accent); color: #fff; }
+    .form-label {
+      display: block; font-size: 11px; color: var(--dim);
+      font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .form-input {
+      width: 100%; padding: 14px 16px; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text); font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px; outline: none; transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: var(--accent); }
+    .form-input.shake { animation: shake 0.3s ease; border-color: var(--red); }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+    .err-msg { font-size: 12px; color: var(--red); margin-top: 8px; min-height: 18px; opacity: 0; transition: opacity 0.2s; }
+    .err-msg.show { opacity: 1; }
+    .auth-btn {
+      width: 100%; padding: 14px; background: var(--accent); border: none;
+      border-radius: 10px; color: #fff; font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 16px;
+      letter-spacing: 1px; transition: background 0.2s, transform 0.1s;
+    }
+    .auth-btn:hover  { background: #2563eb; }
+    .auth-btn:active { transform: scale(0.98); }
+
+    /* ══════════════════════════════════════════════
+       메인 앱 — 데스크탑 좌우 분할
+       ══════════════════════════════════════════════ */
+    #main-app { display: none; }
+
+    .app-layout {
+      display: flex;
+      margin-top: var(--topbar);
+      height: calc(100vh - var(--topbar));
+      overflow: hidden;
+    }
+
+    /* 왼쪽 패널 */
+    .left-panel {
+      width: 320px; min-width: 280px; flex-shrink: 0;
+      display: flex; flex-direction: column;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+      overflow-y: auto; padding: 16px 14px; gap: 12px;
+    }
+
+    /* 관리자 박스 */
+    .admin-box {
+      background: var(--bg); border: 1px solid rgba(245,158,11,0.4);
+      border-radius: 12px; padding: 14px 16px;
+    }
+    .admin-box-title { font-size: 11px; font-weight: 700; color: var(--accent2); letter-spacing: 1px; margin-bottom: 10px; }
+    .code-block {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 9px 13px; font-family: monospace;
+      font-size: 15px; color: #4ade80; letter-spacing: 4px;
+      margin-bottom: 10px; display: inline-block;
+    }
+    .admin-instructions { font-size: 11px; color: var(--dim); line-height: 1.9; }
+    .admin-instructions code {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1px 5px; border-radius: 4px; font-size: 10px; color: var(--accent2);
+    }
+
+    /* 페이지 헤더 */
+    .page-header { padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .page-title { font-family: 'Oswald', sans-serif; font-size: 18px; color: var(--text); letter-spacing: 2px; margin-bottom: 2px; }
+    .page-sub { font-size: 11px; color: var(--dim); }
+
+    /* 캘린더 */
+    .cal-wrap { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 12px 10px; }
+    .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .cal-month-label { font-family: 'Oswald', sans-serif; font-size: 14px; color: var(--text); letter-spacing: 1px; }
+    .cal-nav-btn {
+      background: var(--border); border: none; color: var(--dim);
+      width: 24px; height: 24px; border-radius: 6px; cursor: pointer;
+      font-size: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .cal-nav-btn:hover { background: var(--accent); color: #fff; }
+    .cal-dow-row { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; margin-bottom: 3px; }
+    .cal-dow { text-align: center; font-size: 9px; font-weight: 700; color: var(--dim); padding: 3px 0; }
+    .cal-dow:first-child { color: #ef4444; }
+    .cal-dow:last-child  { color: #60a5fa; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
+    .cal-cell {
+      aspect-ratio: 1; border-radius: 6px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 2px; cursor: default; transition: all 0.15s; padding: 2px;
+    }
+    .cal-cell.has-data { cursor: pointer; background: var(--surface); border: 1px solid var(--border); }
+    .cal-cell.has-data:hover { border-color: var(--accent); background: rgba(59,130,246,0.08); }
+    .cal-cell.today .cal-num {
+      background: var(--accent); color: #fff; border-radius: 50%;
+      width: 18px; height: 18px; display: flex; align-items: center; justify-content: center;
+    }
+    .cal-cell.selected { background: rgba(59,130,246,0.15) !important; border: 1.5px solid var(--accent) !important; }
+    .cal-num { font-size: 10px; font-weight: 700; color: var(--text); line-height: 1; }
+    .cal-cell:nth-child(7n+1) .cal-num { color: #ef4444; }
+    .cal-cell:nth-child(7n)   .cal-num { color: #60a5fa; }
+    .cal-cell.selected .cal-num,
+    .cal-cell.today    .cal-num { color: inherit; }
+    .cal-dots { display: flex; gap: 2px; align-items: center; justify-content: center; }
+    .cal-dot { width: 4px; height: 4px; border-radius: 50%; }
+    .cal-dot.ready   { background: var(--green); }
+    .cal-dot.waiting { background: var(--muted); }
+
+    /* 세션 버튼 */
+    .day-sessions-wrap { display: flex; flex-direction: column; gap: 8px; }
+    .day-sessions-header { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+    .day-sessions-label { font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--text); letter-spacing: 0.5px; }
+    .day-sessions-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; background: rgba(59,130,246,0.15); color: var(--accent); }
+    .session-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+    .session-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 6px; position: relative;
+      transition: all 0.2s; display: flex; flex-direction: column;
+      align-items: center; gap: 3px; text-align: center; overflow: hidden;
+    }
+    .session-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--border); transition: background 0.2s;
+    }
+    .session-card.ready { cursor: pointer; }
+    .session-card.ready:hover { border-color: var(--accent); background: rgba(59,130,246,0.06); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(59,130,246,0.15); }
+    .session-card.ready:hover::before { background: var(--accent); }
+    .session-card.ready.active-session { border-color: var(--accent); background: rgba(59,130,246,0.1); }
+    .session-card.ready.active-session::before { background: var(--accent); }
+    .session-card.not-ready { opacity: 0.45; }
+    .session-card.not-ready::before { background: var(--muted); }
+    .session-emoji { font-size: 18px; line-height: 1; }
+    .session-title { font-family: 'Oswald', sans-serif; font-size: 14px; color: var(--text); letter-spacing: 0.5px; }
+    .session-time  { font-size: 9px; color: var(--dim); }
+    .session-status { display: inline-flex; align-items: center; gap: 3px; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 20px; margin-top: 2px; }
+    .status-ready   { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .status-waiting { background: var(--border); color: var(--dim); }
+    .empty-day { text-align: center; padding: 24px 0; color: var(--dim); font-size: 12px; }
+    .empty-day .empty-icon { font-size: 26px; margin-bottom: 8px; }
+
+    /* 오른쪽 브리핑 패널 */
+    .right-panel { flex: 1; display: flex; flex-direction: column; background: var(--bg); overflow: hidden; }
+    .briefing-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 14px; color: var(--dim); padding: 40px; }
+    .briefing-empty-icon  { font-size: 52px; opacity: 0.35; }
+    .briefing-empty-title { font-family: 'Oswald', sans-serif; font-size: 20px; color: var(--muted); letter-spacing: 2px; }
+    .briefing-empty-sub   { font-size: 13px; color: var(--dim); text-align: center; line-height: 1.8; }
+    .briefing-bar {
+      display: none; height: 42px; background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      align-items: center; padding: 0 18px; gap: 10px; flex-shrink: 0;
+    }
+    .briefing-bar.visible { display: flex; }
+    .briefing-bar-title { font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--text); letter-spacing: 1.5px; flex: 1; }
+    .briefing-close-btn {
+      background: var(--border); border: none; color: var(--dim);
+      width: 26px; height: 26px; border-radius: 6px; cursor: pointer;
+      font-size: 12px; display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .briefing-close-btn:hover { background: var(--red); color: #fff; }
+    #briefing-frame { flex: 1; border: none; width: 100%; display: none; background: #f4f6fb; }
+    #briefing-frame.visible { display: block; }
+    .right-panel.has-content .briefing-empty { display: none; }
+    .right-panel.has-content #briefing-frame  { display: block; }
+    .right-panel.has-content .briefing-bar    { display: flex; }
+
+    /* ══════════════════════════════════════════════
+       모바일 바텀 시트
+       ══════════════════════════════════════════════ */
+    .bottom-sheet-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55); z-index: 400;
+      backdrop-filter: blur(3px);
+    }
+    .bottom-sheet-overlay.open { display: block; }
+
+    .bottom-sheet {
+      position: fixed; left: 0; right: 0; bottom: 0;
+      height: 78vh;
+      background: var(--surface);
+      border-radius: 20px 20px 0 0;
+      border-top: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      z-index: 401;
+      transform: translateY(100%);
+      transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+      overflow: hidden;
+    }
+    .bottom-sheet.open { transform: translateY(0); }
+
+    .bs-handle {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 10px 16px 0; flex-shrink: 0;
+    }
+    .bs-handle-bar { width: 40px; height: 4px; background: var(--muted); border-radius: 2px; margin-bottom: 10px; }
+    .bs-header {
+      width: 100%; display: flex; align-items: center;
+      justify-content: space-between; padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .bs-title { font-family: 'Oswald', sans-serif; font-size: 14px; color: var(--text); letter-spacing: 1px; }
+    .bs-close {
+      background: var(--border); border: none; color: var(--dim);
+      width: 28px; height: 28px; border-radius: 6px; cursor: pointer;
+      font-size: 13px; display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .bs-close:hover { background: var(--red); color: #fff; }
+    #briefing-frame-mobile { flex: 1; border: none; width: 100%; background: #f4f6fb; }
+
+    /* ══════════════════════════════════════════════
+       반응형
+       ══════════════════════════════════════════════ */
+
+    /* 태블릿 769~1024 */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .left-panel { width: 360px; padding: 20px 16px; gap: 14px; }
+      .cal-wrap   { padding: 14px 12px; }
+      .cal-num    { font-size: 11px; }
+      .cal-cell.today .cal-num { width: 20px; height: 20px; }
+      .cal-month-label { font-size: 15px; }
+      .cal-nav-btn { width: 27px; height: 27px; }
+      .session-card   { padding: 12px 8px; }
+      .session-emoji  { font-size: 20px; }
+      .session-title  { font-size: 15px; }
+      .session-time   { font-size: 10px; }
+      .session-status { font-size: 10px; padding: 3px 9px; }
+      .page-title { font-size: 20px; }
+    }
+
+    /* 모바일 768px 이하 */
+    @media (max-width: 768px) {
+      .app-layout {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+      }
+      .left-panel {
+        width: 100%; border-right: none;
+        overflow-y: visible;
+        padding: 16px 14px 20px;
+      }
+      .right-panel { display: none; }
+
+      .cal-wrap { padding: 16px 14px; }
+      .cal-num  { font-size: 13px; }
+      .cal-cell.today .cal-num { width: 24px; height: 24px; }
+      .cal-month-label { font-size: 17px; }
+      .cal-nav-btn { width: 30px; height: 30px; font-size: 15px; }
+      .cal-dot { width: 5px; height: 5px; }
+
+      .session-card   { padding: 14px 10px; border-radius: 12px; gap: 5px; }
+      .session-emoji  { font-size: 24px; }
+      .session-title  { font-size: 17px; }
+      .session-time   { font-size: 11px; }
+      .session-status { font-size: 11px; padding: 4px 11px; }
+      .day-sessions-label { font-size: 15px; }
+      .day-sessions-badge { font-size: 11px; }
+
+      .topbar { padding: 0 14px; }
+      .role-chip { display: none; }
+      .theme-toggle { padding: 5px 10px; font-size: 11px; }
+      .logout-btn   { padding: 5px 10px; font-size: 11px; }
+      .auth-card    { width: 92vw; padding: 36px 20px 28px; }
+      .page-title   { font-size: 20px; }
+      .page-sub     { font-size: 12px; }
+    }
+
+    @media (max-width: 380px) {
+      .session-title { font-size: 14px; }
+      .session-emoji { font-size: 20px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-logo"><span class="dot"></span>시황 브리핑</div>
+    <div class="topbar-spacer"></div>
+    <div class="role-chip" id="role-chip" style="display:none">구독자</div>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 다크</button>
+    <button class="logout-btn"   id="logout-btn"   onclick="logout()" style="display:none">로그아웃</button>
+  </header>
+
+  <!-- 로그인 화면 -->
+  <div id="auth-screen">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="brand-icon">📊</div>
+        <h1>시황 브리핑</h1>
+        <p>매일 오전 · 오후 · 밤 시황 리포트</p>
+      </div>
+      <div class="tab-row">
+        <button class="tab-btn active" id="tab-v" onclick="switchTab('viewer')">🔑 구독자 입장</button>
+        <button class="tab-btn"        id="tab-a" onclick="switchTab('admin')">⚙️ 관리자</button>
+      </div>
+      <label class="form-label" id="lbl">초대코드</label>
+      <input class="form-input" id="pw-input" type="password"
+             placeholder="초대코드를 입력하세요"
+             onkeydown="if(event.key==='Enter')tryLogin()">
+      <div class="err-msg" id="err-msg">❌ 코드가 올바르지 않습니다.</div>
+      <button class="auth-btn" onclick="tryLogin()">입장하기</button>
+    </div>
+  </div>
+
+  <!-- 메인 앱 -->
+  <div id="main-app">
+    <div class="app-layout">
+
+      <!-- 왼쪽 패널 -->
+      <div class="left-panel">
+
+        <div class="admin-box" id="admin-box" style="display:none">
+          <div class="admin-box-title">⚙️ 관리자 패널 — 구독자에게 초대코드를 공유하세요</div>
+          <div>
+            <div style="font-size:11px;color:var(--dim);margin-bottom:6px;font-weight:700;letter-spacing:1px;">현재 초대코드</div>
+            <div class="code-block" id="show-invite"></div>
+          </div>
+          <div class="admin-instructions">
+            📌 <strong style="color:var(--text)">새 브리핑 추가하는 법</strong><br>
+            ① 브리핑 HTML 파일을 <code>briefings/</code> 폴더에 넣기<br>
+            ② <code>index.html</code> 상단 <code>BRIEFINGS</code> 배열에 한 줄 추가<br>
+            ③ GitHub에 push → 자동 배포 완료 ✅
+          </div>
+        </div>
+
+        <div class="page-header">
+          <div class="page-title">시황 정보</div>
+          <div class="page-sub" id="today-sub"></div>
+        </div>
+
+        <div class="cal-wrap">
+          <div class="cal-header">
+            <button class="cal-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
+            <div class="cal-month-label" id="cal-month-label"></div>
+            <button class="cal-nav-btn" onclick="changeMonth(1)">&#8250;</button>
+          </div>
+          <div class="cal-dow-row">
+            <div class="cal-dow">일</div><div class="cal-dow">월</div>
+            <div class="cal-dow">화</div><div class="cal-dow">수</div>
+            <div class="cal-dow">목</div><div class="cal-dow">금</div>
+            <div class="cal-dow">토</div>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+
+        <div id="day-sessions-area"></div>
+
+      </div>
+
+      <!-- 오른쪽 브리핑 패널 (데스크탑·태블릿) -->
+      <div class="right-panel" id="right-panel">
+        <div class="briefing-empty">
+          <div class="briefing-empty-icon">📊</div>
+          <div class="briefing-empty-title">브리핑을 선택하세요</div>
+          <div class="briefing-empty-sub">
+            왼쪽 캘린더에서 날짜를 클릭하고<br>
+            오전 · 오후 · 밤 버튼을 선택하면<br>
+            이 화면에 브리핑이 표시됩니다.
+          </div>
+        </div>
+        <div class="briefing-bar" id="briefing-bar">
+          <div class="briefing-bar-title" id="briefing-bar-title">브리핑</div>
+          <button class="briefing-close-btn" onclick="closeRightPanel()">✕</button>
+        </div>
+        <iframe id="briefing-frame" src=""></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 모바일 바텀 시트 -->
+  <div class="bottom-sheet-overlay" id="bs-overlay" onclick="closeBottomSheet()"></div>
+  <div class="bottom-sheet" id="bottom-sheet">
+    <div class="bs-handle">
+      <div class="bs-handle-bar"></div>
+      <div class="bs-header">
+        <div class="bs-title" id="bs-title">브리핑</div>
+        <button class="bs-close" onclick="closeBottomSheet()">✕</button>
+      </div>
+    </div>
+    <iframe id="briefing-frame-mobile" src=""></iframe>
+  </div>
+
+
+<script>
+/* ══ 설정 ══ */
+const CONFIG = {
+  adminPassword: 'jisun0754',
+  inviteCode:    'brief2026'
+};
+
+/* ══ 브리핑 데이터 (manifest.json에서 자동 로드) ══ */
+let BRIEFINGS = [];
+
+/* ══ 유틸 ══ */
+function isMobile() { return window.innerWidth <= 768; }
+
+/* ══ 캘린더 ══ */
+let calYear, calMonth, selectedDate, activeSessionFile = null;
+const briefingMap = {};
+
+function toDateStr(y,m,d) {
+  return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+}
+
+function renderCalendar() {
+  const grid = document.getElementById('cal-grid');
+  const label = document.getElementById('cal-month-label');
+  grid.innerHTML = '';
+  label.textContent = `${calYear}년 ${calMonth+1}월`;
+  const firstDay = new Date(calYear,calMonth,1).getDay();
+  const lastDate  = new Date(calYear,calMonth+1,0).getDate();
+  const today     = new Date();
+  const todayStr  = toDateStr(today.getFullYear(),today.getMonth(),today.getDate());
+  for (let i=0;i<firstDay;i++) { const e=document.createElement('div'); e.className='cal-cell'; grid.appendChild(e); }
+  for (let d=1;d<=lastDate;d++) {
+    const dateStr=toDateStr(calYear,calMonth,d);
+    const briefing=briefingMap[dateStr];
+    const cell=document.createElement('div');
+    cell.className='cal-cell'+(briefing?' has-data':'')+(dateStr===todayStr?' today':'')+(dateStr===selectedDate?' selected':'');
+    const numEl=document.createElement('div'); numEl.className='cal-num'; numEl.textContent=d; cell.appendChild(numEl);
+    if (briefing) {
+      const dots=document.createElement('div'); dots.className='cal-dots';
+      briefing.sessions.forEach(s=>{ const dot=document.createElement('div'); dot.className='cal-dot '+(s.ready?'ready':'waiting'); dots.appendChild(dot); });
+      cell.appendChild(dots);
+      cell.onclick=()=>selectDate(dateStr);
+    }
+    grid.appendChild(cell);
+  }
+}
+
+function changeMonth(dir) {
+  calMonth+=dir;
+  if (calMonth>11){calMonth=0;calYear++;} if (calMonth<0){calMonth=11;calYear--;}
+  renderCalendar();
+}
+
+function selectDate(dateStr) {
+  selectedDate=dateStr; activeSessionFile=null;
+  renderCalendar(); renderDaySessions(dateStr);
+  closeRightPanel(); closeBottomSheet();
+}
+
+function selectLatestDate() {
+  const dates=Object.keys(briefingMap).sort().reverse();
+  if (dates.length>0) selectDate(dates[0]);
+}
+
+/* ══ 세션 버튼 ══ */
+function renderDaySessions(dateStr) {
+  const area=document.getElementById('day-sessions-area');
+  const briefing=briefingMap[dateStr];
+  if (!briefing) {
+    area.innerHTML=`<div class="empty-day"><div class="empty-icon">📭</div>해당 날짜의 브리핑이 없습니다.</div>`;
+    return;
+  }
+  const readyCount=briefing.sessions.filter(s=>s.ready).length;
+  area.innerHTML=`
+    <div class="day-sessions-wrap">
+      <div class="day-sessions-header">
+        <div class="day-sessions-label">${briefing.label}</div>
+        <div class="day-sessions-badge">${readyCount} / ${briefing.sessions.length}</div>
+      </div>
+      <div class="session-row">
+        ${briefing.sessions.map(s=>`
+          <div class="session-card ${s.ready?'ready':'not-ready'}" id="session-${s.period}"
+               ${s.ready?`onclick="openBriefing('${s.file}','${briefing.label} ${s.period}','${s.period}')"`:''}>
+            <span class="session-emoji">${s.emoji}</span>
+            <div class="session-title">${s.period}</div>
+            <div class="session-time">${s.time}</div>
+            <div class="session-status ${s.ready?'status-ready':'status-waiting'}">
+              ${s.ready?'● 열람 가능':'○ 준비 중'}
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+/* ══ 브리핑 열기 ══ */
+function openBriefing(file,title,period) {
+  if (activeSessionFile===file) {
+    if (isMobile()) closeBottomSheet(); else closeRightPanel();
+    return;
+  }
+  activeSessionFile=file;
+  document.querySelectorAll('.session-card').forEach(el=>el.classList.remove('active-session'));
+  const card=document.getElementById(`session-${period}`);
+  if (card) card.classList.add('active-session');
+
+  const theme=document.body.classList.contains('light')?'light':'dark';
+  const fileWithTheme=`${file}?theme=${theme}`;
+
+  if (isMobile()) {
+    document.getElementById('bs-title').textContent=title;
+    const frm=document.getElementById('briefing-frame-mobile');
+    frm.onload=function(){
+      try{this.contentWindow.postMessage({type:'theme',theme},'*');}catch(e){}
+    };
+    frm.src=fileWithTheme;
+    document.getElementById('bs-overlay').classList.add('open');
+    document.getElementById('bottom-sheet').classList.add('open');
+    document.body.style.overflow='hidden';
+  } else {
+    document.getElementById('briefing-bar-title').textContent=title;
+    const fr=document.getElementById('briefing-frame');
+    fr.onload=function(){
+      try{this.contentWindow.postMessage({type:'theme',theme},'*');}catch(e){}
+    };
+    fr.src=fileWithTheme;
+    document.getElementById('right-panel').classList.add('has-content');
+  }
+}
+
+function closeRightPanel() {
+  activeSessionFile=null;
+  document.getElementById('right-panel').classList.remove('has-content');
+  document.getElementById('briefing-frame').src='';
+  document.querySelectorAll('.session-card').forEach(el=>el.classList.remove('active-session'));
+}
+
+function closeBottomSheet() {
+  activeSessionFile=null;
+  document.getElementById('bs-overlay').classList.remove('open');
+  document.getElementById('bottom-sheet').classList.remove('open');
+  document.getElementById('briefing-frame-mobile').src='';
+  document.body.style.overflow='';
+  document.querySelectorAll('.session-card').forEach(el=>el.classList.remove('active-session'));
+}
+
+window.addEventListener('resize',()=>{
+  if (!activeSessionFile) return;
+  if (isMobile()) closeRightPanel(); else closeBottomSheet();
+});
+document.addEventListener('keydown',e=>{
+  if (e.key==='Escape'){closeRightPanel();closeBottomSheet();}
+});
+
+/* ══ 인증 ══ */
+let activeTab='viewer';
+function switchTab(t) {
+  activeTab=t;
+  document.getElementById('tab-v').classList.toggle('active',t==='viewer');
+  document.getElementById('tab-a').classList.toggle('active',t==='admin');
+  document.getElementById('lbl').textContent=t==='viewer'?'초대코드':'관리자 비밀번호';
+  document.getElementById('pw-input').placeholder=t==='viewer'?'초대코드를 입력하세요':'비밀번호를 입력하세요';
+  document.getElementById('err-msg').classList.remove('show');
+  document.getElementById('pw-input').classList.remove('shake');
+  document.getElementById('pw-input').value='';
+  document.getElementById('pw-input').focus();
+}
+function tryLogin() {
+  const val=document.getElementById('pw-input').value.trim();
+  const inp=document.getElementById('pw-input');
+  const err=document.getElementById('err-msg');
+  let role=null;
+  if (activeTab==='admin'  && val===CONFIG.adminPassword) role='admin';
+  if (activeTab==='viewer' && val===CONFIG.inviteCode)    role='viewer';
+  if (role) { localStorage.setItem('briefing_role',role); launchApp(role); }
+  else { inp.classList.remove('shake'); void inp.offsetWidth; inp.classList.add('shake'); err.classList.add('show'); inp.value=''; }
+}
+function launchApp(role) {
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('main-app').style.display='block';
+  const chip=document.getElementById('role-chip');
+  chip.style.display='';
+  document.getElementById('logout-btn').style.display='';
+  if (role==='admin') {
+    chip.textContent='👑 관리자'; chip.classList.add('admin');
+    document.getElementById('admin-box').style.display='block';
+    document.getElementById('show-invite').textContent=CONFIG.inviteCode;
+  } else { chip.textContent='📖 구독자'; }
+  const d=new Date(); const days=['일','월','화','수','목','금','토'];
+  document.getElementById('today-sub').textContent=`오늘: ${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 (${days[d.getDay()]})`;
+  calYear=d.getFullYear(); calMonth=d.getMonth();
+  renderCalendar(); selectLatestDate();
+}
+function logout() { localStorage.removeItem('briefing_role'); location.reload(); }
+
+/* ══ 테마 ══ */
+function toggleTheme() {
+  const isLight=document.body.classList.toggle('light');
+  localStorage.setItem('briefing_theme',isLight?'light':'dark');
+  document.getElementById('theme-toggle').textContent=isLight?'☀️ 라이트':'🌙 다크';
+
+  const theme=isLight?'light':'dark';
+  [
+    document.getElementById('briefing-frame'),
+    document.getElementById('briefing-frame-mobile')
+  ].forEach(frame=>{
+    if(frame&&frame.src&&frame.src!==window.location.href){
+      try{frame.contentWindow.postMessage({type:'theme',theme},'*');}catch(e){}
+    }
+  });
+}
+
+/* ══ 초기화 ══ */
+(async function init(){
+  if (localStorage.getItem('briefing_theme')==='light') {
+    document.body.classList.add('light');
+    document.getElementById('theme-toggle').textContent='☀️ 라이트';
+  }
+  try {
+    const res = await fetch('briefings/manifest.json');
+    BRIEFINGS = await res.json();
+    BRIEFINGS.forEach(b => { briefingMap[b.date] = b; });
+  } catch(e) { console.warn('manifest.json 로드 실패:', e); }
+  const saved=localStorage.getItem('briefing_role');
+  if (saved==='admin'||saved==='viewer') launchApp(saved);
+})();
+</script>
+</body>
+</html>
