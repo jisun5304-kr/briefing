@@ -1,0 +1,78 @@
+name: 과거 브리핑 백필 (1회용·정직형)
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: '시작일 (YYYY-MM-DD)'
+        default: '2026-05-25'
+      end:
+        description: '종료일 (YYYY-MM-DD)'
+        default: '2026-06-08'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: briefing
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 의존성 설치
+        run: pip install -r requirements.txt
+
+      - name: 과거 데이터 수집 (실제 종가 → 세션별 input)
+        env:
+          START_DATE: ${{ github.event.inputs.start }}
+          END_DATE: ${{ github.event.inputs.end }}
+        run: python scripts/backfill_fetch.py
+
+      - name: Claude Code 설치
+        run: |
+          curl -fsSL https://claude.ai/install.sh | bash
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: 세션별 해설 생성 + 렌더 (정직형)
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          shopt -s nullglob
+          count=0
+          for f in build/backfill/*.json; do
+            echo "::group::$(basename "$f")"
+            cp "$f" build/input.json
+            rm -f build/prose.json
+            claude -p "scripts/PROSE_INSTRUCTIONS_BACKFILL.md 의 정직형 지침을 정확히 따른다. build/input.json(특정 과거일의 실제 지수·환율)을 읽고 build/prose.json 하나만 작성한다. 그날의 구체적 뉴스·사건·종목별 사실은 모르므로 절대 지어내지 말고, 주어진 가격·등락률 흐름에 근거한 해설만 쓴다. build/prose.json 외의 파일은 만들거나 수정하지 않는다." \
+              --allowedTools "Read,Write" \
+              --permission-mode acceptEdits \
+              --max-turns 15
+            python scripts/render_briefing.py
+            count=$((count+1))
+            echo "::endgroup::"
+          done
+          echo "총 $count건 생성"
+
+      - name: manifest 재생성 & 커밋
+        run: |
+          python scripts/build_manifest.py
+          git config user.name "briefing-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add briefings/
+          if git diff --cached --quiet; then
+            echo "변경사항 없음"
+          else
+            git commit -m "backfill: 과거 브리핑 사후 보정 (${{ github.event.inputs.start }}~${{ github.event.inputs.end }})"
+            git push
+          fi

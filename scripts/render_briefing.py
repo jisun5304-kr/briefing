@@ -86,6 +86,7 @@ def main():
         date_short=inp["date_short"],
         generated_at_kst=inp["generated_at_kst"],
         header_bar=header_bar,
+        backfill=inp.get("backfill", False),
         headline=prose["headline"],
         summary=prose["summary"],
         watch_points=prose.get("watch_points", ""),
