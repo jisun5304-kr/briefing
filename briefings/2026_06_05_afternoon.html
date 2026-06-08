@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/5 (금) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 6/5 (금) 16:00 <span style="color:var(--warn);font-weight:600">· 🔁 사후 보정</span></div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📊 미·한 증시 동반 급락 — 나스닥 -4.18%, 코스피 -5.54% 큰 폭 조정</div>
+      <div style="font-size:13px;color:var(--dim)">2026년 6월 5일 미국과 한국 증시가 일제히 급락 마감했다. 미국 3대 지수는 나스닥 -4.18%, S&amp;P 500 -2.64%, 다우존스 -1.35%로 기술·성장주 중심의 낙폭이 두드러졌다. 한국 증시는 미국보다 더 가파른 조정을 받아 코스피 -5.54%, 코스닥 -4.50%를 기록하며 별도의 하락 압력이 있었던 것으로 보인다. 원·달러 환율은 1,533원으로 소폭 상승(+0.19%)해 위험자산 회피 분위기를 부분적으로 반영했다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">📌 한국 증시 낙폭이 미국보다 확대(코스피 -5.54% vs 나스닥 -4.18%) / 나스닥이 다우 대비 3배 이상 하락폭 기록해 기술주 중심 매도 흐름 / 코스닥 1,000선 근접 / 환율 소폭 상승 그쳐 전면적 달러 강세는 아닌 국면</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(2026-06-05 종가 기준 · 사후 보정)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,384</div>
+      <div class="index-chg down">▼ -2.64%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">7,384, 하루 -2.64% 급락. 광범위한 매도세 속 방어 실패.</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,709</div>
+      <div class="index-chg down">▼ -4.18%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">25,709, -4.18%로 3대 지수 중 낙폭 최대. 기술·성장주 중심 하락 흐름.</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">50,867</div>
+      <div class="index-chg down">▼ -1.35%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">50,867, -1.35%로 상대적으로 낙폭 제한. 가치주 비중이 완충 역할로 보임.</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,161</div>
+      <div class="index-chg down">▼ -5.54%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">8,161, -5.54%로 미국 지수보다 큰 하락. 외부 연동 이상의 추가 하방 압력 가능성.</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,002</div>
+      <div class="index-chg down">▼ -4.50%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1,002, -4.50% 급락해 1,000선 근접. 중소형 성장주 약세 두드러짐.</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,533</div>
+      <div class="index-chg up">▲ +0.19%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1,533원, +0.19% 소폭 상승. 달러 강세 기조 유지되나 변동폭은 제한적.</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>📉 <strong>미국 3대 지수 전반 급락</strong> — S&amp;P 500 -2.64%, 나스닥 -4.18%, 다우존스 -1.35%로 전 지수 하락 마감. 단일 거래일 기준 상당한 낙폭.</li>
+        
+        <li>💻 <strong>기술·성장주 중심 낙폭 확대</strong> — 나스닥이 다우 대비 3배 이상 하락해 기술주 비중 높은 섹터에 매도세가 집중된 흐름으로 보임.</li>
+        
+        <li>🇰🇷 <strong>한국 증시 미국 대비 초과 하락</strong> — 코스피 -5.54%, 코스닥 -4.50%로 미국 지수 낙폭을 크게 웃돌아 국내 별도 하방 압력이 가세한 것으로 추정.</li>
+        
+        <li>💱 <strong>원·달러 환율 소폭 상승</strong> — USD/KRW 1,533원(+0.19%)으로 위험회피 분위기 속 달러 소폭 강세. 급격한 원화 약세는 아닌 흐름.</li>
+        
+        <li>📊 <strong>코스닥 1,000선 근접</strong> — 코스닥 종가 1,002로 심리적 지지선인 1,000선까지 하락 폭 축소. 중소형주 중심 낙폭이 대형주 이상.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>대형 기술주</td>
+            <td>나스닥 -4.18%로 3대 지수 최대 낙폭, 기술주 집중 하락 추정</td>
+            <td class="down-txt">▼ 약세 추정</td>
+          </tr>
+          
+          <tr>
+            <td>반도체·수출주</td>
+            <td>코스피 낙폭(-5.54%)이 미국 초과, 수출 비중 높은 대형 섹터 타격 추정</td>
+            <td class="down-txt">▼ 약세 추정</td>
+          </tr>
+          
+          <tr>
+            <td>중소형 성장주</td>
+            <td>코스닥 -4.50%로 성장주 중심 약세 흐름</td>
+            <td class="down-txt">▼ 약세 추정</td>
+          </tr>
+          
+          <tr>
+            <td>경기방어·가치주</td>
+            <td>다우존스가 -1.35%로 상대적 방어, 가치주 비중 높은 섹터 상대 강세 추정</td>
+            <td class="warn-txt">→ 상대적 방어 추정</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>나스닥 기술주 낙폭 추세 확인</strong> — 단일일 -4.18%의 연속성 여부 — 다음 거래일 추가 하락 vs 반등 여부 주시</li>
+        
+        <li>☑️ <strong>코스피 미국 초과 하락 배경 점검</strong> — -5.54%로 미국 지수 낙폭을 웃돔 — 국내 고유 요인 여부 확인 필요</li>
+        
+        <li>☑️ <strong>코스닥 1,000선 지지 여부</strong> — 종가 1,002, 심리적 지지선 바로 위 — 이탈 시 추가 조정 가능성</li>
+        
+        <li>☑️ <strong>USD/KRW 1,530원대 유지 여부</strong> — 환율 소폭 상승(+0.19%)에 그쳐 있어, 달러 강세 가속 시 수입물가·외국인 수급 영향 점검</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">🔁 <strong>사후 보정 데이터</strong> — 지수·환율 수치는 해당일의 실제 종가이나, 해설은 실시간 뉴스가 아닌 가격 흐름에 근거해 사후 재구성된 것입니다. 실시간 브리핑이 아니며 참고용입니다. 투자 판단의 책임은 투자자 본인에게 있습니다.</div>
+
+
+</body>
+</html>
