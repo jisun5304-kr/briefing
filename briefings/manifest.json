@@ -1,366 +1,379 @@
-﻿[
-    {
-        "date":  "2026-05-06",
-        "label":  "2026년 5월 6일 (수)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_06_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_06_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_06_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-07",
-        "label":  "2026년 5월 7일 (목)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_07_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_07_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_07_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-08",
-        "label":  "2026년 5월 8일 (금)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_08_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_08_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_08_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-11",
-        "label":  "2026년 5월 11일 (월)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_11_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_11_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_11_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-12",
-        "label":  "2026년 5월 12일 (화)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_12_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_12_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_12_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-13",
-        "label":  "2026년 5월 13일 (수)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_13_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_13_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_13_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-14",
-        "label":  "2026년 5월 14일 (목)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_14_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_14_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_14_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-15",
-        "label":  "2026년 5월 15일 (금)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_15_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_15_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_15_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-18",
-        "label":  "2026년 5월 18일 (월)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_18_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_18_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_18_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-19",
-        "label":  "2026년 5월 19일 (화)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_19_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_19_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_19_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-20",
-        "label":  "2026년 5월 20일 (수)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_20_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_20_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_20_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-21",
-        "label":  "2026년 5월 21일 (목)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_21_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_21_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_21_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-22",
-        "label":  "2026년 5월 22일 (금)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_22_morning.html"
-                         },
-                         {
-                             "time":  "16:00",
-                             "emoji":  "☀️",
-                             "period":  "오후",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_22_afternoon.html"
-                         },
-                         {
-                             "time":  "23:00",
-                             "emoji":  "🌙",
-                             "period":  "밤",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_22_night.html"
-                         }
-                     ]
-    },
-    {
-        "date":  "2026-05-25",
-        "label":  "2026년 5월 25일 (월)",
-        "sessions":  [
-                         {
-                             "time":  "07:30",
-                             "emoji":  "🌅",
-                             "period":  "오전",
-                             "ready":  true,
-                             "file":  "briefings/2026_05_25_morning.html"
-                         }
-                     ]
-    }
+[
+  {
+    "date": "2026-05-06",
+    "label": "2026년 5월 6일 (수)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_06_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_06_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_06_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-07",
+    "label": "2026년 5월 7일 (목)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_07_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_07_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_07_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-08",
+    "label": "2026년 5월 8일 (금)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_08_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_08_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_08_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-11",
+    "label": "2026년 5월 11일 (월)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_11_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_11_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_11_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-12",
+    "label": "2026년 5월 12일 (화)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_12_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_12_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_12_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-13",
+    "label": "2026년 5월 13일 (수)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_13_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_13_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_13_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-14",
+    "label": "2026년 5월 14일 (목)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_14_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_14_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_14_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-15",
+    "label": "2026년 5월 15일 (금)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_15_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_15_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_15_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-18",
+    "label": "2026년 5월 18일 (월)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_18_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_18_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_18_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-19",
+    "label": "2026년 5월 19일 (화)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_19_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_19_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_19_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-20",
+    "label": "2026년 5월 20일 (수)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_20_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_20_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_20_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-21",
+    "label": "2026년 5월 21일 (목)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_21_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_21_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_21_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-22",
+    "label": "2026년 5월 22일 (금)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_22_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_05_22_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_05_22_night.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-05-25",
+    "label": "2026년 5월 25일 (월)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_05_25_morning.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-06-09",
+    "label": "2026년 6월 9일 (화)",
+    "sessions": [
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_06_09_night.html"
+      }
+    ]
+  }
 ]
