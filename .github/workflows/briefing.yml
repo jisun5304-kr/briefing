@@ -1,0 +1,87 @@
+name: 시황 브리핑 자동 생성
+
+on:
+  schedule:
+    - cron: '30 22 * * 0-4'   # 🌅 오전 07:30 KST (전날 22:30 UTC, 일~목)
+    - cron: '0 7 * * 1-5'     # ☀️ 오후 16:00 KST (07:00 UTC, 월~금)
+    - cron: '0 14 * * 1-5'    # 🌙 밤   23:00 KST (14:00 UTC, 월~금)
+  workflow_dispatch:
+    inputs:
+      session:
+        description: '세션 선택 (수동 실행 테스트용)'
+        type: choice
+        options: [morning, afternoon, night]
+        default: morning
+
+permissions:
+  contents: write
+
+concurrency:
+  group: briefing
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 세션 결정
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "SESSION=${{ github.event.inputs.session }}" >> "$GITHUB_ENV"
+          else
+            case "${{ github.event.schedule }}" in
+              "30 22 * * 0-4") echo "SESSION=morning"   >> "$GITHUB_ENV" ;;
+              "0 7 * * 1-5")   echo "SESSION=afternoon" >> "$GITHUB_ENV" ;;
+              "0 14 * * 1-5")  echo "SESSION=night"     >> "$GITHUB_ENV" ;;
+              *)               echo "SESSION=morning"   >> "$GITHUB_ENV" ;;
+            esac
+          fi
+
+      - name: Python 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 의존성 설치
+        run: pip install -r requirements.txt
+
+      - name: "① 시장 데이터 수집 (지수·환율·뉴스)"
+        env:
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+        run: python scripts/fetch_market.py
+
+      - name: Claude Code 설치
+        run: |
+          curl -fsSL https://claude.ai/install.sh | bash
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: "② AI 해설 생성 (숫자는 건드리지 않음)"
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          claude -p "scripts/PROSE_INSTRUCTIONS.md 의 지침을 정확히 따른다. build/input.json(오늘의 실제 지수·환율·뉴스)을 읽고, 지침의 스키마대로 build/prose.json 파일 하나만 작성한다. 지수 숫자는 절대 새로 만들지 말고 해설·전망 텍스트만 쓴다. build/prose.json 외의 파일은 만들거나 수정하지 않으며 git 작업도 하지 않는다." \
+            --allowedTools "Read,Write,Edit" \
+            --permission-mode acceptEdits \
+            --max-turns 15
+
+      - name: "③ 브리핑 HTML 생성 (숫자+해설 결합)"
+        run: python scripts/render_briefing.py
+
+      - name: "④ manifest 재생성"
+        run: python scripts/build_manifest.py
+
+      - name: "⑤ 커밋 & 푸시"
+        run: |
+          git config user.name "briefing-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add briefings/
+          if git diff --cached --quiet; then
+            echo "변경사항 없음 — 커밋 스킵"
+          else
+            git commit -m "auto briefing: ${SESSION} ($(date -u +%Y-%m-%d) UTC)"
+            git push
+          fi
