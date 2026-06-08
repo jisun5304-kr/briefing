@@ -368,6 +368,13 @@
     "label": "2026년 6월 9일 (화)",
     "sessions": [
       {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_06_09_morning.html"
+      },
+      {
         "time": "23:00",
         "emoji": "🌙",
         "period": "밤",
