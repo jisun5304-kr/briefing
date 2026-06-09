@@ -1,0 +1,47 @@
+name: 브리핑 결번 점검(audit)
+
+on:
+  schedule:
+    - cron: '0 1 * * 1-5'   # 평일 10:00 KST (오전 브리핑 이후) — 전날까지의 결번 점검
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write             # 내장 GITHUB_TOKEN으로 이슈 생성/코멘트 (추가 시크릿 불필요)
+
+concurrency:
+  group: briefing-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 결번 점검
+        id: audit
+        run: python scripts/audit_gaps.py
+
+      - name: 결번 있으면 이슈 생성/갱신
+        if: steps.audit.outputs.has_gaps == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPORT: ${{ steps.audit.outputs.report }}
+        run: |
+          TITLE="🕳️ 브리핑 결번 감지"
+          BODY=$(printf '자동 점검(audit.yml) 결과입니다.\n\n%s\n\n---\n- 누락 세션은 backfill.yml(백필) 또는 수동 생성으로 보정하세요.\n- 휴장일이면 scripts/holidays.txt 에 날짜를 추가하면 다음부터 제외됩니다.\n' "$REPORT")
+          NUM=$(gh issue list --state open --search "브리핑 결번 감지 in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            echo "기존 이슈 #$NUM 에 코멘트"
+            gh issue comment "$NUM" --body "$BODY"
+          else
+            echo "새 이슈 생성"
+            gh issue create --title "$TITLE" --body "$BODY"
+          fi
