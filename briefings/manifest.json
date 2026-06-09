@@ -618,6 +618,13 @@
         "file": "briefings/2026_06_09_morning.html"
       },
       {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_06_09_afternoon.html"
+      },
+      {
         "time": "23:00",
         "emoji": "🌙",
         "period": "밤",
