@@ -256,6 +256,9 @@
     .session-status { display: inline-flex; align-items: center; gap: 3px; font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 20px; margin-top: 2px; }
     .status-ready   { background: rgba(34,197,94,0.12); color: #4ade80; }
     .status-waiting { background: var(--border); color: var(--dim); }
+    .status-missing { background: rgba(245,158,11,0.14); color: var(--accent2); }
+    .session-card.missing { opacity: 0.7; }
+    .session-card.missing::before { background: var(--accent2); }
     .empty-day { text-align: center; padding: 24px 0; color: var(--dim); font-size: 12px; }
     .empty-day .empty-icon { font-size: 26px; margin-bottom: 8px; }
 
@@ -520,6 +523,23 @@ function isMobile() { return window.innerWidth <= 768; }
 let calYear, calMonth, selectedDate, activeSessionFile = null;
 const briefingMap = {};
 
+/* 정규 세션 슬롯(평일 3회) — manifest에 없어도 항상 이 3칸을 그린다 */
+const SESSION_SLOTS = [
+  { period:'오전', emoji:'🌅', time:'07:30' },
+  { period:'오후', emoji:'☀️', time:'16:00' },
+  { period:'밤',   emoji:'🌙', time:'23:00' },
+];
+/* 선택 날짜+세션 시각의 예정 시점(브라우저=KST 가정, 시장 대상 동일) */
+function sessionDateTime(dateStr, time){
+  const [y,mo,d]=dateStr.split('-').map(Number);
+  const [hh,mm]=time.split(':').map(Number);
+  return new Date(y, mo-1, d, hh, mm, 0);
+}
+function isPast(dateStr, time){ return Date.now() >= sessionDateTime(dateStr, time).getTime(); }
+/* GitHub Actions cron 지연(실측 ~76~118분)을 감안한 결번 판정 유예. 이 시간 전엔 '준비 중'으로 본다 */
+const SESSION_GRACE_MIN = 150;
+function isOverdue(dateStr, time){ return Date.now() >= sessionDateTime(dateStr, time).getTime() + SESSION_GRACE_MIN*60*1000; }
+
 function toDateStr(y,m,d) {
   return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 }
@@ -542,7 +562,12 @@ function renderCalendar() {
     const numEl=document.createElement('div'); numEl.className='cal-num'; numEl.textContent=d; cell.appendChild(numEl);
     if (briefing) {
       const dots=document.createElement('div'); dots.className='cal-dots';
-      briefing.sessions.forEach(s=>{ const dot=document.createElement('div'); dot.className='cal-dot '+(s.ready?'ready':'waiting'); dots.appendChild(dot); });
+      const bySlot={}; briefing.sessions.forEach(s=>{ bySlot[s.period]=s; });
+      SESSION_SLOTS.forEach(slot=>{
+        const s=bySlot[slot.period];
+        const open=s && s.ready && isPast(dateStr, slot.time);
+        const dot=document.createElement('div'); dot.className='cal-dot '+(open?'ready':'waiting'); dots.appendChild(dot);
+      });
       cell.appendChild(dots);
       cell.onclick=()=>selectDate(dateStr);
     }
@@ -575,23 +600,37 @@ function renderDaySessions(dateStr) {
     area.innerHTML=`<div class="empty-day"><div class="empty-icon">📭</div>해당 날짜의 브리핑이 없습니다.</div>`;
     return;
   }
-  const readyCount=briefing.sessions.filter(s=>s.ready).length;
+  // manifest 세션을 정규 3슬롯에 매핑 → 누락도 항상 한 칸 차지
+  const bySlot={}; briefing.sessions.forEach(s=>{ bySlot[s.period]=s; });
+  const slots=SESSION_SLOTS.map(slot=>{
+    const s=bySlot[slot.period];
+    const due=isPast(dateStr, slot.time);              // 예정 시각 도달(열람 게이트)
+    if (s && s.ready && due)  return {...slot, state:'ready',    file:s.file, emoji:s.emoji||slot.emoji, time:s.time||slot.time};
+    if (s && s.ready)         return {...slot, state:'upcoming', emoji:s.emoji||slot.emoji, time:s.time||slot.time}; // 파일은 있으나 예정시각 전 → 잠금
+    if (isOverdue(dateStr, slot.time)) return {...slot, state:'missing'}; // 예정+유예 초과인데 없음 → 결번
+    return {...slot, state:'upcoming'};                // 아직 예정(또는 유예 내 실행 대기)
+  });
+  const readyCount=slots.filter(x=>x.state==='ready').length;
+  const cardClass={ready:'ready', upcoming:'not-ready', missing:'not-ready missing'};
+  const statusHtml={
+    ready:   '<div class="session-status status-ready">● 열람 가능</div>',
+    upcoming:'<div class="session-status status-waiting">○ 준비 중</div>',
+    missing: '<div class="session-status status-missing">⚠ 결번</div>',
+  };
   area.innerHTML=`
     <div class="day-sessions-wrap">
       <div class="day-sessions-header">
         <div class="day-sessions-label">${briefing.label}</div>
-        <div class="day-sessions-badge">${readyCount} / ${briefing.sessions.length}</div>
+        <div class="day-sessions-badge">${readyCount} / 3</div>
       </div>
       <div class="session-row">
-        ${briefing.sessions.map(s=>`
-          <div class="session-card ${s.ready?'ready':'not-ready'}" id="session-${s.period}"
-               ${s.ready?`onclick="openBriefing('${s.file}','${briefing.label} ${s.period}','${s.period}')"`:''}>
-            <span class="session-emoji">${s.emoji}</span>
-            <div class="session-title">${s.period}</div>
-            <div class="session-time">${s.time}</div>
-            <div class="session-status ${s.ready?'status-ready':'status-waiting'}">
-              ${s.ready?'● 열람 가능':'○ 준비 중'}
-            </div>
+        ${slots.map(x=>`
+          <div class="session-card ${cardClass[x.state]}" id="session-${x.period}"
+               ${x.state==='ready'?`onclick="openBriefing('${x.file}','${briefing.label} ${x.period}','${x.period}')"`:''}>
+            <span class="session-emoji">${x.emoji}</span>
+            <div class="session-title">${x.period}</div>
+            <div class="session-time">${x.time}</div>
+            ${statusHtml[x.state]}
           </div>`).join('')}
       </div>
     </div>`;
@@ -731,3 +770,4 @@ function toggleTheme() {
 </script>
 </body>
 </html>
+
