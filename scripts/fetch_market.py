@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 fetch_market.py — 실제 시장 데이터(지수·환율) + 뉴스 수집 → build/input.json
 
@@ -219,12 +219,23 @@ def main():
     session = resolve_session()
     meta = SESSION_META[session]
     now = datetime.now(KST)
-    date_iso = now.strftime("%Y-%m-%d")
-    date_us = now.strftime("%Y_%m_%d")
-    date_label = f"{now.year}년 {now.month}월 {now.day}일 ({WEEKDAY_KO[now.weekday()]})"
-    date_short = f"{now.month}/{now.day} ({WEEKDAY_KO[now.weekday()]})"
 
-    log(f"세션={session} 날짜={date_iso}")
+    # ── 논리적 '브리핑 날짜' 결정 (벽시계와 분리) ──
+    # 밤(23:00) 작업이 GitHub Actions 지연으로 자정을 넘겨 실행되면
+    # datetime.now(KST)는 다음날이 되어, 전날 밤 브리핑이 다음날 날짜로 오기록된다.
+    # → 새벽(05시 이전)에 실행된 밤 세션은 '전날 밤'으로 되돌린다.
+    #   (오전 07:30·오후 16:00은 자정과 멀어 영향 없음)
+    biz = now
+    if session == "night" and now.hour < 5:
+        biz = now - timedelta(days=1)
+        log(f"밤 세션이 자정 이후({now:%H:%M}) 실행 → 날짜를 전날({biz:%Y-%m-%d})로 보정")
+
+    date_iso = biz.strftime("%Y-%m-%d")
+    date_us = biz.strftime("%Y_%m_%d")
+    date_label = f"{biz.year}년 {biz.month}월 {biz.day}일 ({WEEKDAY_KO[biz.weekday()]})"
+    date_short = f"{biz.month}/{biz.day} ({WEEKDAY_KO[biz.weekday()]})"
+
+    log(f"세션={session} 날짜={date_iso} (실제 실행 {now:%Y-%m-%d %H:%M} KST)")
 
     indices = fetch_indices()
 
@@ -260,3 +271,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
