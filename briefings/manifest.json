@@ -659,5 +659,18 @@
         "file": "briefings/2026_06_10_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-06-11",
+    "label": "2026년 6월 11일 (목)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_06_11_morning.html"
+      }
+    ]
   }
 ]
