@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/16 (화) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 6/16 (화) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">🕊️ 미·이란 종전 훈풍에 코스피 8700선 안착, 외국인 1.5조 순매수</div>
+      <div style="font-size:13px;color:var(--dim)">미·이란 종전 합의 소식이 전해지며 코스피가 8,727까지 오르며 8700선을 확고히 안착했다. 외국인이 약 1.5조 원 규모의 대규모 순매수에 나서며 지수 상승의 핵심 동력이 됐고, SK하이닉스 강세에 힘입어 SK그룹 시가총액이 2,000조 원을 돌파한 것으로 전해졌다. 방산·건설 ETF도 종전 기대감을 반영해 수익률 상위권에 진입했다. 반면 코스닥은 1,019로 하락 마감하며 코스피 급등 속 차익 실현 매물이 중소형주에 집중됐다. 미국 3대 지수도 동반 상승해 우호적인 글로벌 시장 환경이 형성됐다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 미·이란 종전 합의의 실질적 이행 여부, 외국인 순매수 지속성, 코스닥 반등 가능성</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,431</div>
+      <div class="index-chg up">▲ +0.50%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 상승 마감, 지정학적 긴장 완화에 위험자산 선호 심리 유지</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,889</div>
+      <div class="index-chg up">▲ +0.31%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 강세 흐름 이어가며 상승, 다우 대비 상승폭은 제한적</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,202</div>
+      <div class="index-chg up">▲ +0.70%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">미국 3대 지수 중 가장 큰 폭 상승, 경기민감주 중심 매수세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,727</div>
+      <div class="index-chg up">▲ +7.42%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">종전 호재와 외국인 대규모 순매수에 힘입어 8700선 안착, 강세 주도</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,019</div>
+      <div class="index-chg down">▼ -1.48%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">코스피 급등 속 차익 매물 집중, 외국인·기관 동반 순매도로 하락 마감</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,508</div>
+      <div class="index-chg down">▼ -0.11%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">외국인 순매수 유입에 원화 소폭 강세, 1,508원대에서 안정적 흐름</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🕊️ <strong>미·이란 종전 합의</strong> — 미·이란 종전 소식이 지정학적 리스크 완화 신호로 작용, 코스피 급등 촉발</li>
+        
+        <li>💰 <strong>외국인 대규모 순매수</strong> — 외국인이 약 1.5조 원을 순매수하며 코스피 상승의 핵심 동력으로 작용</li>
+        
+        <li>💾 <strong>SK하이닉스 강세</strong> — 하이닉스 주가 강세에 SK그룹 시총 2천조 돌파, 반도체 섹터 센티먼트 개선</li>
+        
+        <li>🛡️ <strong>방산·건설 ETF 급등</strong> — 종전 이후 재건 수혜 기대감에 방산·건설 ETF가 레버리지 상품과 함께 수익률 상위권 기록</li>
+        
+        <li>🗾 <strong>일본 금리 인상 신호</strong> — 일본이 31년간 초저금리 시대를 마감하며 금리 인상 가능성, 글로벌 자금 흐름 변화 주목</li>
+        
+        <li>📉 <strong>코스닥 차익 실현 압력</strong> — 코스피 급등 대비 코스닥에 차익 매물 집중, 외국인·기관 동반 순매도로 지수 하락</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>SK그룹 시총 2천조 돌파를 이끈 핵심 종목, 반도체 섹터 강세 상징으로 외국인 매수 집중 전망</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>방산 섹터</td>
+            <td>미·이란 종전 기대감 반영, 방산 ETF 수익률 상위권 진입으로 단기 모멘텀 유효</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>건설·인프라</td>
+            <td>종전 이후 중동 재건 수요 기대감에 건설 ETF 강세, 추가 수혜 가능성 존재</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 중소형주</td>
+            <td>코스피 급등 속 차익 실현 매물 집중, 외국인·기관 동반 순매도로 단기 약세 지속</td>
+            <td class="down-txt">▼ 약세</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>美 미토스5 외국인 차단 이슈 연관 가능성 거론, OLED TV 소비 트렌드 변화 속 방향성 불투명</td>
+            <td class="warn-txt">→ 중립 관망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>미·이란 종전 합의 이행 여부</strong> — 종전이 실질 합의로 이어지는지 여부가 코스피 추가 상승의 핵심 변수</li>
+        
+        <li>☑️ <strong>외국인 순매수 지속성 점검</strong> — 1.5조 원 대규모 순매수가 일시적 이벤트 매수인지 중장기 추세 전환인지 확인 필요</li>
+        
+        <li>☑️ <strong>일본 금리 인상 파급 효과</strong> — 일본 초저금리 마감이 엔화 강세·글로벌 자금 재배분으로 이어질 경우 아시아 시장 전반에 영향 가능</li>
+        
+        <li>☑️ <strong>SK하이닉스 주주환원 계획 공식화</strong> — 100조 규모 주주환원설 해명 이후 공식 발표 여부가 반도체 섹터 모멘텀에 직결</li>
+        
+        <li>☑️ <strong>코스닥·코스피 간 괴리 해소 시점</strong> — 양 지수 간 극심한 방향 차이가 지속될 경우 중소형주 저가 매수 타이밍 포착 여부 관건</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-16 21:15 KST</div>
+
+
+</body>
+</html>
