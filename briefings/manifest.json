@@ -767,5 +767,18 @@
         "file": "briefings/2026_06_16_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-06-17",
+    "label": "2026년 6월 17일 (수)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_06_17_morning.html"
+      }
+    ]
   }
 ]
