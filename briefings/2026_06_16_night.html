@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/16 (화) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 6/16 (화) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">⚡ 워시 체제 첫 FOMC 대기…뉴욕 혼조·유가 80달러 하회</div>
+      <div style="font-size:13px;color:var(--dim)">6월 16일 밤 뉴욕 증시는 케빈 워시 연준 의장 취임 후 첫 FOMC 회의를 앞두고 관망 심리가 짙어지며 혼조세로 개장했다. S&amp;P 500과 나스닥이 소폭 하락한 반면 다우존스는 전통 산업주 강세에 힘입어 상승하며 지수 간 디커플링이 뚜렷했다. 미·이란 핵합의 기대 속 미국이 이란 석유 판매를 19일부터 허용할 방침으로 알려지며 국제유가가 배럴당 80달러 밑으로 내려섰다. 일본은행은 기준금리를 1.0%로 인상해 긴축 기조를 재확인했고, 유럽 증시는 상대적 저평가 매력과 지정학적 기대감에 일제히 강세를 보였다. 국내에서는 거래대금이 70조 원을 넘어선 가운데 키움증권·한국투자증권의 잇단 시스템 오류로 개장 전 접속 차질이 반복됐다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 워시 체제 첫 FOMC 결과 및 점도표 변화 여부, 미·이란 핵합의 공식 발표 및 유가 추가 하락 가능성, 일본은행 금리 인상 후 엔화 강세와 캐리 트레이드 청산 여파</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,533</div>
+      <div class="index-chg down">▼ -0.29%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">FOMC 경계 심리에 기술주 중심 소폭 조정, 방향 탐색 국면 지속</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,543</div>
+      <div class="index-chg down">▼ -0.53%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">금리 불확실성에 성장주 약세 두드러짐, S&amp;P 대비 하락 폭 확대</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,102</div>
+      <div class="index-chg up">▲ +0.83%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">전통 산업·헬스케어주 강세로 나스닥과 반대 흐름, 방어적 순환 매수 반영</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,546</div>
+      <div class="index-chg up">▲ +5.20%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">거래대금 70조 원 돌파 속 급등 마감, 증권사 시스템 과부하를 유발할 만큼 수급 몰림</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,034</div>
+      <div class="index-chg up">▲ +0.48%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">코스피 강세 대비 상승 폭 제한적, 중소형주 선별 매수 분위기</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,509</div>
+      <div class="index-chg down">▼ -0.06%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1,509원대 보합권 유지, 미·이란 협상 기대와 BOJ 인상이 달러 강세를 상쇄</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🏦 <strong>워시 첫 FOMC 주목</strong> — 케빈 워시 신임 연준 의장 체제의 첫 FOMC로 금리 동결·인상 여부와 점도표 변화가 이번 주 최대 변수로 부각.</li>
+        
+        <li>🇮🇷 <strong>미·이란 핵합의·유가 80달러 하회</strong> — 미국이 이란 석유 판매를 19일부터 즉시 허용하고 금융·운송 제재도 완화할 방침으로 알려져 국제유가 하락 압력 가중.</li>
+        
+        <li>🇯🇵 <strong>일본은행 기준금리 1% 인상</strong> — BOJ가 긴축 기조를 강화하며 엔화 강세 압력 증가, 글로벌 엔 캐리 트레이드 청산 가능성에 시장 긴장.</li>
+        
+        <li>🇪🇺 <strong>유럽 증시 저평가 매력 부각</strong> — 상대적 저평가와 지정학적 긴장 완화 기대가 맞물리며 유럽 주요 증시 일제히 강세, 글로벌 자금 이동 주시.</li>
+        
+        <li>💻 <strong>국내 증권사 시스템 오류 연발</strong> — 거래대금 70조 원 돌파 속 키움증권·한국투자증권 MTS 접속 장애가 반복되며 인프라 과부하 우려 부각.</li>
+        
+        <li>₿ <strong>비트코인 저점 형성 전망</strong> — 스탠다드차타드가 비트코인의 5만 9천 달러 부근 저점 형성 가능성을 제시, 가상자산 시장 단기 방향 주목.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>에너지·정유</td>
+            <td>이란 원유 수출 재개 소식으로 공급 증가 우려, 유가 80달러 하회에 따른 마진 압박 전망</td>
+            <td class="down-txt">▼ 약세 우려</td>
+          </tr>
+          
+          <tr>
+            <td>반도체·IT</td>
+            <td>FOMC 결과 앞두고 나스닥 약세와 연동, 금리 방향 확정 전까지 방향성 탐색 지속 가능성</td>
+            <td class="warn-txt">→ 방향 탐색</td>
+          </tr>
+          
+          <tr>
+            <td>금융·은행</td>
+            <td>BOJ 금리 인상 및 FOMC 결과에 따라 금리 마진 변화 기대, 금리 상승 시 조건부 수혜 가능</td>
+            <td class="up-txt">▲ 조건부 강세</td>
+          </tr>
+          
+          <tr>
+            <td>방산·우주항공</td>
+            <td>미·이란 협상 타결 시 중동 긴장 완화로 방산 수요 기대 감소 가능성, 단기 경계 필요</td>
+            <td class="down-txt">▼ 하락 경계</td>
+          </tr>
+          
+          <tr>
+            <td>증권사</td>
+            <td>거래대금 급증은 수수료 수익 호재이나 반복 시스템 오류로 신뢰도 훼손 우려 병존, 혼조 예상</td>
+            <td class="warn-txt">→ 혼조</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>FOMC 금리 결정 및 성명 내용</strong> — 워시 신임 의장 첫 회의 결과—동결·인상·점도표 변화 여부가 단기 시장 방향을 결정하는 핵심 변수</li>
+        
+        <li>☑️ <strong>미·이란 핵합의 공식 발표 여부</strong> — 이란 석유 수출 재개 시기와 범위 확정 시 유가·에너지 섹터 추가 조정 가능성 및 물가 영향 점검 필요</li>
+        
+        <li>☑️ <strong>BOJ 인상 후 엔화·캐리 트레이드 동향</strong> — 엔 강세 전환 시 캐리 트레이드 청산 가속으로 위험자산 전반 변동성 확대로 이어질 수 있어 모니터링 필요</li>
+        
+        <li>☑️ <strong>국내 증권사 시스템 정상화 확인</strong> — 키움·한투 오류 재발 시 다음 거래일 투자자 이탈 및 금감원 제재 가능성, 개장 전 접속 안정성 점검 필요</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-17 03:28 KST</div>
+
+
+</body>
+</html>
