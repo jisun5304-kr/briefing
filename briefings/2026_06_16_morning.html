@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/16 (화) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 6/16 (화) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 미·이란 종전 훈풍에 나스닥 폭등·코스피 9,000선 가시권</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 미·이란 종전 MOU 소식이 글로벌 위험자산 전반을 강타하며 나스닥이 +3.07% 폭등해 사상 최고가를 경신했고, S&amp;P 500도 +1.65% 오르며 강세를 이어갔다. 지정학적 긴장 완화로 WTI 원유가 5% 급락해 인플레이션 부담이 경감되고 투자 심리가 크게 호전됐다. 국내 증시도 이 훈풍을 고스란히 받아 코스피가 +4.63% 급등해 8,124pt를 기록하며 9,000선 돌파 기대감을 높이고 있다. 스페이스X가 상장 이틀 만에 40% 급등하는 돌풍을 일으킨 가운데, SK하이닉스 ADR이 강세를 보이며 반도체 섹터 주도주 복귀 가능성에도 시장의 눈길이 쏠리고 있다. 다만 연준 금리 경로 불확실성은 여전해 추가 상승의 상단 제약 요인으로 잔존한다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 코스피 9,000선 장중 돌파 여부, SK하이닉스 등 반도체 대형주 ADR 반영 흐름, 미·이란 종전 합의 공식 진전 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,554</div>
+      <div class="index-chg up">▲ +1.65%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">중동 종전 기대와 유가 급락 호재로 강세, 사상 최고권 권역 안착</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,684</div>
+      <div class="index-chg up">▲ +3.07%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술·반도체 주도로 3% 이상 폭등, 사상 최고가 경신</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,671</div>
+      <div class="index-chg up">▲ +0.92%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">경기 방어주 비중으로 상대적 완만한 상승, 전반적 랠리 동참</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,124</div>
+      <div class="index-chg up">▲ +4.63%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">미·이란 훈풍에 4%대 급등, 9,000선 돌파 가시권 진입</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,029</div>
+      <div class="index-chg up">▲ +3.22%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">중소형 기술주 동반 강세로 1,000pt 돌파·유지 국면</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,516</div>
+      <div class="index-chg up">▲ +0.44%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">위험자산 선호 심리 속에도 달러 강보합 유지, 환율 상단 부담 잔존</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🕊️ <strong>미·이란 종전 MOU</strong> — 중동 지정학 리스크 해소 기대가 글로벌 위험자산 랠리를 촉발한 핵심 변수</li>
+        
+        <li>🛢️ <strong>WTI 5% 급락</strong> — 유가 급락으로 인플레이션 부담 경감, 소비·제조업 기업 수익성 개선 기대 확산</li>
+        
+        <li>🚀 <strong>스페이스X 상장 돌풍</strong> — 이틀 만에 40% 급등하며 우주·첨단기술 섹터 투자 심리 자극, 나스닥 강세 견인</li>
+        
+        <li>💾 <strong>반도체 ADR 강세</strong> — SK하이닉스 ADR 주목도 상승, 금리 불확실성 완화 시 메모리 주도주 복귀 가능성 부각</li>
+        
+        <li>₿ <strong>비트코인 반등</strong> — 중동 온풍에 가상자산도 6만7천달러선 터치, 위험 선호 심리의 광범위한 확산을 방증</li>
+        
+        <li>🏦 <strong>연준 금리 불확실성</strong> — 사상 최고 랠리 속에서도 금리 경로 불확실성 잔존, 추가 상승의 잠재적 상단 제약 요인</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>ADR 강세 반영 기대, 금리 공포 완화 시 메모리 주도주 1순위 부각</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>반도체 섹터 전반 훈풍, 코스피 급등 흐름과 함께 대장주 동반 상승 기대</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>항공·여행</td>
+            <td>WTI 5% 급락으로 항공유 비용 부담 경감, 수혜 가능성 주목</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>정유·에너지</td>
+            <td>유가 급락 여파로 단기 실적 및 마진 압박 우려, 차익 실현 매물 경계</td>
+            <td class="down-txt">▼ 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>우주·방산 테마</td>
+            <td>스페이스X 돌풍과 중동 종전 맞물려 관련 테마주 부각 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>코스피 9,000선 돌파</strong> — 장중 9,000pt 돌파 여부와 차익 실현 매물 출회 강도가 오늘 시장 방향의 핵심</li>
+        
+        <li>☑️ <strong>미·이란 종전 합의 진전</strong> — MOU 이후 공식 합의로 이어질 경우 지정학 프리미엄 추가 해소 가능, 뉴스 모니터링 필수</li>
+        
+        <li>☑️ <strong>하이닉스 ADR 국내 반영</strong> — 개장 초반 SK하이닉스·삼성전자 등 반도체 대형주 갭업 폭과 방향 확인</li>
+        
+        <li>☑️ <strong>연준 발언·금리 경로</strong> — 추가 랠리의 최대 변수, 연준 인사 발언 및 경제 지표 발표 일정 사전 확인 권고</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-16 09:11 KST</div>
+
+
+</body>
+</html>
