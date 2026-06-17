@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/17 (수) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 6/17 (수) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 기술주 반등·워시 FOMC 대기…코스피 2% 급등, 코스닥은 소외</div>
+      <div style="font-size:13px;color:var(--dim)">미국 뉴욕 증시는 반도체·AI 관련주 반등에 힘입어 상승 출발하였으며, 나스닥은 개장 초반 0.5% 내외의 오름세를 보이며 전일 약세를 만회하는 흐름을 이어갔습니다. 케빈 워시 신임 연준 의장의 첫 FOMC를 앞두고 관망 분위기 속에서도 투자 심리는 유지됐으며, 미·이란 핵합의 기대감으로 국제유가와 국채금리가 동반 하락하며 증시에 우호적인 환경이 조성되었습니다. 국내에서는 코스피가 +2.11% 급등한 반면 코스닥은 -1.48% 하락하며 대형주·중소형주 간 뚜렷한 수급 차별화가 나타났습니다. 달러/원 환율은 1,515원 수준을 유지하며 소폭 상승하였고, 영유아 계좌까지 3배 급증하는 등 투자 과열 신호도 포착되고 있어 주의가 필요합니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: ① 케빈 워시 첫 FOMC 결과 및 금리 경로 시그널, ② 나스닥·반도체주 반등 지속 여부, ③ 미·이란 핵합의 구체화에 따른 유가 방향성</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card flat">
+      <div class="signal flat"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,511</div>
+      <div class="index-chg flat">+0.00%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">보합권 마감 후 기술주 반등으로 추가 상승 모색 중, FOMC 결과 대기</div>
+    </div>
+    
+    <div class="index-card flat">
+      <div class="signal flat"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,368</div>
+      <div class="index-chg flat">-0.03%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">개장 초반 약보합에서 반도체·AI 반등으로 플러스 전환, 상승 폭 유지 여부 주목</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,217</div>
+      <div class="index-chg up">▲ +0.42%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">유가 안정·투자 심리 개선으로 0.42% 소폭 상승, 상대적으로 안정적 흐름</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,727</div>
+      <div class="index-chg up">▲ +2.11%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">대형주 중심의 강한 매수세로 2% 이상 급등, 올해 들어 강한 상승 흐름 지속</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,019</div>
+      <div class="index-chg down">▼ -1.48%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">대형주 대비 수급 소외, 중소형주 매도 압력으로 1.48% 하락하며 차별화 심화</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,515</div>
+      <div class="index-chg up">▲ +0.10%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1,515원 수준에서 소폭 달러 강세, 워시 FOMC 결과에 따라 방향 결정 전망</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🏦 <strong>워시 첫 FOMC 대기</strong> — 케빈 워시 연준 의장의 첫 FOMC를 앞두고 금리 경로 불확실성이 관망 분위기를 형성하면서도 증시는 상승 출발하며 경계심보다 기대심이 우세한 상황</li>
+        
+        <li>🤖 <strong>AI·반도체 반등</strong> — 아스테라 랩스 5.78% 급등 등 AI 관련주가 강세를 주도하며 나스닥 개장 상승을 견인, 전날 조정 후 기술주 저가 매수세 유입 가능성</li>
+        
+        <li>🛢️ <strong>미·이란 핵합의 기대·유가 하락</strong> — 미·이란 종전 합의 기대감으로 국제유가와 국채금리가 동반 하락하며 위험자산 선호 심리를 지지, IEA는 합의 유지 시 내년 원유 공급과잉 전망을 경고</li>
+        
+        <li>🇰🇷 <strong>코스피 대형주 강세</strong> — 국내 코스피가 2% 이상 급등하며 강한 매수세를 확인, 외국인·기관 수급 유입으로 대형 우량주 중심의 상승 흐름이 지속된 것으로 추정</li>
+        
+        <li>📉 <strong>코스닥·중소형주 소외</strong> — 코스닥이 1.48% 하락하며 코스피와 대조적인 약세, 대형주로의 수급 쏠림이 심화되며 중소형주 차별화 흐름이 이어지는 점이 부담</li>
+        
+        <li>🔥 <strong>개인 투자 과열 신호</strong> — 영유아 계좌까지 3배 급증하는 등 주식 광풍 현상이 포착, 과거 시장 과열기 말기 패턴과 유사할 수 있어 투자 심리 과잉 여부 모니터링 필요</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>반도체·장비</td>
+            <td>미국 반도체주 반등 소식에 국내 반도체 대형주 동반 강세 전망, 글로벌 AI 수요 회복 기대 지속</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>AI 관련주</td>
+            <td>아스테라 랩스 등 글로벌 AI 인프라 기업 강세 흐름이 국내 AI·데이터센터 관련주로 연결될 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>에너지·정유</td>
+            <td>미·이란 합의 기대로 국제유가 하락 압력 지속, 정유사 이익 모멘텀 둔화 가능성 주의</td>
+            <td class="down-txt">▼ 약세 주의</td>
+          </tr>
+          
+          <tr>
+            <td>코스피 대형 우량주</td>
+            <td>외국인 순매수 지속 시 추가 상승 여력, 워시 FOMC 이후 달러 약세 시 추가 수혜 전망</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 중소형주</td>
+            <td>대형주 대비 수급 소외 지속, 단기 약세 흐름이 이어질 가능성이 높으며 개별 이슈 선별 접근 필요</td>
+            <td class="down-txt">▼ 약세 흐름</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>워시 FOMC 성명·점도표 확인</strong> — 신임 의장 첫 회의 결과가 향후 금리 경로의 분기점이 될 수 있어 성명 문구 및 점도표 변화를 면밀히 점검</li>
+        
+        <li>☑️ <strong>미·이란 합의 진전 여부</strong> — 핵합의 구체화 수준에 따라 에너지·정유 섹터 단기 방향이 결정되며, 지정학 리스크 해소 속도가 증시 변수</li>
+        
+        <li>☑️ <strong>코스피-코스닥 수급 분화 지속 점검</strong> — 대형주 매수세가 중소형주로 확산되는지, 아니면 차별화가 심화되는지를 다음 거래일 수급 데이터로 확인</li>
+        
+        <li>☑️ <strong>달러/원 환율 방향성</strong> — FOMC 결과 후 달러 강약에 따라 수출 대형주 수혜 여부가 달라지므로 환율 변동 모니터링 필요</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-18 01:56 KST</div>
+
+
+</body>
+</html>
