@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/18 (목) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 6/18 (목) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">🕊️ 미·이란 MOU 서명에 지정학 리스크 해소…기술주·국내 증시 동반 강세</div>
+      <div style="font-size:13px;color:var(--dim)">미국과 이란이 종전 MOU에 서명하며 중동 지정학 리스크가 급격히 완화됐고, 이 호재가 뉴욕 증시 전반의 상승을 이끌었다. 나스닥은 +1.70%, S&amp;P 500은 +1.21% 오르며 엔비디아를 비롯한 반도체·AI 기술주가 상승을 주도했다. 호르무즈 해협 통과 물량 증가 발표로 국제유가가 3% 이상 급락하며 에너지 비용 부담이 완화됐고, 고용 지표 호조도 선행 매수를 자극했다. 코스피는 +1.58% 오른 8,864로 마감했고 코스닥도 1,032를 기록하며 나란히 강세를 보였다. USD/KRW 환율이 +1.60% 오른 1,535원으로 달러 강세가 지속되고 있어 외국인 수급 흐름은 주의 깊게 지켜볼 필요가 있다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 미·이란 MOU 이행 여부와 호르무즈 해협 정상화 속도, 엔비디아·반도체주 추가 상승 여력, 달러 강세 속 외국인 수급 동향</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,510</div>
+      <div class="index-chg up">▲ +1.21%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">지정학 리스크 완화와 기술주 강세가 맞물려 상승 흐름 재가속</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,464</div>
+      <div class="index-chg up">▲ +1.70%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">엔비디아 중심 반도체·AI주 쏠림으로 주요 지수 중 상승 폭 가장 컸음</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,780</div>
+      <div class="index-chg up">▲ +0.56%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">나스닥 대비 상승 폭 제한적, 가치주·산업주는 기술주에 비해 상대적으로 소외</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,864</div>
+      <div class="index-chg up">▲ +1.58%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">미국장 호조와 지정학 완화에 연동하며 강한 상승세, 9000선 돌파가 가시권에</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,032</div>
+      <div class="index-chg up">▲ +1.30%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술·바이오 중심 중소형주도 동반 강세로 1,032 안착</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,535</div>
+      <div class="index-chg up">▲ +1.60%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">달러 강세 지속으로 1,535원대, 수출주에는 긍정적이나 외국인 자금 흐름 모니터링 필요</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🕊️ <strong>미·이란 종전 MOU 서명</strong> — 양국 종전 MOU 체결로 중동 지정학 불확실성이 급격히 해소되며 글로벌 위험자산 선호 심리가 강하게 자극됐다</li>
+        
+        <li>🛢️ <strong>국제유가 급락</strong> — 호르무즈 해협 통과 물량 증가 발언 등으로 유가가 3% 이상 하락, 인플레이션 압력 경감 기대가 확산됐다</li>
+        
+        <li>💻 <strong>엔비디아·반도체 강세</strong> — AI 수요 기대감 속 엔비디아 등 반도체주가 나스닥 상승을 견인하며 기술주 쏠림 현상이 두드러졌다</li>
+        
+        <li>📊 <strong>미국 고용 지표 호조</strong> — 고용 지표가 양호한 결과를 나타내며 경기 연착륙 기대를 높여 증시 선행 매수를 유도했다</li>
+        
+        <li>🏦 <strong>연준 금리 동결 소화</strong> — 연준의 금리 동결 결정이 시장에 충분히 소화되며 불확실성이 해소, 투자 심리 안정에 기여했다</li>
+        
+        <li>🇪🇺 <strong>유럽 증시 혼조 마감</strong> — 미·이란 MOU와 연준 동결을 소화한 유럽 증시는 혼조세로 마감, 글로벌 동조화는 제한적으로 나타났다</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>반도체·AI</td>
+            <td>엔비디아 강세가 국내 반도체 밸류체인(삼성전자·SK하이닉스 등)으로 파급될 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>수출주(자동차·화학)</td>
+            <td>달러 강세(원화 약세) 지속으로 수출 채산성 개선 기대</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>에너지·정유</td>
+            <td>국제유가 급락으로 정제 마진 및 실적 추정치 하향 조정 가능성</td>
+            <td class="down-txt">▼ 약세 우려</td>
+          </tr>
+          
+          <tr>
+            <td>방산</td>
+            <td>미·이란 종전 합의로 단기 차익 실현 매물 출회 가능성, 이후 방향성 재점검 필요</td>
+            <td class="down-txt">▼ 차익 실현 주의</td>
+          </tr>
+          
+          <tr>
+            <td>IT·플랫폼</td>
+            <td>기술주 강세 분위기 속 국내 IT·플랫폼주도 동반 수혜 전망</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>미·이란 MOU 이행 속도</strong> — 종전 합의가 실질적 이행으로 이어질지가 지정학 프리미엄 해소의 지속 여부를 결정하는 핵심</li>
+        
+        <li>☑️ <strong>호르무즈 해협 정상화 일정</strong> — 해협 완전 정상화 시점에 따라 유가 추가 하락 폭이 결정되며 인플레·연준 경로에도 영향</li>
+        
+        <li>☑️ <strong>연준 향후 지표 반응</strong> — 금리 동결 이후 발표되는 고용·물가 지표에 따라 추가 인하 기대 조정 가능성 점검 필요</li>
+        
+        <li>☑️ <strong>달러 강세 및 외국인 수급</strong> — USD/KRW 1,535원대 달러 강세 지속 시 외국인 자금 이탈 리스크와 수급 방향 모니터링 요</li>
+        
+        <li>☑️ <strong>코스피 9000선 돌파 모멘텀</strong> — 8,864에서 추가 상승 여력을 유지할 수 있는 수급·실적 모멘텀 확인이 필요</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-19 02:17 KST</div>
+
+
+</body>
+</html>
