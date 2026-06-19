@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/19 (금) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 6/19 (금) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 장중 9,380선 신고점 터치 후 급반락…9,000선 사수에 안도</div>
+      <div style="font-size:13px;color:var(--dim)">코스피는 장중 9,380선까지 치솟으며 연고점 경신을 시도했으나, 종전 협상 불확실성과 외국인·기관의 동반 매도에 결국 9,052(-0.13%)로 하락 마감했다. 코스닥은 -3.43%의 가파른 낙폭을 기록하며 레버리지 투자자들의 손실 우려를 키웠다. 환율은 장중 1,540원에 육박했다가 외환 당국의 개입으로 1,530원대로 내려왔다. 전일 미국 증시는 나스닥 +1.91%, S&amp;P 500 +1.08%의 강세를 보였으나 국내에서는 차익실현 압력이 우세했으며, 9,000선 지지 여부가 다음 주 분위기를 가를 핵심 관전 포인트로 남았다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: ① 코스피 9,000선 심리적 지지력 확인, ② 외환 당국 개입 이후 달러·원 1,530원대 안착 여부, ③ 코스닥 낙폭 과대 여부 및 반등 가능성</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,501</div>
+      <div class="index-chg up">▲ +1.08%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">나스닥·기술주 주도 속 1% 넘는 강세로 위험선호 심리 유지</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,518</div>
+      <div class="index-chg up">▲ +1.91%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 중심으로 2% 가까운 상승, 미국장 주도</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,565</div>
+      <div class="index-chg up">▲ +0.14%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 상승에 그쳐 기술주 대비 상대적 부진</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">9,052</div>
+      <div class="index-chg down">▼ -0.13%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장중 9,380선 신고점 시도 후 급반락, 9,000선은 가까스로 사수</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">966.59</div>
+      <div class="index-chg down">▼ -3.43%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">3% 이상 급락, 레버리지 투자 손실 경보 수준의 하락세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,530</div>
+      <div class="index-chg up">▲ +0.29%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장중 1,540원 근접 후 외환 당국 개입으로 1,530원대 안정</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🕊️ <strong>종전 협상 불확실성</strong> — 협상 &#39;삐걱&#39; 소식이 전해지며 투자심리가 급속히 냉각, 장중 상승분 대부분 반납</li>
+        
+        <li>💱 <strong>외환 당국 개입</strong> — 달러·원 1,540원 육박 시 당국이 시장에 개입해 환율을 1,530원대로 끌어내림</li>
+        
+        <li>🏦 <strong>외국인·기관 동반 매도</strong> — 양대 수급 주체의 동반 매도가 코스피 상승 모멘텀을 꺾은 결정적 요인</li>
+        
+        <li>🇺🇸 <strong>미국 증시 강세 온기</strong> — 나스닥·S&amp;P 500 강세가 장 초반 긍정 영향을 줬으나 국내 차익실현 압력에 상쇄</li>
+        
+        <li>🚢 <strong>K조선 수주 호조</strong> — 상반기 수주 목표의 60%를 조기 달성, 하반기 추가 수주 모멘텀 기대</li>
+        
+        <li>📉 <strong>코스닥 레버리지 손실 경보</strong> — 코스닥 3%대 급락으로 고배율 ETF·ETN 보유 투자자들의 손실 위험이 부각</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>글로벌 시총 12위 기록, 비트코인 시총도 제치며 반도체 대장주 위상 재확인</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>삼성전자와 함께 폭등 언급, AI 반도체 수요 강세 기대 지속</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>조선주</td>
+            <td>K조선 상반기 수주 목표 60% 조기 달성, 업황 개선 모멘텀 유효</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>현대차·기아</td>
+            <td>교황 레오 14세의 한국 브랜드 애용 화제로 글로벌 이미지 부각 가능성</td>
+            <td class="warn-txt">→ 관심 유지</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 성장주</td>
+            <td>3% 이상 급락으로 낙폭 과대 우려, 레버리지 반대매매 리스크 잔존</td>
+            <td class="down-txt">▼ 약세 주의</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>코스피 9,000선 지지 여부</strong> — 주말 이후 재개장 시 심리적 지지선 유지가 다음 주 반등 여부를 결정</li>
+        
+        <li>☑️ <strong>달러·원 1,530원대 안착</strong> — 외환 당국 개입 효과가 유지되는지, 재차 1,540원 돌파 시 추가 개입 가능성 주시</li>
+        
+        <li>☑️ <strong>종전 협상 진행 상황</strong> — 협상 삐걱이 장중 급반락 빌미, 주말 중 관련 뉴스 변화가 월요일 갭에 직결</li>
+        
+        <li>☑️ <strong>미국 증시 기술주 흐름</strong> — 나스닥 강세 지속 여부가 국내 반도체·성장주 심리에 영향, 주말 간 매크로 변화 체크</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-19 20:40 KST</div>
+
+
+</body>
+</html>
