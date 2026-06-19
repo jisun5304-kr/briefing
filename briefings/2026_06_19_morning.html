@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/19 (금) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 6/19 (금) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 반도체 랠리가 이끈 나스닥 급등…코스피 신고가 행진 지속</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 뉴욕 증시는 필라델피아 반도체지수 급등을 앞세워 강하게 상승 마감했다. 나스닥이 +1.91% 급등했고 S&amp;P 500도 +1.08% 올랐으며, 인텔은 사상 최고가를 경신하는 등 반도체·AI 섹터가 시장을 이끌었다. 국내에서는 전일 코스피가 +1.58% 오른 데 이어 오늘 개장 초반 9,300선을 돌파하며 신고가 행진을 이어가고 있다. 삼성전자·SK하이닉스 모두 신고가를 새로 썼고, 한미반도체 등 반도체 장비주도 동반 강세를 보였다. 다만 원/달러 환율이 +0.65% 오르며 1,535원대에 거래되고 있어 외국인 수급 변수로 작용할 전망이다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: ① 미국 Juneteenth 휴장 속 반도체 모멘텀 국내 자체 소화 여부, ② 코스피 9,300선 안착 및 신고가 연속 경신 지속성, ③ 원/달러 환율 1,537원대 상승에 따른 외국인 수급 동향</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,501</div>
+      <div class="index-chg up">▲ +1.08%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">반도체 섹터 강세 견인으로 1%대 상승 마감. 기술주 중심 상승 탄력 지속.</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,518</div>
+      <div class="index-chg up">▲ +1.91%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">금리 우려를 극복하고 반도체·AI 랠리로 2% 가까이 급등. 기술주 투자심리 개선.</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,565</div>
+      <div class="index-chg up">▲ +0.14%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 대비 상대적으로 소폭 상승에 그쳐. 방어주·전통주는 혼조세.</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,864</div>
+      <div class="index-chg up">▲ +1.58%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">전일 신고가 경신에 이어 오늘 개장 초반 9,300선 돌파 시도. 미국 반도체 랠리 온기 직접 반영.</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">1,032</div>
+      <div class="index-chg up">▲ +1.30%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">중소형 기술주도 동반 상승. 반도체 소부장·장비 섹터 수혜 기대감 반영.</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,535</div>
+      <div class="index-chg up">▲ +0.65%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">원화 약세 지속. 달러 강세 흐름 속 환율 상승 압력이 외국인 수급 변수로 부상.</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🔩 <strong>반도체 랠리 주도</strong> — 필라델피아 반도체지수 급등이 나스닥·S&amp;P 500 상승을 이끌었으며, 인텔은 사상 최고가를 경신하며 글로벌 반도체 사이클 회복 기대를 강화.</li>
+        
+        <li>🇺🇸 <strong>미국 Juneteenth 휴장</strong> — 미국 증시는 6월 19일 공휴일로 휴장. 국내 증시는 전일 미국 모멘텀을 소화하며 자체 수급으로 움직이는 국면.</li>
+        
+        <li>🤖 <strong>AI IPO 시즌 기대감</strong> — 앤트로픽·오픈AI·스페이스X 등 대형 IPO 시즌 개막 기대감이 AI·기술주 투자심리를 지지하는 중장기 호재로 거론.</li>
+        
+        <li>💡 <strong>인텔 신고가·한국 인재 영입</strong> — 인텔이 주가 사상 최고가를 경신하며 한국 반도체 전문가 영입과 애플 협업 소식이 알려져 글로벌 반도체 공급망 재편 기대 자극.</li>
+        
+        <li>🛢️ <strong>유가 하락·비용 부담 완화</strong> — 국제유가 하락이 기업 비용 절감 기대로 이어지며 증시 상승을 지지하는 배경으로 작용.</li>
+        
+        <li>💱 <strong>원화 약세 지속</strong> — 환율이 1,535원대로 상승하며 수출 기업 실적에는 긍정적이나, 외국인 자금 이탈 가능성이 잠재적 변수로 부각.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>37만원 신고가 경신. 반도체 글로벌 랠리의 직접 수혜주로 HBM 및 AI 메모리 수요 기대 반영.</td>
+            <td class="up-txt">▲ 신고가 경신</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>285만원 신고가. HBM 수요 지속 및 AI 서버 투자 확대 수혜가 주가에 반영.</td>
+            <td class="up-txt">▲ HBM 수요 강세</td>
+          </tr>
+          
+          <tr>
+            <td>한미반도체</td>
+            <td>미국 필라델피아 반도체지수 급등에 연동. HBM 패키징 장비 핵심 공급사로 수혜 부각.</td>
+            <td class="up-txt">▲ 반도체 장비 강세</td>
+          </tr>
+          
+          <tr>
+            <td>반도체 소부장</td>
+            <td>글로벌 반도체 사이클 회복 기대에 소재·부품·장비 전반에 동반 수혜 전망. 한국 인재 영입 뉴스도 투심 자극.</td>
+            <td class="up-txt">▲ 동반 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>AI·빅테크</td>
+            <td>앤트로픽·오픈AI IPO 기대감과 AI 인프라 투자 확대로 AI 테마주 투자심리 개선. 중장기 성장 서사 유효.</td>
+            <td class="up-txt">▲ IPO 기대감 유입</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>미국 휴장 일정 확인</strong> — 오늘 미국 증시 Juneteenth 휴장으로 야간 선물 변동성이 제한되며, 국내 증시는 자체 수급과 아시아 시장 흐름에 더 민감하게 반응할 가능성.</li>
+        
+        <li>☑️ <strong>코스피 9,300선 안착 여부</strong> — 개장 초반 9,300 돌파 시도가 장 후반까지 유지되는지가 추가 상승 신뢰도의 핵심 지표. 외국인 순매수 지속 여부 병행 확인 필요.</li>
+        
+        <li>☑️ <strong>원/달러 환율 추이</strong> — 1,537원대로 상승한 환율이 추가 상승 시 외국인 차익 실현 압박으로 이어질 수 있어 오전 환율 동향을 주시해야 함.</li>
+        
+        <li>☑️ <strong>반도체 추가 상승 촉매</strong> — 삼성전자·SK하이닉스 신고가 경신 이후 추가 상승을 뒷받침할 실적 발표 일정 및 AI 수주 소식 여부를 체크.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-19 09:09 KST</div>
+
+
+</body>
+</html>
