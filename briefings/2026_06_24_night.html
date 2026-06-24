@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/24 (수) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 6/24 (수) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 마이크론 실적 기대에 뉴욕 반등…韓 삼전·닉스 ETF 충격 여진 지속</div>
+      <div style="font-size:13px;color:var(--dim)">밤 세션 기준, 뉴욕 증시는 마이크론 실적 발표를 앞두고 매수세가 유입되며 다우존스 +0.99%, S&amp;P 500 +0.66%, 나스닥 +0.74%로 동반 상승 중입니다. 알파벳이 버라이즌을 대신해 다우지수에 신규 편입되는 구조 변화도 주목됩니다. 반면 국내 증시는 코스피 -9.99%, 코스닥 -7.94%의 극심한 낙폭을 기록했으며, 삼성전자·SK하이닉스 레버리지 ETF발 쇼크가 글로벌 기술주까지 파급되며 외신에서도 집중 조명했습니다. 브렌트유는 이란 전쟁 이후 처음으로 75달러선을 하회해 에너지 시장에도 변수가 생겼고, 금값은 4,000달러를 돌파하며 안전자산 수요도 확인됐습니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 마이크론 실적 발표 내용 및 가이던스, 삼전·닉스 ETF 충격의 글로벌 연쇄 파급 여부, 브렌트유 75달러 이탈 후 추이</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,414</div>
+      <div class="index-chg up">▲ +0.66%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">마이크론 기대감에 매수세 유입, 장중 상승 흐름 안정적 유지</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,776</div>
+      <div class="index-chg up">▲ +0.74%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">IBM 등 일부 AI주 약세에도 반도체 기대로 플러스 전환 성공</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,179</div>
+      <div class="index-chg up">▲ +0.99%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">알파벳 신규 편입 이벤트 맞물려 주요 지수 중 가장 큰 폭의 반등</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,204</div>
+      <div class="index-chg down">▼ -9.99%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">삼전·닉스 레버리지 ETF 쇼크 직격, 역대급 낙폭으로 시장 충격 극심</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">891.52</div>
+      <div class="index-chg down">▼ -7.94%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">레버리지 상품 발 충격과 외국인 순매도 맞물려 낙폭 심화</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,542</div>
+      <div class="index-chg up">▲ +0.17%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">원화 약세 소폭 지속, 국내 증시 충격 대비 환율 변동은 제한적</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>💾 <strong>마이크론 실적 기대감</strong> — 뉴욕 증시 상승의 핵심 동인, 반도체 섹터 전반의 방향성을 결정할 이벤트로 주목</li>
+        
+        <li>🔀 <strong>알파벳, 다우지수 편입</strong> — 버라이즌 대신 다우 편입 확정, 패시브 펀드 리밸런싱 수요 유입 기대</li>
+        
+        <li>🇰🇷 <strong>韓 반도체 레버리지 ETF 충격</strong> — 삼전·닉스 레버리지 ETF발 쇼크가 글로벌 기술주까지 파급, 외신도 한국 증시 영향력 조명</li>
+        
+        <li>🛢️ <strong>브렌트유 75달러선 이탈</strong> — 이란 전쟁 이후 처음으로 하회, 에너지 섹터 및 인플레이션 기대에 영향</li>
+        
+        <li>🏛️ <strong>트럼프, 석유업계 조사 지시</strong> — 휘발유 가격 인하 불응 업계에 조사 명령, 에너지 정책 불확실성 부각</li>
+        
+        <li>🤖 <strong>AI주 차별화 흐름</strong> — IBM 등 일부 AI 관련주 약세, 개장 초 나스닥 하락 이후 종목별 차별화 진행</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자·SK하이닉스</td>
+            <td>레버리지 ETF 쇼크 진원지, 외신까지 글로벌 충격 보도…추가 여진 가능성 경계</td>
+            <td class="down-txt">▼ 약세 지속 우려</td>
+          </tr>
+          
+          <tr>
+            <td>마이크론(MU)</td>
+            <td>높아진 실적 기대감이 반도체 섹터 전반 매수세 견인, 발표 후 방향성이 관건</td>
+            <td class="up-txt">▲ 실적 기대 강세</td>
+          </tr>
+          
+          <tr>
+            <td>알파벳(GOOGL)</td>
+            <td>다우지수 신규 편입 확정, 지수 추종 매수 유입 기대감 반영 전망</td>
+            <td class="up-txt">▲ 편입 이벤트 수혜</td>
+          </tr>
+          
+          <tr>
+            <td>에너지·정유</td>
+            <td>브렌트유 75달러 이탈 및 트럼프 조사 지시 맞물려 변동성 확대 가능성</td>
+            <td class="warn-txt">→ 방향성 불투명</td>
+          </tr>
+          
+          <tr>
+            <td>금(Gold)</td>
+            <td>4,000달러 돌파 보도…불확실성 속 안전자산 수요 확인</td>
+            <td class="up-txt">▲ 4,000달러 돌파</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>마이크론 실적 발표</strong> — 가이던스 포함 발표 내용이 글로벌 반도체 섹터 흐름을 결정할 최대 분수령</li>
+        
+        <li>☑️ <strong>삼전·닉스 ETF 충격 연쇄 파급 여부</strong> — 글로벌 기술주 연동 하락 지속 시 다음 세션 국내 증시 추가 낙폭 가능성 점검</li>
+        
+        <li>☑️ <strong>브렌트유 추이</strong> — 75달러선 이탈 이후 추가 하락 시 에너지 섹터 및 인플레이션 기대 변화 동반 점검</li>
+        
+        <li>☑️ <strong>알파벳 다우 편입 효과</strong> — 패시브 리밸런싱 수요가 단기 주가에 미치는 영향 모니터링</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-25 01:24 KST</div>
+
+
+</body>
+</html>
