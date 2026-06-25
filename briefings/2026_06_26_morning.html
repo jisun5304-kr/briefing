@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/26 (금) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 6/26 (금) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">💻 마이크론 호실적 훈풍에 코스피 3% 급등, 뉴욕은 혼조 마감</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 뉴욕증시는 마이크론의 깜짝 실적 발표에도 메모리 가격 부담 우려가 겹치며 혼조세로 마감했다. S&amp;P 500은 사실상 보합(-0.01%), 나스닥은 애플 급락 여파로 소폭 하락(-0.46%)한 반면 다우존스는 경기방어주 중심으로 0.14% 소폭 올랐다. 국내 증시는 마이크론 훈풍을 정면으로 흡수해 코스피가 3.26% 급등하며 8,471을 기록했고, 코스닥도 소부장 중심으로 2% 반등에 성공했다. 미 PCE 물가가 3.4%로 시장 전망치에 부합하면서 연준의 추가 금리인상 명분이 약화될 수 있다는 해석이 힘을 얻고 있다. 한편 비트코인은 6만 달러 지지선이 붕괴되며 20개월 만의 최저치를 기록, 위험자산 간 차별화가 뚜렷하다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: ①마이크론 호실적 훈풍이 삼성전자·SK하이닉스 추가 상승으로 이어질지, ②PCE 물가 부합에 따른 연준 금리 경로 시장 재평가, ③코스닥 소부장 반등 모멘텀 지속성 확인</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card flat">
+      <div class="signal flat"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,357</div>
+      <div class="index-chg flat">-0.01%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">마이크론 급등과 애플 하락이 상쇄되며 사실상 제자리 마감, 방향성 탐색 구간</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,359</div>
+      <div class="index-chg down">▼ -0.46%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">애플 급락 등 빅테크 차별화로 소폭 조정, &#39;Magnificent 7&#39; 구도 흔들리는 모습</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,921</div>
+      <div class="index-chg up">▲ +0.14%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">경기방어·전통업종 중심 소폭 반등, 기술주 약세 속 상대적 견조</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,471</div>
+      <div class="index-chg up">▲ +3.26%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">마이크론 반도체 훈풍을 직접 흡수하며 3% 넘게 급등, 반도체 대형주 강세 주도</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">909.31</div>
+      <div class="index-chg up">▲ +2.00%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">반도체 소부장 중심으로 2% 반등, 코스피 강세 온기가 중소형주로 확산</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,543</div>
+      <div class="index-chg up">▲ +0.49%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">달러 소폭 강세로 원화 약세 압력 지속, 외국인 수급 변수로 작용 가능</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🔬 <strong>마이크론 호실적</strong> — AI D램 수요 기반 깜짝 실적으로 반도체 섹터 전반에 훈풍, 국내 메모리 대형주 강세 직결</li>
+        
+        <li>📊 <strong>美 PCE 물가 전망치 부합</strong> — PCE 물가 3.4%로 시장 예상에 부합, 연준의 추가 금리인상 명분 약화 가능성으로 해석</li>
+        
+        <li>🍎 <strong>애플 급락</strong> — 나스닥 발목을 잡으며 빅테크 내 차별화 심화, 관련 부품주 여파 주의</li>
+        
+        <li>₿ <strong>비트코인 6만 달러 붕괴</strong> — 20개월 만의 최저치 기록, 위험자산 심리 냉각 신호로 가상화폐 관련주 부담</li>
+        
+        <li>🤖 <strong>&#39;3 AImigos&#39; 부상</strong> — &#39;Magnificent 7&#39; 시대가 저물고 AI 핵심 3사 중심으로 빅테크 구도 재편 논의 확산</li>
+        
+        <li>🔴 <strong>구리 급락 후 반등</strong> — 구리 4% 급락 뒤 저가 매수 반등, 달러 약세와 맞물려 원자재 변동성 확대</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>마이크론 호실적 훈풍 직접 수혜, 국내 반도체 대표주로 코스피 상승 견인</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>프리마켓에서 오름세, 마이크론 AI D램 수요 가이던스와 연동해 추가 상승 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>반도체 소부장</td>
+            <td>코스닥 반등을 이끈 핵심 섹터, 어제 강세 모멘텀 지속 여부가 오늘 관전 포인트</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>애플 관련 부품주</td>
+            <td>미국 애플 급락 여파로 국내 아이폰 부품 공급사 단기 조정 압력 가능성</td>
+            <td class="down-txt">▼ 약세 주의</td>
+          </tr>
+          
+          <tr>
+            <td>가상화폐 관련주</td>
+            <td>비트코인 6만 달러 붕괴로 20개월 만의 최저, 관련 거래소·채굴주 투자심리 위축</td>
+            <td class="down-txt">▼ 약세 주의</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>마이크론 실적 세부 내용 확인</strong> — AI D램 수요 가이던스와 메모리 가격 전망이 삼성전자·SK하이닉스 방향성을 결정짓는 핵심 변수</li>
+        
+        <li>☑️ <strong>PCE 물가 이후 연준 금리 경로 재평가</strong> — 전망치 부합 이후 시장의 금리인하 기대 변화 여부를 채권 금리와 달러 움직임으로 점검</li>
+        
+        <li>☑️ <strong>삼성전자·SK하이닉스 장중 수급</strong> — 전일 대형주 급등 이후 외국인 차익 실현 vs. 추가 매수 여부가 코스피 추세 결정</li>
+        
+        <li>☑️ <strong>코스닥 소부장 연속성</strong> — 어제 반등이 단기 기술적 반등인지, 반도체 사이클 회복 기대 선반영인지 거래량으로 확인</li>
+        
+        <li>☑️ <strong>달러/원 환율 1,543원대 지속 여부</strong> — 원화 약세가 심화되면 외국인 순매도 압력이 강해져 코스피 상승폭을 제한할 수 있음</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-26 08:52 KST</div>
+
+
+</body>
+</html>
