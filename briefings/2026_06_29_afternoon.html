@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/29 (월) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 6/29 (월) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📊 외인 기록적 매도에도 코스닥 8% 폭등… 극한 변동장</div>
+      <div style="font-size:13px;color:var(--dim)">6월 29일 국내 증시는 극도의 양극화 장세를 연출했다. 코스피는 외국인 투자자의 역대급 대규모 매도 공세에 흔들리며 -0.20%로 소폭 약보합 마감했다. 반면 코스닥은 이차전지·바이오주가 앞장서며 +8.13%의 이례적 폭등을 기록, 코스피와 정반대의 행보를 보였다. 코스피200 변동성지수(V-KOSPI)가 사상 최고 수준을 돌파하며 극도의 공포 심리가 형성됐고, 환율은 1,543원으로 한 달째 1,500원대를 유지 중이다. 미국 3대 지수는 전거래일 대비 소폭 하락하며 방향성을 탐색하는 흐름이 지속됐다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 외국인 순매도 추가 이어질지 여부, 코스닥 이차전지·바이오 급등 모멘텀 지속성, 환율 1,540원대 안정화 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card flat">
+      <div class="signal flat"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,354</div>
+      <div class="index-chg flat">-0.05%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">보합권 마감, 뚜렷한 재료 없이 방향성 탐색 지속</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,298</div>
+      <div class="index-chg down">▼ -0.24%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 중심 소폭 약세, 뚜렷한 주도 재료 부재</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,876</div>
+      <div class="index-chg down">▼ -0.09%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">전통 대형주도 소폭 밀리며 관망세 우세</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,395</div>
+      <div class="index-chg down">▼ -0.20%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">외국인 기록적 대규모 매도 압박 속 약보합, 변동성지수 사상 최고치 돌파</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">920.57</div>
+      <div class="index-chg up">▲ +8.13%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">이차전지·바이오 주도로 8% 이상 폭등, 코스피와 극단적 디커플링</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,543</div>
+      <div class="index-chg down">▼ -0.20%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1,540원대 마감, 한 달 이상 고환율 지속 중</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🏦 <strong>외국인 기록적 매도 폭탄</strong> — 코스피에서 약 7~8조 원 규모의 외국인 매도가 집중되며 사상 최대 수준의 충격을 가했으나, 개인 매수로 낙폭이 제한됨</li>
+        
+        <li>🔋 <strong>이차전지·바이오 코스닥 폭등</strong> — 이차전지 레버리지 ETF가 질주하며 코스닥 8% 급등을 이끌었고, 바이오도 동반 강세를 보이며 코스피와 역방향 장세를 연출</li>
+        
+        <li>😱 <strong>변동성지수 사상 최고 돌파</strong> — 코스피200 변동성지수(공포 지수)가 사상 최고 수준을 경신하며 투자 심리가 극도로 위축되고 불확실성이 증폭됨</li>
+        
+        <li>💱 <strong>고환율 1,540원대 장기화</strong> — USD/KRW가 한 달 넘게 1,500원대를 유지 중으로, 외국인 자금 이탈을 촉진하는 악순환 고리가 형성될 가능성 있음</li>
+        
+        <li>💾 <strong>삼성전자 시총 1위 내줘</strong> — 삼성전자가 SK하이닉스에 코스피 시총 1위를 내준 것으로 보도되며, 반도체 업종 내 주도권 변화와 투자 심리 위축이 우려됨</li>
+        
+        <li>🌏 <strong>대만 증시 저가 매수 반등</strong> — 대만 증시는 주력주에 저가 매수세가 유입되며 0.96% 반등 마감, 아시아 증시 내에서도 차별화된 흐름이 나타남</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>이차전지 (코스닥)</td>
+            <td>레버리지 ETF를 포함한 이차전지 종목군이 코스닥 8% 폭등을 주도, 단기 모멘텀 집중</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>바이오</td>
+            <td>코스닥 급등장에서 이차전지와 함께 상승을 이끈 양대 섹터로, 수급 쏠림 지속 여부 주시 필요</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>코스피 시총 1위를 SK하이닉스에 내줬다는 보도와 함께 반도체 투자 심리 위축 우려, 레버리지 ETF 상장 이슈도 병존</td>
+            <td class="down-txt">▼ 약세 우려</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>시총 코스피 1위로 부상한 것으로 거론되며 반도체 업종 대장주 교체 가능성, 단기 수급 주목</td>
+            <td class="up-txt">▲ 관심 집중</td>
+          </tr>
+          
+          <tr>
+            <td>드론</td>
+            <td>중국 드론 업체에 대한 선전포고 성격의 경쟁 구도 보도로 국내 드론 관련주에 관심이 쏠릴 가능성</td>
+            <td class="up-txt">▲ 테마 부상 가능</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>외국인 매도 지속 여부 확인</strong> — 7~8조 원에 달하는 역대급 매도가 이어질 경우 코스피 추가 하락 및 수급 공백 심화 위험</li>
+        
+        <li>☑️ <strong>코스닥 단기 과열 점검</strong> — 하루 8% 급등은 기술적 과열 신호로 해석될 수 있어, 단기 차익 실현 매물 출회 가능성 경계 필요</li>
+        
+        <li>☑️ <strong>공포지수(V-KOSPI) 고점 추이</strong> — 변동성지수가 사상 최고 수준인 만큼 추가 상승 시 시장 충격 증폭 우려, 헤지 전략 재점검 시점</li>
+        
+        <li>☑️ <strong>환율 1,500원대 탈출 시점</strong> — 고환율이 외국인 이탈을 가속화하는 구조인 만큼, 원화 안정화 여부가 수급 개선의 선행 조건</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-29 21:04 KST</div>
+
+
+</body>
+</html>
