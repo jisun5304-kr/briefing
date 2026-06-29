@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/30 (화) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 6/30 (화) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 알파벳·테슬라 급등에 뉴욕 3대 지수 일제 상승…코스피 회복 도전</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 미국 증시는 기술주 강세에 힘입어 3대 지수가 모두 올랐다. 알파벳이 다우존스에 신규 편입된 첫날 4% 가까이 급등하며 지수를 사상 최고치로 끌어올렸고, 테슬라 역시 강한 상승세로 나스닥을 2%대 랠리로 이끌었다. 코스피는 전일 리밸런싱 수급 충격으로 8,411선까지 급락했으나, 뉴욕 훈풍과 수급 정상화 기대로 오늘 장 8,400선 회복 도전이 핵심 관전 포인트다. 미국·이란 대화 재개 소식은 지정학 리스크 완화 신호로 해석되며, 미 투자은행들의 연내 금리 동결 전망도 위험선호 심리를 지지했다. 삼성전자의 광주 반도체 신규 팹 포함 625조 원 국내 투자 계획은 반도체 섹터 중장기 모멘텀으로 주목된다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 코스피 8,400선 회복 여부, 알파벳·테슬라 모멘텀의 국내 기술주 파급 강도, 미국·이란 협상 진전과 원자재 시장 방향성</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,440</div>
+      <div class="index-chg up">▲ +1.18%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주·성장주 반등으로 전반적 강세 회복, 주요 저항선 재돌파</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,820</div>
+      <div class="index-chg up">▲ +2.07%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">알파벳·테슬라 주도 기술주 랠리로 2%대 급등, 단기 모멘텀 복원</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,183</div>
+      <div class="index-chg up">▲ +0.59%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">알파벳 편입 효과에 사상 최고치 경신, 지수 구성 변화가 상승 촉매</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,411</div>
+      <div class="index-chg down">▼ -5.81%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">리밸런싱 수급 충격에 큰 폭 급락, 뉴욕 반등을 등에 업고 회복 시도 예상</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">851.37</div>
+      <div class="index-chg down">▼ -4.10%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">코스피와 동반 급락, 중소형 기술주 낙폭 과대 구간 진입 가능성 주시</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,535</div>
+      <div class="index-chg down">▼ -0.73%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">달러 약세 흐름에 원화 소폭 강세, 외국인 수급 복귀 여부와 연동</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🤖 <strong>알파벳 다우 편입</strong> — 구글 모회사 알파벳이 다우존스 신규 편입 첫날 4% 급등, 지수 사상 최고치 경신 주도</li>
+        
+        <li>⚡ <strong>테슬라·전기차 강세</strong> — 테슬라 급등 및 미국 우주·전기차 섹터 전반 강세로 나스닥 기술주 랠리 견인</li>
+        
+        <li>💾 <strong>반도체 반등</strong> — 낙폭 과대 인식에 반도체 섹터 반등 조짐, AI 수요 기대감이 매수 근거로 작용</li>
+        
+        <li>🇮🇷 <strong>미국·이란 대화 재개</strong> — 양국 협상 재개 소식에 지정학 리스크 완화 기대, WTI가 70달러선을 회복</li>
+        
+        <li>🏦 <strong>연내 금리 동결 컨센서스</strong> — 미 투자은행들이 연말까지 금리 동결을 예상, 일정한 경제 성장세 유지 전망이 위험선호 지지</li>
+        
+        <li>🏭 <strong>삼성전자 대규모 국내 투자</strong> — 삼성, 광주 신규 반도체 팹 건설 포함 625조 원 국내 투자 계획 발표, 반도체 섹터 중장기 모멘텀</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>알파벳(구글)</td>
+            <td>다우존스 신규 편입 첫날 급등, AI·클라우드·광고 사업 글로벌 주도력 재확인</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>테슬라</td>
+            <td>전기차 수요 회복 기대 및 우주·방산 연계 테마 부각으로 강한 상승</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>반도체</td>
+            <td>전일 급락 이후 낙폭 과대 인식과 AI 수요 기대감에 반등 가능성</td>
+            <td class="up-txt">▲ 반등 전망</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>625조 국내 투자·광주 신규 팹 발표로 중장기 성장 기대, 단기 수급 회복도 주시</td>
+            <td class="up-txt">▲ 중장기 긍정</td>
+          </tr>
+          
+          <tr>
+            <td>LS일렉트릭</td>
+            <td>미국 공장 6배 증설 소식에 급등, 전력인프라·데이터센터 연계 수혜 기대</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>에너지·원자재</td>
+            <td>미국·이란 갈등 속 WTI 70달러선 회복, 협상 진전 여부에 따라 방향성 가름</td>
+            <td class="warn-txt">→ 변동성 주의</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>코스피 8,400선 탈환 여부</strong> — 리밸런싱 충격 이후 외국인·기관 수급 복귀 속도가 회복 폭을 결정하는 핵심 변수</li>
+        
+        <li>☑️ <strong>알파벳·테슬라 모멘텀 지속성</strong> — 단기 급등 이후 차익실현 매물 출회 여부 및 국내 기술주·반도체로의 온기 전달 강도 확인</li>
+        
+        <li>☑️ <strong>미국·이란 협상 진전</strong> — 대화 재개가 실질 합의로 이어질 경우 유가·지정학 리스크 동시 완화 가능, 협상 속도 모니터링 필요</li>
+        
+        <li>☑️ <strong>연준 금리 경로 재확인</strong> — 연내 동결 컨센서스 유지 여부를 가늠할 경제지표·연준 위원 발언 일정 점검</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-30 08:34 KST</div>
+
+
+</body>
+</html>
