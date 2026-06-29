@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 6/29 (월) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 6/29 (월) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 중동 긴장 완화에 나스닥 급반등, 코스피는 역행 급락</div>
+      <div style="font-size:13px;color:var(--dim)">미-이란 교전 중단 소식이 전해지며 미국 증시가 일제히 강세로 출발했습니다. 나스닥은 +1.52%, S&amp;P 500은 +0.87% 상승하며 지난 주 하락분을 되돌리는 흐름이며, 엔비디아·테슬라 등 기술주가 반등을 주도하고 있습니다. 트럼프 대통령이 미-이란 간 도하 새 회담을 예고하면서 지정학적 리스크 완화 기대감이 추가로 확산되고 있습니다. 반면 국내 코스피는 -5.81%, 코스닥은 -4.10% 급락하며 글로벌 분위기와 뚜렷이 역행했고, 원/달러 환율은 1,541원으로 소폭 원화 강세를 나타냈습니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 미-이란 도하 회담 실제 개최 여부, 나스닥·엔비디아 장중 상승 지속성, 코스피 급락 원인 및 저가 매수 유입 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,418</div>
+      <div class="index-chg up">▲ +0.87%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">중동 리스크 완화에 힘입어 상승 출발, 지난 주 하락 만회 시도</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,681</div>
+      <div class="index-chg up">▲ +1.52%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 반등 주도로 3대 지수 중 상승폭 최대, 기술주 심리 회복 신호</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,117</div>
+      <div class="index-chg up">▲ +0.46%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">중동 긴장 완화 수혜에 완만히 상승, 기술주 대비 상승폭은 제한적</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">8,411</div>
+      <div class="index-chg down">▼ -5.81%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">글로벌 반등 흐름에도 불구하고 이례적 급락 마감, 원인 점검 필요</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">851.37</div>
+      <div class="index-chg down">▼ -4.10%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">코스피와 동반 급락, 중소형주까지 전반적 투매 분위기</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,541</div>
+      <div class="index-chg down">▼ -0.32%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">중동 리스크 완화·달러 약세 기조에 원화 소폭 강세</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🕊️ <strong>미-이란 중동 긴장 완화</strong> — 미-이란 교전 중단 및 트럼프 도하 회담 예고로 지정학적 리스크 프리미엄 급격 축소, 미 증시 상승 촉매</li>
+        
+        <li>💻 <strong>빅테크·기술주 반등</strong> — 엔비디아·테슬라가 나스닥 상승을 견인, 지난 주 조정 이후 저가 매수 심리 회복 가능성</li>
+        
+        <li>🇰🇷 <strong>코스피·코스닥 이례적 급락</strong> — 글로벌 반등에도 국내 지수가 각각 -5.81%, -4.10% 급락하며 원인 파악과 수급 점검이 시급한 상황</li>
+        
+        <li>🌍 <strong>유럽 증시 혼조</strong> — 유로스톡스 0.06% 소폭 상승에 그쳐 미 증시와 달리 유럽은 방향성 탐색 국면 지속</li>
+        
+        <li>📊 <strong>하반기 증시 전망 엇갈림</strong> — 3분기 조정 가능성 경고와 4분기 반등 전망이 동시에 제기되며 단기 변동성 확대 가능성 시사</li>
+        
+        <li>🥇 <strong>금값·연준 해석 논란</strong> — 전 골드만삭스 연구원이 시장의 연준 과도 해석을 지적하며 금값 재상승 가능성 언급, 인플레 우려도 잔존</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>AI반도체·엔비디아</td>
+            <td>중동 긴장 완화와 기술주 선호 심리 회복이 맞물려 나스닥 주도 강세</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>테슬라·전기차</td>
+            <td>기술주 반등 국면 동반 수혜, 나스닥 상승 흐름과 함께 강세 출발</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>코스피 대형주</td>
+            <td>글로벌 반등에도 급락, 낙폭 과대 반등 여부와 외국인 수급 동향 주시 필요</td>
+            <td class="down-txt">▼ 약세 주의</td>
+          </tr>
+          
+          <tr>
+            <td>방산·에너지</td>
+            <td>중동 긴장 완화로 지정학적 리스크 프리미엄 축소, 단기 수혜 기대 약화 가능성</td>
+            <td class="warn-txt">→ 중립</td>
+          </tr>
+          
+          <tr>
+            <td>금·귀금속</td>
+            <td>인플레이션 우려 잔존과 연준 해석 논란 속 금값 재상승 가능성 언급, 방향성 탐색</td>
+            <td class="warn-txt">→ 방향성 탐색</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>미-이란 도하 회담 진전 여부</strong> — 트럼프가 예고한 협상 실제 개최 및 합의 가능성이 중동 리스크 추가 완화의 핵심 변수</li>
+        
+        <li>☑️ <strong>코스피 급락 원인 및 수급 점검</strong> — -5.81% 급락은 이례적 수준으로, 외국인·기관 수급 동향과 특이 악재 여부를 반드시 확인</li>
+        
+        <li>☑️ <strong>나스닥·엔비디아 상승 지속성</strong> — 개장 초반 기술주 반등이 장 마감까지 이어지는지 모멘텀 유지 여부가 미 증시 방향 결정</li>
+        
+        <li>☑️ <strong>3분기 조정 리스크 경계</strong> — 하반기 전망 보고서가 3분기 어려움을 경고한 만큼, 단기 반등 구간에서도 변동성 확대 가능성 상존</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-06-30 01:54 KST</div>
+
+
+</body>
+</html>
