@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 7/10 (금) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 7/10 (금) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 코스피 2.52% 급반등, 7,400선 회복…반도체 투심 개선이 이끌었다</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 뉴욕증시가 S&amp;P 500 +0.81%, 나스닥 +1.30%, 다우존스 +0.27%로 동반 강세를 보이며 메타·마이크론발 AI 노이즈가 진정된 가운데, 국내 증시도 이날 코스피가 2.52% 오르며 7,400선을 탈환했다. 코스닥은 5.47% 급등하며 코스피보다 더 가파른 반등을 보였고, AI 투자 기대 회복과 반도체 투심 개선이 장중 매수 사이드카까지 발동시키는 원동력이 됐다. 다만 장중 한때 상단을 확인한 뒤 상승폭을 다소 줄이며 마감해, 이전 낙폭을 온전히 만회하기엔 아직 이르다는 평가도 나온다. 원-달러 환율은 달러 약세와 당국 구두개입, 수급 변수가 뒤섞이며 1,500원대에서 등락한 끝에 소폭 오른 채 마감했다. 잦아진 사이드카 발동은 변동성 자체가 시장의 뉴노멀로 자리잡고 있음을 보여준다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: SK하이닉스 ADR·美 반도체주 흐름, 원-달러 환율 1,500원대 안착 여부, 중국 헬륨 수출금지의 반도체 조달망 파장</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,544</div>
+      <div class="index-chg up">▲ +0.81%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">메타·마이크론 훈풍에 AI 노이즈 진정, 견조한 상승</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,207</div>
+      <div class="index-chg up">▲ +1.30%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 중심 강세 주도</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,487</div>
+      <div class="index-chg up">▲ +0.27%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">상대적으로 완만한 상승폭</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">7,476</div>
+      <div class="index-chg up">▲ +2.52%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장중 고점 대비 상승폭 축소했지만 7,400선 회복</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">837.43</div>
+      <div class="index-chg up">▲ +5.47%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI·반도체 기대에 코스피보다 강한 반등</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,505</div>
+      <div class="index-chg up">▲ +0.09%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">달러 약세와 당국 개입 속 1,500원대 등락, 강보합 마감</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>美 증시 훈풍</strong> — 메타·마이크론이 AI 관련 우려를 잠재우며 뉴욕 3대 지수 동반 상승</li>
+        
+        <li>💾 <strong>반도체 투심 회복</strong> — SK하이닉스 ADR 강세 기대와 미 증시 훈풍에 국내 반도체주가 지수 상승 주도</li>
+        
+        <li>🚀 <strong>AI 투자기대 재점화</strong> — AI 투자 기대 회복에 코스피 반등폭이 커지며 장중 매수 사이드카까지 발동</li>
+        
+        <li>💱 <strong>원달러 환율 변동성</strong> — 달러 약세, 재경부 구두개입, 한화오션 선물환 매도 등 복합 변수로 환율 등락 지속</li>
+        
+        <li>🧪 <strong>중국 헬륨 수출금지</strong> — 반도체 공정용 헬륨 조달망에 새 변수로 부상, 국내 반도체 업종 리스크로 지목</li>
+        
+        <li>🏛 <strong>정책 기대감</strong> — 여당의 3대 메가 프로젝트 특위 출범으로 규제완화 기대감 형성</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>ADR 강세 기대와 美 반도체 투심 회복 수혜</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>반도체 투심 개선 속에서도 헬륨 수출금지·美 투자압박 변수 상존</td>
+            <td class="warn-txt">→ 혼조 전망</td>
+          </tr>
+          
+          <tr>
+            <td>반도체 ETF</td>
+            <td>단기금리형과 함께 반도체 ETF로 자금 유입 뚜렷</td>
+            <td class="up-txt">▲ 자금유입 지속 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 AI·성장주</td>
+            <td>AI 투자 기대 회복에 코스피보다 가파른 반등</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>한화오션 등 조선주</td>
+            <td>선물환 매도 이슈로 환율 변수와 연동되며 주목</td>
+            <td class="warn-txt">→ 관망 전망</td>
+          </tr>
+          
+          <tr>
+            <td>정책 수혜주(건설·인프라)</td>
+            <td>여당 메가 프로젝트 규제완화 기대감 형성</td>
+            <td class="up-txt">▲ 관심 확대 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>SK하이닉스 ADR·美 반도체주 동향</strong> — 국내 반도체 투심 회복이 이어질지 가늠하는 핵심 변수</li>
+        
+        <li>☑️ <strong>원-달러 환율 1,500원대 흐름</strong> — 당국 개입과 수급 변수가 겹치며 외국인 수급에 영향</li>
+        
+        <li>☑️ <strong>사이드카 발동 빈도(연 34회)</strong> — 변동성 장세가 뉴노멀로 굳어지는지 점검 필요</li>
+        
+        <li>☑️ <strong>중국 헬륨 수출금지 여파</strong> — 반도체 공정 조달망 리스크로 번질지 확인 필요</li>
+        
+        <li>☑️ <strong>여당 메가 프로젝트 특위 진행상황</strong> — 규제완화 기대가 실제 정책으로 이어질지가 관건</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-07-10 19:27 KST</div>
+
+
+</body>
+</html>
