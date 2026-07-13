@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 7/14 (화) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 7/14 (화) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 유가 쇼크에 뉴욕증시 급락…코스피 약세 출발 전망</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 뉴욕증시가 트럼프 대통령의 호르무즈 해협 통행료 예고와 유가 급등 여파로 S&amp;P500 -0.79%, 나스닥 -1.55%, 다우존스 -0.26% 등 3대 지수가 동반 하락했다. 미·이란 충돌 격화로 국제유가와 구리 등 비철금속 가격도 요동치며 위험자산 회피 심리가 강해졌다. 특히 SK하이닉스 ADR이 이틀 연속 9%대 급락하고 삼성전자·SK하이닉스가 프리마켓에서 4~5%대 낙폭을 보이며 반도체발 쇼크가 재현되는 모습이다. 전일 코스피는 +2.52%, 코스닥은 +5.47% 급등 마감했지만, 이날 국내 증시는 유가·반도체 부담을 안고 약세 출발이 예상된다. 원/달러 환율은 1,497원으로 소폭(-0.08%) 안정된 흐름을 보이고 있다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 국제유가·호르무즈 해협 리스크 확산 여부, 삼성전자·SK하이닉스 등 반도체주 개장 낙폭, 전일 급등 되돌림 속 코스피 지지선 확인</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,515</div>
+      <div class="index-chg down">▼ -0.79%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">유가 쇼크에 하락 마감</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,873</div>
+      <div class="index-chg down">▼ -1.55%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">반도체 약세 여파로 낙폭 확대</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,499</div>
+      <div class="index-chg down">▼ -0.26%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">3대 지수 중 상대적으로 낙폭 제한적</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">7,476</div>
+      <div class="index-chg up">▲ +2.52%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">전일 급등 마감, 오늘은 미국발 리스크에 약세 출발 전망</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">837.43</div>
+      <div class="index-chg up">▲ +5.47%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">전일 큰 폭 상승 후 변동성 주의</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,497</div>
+      <div class="index-chg down">▼ -0.08%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 하락하며 안정적 흐름</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇮🇷 <strong>호르무즈 해협 리스크</strong> — 트럼프 대통령의 통행료 예고로 미·이란 갈등 우려가 커지며 유가 급등을 자극했다.</li>
+        
+        <li>🛢️ <strong>유가 쇼크</strong> — 국제유가 급등이 뉴욕증시 전반의 투자심리를 위축시켰다.</li>
+        
+        <li>💾 <strong>반도체 쇼크 재현</strong> — SK하이닉스 ADR이 이틀째 9%대 급락하고 삼성전자·SK하이닉스가 프리마켓에서 동반 하락했다.</li>
+        
+        <li>🥉 <strong>비철금속 약세</strong> — 구리 등 비철금속이 미·이란 충돌 격화 여파로 약세를 보이는 중이며, LME 재고 감소가 하단을 지지할지 주목된다.</li>
+        
+        <li>📊 <strong>피크아웃 공포 논쟁</strong> — NH증권은 코스피 피크아웃 공포가 과도하다며 3~4월 학습효과를 언급해 저가매수 시각도 병존한다.</li>
+        
+        <li>🇺🇸 <strong>뉴욕증시 동반 하락</strong> — S&amp;P500·나스닥·다우존스가 일제히 하락 마감하며 국내 증시에 약세 출발 요인으로 작용할 전망이다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>ADR 이틀 연속 9%대 급락, 프리마켓에서도 낙폭 확대</td>
+            <td class="down-txt">▼ 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>프리마켓 4~5%대 하락하지만 레드닷 어워드 8관왕 등 펀더멘털은 견조</td>
+            <td class="down-txt">▼ 약세 출발 전망</td>
+          </tr>
+          
+          <tr>
+            <td>반도체 업종</td>
+            <td>미국발 반도체 쇼크 재현 여파로 국내 개장 초반 변동성 확대 가능성</td>
+            <td class="down-txt">▼ 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>에너지·정유주</td>
+            <td>호르무즈 해협 리스크發 유가 급등 수혜 기대</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 바이오·기술주</td>
+            <td>브리즈바이오 등 기술이전 기대감 있는 종목 개별 강세 가능성, 다만 전일 급등 되돌림 주의</td>
+            <td class="warn-txt">→ 종목별 차별화 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>호르무즈 해협·유가 동향</strong> — 지정학 리스크 확산 여부가 글로벌 증시 방향성을 좌우할 수 있다.</li>
+        
+        <li>☑️ <strong>반도체주 개장 흐름</strong> — 삼성전자·SK하이닉스 프리마켓 낙폭이 국내 개장 초반 그대로 이어질지 확인이 필요하다.</li>
+        
+        <li>☑️ <strong>전일 급등분 되돌림 여부</strong> — 코스피·코스닥 모두 전일 큰 폭 상승한 만큼 차익실현 매물 출회 가능성을 점검해야 한다.</li>
+        
+        <li>☑️ <strong>원/달러 환율 변동성</strong> — 안전자산 선호 심리가 강해질 경우 환율 흐름이 급변할 수 있다.</li>
+        
+        <li>☑️ <strong>저가매수 vs 추가 조정 시각</strong> — NH증권 등 일부 증권사의 피크아웃 공포 과도론이 시장에서 얼마나 힘을 받을지 지켜봐야 한다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-07-14 08:25 KST</div>
+
+
+</body>
+</html>
