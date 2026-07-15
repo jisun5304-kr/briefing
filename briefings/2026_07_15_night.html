@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 7/15 (수) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 7/15 (수) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 인플레 둔화에 뉴욕 랠리 재개...ASML 깜짝 실적에 유럽까지 훈풍</div>
+      <div style="font-size:13px;color:var(--dim)">6월 생산자물가(PPI)가 예상을 밑돌면서 국채금리가 내려앉았고, 뉴욕증시는 S&amp;P500 7,555(+0.15%), 나스닥 26,178(+0.27%), 다우존스 52,640(+0.25%)로 나란히 상승 출발했다. 인플레 둔화 기대가 되살아나며 AI·기술주 중심의 위험선호 심리가 다시 살아나는 분위기다. 국내 증시는 코스피가 6,857로 0.73% 오르며 6,800선 위에서 마감한 반면, 코스닥은 783.98로 1.92% 밀리며 온도차를 보였다. 원/달러 환율은 1,490원으로 0.54% 하락해 원화 강세 흐름이 이어졌다. 유럽에서는 ASML의 깜짝 실적과 가이던스 상향이 반도체 장비주 전반에 온기를 더하는 모습이다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: ASML발 반도체 장비주 훈풍의 국내 이전 여부, 중동發 지정학 리스크와 유가 변동성, 코스닥 낙폭 확대 지속 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,555</div>
+      <div class="index-chg up">▲ +0.15%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">PPI 둔화 속 상승 출발, 위험선호 지속</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,178</div>
+      <div class="index-chg up">▲ +0.27%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 강세에 AI 랠리 재개 기대</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,640</div>
+      <div class="index-chg up">▲ +0.25%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">우량주 전반 완만한 오름세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,857</div>
+      <div class="index-chg up">▲ +0.73%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장 막판 상승폭 키우며 6,800선 안착</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">783.98</div>
+      <div class="index-chg down">▼ -1.92%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">차익실현 매물에 약세, 코스피와 온도차</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,490</div>
+      <div class="index-chg down">▼ -0.54%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">원화 강세 흐름 속 1,490원대로 하락</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>예상 하회한 생산자물가</strong> — 6월 PPI가 시장 예상보다 낮게 나오며 국채금리가 내려, 뉴욕증시 상승 출발에 힘을 보탰다</li>
+        
+        <li>💻 <strong>AI 랠리 재개 기대</strong> — 인플레 둔화 신호에 나스닥 선물이 강세를 보이며 기술주 중심 위험선호가 되살아났다</li>
+        
+        <li>🇪🇺 <strong>ASML 깜짝 실적</strong> — ASML이 2분기 호실적과 연간 전망 상향을 내놓으며 유럽장에서 6~7%대 급등, 반도체 장비주 전반에 훈풍이 돌 가능성</li>
+        
+        <li>💳 <strong>페이팔 인수설 부각</strong> — 스트라이프·어드벤트가 530억달러 규모의 페이팔 인수를 추진한다는 소식에 핀테크 업종 M&amp;A 기대감이 커졌다</li>
+        
+        <li>🛢️ <strong>중동發 지정학 긴장</strong> — 이란 관련 발언과 군사 행동 소식이 이어지며 국제유가 변동성 우려가 지속되는 모습</li>
+        
+        <li>🏦 <strong>연은 총재의 안도 발언</strong> — 뉴욕 연은총재가 인플레 정점 통과와 현 통화정책의 적절성을 언급하며 시장 심리를 다독였다</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>ASML 관련 반도체 장비주</td>
+            <td>ASML 실적 서프라이즈 및 가이던스 상향에 따른 업종 전반 온기 기대</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코인베이스</td>
+            <td>가상자산 투자심리 개선에 힘입어 뉴욕 개장 후 강세</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>페이팔</td>
+            <td>스트라이프·어드벤트발 대규모 인수설로 M&amp;A 기대감 부각</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>한화오션</td>
+            <td>헬로스톡 주목 종목으로 거론되며 수급 관심 집중</td>
+            <td class="warn-txt">→ 관망 속 관심 지속</td>
+          </tr>
+          
+          <tr>
+            <td>알테오젠</td>
+            <td>헬로스톡 주목 종목, 바이오 업종 수급 변화 주시 필요</td>
+            <td class="warn-txt">→ 변동성 주의</td>
+          </tr>
+          
+          <tr>
+            <td>금 관련주</td>
+            <td>국제 금값이 강보합세로 긍정적 전망을 보이며 안전자산 선호 반영 가능</td>
+            <td class="warn-txt">→ 강보합 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>미국 인플레 지표 후속 흐름</strong> — PPI 둔화가 CPI 등 다른 지표로 이어질지가 향후 통화정책 기대를 좌우할 전망</li>
+        
+        <li>☑️ <strong>중동 지정학 리스크 전개</strong> — 이란 관련 긴장이 고조되면 유가·안전자산 변동성이 커질 수 있어 주시 필요</li>
+        
+        <li>☑️ <strong>ASML발 반도체 훈풍 국내 이전 여부</strong> — 국내 반도체 장비·소부장株 수급에 미칠 영향을 확인할 필요</li>
+        
+        <li>☑️ <strong>코스닥 vs 코스피 디커플링</strong> — 코스피 강세와 코스닥 약세가 지속될지, 수급 쏠림 여부를 점검해야 한다</li>
+        
+        <li>☑️ <strong>원/달러 환율 하락 속도</strong> — 원화 강세가 이어질 경우 외국인 수급 개선 기대와 연결될 수 있음</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-07-16 00:27 KST</div>
+
+
+</body>
+</html>
