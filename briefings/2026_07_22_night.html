@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 7/22 (수) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 7/22 (수) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 코스피 3%대 급등, 뉴욕증시는 알파벳 실적 앞두고 혼조 출발</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 뉴욕증시는 국제유가 급등과 장기금리 상승 속에 기술주가 눌리며 혼조로 출발했다. S&amp;P500은 7,515로 +0.08% 소폭 상승했지만 나스닥은 25,805로 -0.12% 밀렸고, 다우존스는 52,348로 +0.24% 오르며 대형 우량주 중심 강세가 뚜렷했다. 반면 국내 증시는 코스피가 6,748로 +3.56% 급등하며 밤사이 글로벌 흐름과 온도차를 보였고, 코스닥도 753.34로 +0.49% 동반 상승했다. 원/달러 환율은 1,475원으로 +0.01% 보합권에서 움직여 환시는 비교적 안정적이었다. 시장의 시선은 이제 곧 발표될 알파벳 실적과 중동發 유가 변수로 옮겨가는 분위기다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 알파벳(GOOGL) 실적 발표 결과, 국제유가·중동 정세 흐름, 코스피 급등세의 지속 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,515</div>
+      <div class="index-chg up">▲ +0.08%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">유가·금리 부담 속 강보합 마감</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,805</div>
+      <div class="index-chg down">▼ -0.12%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장기금리 상승에 기술주 약세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,348</div>
+      <div class="index-chg up">▲ +0.24%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">대형 우량주 중심 강세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,748</div>
+      <div class="index-chg up">▲ +3.56%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">밤사이 3%대 급등, 글로벌 흐름과 대조</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">753.34</div>
+      <div class="index-chg up">▲ +0.49%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">코스피 강세에 동반 상승</div>
+    </div>
+    
+    <div class="index-card flat">
+      <div class="signal flat"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,475</div>
+      <div class="index-chg flat">+0.01%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">보합권 안정, 변동성 제한적</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>뉴욕증시 혼조 출발</strong> — 빅테크 실적 발표를 앞두고 관망 심리가 짙어지며 지수별로 등락이 엇갈렸다</li>
+        
+        <li>🔍 <strong>알파벳(GOOGL) 실적 분수령</strong> — &#34;FOMC보다 더 위험&#34;이라는 평가 속 AI 투자 거품 여부를 가늠할 시험대로 주목받고 있다</li>
+        
+        <li>🛢️ <strong>국제유가 급등</strong> — 중동 갈등 격화로 유가와 장기금리가 동반 상승하며 기술주 밸류에이션에 부담을 줬다</li>
+        
+        <li>💻 <strong>반도체·기술주 명암 교차</strong> — 인텔은 개장 전 4%대 하락한 반면 CBRS는 장중 24% 급등하며 종목별 온도차가 컸다</li>
+        
+        <li>🇪🇺 <strong>유럽 증시는 강세 유지</strong> — 중동 긴장 고조에도 독일·프랑스 증시는 0.6~0.8%대 상승하며 견조한 흐름을 보였다</li>
+        
+        <li>🥇 <strong>안전자산 선호 재부각</strong> — 중앙은행들의 금 매입 재개 기대와 중동 리스크로 금값이 상승세를 탔다</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>AI 투자 경쟁 지속과 반도체 업황 기대감이 유효한 국면</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>빅테크 AI 투자 확대 기조가 이어지며 수급 우호적</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>정유·에너지주</td>
+            <td>중동 갈등에 따른 국제유가 급등이 실적 모멘텀으로 작용할 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>방산·조선주</td>
+            <td>중동 정세 불안 장기화 시 지정학 테마 부각 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>금 관련주</td>
+            <td>중앙은행 금 매입 재개 기대와 안전자산 선호에 수혜 전망</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>국내 반도체 후공정·부품주</td>
+            <td>알파벳 실적 결과에 따라 AI 관련주 전반의 투자심리가 출렁일 소지</td>
+            <td class="warn-txt">→ 실적 결과 대기</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>알파벳(GOOGL) 실적 발표</strong> — AI 투자 지속 가능성을 가늠할 핵심 이벤트로 시장 전반의 방향성을 좌우할 수 있다</li>
+        
+        <li>☑️ <strong>국제유가·중동 정세</strong> — 유가 급등이 장기금리와 기술주 밸류에이션에 미치는 영향을 계속 지켜볼 필요가 있다</li>
+        
+        <li>☑️ <strong>미 장기금리 동향</strong> — 금리 상승이 이어질 경우 성장주 중심의 나스닥 변동성이 커질 수 있다</li>
+        
+        <li>☑️ <strong>코스피 급등세 지속 여부</strong> — 밤사이 3%대 급등이 다음 거래일까지 이어질지 확인이 필요하다</li>
+        
+        <li>☑️ <strong>원/달러 환율 흐름</strong> — 현재는 보합권이지만 유가·금리 변수에 따라 변동성이 확대될 가능성이 있다</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-07-23 00:44 KST</div>
+
+
+</body>
+</html>
