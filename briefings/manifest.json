@@ -1509,5 +1509,18 @@
         "file": "briefings/2026_07_24_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-07-27",
+    "label": "2026년 7월 27일 (월)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_07_27_morning.html"
+      }
+    ]
   }
 ]
