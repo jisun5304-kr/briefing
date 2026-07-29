@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 7/29 (수) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 7/29 (수) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">🔴 코스피 6% 급락 5663선, 이틀 연속 서킷브레이커</div>
+      <div style="font-size:13px;color:var(--dim)">코스피가 5.98% 급락한 5,663.24로 마감하며 이틀 연속 서킷브레이커가 발동되는 사상 초유의 사태가 벌어졌다. 코스닥도 6.12% 밀린 662.68로 함께 주저앉으며 반도체주發 충격이 시장 전반을 덮었다. SK하이닉스 실적 실망감이 방아쇠가 됐고, 여기에 단일종목 레버리지 ETF 청산 매물까지 겹치며 낙폭이 확대된 것으로 풀이된다. 원-달러 환율은 월말 네고 물량(SK하이닉스 환전 등) 영향으로 15.80원 내린 1,449원에 거래를 마쳐 원화는 오히려 강세를 보였다. 간밤 미국 증시는 다우가 1.03% 오른 반면 나스닥은 0.22% 내리는 등 방향이 엇갈려, 이번 급락은 미국발 악재보다 국내 반도체·레버리지 수급 요인이 크다는 분석이 나온다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 반도체주 추가 낙폭 여부, 레버리지 ETF 청산·손실 규모, 금융당국 시장 안정화 조치, 원-달러 환율 추가 변동, 미국 반도체주 반응</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,429</div>
+      <div class="index-chg up">▲ +0.21%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">완만한 상승세 지속</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">24,877</div>
+      <div class="index-chg down">▼ -0.22%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 조정, 국내 반도체 충격과는 결이 다름</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,747</div>
+      <div class="index-chg up">▲ +1.03%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1%대 강세로 견조</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">5,663</div>
+      <div class="index-chg down">▼ -5.98%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">이틀째 서킷브레이커, 6% 육박 급락</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">662.68</div>
+      <div class="index-chg down">▼ -6.12%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">코스피보다 낙폭 더 커, 6%대 급락</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,449</div>
+      <div class="index-chg down">▼ -1.02%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">월말 네고 물량에 원화 강세 전환</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>💾 <strong>SK하이닉스 실적 실망</strong> — 반도체 대장주 실적 우려가 코스피 급락의 직접 도화선이 됐다</li>
+        
+        <li>⛔ <strong>이틀 연속 서킷브레이커</strong> — 사상 초유의 2일 연속 서킷브레이커 발동으로 패닉셀 양상이 뚜렷했다</li>
+        
+        <li>📉 <strong>레버리지 ETF 청산 매물</strong> — 단일종목 레버리지 ETF 손실이 눈덩이처럼 불어나며 추가 매도 압력을 키웠다</li>
+        
+        <li>🏛️ <strong>금융당국 첫 사과</strong> — 금융위·금감원 수장이 변동성 확대에 대해 이례적으로 공식 사과했다</li>
+        
+        <li>💱 <strong>월말 네고 물량</strong> — SK하이닉스 등 수출기업 환전 물량이 몰리며 원-달러 환율을 끌어내렸다</li>
+        
+        <li>🇨🇳 <strong>중국 반도체 굴기 변수</strong> — 중국의 노광장비·AI 생태계 자립 시도가 장기적 경쟁 구도 우려로 부각됐다</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>실적 실망감이 이번 급락의 진앙</td>
+            <td class="down-txt">▼ 약세 지속 우려</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>반도체 업종 전반 투자심리 위축의 영향권</td>
+            <td class="down-txt">▼ 동반 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>레버리지 ETF 관련주</td>
+            <td>단일종목 레버리지 상품 청산 여파가 재차 변수</td>
+            <td class="down-txt">▼ 추가 변동성 경계</td>
+          </tr>
+          
+          <tr>
+            <td>반도체 장비·소재주</td>
+            <td>중국의 자립 움직임에 중장기 경쟁구도 주목</td>
+            <td class="warn-txt">→ 관망세</td>
+          </tr>
+          
+          <tr>
+            <td>수출 관련주</td>
+            <td>원화 강세 전환 시 채산성 부담 우려</td>
+            <td class="down-txt">▼ 환율 부담 주시</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>서킷브레이커 재발동 여부</strong> — 3일 연속이면 시장 신뢰에 더 큰 타격이 불가피하다</li>
+        
+        <li>☑️ <strong>레버리지 ETF 손실 확산</strong> — 개인 투자자 피해 규모에 따라 후속 규제 논의로 이어질 수 있다</li>
+        
+        <li>☑️ <strong>금융당국 후속 대책</strong> — 사과 이후 구체적 안정화 조치가 나올지가 관건</li>
+        
+        <li>☑️ <strong>원-달러 환율 방향성</strong> — 월말 네고 효과가 소진되면 환율이 다시 반등할지 지켜봐야 한다</li>
+        
+        <li>☑️ <strong>미국 반도체 지수 흐름</strong> — 간밤 나스닥 조정이 국내 반도체주 심리에 추가 영향을 줄 수 있다</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-07-29 18:42 KST</div>
+
+
+</body>
+</html>
