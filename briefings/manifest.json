@@ -1617,5 +1617,18 @@
         "file": "briefings/2026_07_30_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-07-31",
+    "label": "2026년 7월 31일 (금)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_07_31_morning.html"
+      }
+    ]
   }
 ]
