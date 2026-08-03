@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 8/3 (월) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 8/3 (월) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 코스피 하루 만에 5% 급락, 급등 뒤 숨고르기</div>
+      <div style="font-size:13px;color:var(--dim)">코스피는 전일 역사적 급등의 반작용으로 차익실현 매물이 쏟아지며 5.12% 급락, 6,257선에서 거래를 마쳤다. 외국인과 기관이 동반 매도에 나서며 지수를 끌어내린 반면, 코스닥은 로봇·AI 등 첨단주에 매수세가 몰리며 2.44% 상승해 대조적인 흐름을 보였다. 밤사이 뉴욕증시는 S&amp;P500 +0.70%, 나스닥 +1.00%, 다우존스 +0.53%로 3대 지수가 동반 상승 마감해 국내 증시와는 온도차가 뚜렷했다. 원/달러 환율은 0.50% 오른 1,428원으로 마감하며 원화 약세 흐름이 이어졌다. 모건스탠리가 이번 급락을 저가 매수 기회로 보고 코스피 목표치를 9,000선으로 제시한 점은 향후 투자심리 안정에 변수가 될 전망이다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 코스피 급락 이후 변동성 진정 여부, 코스닥 로봇·AI 강세의 지속 가능성, 원/달러 환율의 1,300원대 진입 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,490</div>
+      <div class="index-chg up">▲ +0.70%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">완만한 상승세 지속, 국내 증시와 디커플링</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,374</div>
+      <div class="index-chg up">▲ +1.00%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1%대 상승, 기술주 중심 강세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,485</div>
+      <div class="index-chg up">▲ +0.53%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">동반 상승 마감, 위험선호 심리 유지</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,257</div>
+      <div class="index-chg down">▼ -5.12%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">전일 급등 되돌림, 하루 만에 5%대 급락</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">737.35</div>
+      <div class="index-chg up">▲ +2.44%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">로봇·AI 매수세 유입되며 강세 전환</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,428</div>
+      <div class="index-chg up">▲ +0.50%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">원화 약세 심화, 1,428원대로 상승</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>📉 <strong>코스피 차익실현 급락</strong> — 전일 급등 이후 외국인·기관이 동반 매도에 나서며 지수가 큰 폭으로 되돌림.</li>
+        
+        <li>🤖 <strong>코스닥 로봇·AI 강세</strong> — 코스닥 시장에서 로봇·AI 관련 종목으로 매수세가 집중되며 지수 상승 주도.</li>
+        
+        <li>🌏 <strong>아시아 증시 혼조</strong> — 일본·중국은 약세, 홍콩·대만은 강세를 보이며 국가별 온도차 확대.</li>
+        
+        <li>🇺🇸 <strong>미국 3대 지수 동반 상승</strong> — S&amp;P500·나스닥·다우존스가 모두 오르며 국내 증시와 다른 흐름을 보임.</li>
+        
+        <li>💵 <strong>원화 약세 지속</strong> — 원/달러 환율이 1,428원대로 오르며 1,300원대 진입 가능성에 관심.</li>
+        
+        <li>📊 <strong>모건스탠리 코스피 목표 상향</strong> — 30% 급락 이후에도 비중확대 의견을 제시하며 목표가 9,000선을 내세움.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>펩트론</td>
+            <td>비만치료제 기대감 부각</td>
+            <td class="up-txt">▲ 상한가</td>
+          </tr>
+          
+          <tr>
+            <td>본느</td>
+            <td>최대주주 변경·유상증자 호재</td>
+            <td class="up-txt">▲ 상한가</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>중국 창신메모리의 베이징 공장 신설 소식으로 메모리 경쟁 심화 우려</td>
+            <td class="warn-txt">→ 관망 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 로봇·AI 관련주</td>
+            <td>코스닥 강세를 주도한 매수세 집중 테마</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>단일종목 레버리지 관련주</td>
+            <td>거래는 줄었지만 변동성 확대 우려는 여전</td>
+            <td class="warn-txt">→ 변동성 주시</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>코스피 변동성 진정 여부</strong> — 5% 급락 이후 추가 조정인지 반등인지 매매 동향 확인이 필요.</li>
+        
+        <li>☑️ <strong>원/달러 환율 1,300원대 진입 여부</strong> — 환율 추가 상승 시 외국인 자금 이탈 우려가 커질 수 있음.</li>
+        
+        <li>☑️ <strong>모건스탠리 목표주가에 대한 시장 반응</strong> — 9,000선 제시가 저가 매수 심리를 자극할지 지켜봐야 함.</li>
+        
+        <li>☑️ <strong>코스닥 로봇·AI 강세의 지속성</strong> — 일시적 순환매인지 추세적 상승인지 확인이 필요.</li>
+        
+        <li>☑️ <strong>삼성전자 메모리 경쟁 구도 변화</strong> — 창신메모리 증설이 국내 반도체 업황에 미칠 영향 주시.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-08-03 19:49 KST</div>
+
+
+</body>
+</html>
