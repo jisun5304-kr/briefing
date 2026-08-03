@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 8/4 (화) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 8/4 (화) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 中東 리스크 완화·빅테크 실적 훈풍…뉴욕 3대 지수 동반 급등</div>
+      <div style="font-size:13px;color:var(--dim)">미·이란 지정학적 긴장이 완화되면서 밤사이 뉴욕 3대 지수가 일제히 강세로 마감했다. 나스닥은 AI 수익성 불안 완화와 빅테크 실적 호조에 힘입어 2%대 상승했고, 다우존스는 트럼프발 유화적 발언 속에 사상 최고치를 다시 썼다. 유가와 금리가 동반 하락하며 위험자산 선호 심리가 살아났고, 이는 코스피·코스닥의 큰 폭 반등 기대로 이어지고 있다. 원/달러 환율은 달러 약세 속에 소폭 하락하며 외국인 자금 유입 여건도 우호적으로 형성됐다. 다만 전날 급등의 &#39;일일천하&#39; 우려도 함께 제기되는 만큼 오늘 개장 이후 매물 소화 과정을 지켜볼 필요가 있다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 반도체 대형주(삼성전자·SK하이닉스) 프리마켓 강세의 국내 이어달리기 여부, 코스피 급등 이후 차익실현 매물 규모, 코스닥 성장주 vs 코스피 대형주 순환매 흐름</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,600</div>
+      <div class="index-chg up">▲ +1.48%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">지정학적 리스크 완화에 위험선호 회복</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,914</div>
+      <div class="index-chg up">▲ +2.13%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 수익성 불안 완화·빅테크 실적 호조로 강세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">53,178</div>
+      <div class="index-chg up">▲ +1.32%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">트럼프 유화 발언 속 사상 최고치 경신</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,595</div>
+      <div class="index-chg up">▲ +17.91%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">美 증시 훈풍 반영하며 큰 폭 반등</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">719.76</div>
+      <div class="index-chg up">▲ +11.63%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">성장주 중심 동반 강세, 반도체 대형주와 온도차 주목</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,429</div>
+      <div class="index-chg down">▼ -0.46%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">달러 약세 속 완만한 하락</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>美·이란 긴장 완화</strong> — 지정학적 리스크 후퇴로 뉴욕 3대 지수 동반 상승</li>
+        
+        <li>🤖 <strong>AI 수익성 불안 완화</strong> — 빅테크 실적 호조가 나스닥 급등 견인</li>
+        
+        <li>💼 <strong>빅테크 실적 랠리</strong> — 팔란티어 등 민간 매출 급증, 아마존·메타 강세</li>
+        
+        <li>🛢️ <strong>유가·금리 동반 하락</strong> — 위험자산 선호 심리 강화 배경으로 지목</li>
+        
+        <li>🇰🇷 <strong>삼전·닉스 프리마켓 강세</strong> — 美 훈풍에 전날 하락분 만회 시도 움직임</li>
+        
+        <li>🗣️ <strong>SK하이닉스 매수 권유 글 확산</strong> — 최태원 회장 관련 언급이 투자 심리에 영향 줄 가능성</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>美 반도체 훈풍에 프리마켓 2%대 반등, 국내 동반 강세 기대</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>최태원 회장 관련 매수 권유 글 확산과 반도체 업황 기대 겹쳐 주목</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 성장주</td>
+            <td>전일 급등에 이어 순환매 지속 여부가 관건</td>
+            <td class="up-txt">▲ 강세 전망, 변동성 유의</td>
+          </tr>
+          
+          <tr>
+            <td>AI·빅테크 관련주</td>
+            <td>팔란티어·아마존·메타 등 실적 호조 국내 연동 기대</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>비트코인·가상자산 연계주</td>
+            <td>뉴욕증시 반등에도 비트코인은 상대적으로 부진, 온도차 주목</td>
+            <td class="warn-txt">→ 혼조 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>전날 급등 후 차익실현 매물</strong> — 코스피·코스닥 &#39;일일천하&#39; 우려가 제기된 만큼 매물 소화 여부 확인 필요</li>
+        
+        <li>☑️ <strong>반도체 대형주 vs 코스닥 순환매</strong> — 자금이 어느 쪽으로 쏠리는지에 따라 장중 업종별 등락 갈릴 수 있음</li>
+        
+        <li>☑️ <strong>환율 및 외국인 수급</strong> — 원/달러 하락이 외국인 순매수로 이어지는지 점검</li>
+        
+        <li>☑️ <strong>빅테크 실적 후속 반응</strong> — 팔란티어·아마존·메타 등 실적 모멘텀이 국내 AI 관련주로 확산되는지 확인</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-08-04 08:35 KST</div>
+
+
+</body>
+</html>
