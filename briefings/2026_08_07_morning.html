@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 8/7 (금) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 8/7 (금) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 유가·실적 부담에 뉴욕 3대 지수 동반 하락, 코스피도 숨 고르기</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 뉴욕증시는 유가 급등과 실적 부담이 겹치며 다우존스가 -0.85%로 가장 큰 폭 밀렸고, S&amp;P500(-0.18%)과 나스닥(-0.06%)도 소폭 조정받았습니다. 국내 증시도 코스피가 -0.28%, 코스닥이 -1.46%로 동반 약세를 보이며 위험자산 회피 심리가 확인됩니다. 원/달러 환율은 1,420원으로 -0.10% 내리며 달러 강세 압력은 제한적이었습니다. 반도체 업종은 삼성전자·SK하이닉스 주주환원 압박 이슈와 하이닉스 솔리다임 상장설이 맞물리며 눈치보기 장세가 이어질 가능성이 있고, 연준에 대한 불신 속 금값이 주간 4.8% 급등하며 안전자산 선호가 부각되는 점도 주목할 부분입니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 국제유가 추가 상승 여부, 반도체 투톱 주주환원 대응책 윤곽, 스페이스X 관련주 변동성, 금값 상승세와 연준 신뢰도 논란</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,710</div>
+      <div class="index-chg down">▼ -0.18%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">실적 부담 속 소폭 조정, 8월 들어 숨 고르기 양상</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,348</div>
+      <div class="index-chg down">▼ -0.06%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">낙폭은 제한적이나 기술주 피로감 감지</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">53,885</div>
+      <div class="index-chg down">▼ -0.85%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">유가 급등 여파로 3대 지수 중 낙폭 최대</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,279</div>
+      <div class="index-chg down">▼ -0.28%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장중 반등 시도했으나 상승분 반납하며 약보합</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">789.95</div>
+      <div class="index-chg down">▼ -1.46%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">낙폭 상대적으로 커 투자심리 위축 뚜렷</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,420</div>
+      <div class="index-chg down">▼ -0.10%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 내림세, 환율 변동성은 크지 않은 편</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🛢️ <strong>국제유가 급등</strong> — 유가 상승이 인플레이션 우려를 자극하며 뉴욕증시 하락 압력으로 작용했다는 분석</li>
+        
+        <li>🧾 <strong>실적 시즌 부담</strong> — 일부 기업 실적 우려가 반영되며 다우존스 중심으로 매물이 나온 것으로 풀이</li>
+        
+        <li>🏦 <strong>연준 불신 확산</strong> — 연준 정책 신뢰도에 의문이 제기되며 금값이 주간 4.8% 급등, 안전자산 선호 심화 가능성</li>
+        
+        <li>💾 <strong>반도체 눈치보기 장세</strong> — 삼성전자·SK하이닉스 주주환원 확대 압박과 하이닉스 솔리다임 상장설이 겹치며 업종 변동성 확대 전망</li>
+        
+        <li>🚀 <strong>스페이스X 락업 해제 이슈</strong> — 첫 락업 해제에도 주가가 반등하며 국내 관련주(스피어 등) 급등, 관련주 추가 변동 가능성</li>
+        
+        <li>🤖 <strong>AI 인프라 확대</strong> — 베슬AI의 엔비디아 GPU 추가 확보, LG 엑사원의 글로벌 평가 우위 소식 등 AI 관련 모멘텀 지속 전망</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>전일 국내 증시에서 2%대 상승하며 반도체 투톱 중 상대적 강세</td>
+            <td class="up-txt">▲ 강세 흐름 이어갈지 주목</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>솔리다임 상장설과 주주환원 압박 속 1%대 약세 마감, 변동성 확대 가능성</td>
+            <td class="down-txt">▼ 단기 조정 가능성</td>
+          </tr>
+          
+          <tr>
+            <td>스페이스X 관련주</td>
+            <td>락업 해제에도 본주가 6% 반등하며 스피어 등 국내 관련주 급등</td>
+            <td class="up-txt">▲ 추가 변동성 주의</td>
+          </tr>
+          
+          <tr>
+            <td>금 관련주</td>
+            <td>연준 불신 속 금값 주간 4.8% 급등, 사상 최고가 재도전 흐름</td>
+            <td class="up-txt">▲ 안전자산 선호 부각</td>
+          </tr>
+          
+          <tr>
+            <td>AI·엔비디아 밸류체인</td>
+            <td>베슬AI의 GPU 추가 확보 소식 등 AI 인프라 투자 확대 기대</td>
+            <td class="warn-txt">→ 개별 이슈에 따라 등락</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 성장주</td>
+            <td>코스닥 -1.46%로 낙폭이 커 위험자산 회피 심리에 취약</td>
+            <td class="down-txt">▼ 약세 압력 지속 가능성</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>국제유가 흐름</strong> — 유가 추가 급등 시 인플레이션 우려로 미국 증시 조정 압력이 커질 수 있어 확인 필요</li>
+        
+        <li>☑️ <strong>반도체 투톱 대응책</strong> — 삼성전자·SK하이닉스의 주주환원 확대 방안 발표 여부가 업종 전반 수급에 영향</li>
+        
+        <li>☑️ <strong>하이닉스 솔리다임 상장설</strong> — 상장 관련 구체적 소식이 나올 경우 주주가치 희석 논란이 재부각될 가능성</li>
+        
+        <li>☑️ <strong>금값·안전자산 선호</strong> — 연준 신뢰도 논란이 이어질 경우 금값 추가 상승과 위험자산 회피가 동반될 수 있음</li>
+        
+        <li>☑️ <strong>스페이스X 관련주 변동성</strong> — 락업 해제 이후 주가 흐름에 따라 국내 테마주 단기 변동성 확대 가능</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-08-07 10:36 KST</div>
+
+
+</body>
+</html>
