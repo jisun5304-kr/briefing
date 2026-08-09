@@ -1765,5 +1765,18 @@
         "file": "briefings/2026_08_07_afternoon.html"
       }
     ]
+  },
+  {
+    "date": "2026-08-10",
+    "label": "2026년 8월 10일 (월)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_08_10_morning.html"
+      }
+    ]
   }
 ]
