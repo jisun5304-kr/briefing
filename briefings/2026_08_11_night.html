@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 8/11 (화) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 8/11 (화) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">🌙 CPI 경계 속 뉴욕증시 강보합 출발, 코스닥은 급등 마감</div>
+      <div style="font-size:13px;color:var(--dim)">뉴욕증시는 CPI 발표를 앞둔 경계감 속에서도 3대 지수가 나란히 강보합권에서 출발했다. 나스닥은 초반 약세를 보이기도 했지만 반도체·AI 관련주가 선별적으로 강세를 나타내며 지수를 지지했다. 국내 증시는 코스피가 6,300선에서 0.65% 상승 마감했고, 코스닥은 6.97% 급등하며 강한 개별 종목 장세를 연출했다. 미·이란 합의 기대감이 국제유가와 뉴욕증시 방향성을 동시에 흔드는 변수로 작용하는 가운데, 원/달러 환율은 1,411원으로 소폭 상승했다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 미국 CPI 발표 결과, 미-이란 합의 관련 뉴스, 인텔 유상증자 최종 흥행 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,761</div>
+      <div class="index-chg up">▲ +0.10%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">CPI 경계 속에서도 상승 출발</div>
+    </div>
+    
+    <div class="index-card flat">
+      <div class="signal flat"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,618</div>
+      <div class="index-chg flat">+0.05%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">초반 약세 딛고 보합권 회복 시도</div>
+    </div>
+    
+    <div class="index-card flat">
+      <div class="signal flat"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">53,994</div>
+      <div class="index-chg flat">+0.03%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">보합권에서 강보합 출발</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,300</div>
+      <div class="index-chg up">▲ +0.65%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">6,300선 안착하며 강세 마감</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">854.47</div>
+      <div class="index-chg up">▲ +6.97%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">개별 종목 중심으로 급등 마감</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,411</div>
+      <div class="index-chg up">▲ +0.26%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1,410원대에서 소폭 상승</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>CPI 경계감</strong> — 미국 소비자물가지수 발표를 앞두고 뉴욕증시 초반 변동성 확대</li>
+        
+        <li>🕊️ <strong>미-이란 합의 기대</strong> — 호르무즈 해협 관련 합의 근접 소식에 뉴욕증시와 국제유가가 동반 출렁</li>
+        
+        <li>🛢️ <strong>국제유가 급등락</strong> — 합의 기대와 우려가 교차하며 유가 변동성이 커진 상황</li>
+        
+        <li>💾 <strong>인텔 유상증자 흥행</strong> — 21조원에서 28조원으로 증액됐음에도 141조원 넘는 수요가 몰리며 반도체주 투자심리 자극</li>
+        
+        <li>🤖 <strong>AI·반도체주 선별 강세</strong> — 엔비디아 등 반도체주는 종목별로 엇갈렸으나 코어위브 등 AI 관련주는 개장 초 강세</li>
+        
+        <li>🇪🇺 <strong>유럽증시 실적 기대</strong> — 기업 실적 호조 기대감에 유로스톡스 등 유럽 주요 지수 상승 출발</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>인텔</td>
+            <td>유상증자 수요가 목표액을 크게 웃돌며 흥행</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코어위브</td>
+            <td>AI 관련주 개장 초 강세 흐름 주도</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>라이엇 플랫폼스</td>
+            <td>장 초반 20% 이상 급등하며 시장 주목</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>엔비디아·반도체주</td>
+            <td>CPI 경계 속 종목별 선별 매수세 유입</td>
+            <td class="warn-txt">→ 종목별 차별화</td>
+          </tr>
+          
+          <tr>
+            <td>코인베이스</td>
+            <td>가상자산 관련주 동반 상승</td>
+            <td class="up-txt">▲ 강세</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥</td>
+            <td>국내 개별 종목 장세 속 급등 마감</td>
+            <td class="up-txt">▲ 강세 마감</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>미국 CPI 결과 확인</strong> — 물가 지표 서프라이즈 여부에 따라 뉴욕증시 방향성이 크게 갈릴 수 있음</li>
+        
+        <li>☑️ <strong>미-이란 합의 진행 상황</strong> — 합의 여부에 따라 국제유가와 위험자산 심리가 동시에 움직일 변수</li>
+        
+        <li>☑️ <strong>인텔 유상증자 최종 결과</strong> — 반도체 업종 투자심리와 연쇄적으로 연결될 수 있는 이벤트</li>
+        
+        <li>☑️ <strong>코스닥 변동성 관리</strong> — 급등 이후 단기 되돌림 가능성에 유의할 필요</li>
+        
+        <li>☑️ <strong>원/달러 환율 흐름</strong> — 달러 강보합 흐름이 이어질지 지켜볼 필요</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-08-12 00:01 KST</div>
+
+
+</body>
+</html>
