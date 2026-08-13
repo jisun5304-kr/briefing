@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 8/13 (목) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 8/13 (목) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">🌙 美 PPI 둔화에 뉴욕증시 상승 출발, 코스피 급등 온기 이어가나</div>
+      <div style="font-size:13px;color:var(--dim)">미국 7월 생산자물가가 시장 전망치를 밑돌며 인플레이션 둔화 기대가 되살아났고, 국제유가 하락까지 겹치며 뉴욕증시는 상승 출발했다. S&amp;P500은 +0.72%, 나스닥은 +0.90% 오르며 반도체주가 동반 강세를 보였고 다우존스도 +0.18% 상승했다. 앞서 국내 증시에서는 외국인·기관 매수세에 코스피가 +3.68% 급등하며 나흘 연속 상승 마감했다. 다만 외국인 자금은 7개월째 순유출을 이어가는 가운데 원/달러 환율은 1,417원으로 +0.38% 오르며 원화 약세 흐름도 함께 나타나고 있다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 美 PPI 둔화 이후 금리 인하 기대 지속 여부, 코스피 급등세의 연속성과 외국인 수급 전환 여부, 국제유가·호르무즈 통행 정상화 전망</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,804</div>
+      <div class="index-chg up">▲ +0.72%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">PPI 둔화에 상승 출발, 사상 최고치 근접</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,827</div>
+      <div class="index-chg up">▲ +0.90%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">반도체주 동반 강세로 상승폭 확대</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">53,866</div>
+      <div class="index-chg up">▲ +0.18%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">상승세 유지하나 상대적으로 완만</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,579</div>
+      <div class="index-chg up">▲ +3.68%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">외인·기관 매수에 급등, 나흘 연속 상승</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">858.91</div>
+      <div class="index-chg up">▲ +0.52%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">코스피 강세에 동반 상승</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,417</div>
+      <div class="index-chg up">▲ +0.38%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">외국인 자금 유출 속 소폭 상승, 원화 약세</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>美 PPI 전망치 하회</strong> — 7월 생산자물가가 예상보다 둔화되며 연준 추가 인상 우려 후퇴</li>
+        
+        <li>🛢️ <strong>국제유가 하락</strong> — 유가 하락이 물가 부담을 덜며 뉴욕증시 상승 출발에 힘을 보탬</li>
+        
+        <li>🇰🇷 <strong>코스피 급등</strong> — 외국인·기관 동반 매수로 코스피가 3%대 급등, 나흘 연속 상승 마감</li>
+        
+        <li>💱 <strong>원/달러 환율 상승</strong> — 외국인 자금이 7개월째 순유출되는 가운데도 환율은 1,417원대로 상승</li>
+        
+        <li>🇪🇺 <strong>유럽 증시 재부상</strong> — AI·반도체 쏠림에 대한 피로감으로 글로벌 자금이 유럽 증시로 이동하는 조짐</li>
+        
+        <li>🚢 <strong>호르무즈 통행 정상화 전망</strong> — 통행 선박 수 감소가 이어지는 가운데 정상화 가능성이 거론되며 유가 하방 요인으로 작용</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>ADR 사흘째 상승, 유가 하락에 따른 물가 안도감이 투자심리 개선에 기여</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>반도체 업종</td>
+            <td>나스닥 반도체주 동반 상승, 국내 반도체주로 온기 확산 기대</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>수출 대형주</td>
+            <td>원화 약세 흐름이 이어질 경우 가격 경쟁력 개선 기대</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>AI·클라우드 인프라주</td>
+            <td>미 뉴클라우드 관련주 강세 흐름이 국내 관련주로 이어질지 주목</td>
+            <td class="warn-txt">→ 관망 속 상승 여지</td>
+          </tr>
+          
+          <tr>
+            <td>외국인 수급 민감주</td>
+            <td>7개월째 이어진 순유출이 전환될지 여부가 관건</td>
+            <td class="warn-txt">→ 수급 전환 여부 주시</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>美 PPI 이후 물가 지표·연준 발언</strong> — 인플레이션 둔화 흐름이 CPI 등 후속 지표로 이어지는지가 금리 경로를 좌우</li>
+        
+        <li>☑️ <strong>국제유가 및 호르무즈 정세</strong> — 유가 추가 하락 여부와 지정학적 리스크 완화 정도가 물가·증시에 영향</li>
+        
+        <li>☑️ <strong>외국인 수급 전환 여부</strong> — 7개월 연속 순유출이 지속될지, 코스피 상승세의 지속 가능성과 직결</li>
+        
+        <li>☑️ <strong>원/달러 환율 흐름</strong> — 1,417원대 등락이 수출입 기업 실적과 외국인 투자심리에 미칠 영향</li>
+        
+        <li>☑️ <strong>미국 개별 기업 실적·가이던스</strong> — 태피스트리 등 소비재 기업의 실적 발표가 이어지며 종목별 변동성 확대 가능성</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-08-14 00:00 KST</div>
+
+
+</body>
+</html>
