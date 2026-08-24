@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 8/24 (월) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 8/24 (월) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 이란 제재 D-데이 앞두고 뉴욕 혼조, 삼전·하이닉스 급락에 코스피 3%대 출렁</div>
+      <div style="font-size:13px;color:var(--dim)">미국의 대이란 &#39;경제적 최대 압박&#39; 선언을 앞두고 뉴욕 증시가 하락 출발했다. S&amp;P 500은 7,655로 -0.25%, 나스닥은 26,024로 -0.60% 내렸고, 애스테라랩스 등 AI주 동반 약세가 지수를 눌렀다. 반면 다우존스는 53,412로 +0.25% 오르며 나홀로 강세를 보여 업종별 온도차가 뚜렷했다. 국내에서는 삼성전자·SK하이닉스가 주주환원 기대감 후퇴 속 큰 폭으로 밀리며 코스피가 6,697로 -3.12% 급락했고, 코스닥은 813.33으로 +1.42% 올라 대형주와 뚜렷한 디커플링을 보였다. 위험회피 심리 속 금·비트코인이 반등하고 국제유가는 제재 발표를 앞두고 1~2%대 밀렸으며, USD/KRW는 1,384원으로 -0.51% 내려 원화는 오히려 강세로 반응했다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 미국의 대이란 제재 발표 수위와 시장 파급력, 삼성전자·SK하이닉스 낙폭 축소 여부, 코스피·코스닥 디커플링 지속 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,655</div>
+      <div class="index-chg down">▼ -0.25%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">이란 제재 발표 대기 속 관망 매물에 소폭 하락</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,024</div>
+      <div class="index-chg down">▼ -0.60%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI·반도체주 약세가 하락폭을 키움</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">53,412</div>
+      <div class="index-chg up">▲ +0.25%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">제재 경계 속에서도 나홀로 상승세</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,697</div>
+      <div class="index-chg down">▼ -3.12%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">삼성전자·SK하이닉스 급락에 3%대 급락</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">813.33</div>
+      <div class="index-chg up">▲ +1.42%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">개별 테마주 강세에 대형주와 엇갈린 반등</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,384</div>
+      <div class="index-chg down">▼ -0.51%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">위험회피 국면에도 원화는 강세로 반전</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇮🇷 <strong>대이란 &#39;경제적 D데이&#39;</strong> — 미국의 최대 금융 제재 발표를 앞두고 뉴욕증시가 혼조 출발</li>
+        
+        <li>🛢️ <strong>국제유가 하락</strong> — 제재 발표 대기 속 유가는 1~2%대 밀리며 경계감 반영</li>
+        
+        <li>🥇 <strong>금·비트코인 반등</strong> — 위험회피 심리에 안전자산으로 자금이 몰리는 모습</li>
+        
+        <li>🇰🇷 <strong>반도체 투톱 약세</strong> — 삼성전자·SK하이닉스 동반 급락이 코스피 낙폭을 키움</li>
+        
+        <li>🤖 <strong>AI주 조정</strong> — 애스테라랩스 등 미국 AI 관련주 동반 약세</li>
+        
+        <li>📊 <strong>코스닥 차별화</strong> — 한화에어로스페이스·카카오·로보티즈 등 개별 테마주 강세로 코스피와 엇갈린 흐름</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>주주환원 기대감 후퇴 속 급락, 코스피 낙폭 주도</td>
+            <td class="down-txt">▼ 약세 지속 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>삼성전자와 동반 약세로 반도체 투톱 부진</td>
+            <td class="down-txt">▼ 약세 지속 전망</td>
+          </tr>
+          
+          <tr>
+            <td>한화에어로스페이스</td>
+            <td>헬로스톡 주목 종목으로 관심 집중</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>카카오</td>
+            <td>주목 종목 리스트에 이름을 올리며 관심 부각</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>로보티즈</td>
+            <td>테마성 매수세 유입 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>금·비트코인</td>
+            <td>이란發 지정학 리스크에 안전자산 수요 증가</td>
+            <td class="up-txt">▲ 반등 지속 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>美 대이란 제재 발표 내용</strong> — 제재 수위에 따라 국제유가·안전자산·증시 방향성이 크게 갈릴 수 있음</li>
+        
+        <li>☑️ <strong>삼성전자·SK하이닉스 반등 여부</strong> — 코스피 낙폭 축소의 관건이 되는 대형주 흐름</li>
+        
+        <li>☑️ <strong>국제유가·에너지주 변동성</strong> — 제재 발표 직후 유가 급변동 가능성에 유의</li>
+        
+        <li>☑️ <strong>코스닥 테마주 지속성</strong> — 코스피와의 디커플링이 일시적인지 추세적인지 확인 필요</li>
+        
+        <li>☑️ <strong>원화 강세 지속 여부</strong> — 위험회피 국면에서도 나타난 원화 강세가 이어질지 주목</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-08-24 23:45 KST</div>
+
+
+</body>
+</html>
