@@ -2102,5 +2102,18 @@
         "file": "briefings/2026_08_26_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-08-27",
+    "label": "2026년 8월 27일 (목)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_08_27_morning.html"
+      }
+    ]
   }
 ]
