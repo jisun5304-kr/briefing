@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 8/28 (금) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 8/28 (금) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 엔비디아發 훈풍, 국내 반도체는 &#39;따로국밥&#39;</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 뉴욕증시는 엔비디아의 깜짝 실적을 등에 업고 나스닥이 26,541로 1.57% 급등했고, S&amp;P500(7,731)과 다우존스(53,569)도 각각 0.72%, 0.20% 오르며 동반 상승했다. 엔비디아는 하루 만에 시가총액이 610조원 불어나며 AI 랠리를 다시 이끌었다. 그러나 국내 증시에는 온기가 제대로 전해지지 않아 코스피는 6,790으로 1.77% 밀리며 &#39;7000선&#39; 진입에 실패했고, 삼성전자와 SK하이닉스는 각각 26만원, 170만원 선이 무너지며 3%대 하락했다. 코스닥도 835.58로 0.25% 내리며 약세를 이어갔고, 달러/원 환율은 1,373원으로 0.78% 하락해 원화는 강세를 보였다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 코스피 7000선 재도전 여부, 국내 반도체 대형주 낙폭 축소 여부, 연준 내 금리 인하·긴축 노선 충돌 향방</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,731</div>
+      <div class="index-chg up">▲ +0.72%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">엔비디아 실적 훈풍에 상승세 지속</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,541</div>
+      <div class="index-chg up">▲ +1.57%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">엔비디아·세일즈포스 쌍끌이 랠리로 1%대 급등</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">53,569</div>
+      <div class="index-chg up">▲ +0.20%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 대비 상승폭은 제한적</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,790</div>
+      <div class="index-chg down">▼ -1.77%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">7000선 문턱에서 반도체 약세로 후퇴</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">835.58</div>
+      <div class="index-chg down">▼ -0.25%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">약보합 마감, 관망 심리 우세</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,373</div>
+      <div class="index-chg down">▼ -0.78%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">위험선호 회복 속 원화 강세</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>엔비디아 실적 서프라이즈</strong> — 하루 만에 시총 610조원 급증하며 나스닥 급등 견인</li>
+        
+        <li>💾 <strong>SK하이닉스 美 투자 확대</strong> — 인디애나 HBM 팹 착공, 美 정부 보조금 최대 4.5억달러 지원</li>
+        
+        <li>📉 <strong>국내 반도체 &#39;나홀로 약세&#39;</strong> — 엔비디아 훈풍에도 삼성전자·SK하이닉스 3%대 하락, 차익실현 압력 시사</li>
+        
+        <li>🏦 <strong>연준 내 노선 갈등</strong> — 베센트의 금리 인하 압박과 워시의 긴축 기조가 충돌할 가능성 부각</li>
+        
+        <li>₿ <strong>비트코인 반등</strong> — 8만달러선(1억1200만원대) 재진입하며 위험자산 심리 회복 신호</li>
+        
+        <li>💱 <strong>원화 강세</strong> — 달러/원 하락세로 외국인 수급 개선 기대감 확산 전망</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>엔비디아 랠리에도 26만원선 붕괴, 단기 조정 국면 진입</td>
+            <td class="down-txt">▼ 단기 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>170만원선 붕괴됐으나 인디애나 HBM 투자는 중장기 호재</td>
+            <td class="down-txt">▼ 단기 조정, 저가매수 관심</td>
+          </tr>
+          
+          <tr>
+            <td>반도체 업종</td>
+            <td>AI 랠리 기대와 밸류에이션 부담이 교차하며 숨고르기 예상</td>
+            <td class="warn-txt">→ 방향성 탐색 전망</td>
+          </tr>
+          
+          <tr>
+            <td>커버드콜 ETF</td>
+            <td>변동성 완화 국면에서 주주환원 확대 수혜 기대</td>
+            <td class="up-txt">▲ 관심 확대 전망</td>
+          </tr>
+          
+          <tr>
+            <td>가상자산 관련주</td>
+            <td>비트코인 8만달러선 재진입에 투자심리 개선 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>코스피 7000선 재도전</strong> — 반도체 대형주 낙폭 축소 여부가 관건</li>
+        
+        <li>☑️ <strong>연준 내부 노선 차이</strong> — 베센트·워시 발언에 따라 금리 경로 변동성 확대 가능</li>
+        
+        <li>☑️ <strong>엔비디아發 훈풍 지속성</strong> — AI 관련주 쏠림 완화 여부 점검 필요</li>
+        
+        <li>☑️ <strong>원/달러 환율 방향</strong> — 추가 하락 시 외국인 수급 개선 여부 주목</li>
+        
+        <li>☑️ <strong>비트코인 8만달러선 안착</strong> — 위험자산 선호 심리를 가늠할 지표</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-08-28 15:13 KST</div>
+
+
+</body>
+</html>

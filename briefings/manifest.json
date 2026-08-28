@@ -2121,6 +2121,13 @@
     "label": "2026년 8월 28일 (금)",
     "sessions": [
       {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_08_28_morning.html"
+      },
+      {
         "time": "16:00",
         "emoji": "☀️",
         "period": "오후",
