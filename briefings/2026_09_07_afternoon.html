@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 9/7 (월) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 9/7 (월) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 반도체 폭등에 코스피 7000 턱밑…거래대금 절반이 삼성·SK하이닉스</div>
+      <div style="font-size:13px;color:var(--dim)">코스피가 반도체 대장주 급등에 힘입어 4.61% 폭등한 6,995에 거래를 마치며 7000선 코앞까지 다가섰다. 골드만삭스의 긍정적 평가와 메모리 초호황 기대가 맞물리며 삼성전자·SK하이닉스로 매수세가 집중돼, 두 종목 거래대금이 전체의 54.7%를 차지했다. 밤사이 뉴욕 증시는 S&amp;P500·나스닥·다우존스가 나란히 하락 마감했지만 국내 증시는 이를 무색하게 하는 독자적 강세를 보였다. 원/달러 환율은 0.60% 내린 1,347원으로 원화 강세도 동반됐고, 코스닥 역시 1.07% 오르며 위험자산 선호 심리를 뒷받침했다. 다만 한국은행이 반도체 호황에 가려진 가계대출(&#39;영끌&#39;) 리스크를 경고하고 나서면서 과열 우려도 함께 커지고 있다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 코스피 7000선 안착 여부, 삼성전자·SK하이닉스 추가 상승 동력, 한은 가계부채 경고 이후 정책 대응</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,719</div>
+      <div class="index-chg down">▼ -0.38%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">밤사이 소폭 조정, 3대 지수 동반 하락</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,507</div>
+      <div class="index-chg down">▼ -0.29%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 차익실현 속 약보합 마감</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">53,414</div>
+      <div class="index-chg down">▼ -0.51%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">3대 지수 중 낙폭 가장 커</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,995</div>
+      <div class="index-chg up">▲ +4.61%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">반도체 폭등에 4%대 급등, 7000선 턱밑</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">822.19</div>
+      <div class="index-chg up">▲ +1.07%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">위험자산 선호 속 동반 강세</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,347</div>
+      <div class="index-chg down">▼ -0.60%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">원화 강세 뚜렷, 1,340원대 진입</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🏦 <strong>골드만삭스 반도체 찬사</strong> — 글로벌 투자은행의 긍정적 코멘트가 메모리 반도체 랠리에 불을 붙였다</li>
+        
+        <li>💾 <strong>메모리 재고 고갈 우려</strong> — 삼성전자·SK하이닉스 재고가 10일치에 불과해 품귀 가능성이 제기됐다</li>
+        
+        <li>🇹🇼 <strong>대만 반도체 동반 강세</strong> — 미국발 반도체 강세에 대만 증시도 이틀째 상승하며 아시아 전반으로 랠리가 확산됐다</li>
+        
+        <li>🏛️ <strong>한은의 &#39;영끌&#39; 경고</strong> — 한국은행이 반도체 호황 이면의 가계부채 리스크에 경고음을 냈다</li>
+        
+        <li>💰 <strong>외국인·기관 동반 매수</strong> — 외국인과 기관의 순매수세가 지수 급등을 뒷받침했다</li>
+        
+        <li>📱 <strong>삼성전자 MX·노조 리스크</strong> — 메모리 훈풍에도 MX사업부와 노조 이슈가 주가 상단을 제한한다는 분석이 나온다</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>메모리 초호황과 거래대금 집중, 다만 MX·노조 리스크는 부담 요인</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>골드만삭스 긍정 평가와 메모리 재고 고갈 기대에 거래대금 급증</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK스퀘어</td>
+            <td>SK하이닉스 강세에 지분가치 부각</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>반도체 소부장</td>
+            <td>메모리 슈퍼사이클 기대에 따른 낙수효과 전망</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>은행주</td>
+            <td>지방이전설 등으로 채용이 위축되며 업황 불확실성 부각</td>
+            <td class="warn-txt">→ 혼조 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>코스피 7000 돌파 여부</strong> — 반도체 랠리의 지속성이 관건</li>
+        
+        <li>☑️ <strong>한은 가계부채 경고 후속 대응</strong> — 영끌 경고가 실제 대출 규제로 이어질지 주시</li>
+        
+        <li>☑️ <strong>메모리 반도체 수급</strong> — 재고 고갈 전망이 가격 추가 상승으로 이어질지 확인 필요</li>
+        
+        <li>☑️ <strong>美 증시 조정 지속 여부</strong> — 3대 지수 동반 약세가 이어지면 국내 증시 상승 동력이 약화될 수 있음</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-09-07 22:26 KST</div>
+
+
+</body>
+</html>
