@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 9/8 (화) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 9/8 (화) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 코스피 7,000 턱밑서 미끄럼, 중동 불안에 개미 투매</div>
+      <div style="font-size:13px;color:var(--dim)">코스피는 장중 7,171까지 오르며 7,000선 안착을 시도했지만 상승분을 반납하고 6,955(-0.58%)로 밀려 마감했습니다. 코스닥도 811.88(-1.25%)로 낙폭이 더 컸습니다. 밤사이 뉴욕증시도 S&amp;P500 -0.38%, 나스닥 -0.29%, 다우 -0.51%로 3대 지수가 동반 약세를 보이며 국내 증시에 부담을 줬습니다. 중동 지정학적 불확실성이 부각된 가운데 외국인은 소폭 매수에 그쳤고 개인은 이탈성 매도를 이어가며 지수를 끌어내렸습니다. 원/달러 환율은 1,342원(-0.24%)으로 소폭 내리며 원화는 강세 흐름을 보였습니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 중동 지정학 리스크 확산 여부, 개인·외국인 수급 공방, 반도체 대형주의 환율 변수 대응력</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,719</div>
+      <div class="index-chg down">▼ -0.38%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">3대 지수 동반 약세 속 하락</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,507</div>
+      <div class="index-chg down">▼ -0.29%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 중심 약세 흐름 지속</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">53,414</div>
+      <div class="index-chg down">▼ -0.51%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">3대 지수 중 낙폭 가장 커</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,955</div>
+      <div class="index-chg down">▼ -0.58%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장중 7,171 터치 후 상승분 반납, 6,950선 마감</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">811.88</div>
+      <div class="index-chg down">▼ -1.25%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">투매 속 낙폭 확대</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,342</div>
+      <div class="index-chg down">▼ -0.24%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 하락하며 원화 강세</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🌍 <strong>중동 지정학적 불확실성</strong> — 리스크 회피 심리가 확산되며 코스피 전강후약 흐름의 배경으로 지목</li>
+        
+        <li>👥 <strong>외국인·개인 수급 엇갈림</strong> — 외국인은 소폭 순매수에 그친 반면 개인은 투매성 매도를 이어가며 지수 상승분을 반납시킴</li>
+        
+        <li>🇺🇸 <strong>미국 증시 동반 약세</strong> — 밤사이 3대 지수가 모두 하락 마감하며 국내 증시 투자심리에 부담</li>
+        
+        <li>💴 <strong>엔화 강세·미 국채금리 상승</strong> — 위험자산 회피 심리 속 비트코인도 7만8천달러대로 동반 하락</li>
+        
+        <li>🔧 <strong>반도체 업종 방어력</strong> — 환율 변수 속에서도 반도체주가 상대적으로 선방하는 모습</li>
+        
+        <li>🏢 <strong>삼성전자 해외 투자 확대</strong> — 일본 요코하마 첨단 패키징 연구소에 5년간 3,500억원 투자 발표로 중장기 경쟁력 강화 기대</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>요코하마 첨단 패키징 연구소 투자 발표로 중장기 기술 경쟁력 강화 기대</td>
+            <td class="warn-txt">→ 완만한 관망세</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>298만원대 고점 대비 조정 국면, 과거 엔비디아 사례에 빗댄 저점 통과 기대감 거론</td>
+            <td class="warn-txt">→ 조정 국면 속 관망</td>
+          </tr>
+          
+          <tr>
+            <td>반도체 업종</td>
+            <td>환율 악재 속에서도 상대적으로 견조한 흐름을 보이며 방어력 부각</td>
+            <td class="up-txt">▲ 상대적 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 전반</td>
+            <td>개인 투매가 집중되며 코스피 대비 낙폭이 더 크게 확대</td>
+            <td class="down-txt">▼ 약세 지속 우려</td>
+          </tr>
+          
+          <tr>
+            <td>무신사</td>
+            <td>10조원대 기업가치 평가를 둘러싼 시장의 시험대에 오름</td>
+            <td class="warn-txt">→ 관심 종목으로 주목</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>중동 지정학 리스크 추이</strong> — 확산 여부에 따라 위험자산 회피 심리와 증시 변동성이 좌우될 전망</li>
+        
+        <li>☑️ <strong>외국인·개인 수급 공방</strong> — 개인 매도 강도가 유지될 경우 지수 반등 시도가 재차 저지될 가능성</li>
+        
+        <li>☑️ <strong>미국 증시 재개장 흐름</strong> — 간밤 3대 지수 약세가 이어질지 여부가 국내 증시 방향성에 영향</li>
+        
+        <li>☑️ <strong>원/달러 환율 변동성</strong> — 원화 강세 흐름이 지속될지, 수출주 실적 부담으로 이어질지 주목</li>
+        
+        <li>☑️ <strong>반도체 대형주 동향</strong> — 삼성전자·SK하이닉스 등 대형주가 지수 방어의 관건</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-09-08 21:04 KST</div>
+
+
+</body>
+</html>
