@@ -2452,5 +2452,18 @@
         "file": "briefings/2026_09_14_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-09-15",
+    "label": "2026년 9월 15일 (화)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_09_15_morning.html"
+      }
+    ]
   }
 ]
