@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 9/24 (목) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 9/24 (목) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 코스피 7,080선 안착, 삼성전자 3% 급등에 4거래일 연속 상승</div>
+      <div style="font-size:13px;color:var(--dim)">코스피가 삼성전자 급등에 힘입어 4거래일 연속 상승하며 7,080선에 안착했다(+1.04%). 코스닥도 반도체 강세에 동반 상승했다(+0.98%). 다만 간밤 뉴욕증시는 연준 추가 긴축 경계와 금리 급등 여파로 나스닥의 사상 최고 행진이 3일 만에 멈추며 3대 지수가 일제히 하락 마감했다(S&amp;P500 -0.76%, 나스닥 -0.69%, 다우 -1.03%). 국내 증시는 추석 연휴를 앞두고 전강후약 흐름을 보이며 장중 상승폭을 다소 반납했고, 원/달러 환율은 1,368원으로 하루 새 1.34% 올랐다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 연휴 이후 반도체주 방향성, 원/달러 환율 추가 상승 여부, 뉴욕증시 금리 변수 소화 과정</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,706</div>
+      <div class="index-chg down">▼ -0.76%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">연준 긴축 경계 속 하락, 상승 랠리에 제동</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,936</div>
+      <div class="index-chg down">▼ -0.69%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">3일 만에 사상 최고 행진 종료, 반도체 약세 전환</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,512</div>
+      <div class="index-chg down">▼ -1.03%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">3대 지수 중 낙폭 최대</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">7,081</div>
+      <div class="index-chg up">▲ +1.04%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">삼성전자 급등에 4거래일 연속 상승, 7,080선 안착</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">844.48</div>
+      <div class="index-chg up">▲ +0.98%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">반도체 강세 훈풍에 동반 상승</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,368</div>
+      <div class="index-chg up">▲ +1.34%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1,368원, 하루 새 큰 폭 상승</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>연준 긴축 경계</strong> — 미국 금리 급등에 뉴욕 3대 지수 동반 하락, 나스닥 최고 행진도 종료</li>
+        
+        <li>📱 <strong>삼성전자 급등</strong> — 삼성전자 3% 급등이 코스피 상승 견인, DS부문 성과급 세부안 이달 말 공개 예정</li>
+        
+        <li>💾 <strong>반도체주 강세·엇갈림</strong> — 국내 반도체주는 강세였지만 간밤 미국 반도체주는 1.2% 하락, 월요일 변수로 지목</li>
+        
+        <li>🎑 <strong>추석 연휴 경계</strong> — 연휴 앞두고 관망 심리 확산, 전강후약 흐름에 상승폭 일부 반납</li>
+        
+        <li>💱 <strong>원화 약세</strong> — 원/달러 환율 1,368원까지 상승, 위험회피 심리 반영 가능성</li>
+        
+        <li>🌏 <strong>관세 리스크</strong> — 인도의 삼성·LG전자 OLED 부품 관세 조사가 새로운 부담 요인으로 부상</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>3% 급등하며 코스피 상승 견인, DS 성과급 세부안 이달 말 발표 예정</td>
+            <td class="up-txt">▲ 강세 지속 전망</td>
+          </tr>
+          
+          <tr>
+            <td>반도체(SK하이닉스 등)</td>
+            <td>국내 반도체주 전반 강세, TSMC 파운드리 가격 인상 전망도 우호적</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>LG전자</td>
+            <td>인도 OLED 부품 관세 조사 결과에 따른 불확실성</td>
+            <td class="warn-txt">→ 관세 이슈 주시 필요</td>
+          </tr>
+          
+          <tr>
+            <td>미국 반도체 관련주</td>
+            <td>간밤 미국 반도체주 1.2% 하락, 월요일 변수 예의주시</td>
+            <td class="down-txt">▼ 단기 조정 가능성</td>
+          </tr>
+          
+          <tr>
+            <td>신규상장·스팩주</td>
+            <td>한국제17호스팩·네오사피엔스 등 단기 급등락에 변동성 확대</td>
+            <td class="warn-txt">→ 변동성 확대 주의</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>추석 연휴 이후 개장 변수</strong> — 휴장 기간 쌓인 미국 증시·반도체 소식이 월요일 한꺼번에 반영될 가능성</li>
+        
+        <li>☑️ <strong>연준 통화정책 경계</strong> — 금리 급등이 이어질 경우 국내 증시 변동성 확대 가능</li>
+        
+        <li>☑️ <strong>원/달러 환율 추이</strong> — 1,368원까지 오른 환율이 추가 상승할지 주시 필요</li>
+        
+        <li>☑️ <strong>삼성전자 DS 성과급 발표</strong> — 이달 말 세부안 공개가 투자심리에 미칠 영향</li>
+        
+        <li>☑️ <strong>개인 투자자 매매 타이밍</strong> — 고점 매수로 인한 손실 확대 보도, 추격매수 자제 필요</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-09-24 21:39 KST</div>
+
+
+</body>
+</html>
