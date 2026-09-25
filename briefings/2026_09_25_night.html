@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 9/25 (금) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 9/25 (금) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 AI 낙관론에 뉴욕증시 상승 출발, 유가 하락이 금리 부담 덜어줘</div>
+      <div style="font-size:13px;color:var(--dim)">추석 연휴로 국내 증시가 휴장한 가운데, 미국 3대 지수는 AI 훈풍을 타고 일제히 상승 출발했다. 다우존스는 0.83%, S&amp;P 500은 0.51%, 나스닥은 0.57% 오르며 저장장치주를 중심으로 강세가 두드러졌다. 국제유가가 하락하며 그동안 부담으로 작용하던 국채금리 상승 압력이 다소 진정되는 모습도 긍정적으로 작용했다. 유럽증시 역시 종전 기대감이 재부각되며 대부분 상승 마감했다. 다만 미중 정상회담은 파격적인 의전에도 뚜렷한 빅딜 없이 마무리돼 통상 관련 불확실성은 여전히 남아 있다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: AI 훈풍이 뉴욕증시 상승세를 얼마나 이어갈지, 유가 하락에 따른 국채금리 진정 흐름의 지속 여부, 추석 연휴 이후 국내 증시 재개장 시 미국장 훈풍 반영 정도</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,744</div>
+      <div class="index-chg up">▲ +0.51%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 낙관론에 상승 출발, 지수 흐름 견조</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">27,094</div>
+      <div class="index-chg up">▲ +0.57%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 훈풍에 저장장치주 동반 강세로 상승세 주도</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,779</div>
+      <div class="index-chg up">▲ +0.83%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">3대 지수 중 가장 강한 상승 출발</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">7,081</div>
+      <div class="index-chg up">▲ +0.90%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">추석 연휴 휴장, 재개장 시 미국장 훈풍 반영 여부 주목</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">844.48</div>
+      <div class="index-chg up">▲ +1.21%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">휴장 중이나 최근 상승 흐름 유지</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,356</div>
+      <div class="index-chg down">▼ -0.49%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">달러 약세 흐름 속 소폭 하락</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🤖 <strong>AI 낙관론</strong> — AI 훈풍에 뉴욕증시 3대 지수 동반 상승 출발</li>
+        
+        <li>🛢️ <strong>국제유가 하락</strong> — 유가 하락이 국채금리 상승 부담을 일부 상쇄</li>
+        
+        <li>📊 <strong>국채금리 향방 혼조</strong> — 장기 금리 급등 보도와 진정 신호가 엇갈려 변동성 가능성</li>
+        
+        <li>🤝 <strong>미중 정상회담 종료</strong> — 파격 의전에도 구체적 빅딜 부재로 통상 불확실성 지속 전망</li>
+        
+        <li>🇪🇺 <strong>유럽증시 강세</strong> — 종전 기대감 재부각에 대부분 지수 상승, 유가 하락 동반</li>
+        
+        <li>🇰🇷 <strong>국내 증시 휴장</strong> — 추석 연휴로 코스피·코스닥 휴장, 재개장 후 반응 주목</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>샌디스크</td>
+            <td>저장장치 수요 기대에 강세, 번스타인 목표가 유지 소식</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>메모리·저장장치株</td>
+            <td>AI 관련 수요 기대에 동반 강세 흐름</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>정유·에너지株</td>
+            <td>국제유가 하락으로 단기 실적 부담 가능성</td>
+            <td class="down-txt">▼ 약세 가능성</td>
+          </tr>
+          
+          <tr>
+            <td>금 관련株</td>
+            <td>금값 4300달러선 반등에도 주간 기준 2% 하락, 안전자산 수요 주춤</td>
+            <td class="warn-txt">→ 혼조 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥</td>
+            <td>휴장 중이나 최근 상승 흐름 이어갈지 주목</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>미 국채금리 방향성 확인</strong> — 장기금리 급등과 진정 신호가 혼재해 방향성 재확인 필요</li>
+        
+        <li>☑️ <strong>국제유가 하락세 지속 여부</strong> — 사우디 원유 수출 증가가 유가 추가 하락으로 이어질지 관찰 필요</li>
+        
+        <li>☑️ <strong>미중 정상회담 후속 조치</strong> — 빅딜 부재 이후 양국 통상 관련 후속 발표 여부 주목</li>
+        
+        <li>☑️ <strong>국내 증시 재개장 반응</strong> — 추석 연휴 이후 미국장 훈풍이 코스피·코스닥에 얼마나 반영될지 확인</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-09-26 03:20 KST</div>
+
+
+</body>
+</html>
