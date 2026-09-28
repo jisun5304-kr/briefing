@@ -2647,5 +2647,18 @@
         "file": "briefings/2026_09_28_morning.html"
       }
     ]
+  },
+  {
+    "date": "2026-09-29",
+    "label": "2026년 9월 29일 (화)",
+    "sessions": [
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_09_29_afternoon.html"
+      }
+    ]
   }
 ]
