@@ -46,12 +46,12 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
 
 <!-- ① 한 줄 요약 -->
 <div class="section">
-  <div class="card bar-up">
+  <div class="card bar-warn">
     <div class="card-inner">
       <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 9/29 (화) 16:00</div>
-      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 코스피, 반도체 약세 딛고 7,000선 재탈환…코스닥은 1%대 강세</div>
-      <div style="font-size:13px;color:var(--dim)">코스피는 반도체 대형주 조정에도 2차전지·패션 등이 방어하며 7,081로 상승 마감했다. 코스닥도 1%대 강세를 보이며 위험자산 선호가 살아나는 모습이다. 반면 밤사이 미국 증시는 국채금리 부담 속에 S&amp;P 500·나스닥·다우존스가 나란히 조정을 받았다. 원/달러 환율은 1,361원으로 소폭 하락하며 최근 급등 흐름이 일단 진정되는 분위기다. 삼성전자는 배당락과 노사 갈등 이슈가 겹치며 지수 상승 흐름에서 다소 소외됐다.</div>
-      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 미 국채금리 추이와 뉴욕증시 조정 지속 여부, 반도체 대형주 수급 회복 시점, 원/달러 환율 변동성 진정 여부</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">⚖️ 코스피 이틀째 약세, 코스닥은 상승…美 국채금리·외국인 매도 부담</div>
+      <div style="font-size:13px;color:var(--dim)">코스피는 6,871로 0.27% 하락하며 이틀째 약세 마감했고, 6,800선은 지켜냈습니다. 美 국채금리 상승 부담과 외국인의 2조 9,000억원대 대규모 순매도가 지수를 눌렀다는 보도가 이어졌습니다. 반면 코스닥은 849.80으로 0.38% 올라 신규 상장주와 상한가 종목 중심의 개별 종목 장세를 보였습니다. 미국 증시는 S&amp;P 500 7,684(+0.01%), 나스닥 26,832(+0.04%)로 보합권, 다우는 0.19% 내리며 혼조세였고, 원/달러 환율은 1,355원 부근에서 안정적입니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 美 국채금리 방향, 외국인 수급 전환 여부, 유가 진정에 따른 AI 반도체주 반등 지속 여부</div>
     </div>
   </div>
 </div>
@@ -61,52 +61,52 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
   <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
   <div class="index-grid">
     
-    <div class="index-card down">
-      <div class="signal down"></div>
+    <div class="index-card flat">
+      <div class="signal flat"></div>
       <div class="index-name">S&amp;P 500</div>
-      <div class="index-val">7,681</div>
-      <div class="index-chg down">▼ -0.81%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">국채금리 부담에 조정</div>
+      <div class="index-val">7,684</div>
+      <div class="index-chg flat">+0.01%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">보합권 등락, 금리 부담 속 관망</div>
     </div>
     
-    <div class="index-card down">
-      <div class="signal down"></div>
+    <div class="index-card flat">
+      <div class="signal flat"></div>
       <div class="index-name">나스닥</div>
-      <div class="index-val">26,811</div>
-      <div class="index-chg down">▼ -0.95%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 중심 약세</div>
+      <div class="index-val">26,832</div>
+      <div class="index-chg flat">+0.04%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 반도체 반등 기대에 소폭 상승</div>
     </div>
     
     <div class="index-card down">
       <div class="signal down"></div>
       <div class="index-name">다우존스</div>
-      <div class="index-val">51,444</div>
-      <div class="index-chg down">▼ -0.74%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">대형주 동반 하락</div>
+      <div class="index-val">51,384</div>
+      <div class="index-chg down">▼ -0.19%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">금리 부담에 약보합</div>
     </div>
     
-    <div class="index-card up">
-      <div class="signal up"></div>
+    <div class="index-card down">
+      <div class="signal down"></div>
       <div class="index-name">코스피</div>
-      <div class="index-val">7,081</div>
-      <div class="index-chg up">▲ +0.90%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">반도체 약세에도 7,000선 회복</div>
+      <div class="index-val">6,871</div>
+      <div class="index-chg down">▼ -0.27%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">이틀째 하락, 6,800선 지지 공방</div>
     </div>
     
     <div class="index-card up">
       <div class="signal up"></div>
       <div class="index-name">코스닥</div>
-      <div class="index-val">844.48</div>
-      <div class="index-chg up">▲ +1.21%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">위험선호 회복하며 강세</div>
+      <div class="index-val">849.80</div>
+      <div class="index-chg up">▲ +0.38%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">신규 상장·상한가 종목 중심 강세</div>
     </div>
     
-    <div class="index-card down">
-      <div class="signal down"></div>
+    <div class="index-card flat">
+      <div class="signal flat"></div>
       <div class="index-name">USD/KRW</div>
-      <div class="index-val">1,361</div>
-      <div class="index-chg down">▼ -0.46%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">최근 급등세 진정되며 소폭 하락</div>
+      <div class="index-val">1,355</div>
+      <div class="index-chg flat">+0.01%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">1,350원대 보합, 변동성 제한적</div>
     </div>
     
   </div>
@@ -119,17 +119,17 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
     <div class="card-inner">
       <ul class="bullet-list">
         
-        <li>🇺🇸 <strong>미 국채금리 부담</strong> — 연휴 이후 미 국채금리 상승 압력이 부각되며 뉴욕증시가 조정받았다는 소식</li>
+        <li>🇺🇸 <strong>美 국채금리 상승</strong> — 금리 부담이 국내 증시 약세의 주된 배경으로 거론됨</li>
         
-        <li>🖥️ <strong>반도체·2차전지 엇갈림</strong> — 코스피 시총 상위 반도체주는 약세, 2차전지는 방어하며 업종별 온도차가 뚜렷했다는 분석</li>
+        <li>💸 <strong>외국인 대규모 순매도</strong> — 외국인 2조 9,000억원대 매도로 코스피 이틀째 하락</li>
         
-        <li>💰 <strong>삼성전자 배당락·노사 갈등</strong> — 배당 막차 수요가 빠지며 주가가 하락한 가운데 노사 갈등 관련 이슈도 부담 요인으로 거론</li>
+        <li>🛢️ <strong>유가 흐름</strong> — 유가 부담이 장중 약세 요인으로 언급, 미국장에선 유가 진정 조짐</li>
         
-        <li>🇭🇰 <strong>홍콩 증시 반등</strong> — 미국 증시 강세 흐름에 힘입어 홍콩 증시가 나흘 만에 반등 마감했다는 소식</li>
+        <li>🤖 <strong>AI 반도체 반등</strong> — 미국 증시 초반 혼조 속 AI 반도체가 반등, 국내 반도체 심리에 영향 가능성</li>
         
-        <li>🏗️ <strong>삼성·아산 메가프로젝트</strong> — 대통령의 정주여건·AIDC 점검과 함께 삼성-아산시 대규모 투자 성과가 부각</li>
+        <li>🚀 <strong>신규 상장주 급등</strong> — 글로벌테크놀로지 등 신규 상장주 급등, 회전율 100% 넘는 종목 나와 코스닥 단기 과열 신호 점검</li>
         
-        <li>👕 <strong>패션·섬유주 강세</strong> — 영원무역·코오롱인더 등 패션, HS효성첨단·DI동일 등 섬유주가 상승세를 보였다는 소식</li>
+        <li>🔺 <strong>상한가 종목 속출</strong> — 현대바이오랜드 등 상한가로 개별 종목 장세 부각</li>
         
       </ul>
     </div>
@@ -148,33 +148,33 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
         <tbody>
           
           <tr>
-            <td>삼성전자</td>
-            <td>배당락 물량 출회에 노사 갈등 이슈까지 겹치며 약세</td>
-            <td class="down-txt">▼ 약세</td>
-          </tr>
-          
-          <tr>
-            <td>반도체 대형주</td>
-            <td>미 국채금리 부담 속 시총 상위 반도체주 조정</td>
-            <td class="down-txt">▼ 약세 지속 가능성</td>
-          </tr>
-          
-          <tr>
-            <td>2차전지</td>
-            <td>반도체 약세 속 상대적으로 견조한 방어력 확인</td>
-            <td class="warn-txt">→ 방어적 흐름</td>
-          </tr>
-          
-          <tr>
-            <td>패션·섬유 (영원무역·코오롱인더 등)</td>
-            <td>개별 종목 강세 흐름이 부각되며 순환매 수혜 기대</td>
-            <td class="up-txt">▲ 강세</td>
-          </tr>
-          
-          <tr>
-            <td>코스닥 성장주</td>
-            <td>위험자산 선호 회복에 1%대 강세</td>
+            <td>삼성전기</td>
+            <td>코스피 약보합 속에서도 상승 마감한 종목으로 언급</td>
             <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK스퀘어</td>
+            <td>지수 약세에도 상승, 반도체 관련 심리 반영 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>LG에너지솔루션</td>
+            <td>약세 종목으로 거론, 금리 부담 지속 시 조정 가능성</td>
+            <td class="down-txt">▼ 약세 우려</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>AI 반도체 반등과 외국인 수급 방향에 따라 좌우될 전망</td>
+            <td class="warn-txt">→ 중립</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 신규 상장주</td>
+            <td>급등 후 높은 회전율로 변동성 확대 가능성</td>
+            <td class="warn-txt">→ 중립</td>
           </tr>
           
         </tbody>
@@ -190,15 +190,15 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
     <div class="card-inner">
       <ul class="bullet-list">
         
-        <li>☑️ <strong>미 국채금리 추가 상승 여부</strong> — 뉴욕증시 조정의 핵심 변수로 국내 증시 수급에도 영향</li>
+        <li>☑️ <strong>美 국채금리 추이</strong> — 금리 급등이 이어지면 성장주와 외국인 수급에 부담</li>
         
-        <li>☑️ <strong>반도체 대형주 반등 시점</strong> — 코스피 방향성을 좌우하는 핵심 업종인 만큼 수급 전환 여부 주목</li>
+        <li>☑️ <strong>외국인 매매 동향</strong> — 대규모 순매도가 이어질지 순매수로 돌아설지가 지수 방향 결정</li>
         
-        <li>☑️ <strong>원/달러 환율 변동성</strong> — 최근 급등 이후 진정 흐름이 이어질지 확인 필요</li>
+        <li>☑️ <strong>6,800선 지지 여부</strong> — 코스피 이틀째 하락 후 지지선 유지 여부 확인</li>
         
-        <li>☑️ <strong>삼성전자 노사 갈등 전개</strong> — 개별 종목 리스크가 지수 전반에 미칠 영향 점검</li>
+        <li>☑️ <strong>유가 및 환율</strong> — 유가 안정과 1,350원대 환율 유지가 위험선호에 우호적</li>
         
-        <li>☑️ <strong>홍콩·중국 증시 흐름</strong> — 아시아 증시 전반의 위험자산 선호 지속 여부 가늠자</li>
+        <li>☑️ <strong>신규 상장주 과열</strong> — 높은 회전율 종목의 변동성 관리 필요</li>
         
       </ul>
     </div>
@@ -206,7 +206,7 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
 </div>
 
 
-<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-09-29 00:14 KST</div>
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-09-29 22:55 KST</div>
 
 
 </body>
