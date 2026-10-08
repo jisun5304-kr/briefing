@@ -2822,5 +2822,18 @@
         "file": "briefings/2026_10_07_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-10-08",
+    "label": "2026년 10월 8일 (목)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_10_08_morning.html"
+      }
+    ]
   }
 ]
