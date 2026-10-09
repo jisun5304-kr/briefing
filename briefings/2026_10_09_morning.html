@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 10/9 (금) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 10/9 (금) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 AI 기술주 급락에 나스닥 -1.25%, 반도체 약세 파장 우려</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 뉴욕증시는 AI 기술주 약세와 국제유가 급등이 겹치며 혼조 마감했다. 나스닥은 ▼ -1.25%, S&amp;P 500은 ▼ -0.47%로 밀린 반면 다우존스는 ▲ +0.10%로 버티며 기술주와 가치주의 온도차가 뚜렷했다. 오픈AI 연간 매출 추정치 하향 보도가 AI 밸류체인 전반에 부담을 준 것으로 보인다. 코스피는 ▼ -2.62%로 크게 밀렸고 코스닥도 ▼ -0.69%를 기록했으며, USD/KRW는 ▲ +0.24%로 원화 약세 흐름이다. 미국 반도체 급락의 영향으로 국내 반도체 대형주 변동성이 이어질 가능성에 유의할 필요가 있다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 반도체·AI 관련주 낙폭 확대 여부, 국제유가·금리 부담 지속 여부, 원/달러 환율 흐름</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,765</div>
+      <div class="index-chg down">▼ -0.47%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 약세에 하락, 낙폭은 제한적</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">27,193</div>
+      <div class="index-chg down">▼ -1.25%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 기술주 매물 출회로 3대 지수 중 부진</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">51,232</div>
+      <div class="index-chg up">▲ +0.10%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 외 업종 방어로 소폭 상승</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,626</div>
+      <div class="index-chg down">▼ -2.62%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">반도체 중심 급락, 투자심리 위축</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">892.27</div>
+      <div class="index-chg down">▼ -0.69%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">대형주 대비 낙폭은 작았으나 약세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,342</div>
+      <div class="index-chg up">▲ +0.24%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">위험회피 속 원화 약세, 환율 상승</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🤖 <strong>오픈AI 매출 추정치 하향</strong> — 연간 매출 추정치 하향 보도로 빅테크·AI 관련주 주가가 일제히 흔들렸다.</li>
+        
+        <li>🛢️ <strong>국제유가 급등</strong> — 유가 급등과 금리 부담이 겹치며 기술주 중심으로 매도세가 나타났다.</li>
+        
+        <li>💾 <strong>미국 반도체 급락</strong> — 한글날 휴장 중 美 반도체가 급락해 국내 반도체주에 추가 부담 가능성이 거론된다.</li>
+        
+        <li>⚠️ <strong>AI 거품론 재부상</strong> — 달리오의 AI 거품 경고가 전해지며 고평가 부담에 대한 경계심이 커지고 있다.</li>
+        
+        <li>🇺🇸 <strong>트럼프 반이민 정책 강화</strong> — 빅테크 영주권·명문대 비자 조사 등 정책 불확실성이 기술업계 변수로 부각됐다.</li>
+        
+        <li>₿ <strong>비트코인 약세</strong> — 이틀 새 7% 가까이 하락하며 위험자산 선호가 위축된 모습이다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>미국 반도체 급락 및 AI 수요 둔화 우려로 단기 변동성 확대 가능성</td>
+            <td class="down-txt">▼ 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>AI 메모리 기대 훼손 우려, 솔리다임 미국 상장 추진은 별도 변수</td>
+            <td class="down-txt">▼ 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>AI·빅테크 관련주</td>
+            <td>오픈AI 매출 추정 하향 여파로 투자심리 위축</td>
+            <td class="down-txt">▼ 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>정유·에너지</td>
+            <td>국제유가 급등 시 상대적 수혜 가능성</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>가상자산 관련주</td>
+            <td>비트코인 조정 흐름에 연동될 가능성</td>
+            <td class="down-txt">▼ 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>방어주(내수·음식료)</td>
+            <td>변동성 장세에서 상대적 안정 선호 가능성</td>
+            <td class="warn-txt">→ 중립</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>반도체 업종 수급 동향</strong> — 미국 반도체 급락이 국내 대형주 외국인·기관 수급에 미치는 영향을 확인해야 한다.</li>
+        
+        <li>☑️ <strong>국제유가와 금리 방향</strong> — 유가 급등이 금리 부담으로 이어질 경우 성장주 밸류에이션에 추가 압박이 될 수 있다.</li>
+        
+        <li>☑️ <strong>원/달러 환율 추이</strong> — 환율 상승이 이어지면 외국인 매도 압력이 커질 수 있다.</li>
+        
+        <li>☑️ <strong>AI 투자 사이클 관련 뉴스</strong> — 오픈AI 등 주요 AI 기업의 실적·투자 계획 변화가 업종 전반의 방향을 좌우한다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-10-09 11:24 KST</div>
+
+
+</body>
+</html>
