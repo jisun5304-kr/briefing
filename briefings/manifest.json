@@ -2889,5 +2889,18 @@
         "file": "briefings/2026_10_12_morning.html"
       }
     ]
+  },
+  {
+    "date": "2026-10-13",
+    "label": "2026년 10월 13일 (화)",
+    "sessions": [
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_10_13_afternoon.html"
+      }
+    ]
   }
 ]
