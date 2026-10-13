@@ -2916,5 +2916,18 @@
         "file": "briefings/2026_10_13_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-10-14",
+    "label": "2026년 10월 14일 (수)",
+    "sessions": [
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_10_14_night.html"
+      }
+    ]
   }
 ]
