@@ -2929,6 +2929,13 @@
         "file": "briefings/2026_10_14_morning.html"
       },
       {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_10_14_afternoon.html"
+      },
+      {
         "time": "23:00",
         "emoji": "🌙",
         "period": "밤",
