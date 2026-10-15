@@ -2961,6 +2961,13 @@
         "period": "오후",
         "ready": true,
         "file": "briefings/2026_10_15_afternoon.html"
+      },
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_10_15_night.html"
       }
     ]
   }
