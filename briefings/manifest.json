@@ -3116,6 +3116,13 @@
         "period": "오전",
         "ready": true,
         "file": "briefings/2026_10_23_morning.html"
+      },
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_10_23_afternoon.html"
       }
     ]
   }

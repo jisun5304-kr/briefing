@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 10/23 (금) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 10/23 (금) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📊 코스피 장중 급락 딛고 5,550선 회복…코스닥은 약세</div>
+      <div style="font-size:13px;color:var(--dim)">코스피는 장중 4%대 급락했다가 막판 상승 전환하며 5,550으로 +0.30% 마감했습니다. 솔리다임 IPO 중단 소식이 반등 계기로 거론되며 SK하이닉스가 강세를 보였고, 기관 매수세가 지수를 방어한 것으로 보입니다. 반면 코스닥은 751.69로 -1.62% 하락해 대형주와 중소형주 간 온도차가 컸습니다. 간밤 미국 시장은 나스닥 -2.60%, S&amp;P 500 -1.21%로 기술주 중심 약세였고 다우존스는 +0.02%로 보합권이었습니다. 원/달러 환율은 1,324원으로 -0.11% 소폭 하락했습니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 미국 기술주 약세의 국내 반도체주 파급 여부, 솔리다임 관련 후속 소식, 코스닥 수급 안정 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,663</div>
+      <div class="index-chg down">▼ -1.21%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 부담에 하락, 낙폭 확대 여부 주목</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,009</div>
+      <div class="index-chg down">▼ -2.60%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 급락 주도, 변동성 확대</div>
+    </div>
+    
+    <div class="index-card flat">
+      <div class="signal flat"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,868</div>
+      <div class="index-chg flat">+0.02%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">보합권으로 상대적 방어력 확인</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">5,550</div>
+      <div class="index-chg up">▲ +0.30%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장중 급락 딛고 5,500선 회복, 반등 탄력 확인</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">751.69</div>
+      <div class="index-chg down">▼ -1.62%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">회전율 높은 종목 중심 급등·급락 혼재, 약세 마감</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,324</div>
+      <div class="index-chg down">▼ -0.11%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 하락하며 1,320원대 안정적 흐름</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>미국 기술주 급락</strong> — 나스닥 약세가 국내 장 초반 급락의 배경으로 작용한 것으로 보입니다.</li>
+        
+        <li>💾 <strong>솔리다임 IPO 중단</strong> — 중단 소식이 SK하이닉스 강세와 코스피 반등을 이끌었다는 해석이 나옵니다.</li>
+        
+        <li>🏦 <strong>기관 순매수</strong> — 미국 기술주 급락에도 기관이 매수에 나서며 5,500선을 방어했다는 보도입니다.</li>
+        
+        <li>💹 <strong>거래대금 증가</strong> — SK하이닉스·삼성전자 거래대금이 8.2조원으로 전일 대비 37% 늘며 수급 쏠림이 두드러졌습니다.</li>
+        
+        <li>🚀 <strong>코스닥 변동성</strong> — 회전율 상위 50종목 중 41개가 코스닥으로, 급등·급락이 엇갈렸습니다.</li>
+        
+        <li>💱 <strong>환율 안정</strong> — 원/달러 1,324원으로 소폭 내려 외국인 수급 부담은 제한적일 가능성이 있습니다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>솔리다임 IPO 중단 이후 반등 주도, 거래대금 급증</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>반도체 대형주 수급 집중, 미국 기술주 흐름에 연동 가능성</td>
+            <td class="warn-txt">→ 중립</td>
+          </tr>
+          
+          <tr>
+            <td>삼성바이오로직스</td>
+            <td>코스피 강보합 속 상승 종목으로 언급</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 중소형주</td>
+            <td>높은 회전율과 급등락 반복, 약세 마감</td>
+            <td class="down-txt">▼ 약세 가능성</td>
+          </tr>
+          
+          <tr>
+            <td>상한가 테마주</td>
+            <td>진양화학·스페코·컨텍 등 단기 급등, 추격 부담</td>
+            <td class="warn-txt">→ 변동성 유의</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>미국 기술주 흐름</strong> — 나스닥 약세가 이어지면 국내 반도체주 부담이 커질 수 있습니다.</li>
+        
+        <li>☑️ <strong>기관·외국인 수급</strong> — 5,500선 방어의 핵심이 기관 매수였던 만큼 지속 여부가 중요합니다.</li>
+        
+        <li>☑️ <strong>솔리다임 관련 후속 뉴스</strong> — IPO 중단의 배경과 향후 계획에 따라 SK하이닉스 주가 방향이 달라질 수 있습니다.</li>
+        
+        <li>☑️ <strong>코스닥 변동성 관리</strong> — 회전율이 높은 종목의 급등락에 따른 손실 위험을 점검해야 합니다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-10-23 21:32 KST</div>
+
+
+</body>
+</html>
