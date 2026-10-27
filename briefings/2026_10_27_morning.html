@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 10/27 (화) 오전</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-up">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌅 오전 브리핑 · 10/27 (화) 07:30</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📈 美 AI 랠리 재점화…코스피 4%대 급등, 매수 사이드카 발동</div>
+      <div style="font-size:13px;color:var(--dim)">밤사이 뉴욕 증시는 S&amp;P 500 +0.70%, 나스닥 +0.82%, 다우존스 +0.28%로 동반 상승 마감했습니다. 앤트로픽의 사상 최대 규모 IPO 신청 소식이 AI 투자심리를 자극한 것으로 보입니다. 국내에서는 코스피가 +4.23%, 코스닥이 +4.28% 급등하며 코스피 5,700선을 회복했고 매수 사이드카가 발동됐습니다. 반도체·AI 관련주가 강세를 주도했으며, 원/달러 환율은 1,324원으로 소폭 상승(+0.19%)했습니다. 급등에 따른 단기 과열 여부와 외국인 수급 지속성이 관건입니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 코스피 5,700선 안착 여부, 반도체·AI 관련주 차익실현 강도, 원/달러 환율 및 외국인 수급</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(밤사이 미국 증시 마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,677</div>
+      <div class="index-chg up">▲ +0.70%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 훈풍 속 상승 마감, 위험선호 지속</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,169</div>
+      <div class="index-chg up">▲ +0.82%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">앤트로픽 IPO 소식에 기술주 중심 강세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,362</div>
+      <div class="index-chg up">▲ +0.28%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">상대적으로 완만한 오름세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">5,701</div>
+      <div class="index-chg up">▲ +4.23%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">반도체 주도 급등, 사이드카 발동 후 5,700선 회복 시도</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">758.37</div>
+      <div class="index-chg up">▲ +4.28%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 관련주 확산에 코스피와 동반 급등</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,324</div>
+      <div class="index-chg up">▲ +0.19%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 상승, 1,320원대 중반에서 등락</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🤖 <strong>앤트로픽 사상 최대 IPO 신청</strong> — AI 산업 성장 기대가 커지며 나스닥 상승을 이끈 것으로 해석됩니다.</li>
+        
+        <li>🇺🇸 <strong>美 AI 랠리 재점화</strong> — 미국 반도체주 강세가 국내 반도체 업종으로 이어졌습니다.</li>
+        
+        <li>🇰🇷 <strong>코스피 매수 사이드카 발동</strong> — 급등 과정에서 프로그램 매수 쏠림이 나타났고, 단기 변동성 확대 가능성이 있습니다.</li>
+        
+        <li>📊 <strong>경제성장률 발표</strong> — 성장률 지표가 장중 코스피 5,700선 회복에 영향을 준 것으로 보도됐습니다.</li>
+        
+        <li>💱 <strong>원/달러 환율 동향</strong> — 환율은 소폭 오름세로, 외환딜러 예상 레인지와 외국인 수급을 함께 봐야 합니다.</li>
+        
+        <li>🥇 <strong>금값 반등</strong> — 금시세가 상승세를 보이며 국내 순금 1돈 75만원대를 기록했다고 전해졌습니다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>반도체 (삼성전자·SK하이닉스)</td>
+            <td>美 AI 랠리와 주주환원 기대가 맞물려 주목</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>AI 부품·PCB (이수페타시스 등)</td>
+            <td>AI 관련주 상승세 확산, 이수페타시스 9%대 급등</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>원전·SMR (현대엔지니어링 등)</td>
+            <td>美 SMR 개발사와 4세대 원전 실증 협력 MOU</td>
+            <td class="up-txt">▲ 관심 확대</td>
+          </tr>
+          
+          <tr>
+            <td>금·귀금속</td>
+            <td>금값 반등세, 변동성은 여전히 큼</td>
+            <td class="warn-txt">→ 중립</td>
+          </tr>
+          
+          <tr>
+            <td>단기 급등 대형주</td>
+            <td>사이드카 발동 이후 차익실현 매물 출회 가능성</td>
+            <td class="down-txt">▼ 변동성 주의</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>코스피 5,700선 지지 여부</strong> — 급등 이후 안착 여부가 단기 추세 판단의 기준이 됩니다.</li>
+        
+        <li>☑️ <strong>AI·반도체 모멘텀 지속성</strong> — 미국 AI 랠리가 이어져야 국내 반도체 강세도 뒷받침됩니다.</li>
+        
+        <li>☑️ <strong>외국인·기관 수급</strong> — 급등장에서는 수급 변화가 차익실현 시점을 좌우합니다.</li>
+        
+        <li>☑️ <strong>환율 흐름</strong> — 원/달러 환율 방향이 외국인 자금 흐름에 영향을 줄 수 있습니다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-10-27 10:34 KST</div>
+
+
+</body>
+</html>
