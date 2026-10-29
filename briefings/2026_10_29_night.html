@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 10/29 (목) 밤</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">🌙 밤 브리핑 · 10/29 (목) 23:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 알파벳 급락에 AI 투자 우려 확산, 美 3대 지수 약세 출발</div>
+      <div style="font-size:13px;color:var(--dim)">미국 증시는 알파벳 실적 실망에 하락 출발하며 나스닥 -1.54%, S&amp;P 500 -0.49%, 다우존스 -0.40%를 기록 중입니다. AI 투자 부담이 부각되면서 서비스나우 등 AI 관련 소프트웨어주까지 동반 약세를 보이고 있습니다. 반면 유럽 증시는 실적 호조와 ECB 금리 동결에 힘입어 상승 마감했습니다. 국내 증시는 코스피 +6.63%, 코스닥 +3.69%로 강하게 마감했으나, 미국장 약세가 이어질 경우 내일 차익 실현 압력이 나타날 가능성이 있습니다. USD/KRW는 +0.95% 상승한 1,339원으로 원화 약세 흐름입니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 알파벳 낙폭 확대 여부와 AI 관련주 동반 약세, PCE 물가지표 발표, 美·이란 협상 및 유가 흐름</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(미국 장 개장·유럽 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,706</div>
+      <div class="index-chg down">▼ -0.49%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">알파벳 쇼크에 약세 출발, 기술주 중심 조정</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,141</div>
+      <div class="index-chg down">▼ -1.54%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 투자 우려로 3대 지수 중 낙폭 최대</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,265</div>
+      <div class="index-chg down">▼ -0.40%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">상대적으로 낙폭 제한, 방어적 흐름</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">6,012</div>
+      <div class="index-chg up">▲ +6.63%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">급등 마감, 미국장 약세에 따른 변동성 주의</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">771.28</div>
+      <div class="index-chg up">▲ +3.69%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">동반 강세, 단기 차익 실현 가능성</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,339</div>
+      <div class="index-chg up">▲ +0.95%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">원화 약세, 위험회피 심리와 맞물려 상승</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>알파벳 실적 실망</strong> — 알파벳이 큰 폭 하락하며 나스닥 하락을 주도, AI 투자 비용 우려 부각</li>
+        
+        <li>🤖 <strong>AI 관련주 동반 약세</strong> — 서비스나우가 개장 직후 급락하는 등 AI 수혜 기대 소프트웨어주로 매도세 확산</li>
+        
+        <li>🇪🇺 <strong>ECB 기준금리 동결</strong> — 금리 2.5% 동결, 긴축적 금융 여건이 성장·물가에 부담이라는 평가</li>
+        
+        <li>📊 <strong>美 3분기 성장률 호조</strong> — 고유가·고금리에도 성장세가 꺾이지 않아 경기 경착륙 우려는 완화</li>
+        
+        <li>🛢️ <strong>국제유가 하락</strong> — 美·이란 협상 기대감에 브렌트유가 내렸으나 여전히 고유가 부담 지속</li>
+        
+        <li>🏛️ <strong>관세·중간선거 변수</strong> — 중간선거 결과와 무관하게 관세 기조가 유지될 것이라는 싱크탱크 분석</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>미국 빅테크·AI</td>
+            <td>알파벳 급락 여파로 AI 투자 회수 우려 확대</td>
+            <td class="down-txt">▼ 약세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>반도체</td>
+            <td>나스닥 약세 영향을 받겠으나 AI 인프라 수요는 중장기 지지 요인</td>
+            <td class="warn-txt">→ 중립</td>
+          </tr>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>국내 강세 이후 미국 기술주 약세 영향권, 차익 실현 가능성</td>
+            <td class="warn-txt">→ 중립</td>
+          </tr>
+          
+          <tr>
+            <td>유럽 증시</td>
+            <td>실적 호조와 ECB 동결로 상대적 안정</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>에너지</td>
+            <td>美·이란 협상 기대에 유가 하락 압력</td>
+            <td class="down-txt">▼ 약세 전망</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>알파벳 낙폭 및 빅테크 확산 여부</strong> — AI 투자 우려가 다른 대형 기술주로 번지는지가 나스닥 방향을 좌우</li>
+        
+        <li>☑️ <strong>PCE 물가지표</strong> — 물가 결과에 따라 금리 전망과 위험자산 선호가 달라질 수 있음</li>
+        
+        <li>☑️ <strong>원/달러 환율 흐름</strong> — 환율 상승 지속 시 외국인 수급과 국내 증시에 부담</li>
+        
+        <li>☑️ <strong>국제유가와 美·이란 협상</strong> — 협상 진전 여부가 유가와 인플레이션 기대에 영향</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-10-30 04:27 KST</div>
+
+
+</body>
+</html>
