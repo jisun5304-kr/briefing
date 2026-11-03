@@ -46,12 +46,12 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
 
 <!-- ① 한 줄 요약 -->
 <div class="section">
-  <div class="card bar-warn">
+  <div class="card bar-down">
     <div class="card-inner">
       <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 11/3 (화) 16:00</div>
-      <div style="font-size:16px;font-weight:700;margin-bottom:6px">⚖️ 미국 증시 강세 vs 코스피·코스닥 약세, 엇갈린 흐름 속 수급 확인 필요</div>
-      <div style="font-size:13px;color:var(--dim)">미국 3대 지수는 S&amp;P 500 +0.57%, 나스닥 +0.64%, 다우존스 +1.10%로 동반 상승했습니다. 반면 집계된 국내 지수는 코스피 -3.48%, 코스닥 -3.83%로 큰 폭 하락했고 USD/KRW는 +0.48% 올라 원화 약세를 나타냈습니다. 다만 수집된 뉴스 제목은 &#39;인텔 쇼크&#39;에도 코스피가 반등 마감하고 기관 매수가 유입됐다고 전하고 있어, 지수 집계치와 뉴스 간 방향이 엇갈립니다. 확정 수치는 한국거래소 공시 기준으로 재확인할 필요가 있으며, 반도체 변동성과 저PBR·주주환원 테마가 핵심 맥락으로 보입니다.</div>
-      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 반도체(메모리) 주가 방향성, 기관·외국인 수급 흐름, 원/달러 환율 추이, 저PBR·주주환원 테마 지속 여부</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 AI 자금조달 부담에 코스피 3%대·코스닥 4%대 급락 마감</div>
+      <div style="font-size:13px;color:var(--dim)">코스피는 -3.59% 하락한 5,649, 코스닥은 -4.08% 하락한 704.39로 마감하며 700선 지지 여부가 시험대에 올랐습니다. 외국인·기관 순매도가 낙폭을 키웠고, 오라클의 대규모 자금조달 소식이 AI 투자 부담 우려로 번진 것이 주된 배경으로 보도됐습니다. 원/달러 환율은 1,343원(+1.35%)으로 급등해 위험회피 심리를 반영했습니다. 반면 간밤 미국은 나스닥 +0.61%, S&amp;P 500 +0.27%로 선방했으나 다우존스는 -0.51%로 엇갈렸습니다. 개인 투자자는 저가 매수에 나선 것으로 전해져 수급 공방이 이어질 전망입니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 외국인·기관 순매도 지속 여부, 코스닥 700선 지지, 원/달러 환율 1,340원대 안착 여부, 미 중간선거 이후 증시 반응</div>
     </div>
   </div>
 </div>
@@ -64,49 +64,49 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
     <div class="index-card up">
       <div class="signal up"></div>
       <div class="index-name">S&amp;P 500</div>
-      <div class="index-val">7,623</div>
-      <div class="index-chg up">▲ +0.57%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">미국 대형주 동반 강세, 상승 흐름 유지</div>
+      <div class="index-val">7,562</div>
+      <div class="index-chg up">▲ +0.27%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 중심 소폭 상승, 지수는 상대적 견조</div>
     </div>
     
     <div class="index-card up">
       <div class="signal up"></div>
       <div class="index-name">나스닥</div>
-      <div class="index-val">25,600</div>
-      <div class="index-chg up">▲ +0.64%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 중심 오름세, 반도체 변동성은 부담</div>
+      <div class="index-val">25,317</div>
+      <div class="index-chg up">▲ +0.61%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 관련주 선호 속 상승 지속</div>
     </div>
     
-    <div class="index-card up">
-      <div class="signal up"></div>
+    <div class="index-card down">
+      <div class="signal down"></div>
       <div class="index-name">다우존스</div>
-      <div class="index-val">52,339</div>
-      <div class="index-chg up">▲ +1.10%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">3대 지수 중 상대적으로 강한 상승</div>
+      <div class="index-val">51,716</div>
+      <div class="index-chg down">▼ -0.51%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">경기민감·가치주 약세로 하락 전환</div>
     </div>
     
     <div class="index-card down">
       <div class="signal down"></div>
       <div class="index-name">코스피</div>
-      <div class="index-val">5,731</div>
-      <div class="index-chg down">▼ -3.48%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">집계는 약세이나 뉴스는 반등 보도, 수치 재확인 필요</div>
+      <div class="index-val">5,649</div>
+      <div class="index-chg down">▼ -3.59%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">AI 자금조달 우려와 외인·기관 매도에 급락</div>
     </div>
     
     <div class="index-card down">
       <div class="signal down"></div>
       <div class="index-name">코스닥</div>
-      <div class="index-val">724.38</div>
-      <div class="index-chg down">▼ -3.83%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">집계상 약세 폭 확대, 위험선호 위축 여부 점검</div>
+      <div class="index-val">704.39</div>
+      <div class="index-chg down">▼ -4.08%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">낙폭 확대, 700선 지지 시험</div>
     </div>
     
     <div class="index-card up">
       <div class="signal up"></div>
       <div class="index-name">USD/KRW</div>
-      <div class="index-val">1,344</div>
-      <div class="index-chg up">▲ +0.48%</div>
-      <div style="font-size:11px;color:var(--dim);margin-top:2px">달러 강세 흐름, 외국인 수급에 부담 가능성</div>
+      <div class="index-val">1,343</div>
+      <div class="index-chg up">▲ +1.35%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">위험회피 심리 속 원화 약세 급격히 진행</div>
     </div>
     
   </div>
@@ -119,17 +119,17 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
     <div class="card-inner">
       <ul class="bullet-list">
         
-        <li>🇺🇸 <strong>미국 증시 동반 상승</strong> — S&amp;P 500·나스닥·다우존스가 모두 오르며 글로벌 위험선호는 유지되는 모습</li>
+        <li>🤖 <strong>AI 투자 부담</strong> — 오라클 200억달러 조달 소식이 AI 투자 비용 우려를 자극했다는 보도</li>
         
-        <li>💾 <strong>인텔 쇼크와 반도체 변동성</strong> — 미국 반도체 약세 여파로 대만 증시도 속락했으나 국내 메모리주는 탄탄하다는 보도</li>
+        <li>🏦 <strong>외인·기관 순매도</strong> — 외국인과 기관의 동반 매도가 지수 급락을 주도</li>
         
-        <li>🏦 <strong>기관 중심 매수세</strong> — 마감시황 기사들은 기관 약 1.2조원 매수가 코스피 반등을 이끌었다고 전함</li>
+        <li>💱 <strong>원/달러 환율 급등</strong> — 환율 상승으로 외국인 수급 부담 확대 가능성</li>
         
-        <li>💰 <strong>주주환원·저PBR 테마</strong> — SK스퀘어 4조3천억원 주주환원 계획 발표, 저PBR주 151개 중 115개 상승</li>
+        <li>🗳️ <strong>미 중간선거 변수</strong> — 선거 이후 증시 향방에서 AI가 핵심 변수로 거론</li>
         
-        <li>💱 <strong>원/달러 환율</strong> — USD/KRW 상승으로 환율 부담이 이어지는지 점검 필요</li>
+        <li>🧑‍💻 <strong>개인 저가매수</strong> — 개인은 급락 구간에서 매수에 나서며 수급 완충 시도</li>
         
-        <li>⚡ <strong>11월 첫 거래일 대외 변수</strong> — 두산에너빌리티 등 대형주 중심으로 대외 변수에 주목하는 분위기</li>
+        <li>₿ <strong>가상자산 흐름</strong> — 비트코인 7만8000달러대 회복했으나 ETF에서는 자금 유출</li>
         
       </ul>
     </div>
@@ -148,33 +148,33 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
         <tbody>
           
           <tr>
-            <td>반도체(삼성전자·SK하이닉스)</td>
-            <td>인텔 쇼크 이후에도 메모리 업황은 탄탄하다는 평가, 다만 변동성 유의</td>
+            <td>삼성전자·SK하이닉스</td>
+            <td>최근 4~5%대 하락 후 반등 여부, 미국 장초반 엔비디아·SK하이닉스 ADR 강세 보도</td>
+            <td class="warn-txt">→ 반등 시도 전망</td>
+          </tr>
+          
+          <tr>
+            <td>AI·반도체</td>
+            <td>AI 자금조달 부담이 변동성 요인, 엔비디아 강세는 긍정적</td>
             <td class="warn-txt">→ 변동성 확대</td>
           </tr>
           
           <tr>
-            <td>SK스퀘어</td>
-            <td>4조3천억원 규모 주주환원 계획 발표</td>
-            <td class="up-txt">▲ 강세 전망</td>
+            <td>패션·뷰티</td>
+            <td>업종 동반 약세 흐름</td>
+            <td class="down-txt">▼ 약세 전망</td>
           </tr>
           
           <tr>
-            <td>철강(현대제철)</td>
-            <td>저PBR 테마 속 급등세가 보도됨, 단기 과열 가능성은 경계</td>
-            <td class="up-txt">▲ 강세 전망</td>
+            <td>섬유·화학</td>
+            <td>일부 종목이 급락장에서 선방</td>
+            <td class="warn-txt">→ 선별적 대응</td>
           </tr>
           
           <tr>
-            <td>두산에너빌리티</td>
-            <td>11월 첫 거래일 상승, 대외 변수에 따라 방향 결정될 가능성</td>
-            <td class="warn-txt">→ 중립</td>
-          </tr>
-          
-          <tr>
-            <td>코스닥 성장주</td>
-            <td>집계상 낙폭이 커 투자심리 위축 우려, 수급 확인 필요</td>
-            <td class="down-txt">▼ 약세 우려</td>
+            <td>증권(보안 이슈)</td>
+            <td>한양증권 해킹 보도로 보안 리스크 부각 가능성</td>
+            <td class="down-txt">▼ 경계</td>
           </tr>
           
         </tbody>
@@ -190,13 +190,15 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
     <div class="card-inner">
       <ul class="bullet-list">
         
-        <li>☑️ <strong>지수 데이터 재확인</strong> — 뉴스(반등)와 집계 지수(하락)의 방향이 달라 공식 마감 수치 확인이 필요</li>
+        <li>☑️ <strong>외국인·기관 수급 전환</strong> — 순매도 지속 시 추가 하락 가능성, 전환 여부가 반등의 열쇠</li>
         
-        <li>☑️ <strong>반도체 업종 흐름</strong> — 미국 반도체 약세가 국내 메모리주로 번지는지가 지수 방향의 관건</li>
+        <li>☑️ <strong>코스닥 700선 방어</strong> — 심리적 지지선 이탈 시 투매 가능성</li>
         
-        <li>☑️ <strong>기관·외국인 수급</strong> — 기관 매수세가 이어지는지, 외국인 매도 여부 점검</li>
+        <li>☑️ <strong>원/달러 환율 추이</strong> — 환율 추가 상승은 외국인 매도 압력으로 이어질 수 있음</li>
         
-        <li>☑️ <strong>원/달러 환율</strong> — 환율 상승이 외국인 자금 흐름에 미치는 영향 확인</li>
+        <li>☑️ <strong>AI 관련 자금조달 소식</strong> — 대형 기술주 투자 부담 관련 뉴스가 시장 심리를 좌우</li>
+        
+        <li>☑️ <strong>미국 증시 흐름</strong> — 나스닥 강세가 이어지면 국내 반도체주 낙폭 만회 기대</li>
         
       </ul>
     </div>
@@ -204,7 +206,7 @@ window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document
 </div>
 
 
-<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-11-03 01:57 KST</div>
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-11-03 23:57 KST</div>
 
 
 </body>
