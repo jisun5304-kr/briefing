@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 11/5 (목) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-down">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 11/5 (목) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">📉 미 중간선거 변동성에 코스피·코스닥 약세, 미국 증시는 강세</div>
+      <div style="font-size:13px;color:var(--dim)">코스피는 5,649(▼ -3.59%), 코스닥은 704.39(▼ -4.08%)로 집계되며 국내 증시는 약세를 보였습니다. 미 중간선거 결과를 둘러싼 불확실성으로 장중 변동 폭이 크게 확대됐고, 일부 보도는 급락 이후 반등 시도와 외국인 매도 부담을 함께 전하고 있습니다. 반면 S&amp;P 500(▲ +1.84%), 나스닥(▲ +2.61%), 다우존스(▲ +2.14%) 등 미국 3대 지수는 강세로 대비되는 흐름입니다. 원/달러 환율은 1,341(▼ -0.31%)로 소폭 내려 환율 부담은 다소 완화된 모습입니다. AI 데이터센터 관련 우려와 반도체 업종 이슈가 투자심리에 변수로 거론됩니다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 외국인 수급 방향, 미 중간선거 이후 정책 불확실성, 반도체·AI 관련주 흐름, 연말 배당금 송금에 따른 환율 영향</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,708</div>
+      <div class="index-chg up">▲ +1.84%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">미 중간선거 이후 강세 흐름</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">26,034</div>
+      <div class="index-chg up">▲ +2.61%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">3대 지수 중 상승폭 가장 커, 기술주 중심 강세</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,894</div>
+      <div class="index-chg up">▲ +2.14%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">대형 가치주 중심 동반 상승</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">5,649</div>
+      <div class="index-chg down">▼ -3.59%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장중 변동성 확대, 외국인 수급이 관건</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">704.39</div>
+      <div class="index-chg down">▼ -4.08%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">중소형주 낙폭 확대, 약세 두드러짐</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,341</div>
+      <div class="index-chg down">▼ -0.31%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 하락, 연말 배당 송금 수요는 변수</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>🇺🇸 <strong>미 중간선거 결과</strong> — 민주당 의회 장악 보도 속 정책 불확실성이 국내외 시장 변동성을 키운 것으로 보입니다.</li>
+        
+        <li>🌊 <strong>외국인 수급</strong> — 외국인 매도 압력이 장중 변동성의 주요 요인으로 거론되며, 매매 방향이 지수를 좌우할 가능성이 있습니다.</li>
+        
+        <li>🤖 <strong>AI 데이터센터 우려</strong> — &#39;블루 웨이브&#39; 가능성에 AI 데이터센터 관련 투자 환경이 흔들리며 아시아 증시에 부담을 줬다는 분석입니다.</li>
+        
+        <li>💱 <strong>원/달러 환율</strong> — 1,341원대에서 마감했으며, 연말 외국인 배당금 해외 송금이 환율 변수로 지목됩니다.</li>
+        
+        <li>🔧 <strong>반도체 장비 반입 이슈</strong> — SK하이닉스 중국 공장의 미국산 장비 반입 제동 보도가 반도체 업종 불안 요인으로 언급됩니다.</li>
+        
+        <li>₿ <strong>가상자산 시장</strong> — 비트코인은 ETF 이탈 우려 속 하락 후 반등 시도가 나타나 위험자산 심리가 엇갈립니다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>반도체 (삼성전자·SK하이닉스)</td>
+            <td>중국 공장 장비 반입 이슈와 외국인 수급이 주가 향방을 좌우할 전망</td>
+            <td class="warn-txt">→ 중립 (변동성 주의)</td>
+          </tr>
+          
+          <tr>
+            <td>AI·데이터센터 관련주</td>
+            <td>중간선거 결과에 따른 투자 환경 우려와 미국 기술주 강세가 맞물림</td>
+            <td class="warn-txt">→ 중립</td>
+          </tr>
+          
+          <tr>
+            <td>방산·소재 (풍산 등)</td>
+            <td>급등 후 조정 국면으로 추격 매수는 신중할 필요</td>
+            <td class="down-txt">▼ 약세 가능성</td>
+          </tr>
+          
+          <tr>
+            <td>고배당·금융주</td>
+            <td>연말 배당 시즌 접근으로 관심 확대 가능성</td>
+            <td class="up-txt">▲ 관심 확대 전망</td>
+          </tr>
+          
+          <tr>
+            <td>코스닥 중소형주</td>
+            <td>낙폭이 컸던 만큼 기술적 반등 시도 여부 주목</td>
+            <td class="warn-txt">→ 반등 시도 관찰</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>외국인 순매매 동향</strong> — 장중 변동성의 핵심 요인이라 매도세 지속 여부가 지수 방향을 가를 수 있습니다.</li>
+        
+        <li>☑️ <strong>미 의회 구도에 따른 정책 변화</strong> — 중간선거 이후 통상·산업 정책 방향이 반도체·AI 업종에 영향을 줄 수 있습니다.</li>
+        
+        <li>☑️ <strong>원/달러 환율 흐름</strong> — 연말 배당금 송금 수요가 환율과 외국인 자금 흐름에 변수가 될 수 있습니다.</li>
+        
+        <li>☑️ <strong>미국 기술주 강세의 국내 전이 여부</strong> — 미국 증시 강세가 다음 거래일 국내 반도체·대형주 반등으로 이어질지 확인이 필요합니다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-11-05 00:17 KST</div>
+
+
+</body>
+</html>
