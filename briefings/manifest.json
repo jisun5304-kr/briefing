@@ -3381,5 +3381,18 @@
         "file": "briefings/2026_11_06_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-11-07",
+    "label": "2026년 11월 7일 (토)",
+    "sessions": [
+      {
+        "time": "23:00",
+        "emoji": "🌙",
+        "period": "밤",
+        "ready": true,
+        "file": "briefings/2026_11_07_night.html"
+      }
+    ]
   }
 ]
