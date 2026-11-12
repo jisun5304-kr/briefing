@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시황 브리핑 — 11/13 (금) 오후</title>
+<style>
+:root{--bg:#f5f5f3;--surface:#fff;--border:#e0e0dc;--thead:#f0f0ee;--row-hover:#f8f8f6;--text:#222;--dim:#666;--muted:#aaa;--summary-bg:#eff6ff;--summary-border:#93c5fd;--summary-text:#1e3a5f;--card-shadow:0 1px 4px rgba(0,0,0,.06);--up:#16a34a;--up-bg:rgba(22,163,74,.08);--down:#dc2626;--down-bg:rgba(220,38,38,.08);--info:#3b82f6;--info-bg:rgba(59,130,246,.08);--warn:#d97706;--warn-bg:rgba(217,119,6,.08)}
+html.dark{--bg:#0b1120;--surface:#131e33;--border:#1e2e4a;--thead:#0f1928;--row-hover:#1a2940;--text:#dce6f5;--dim:#8fa4c0;--muted:#5a7090;--summary-bg:rgba(59,130,246,.08);--summary-border:#3b82f6;--summary-text:#dce6f5;--card-shadow:0 1px 4px rgba(0,0,0,.3);--up:#4ade80;--up-bg:rgba(74,222,128,.10);--down:#f87171;--down-bg:rgba(248,113,113,.10);--info:#3b82f6;--info-bg:rgba(59,130,246,.10);--warn:#fbbf24;--warn-bg:rgba(251,191,36,.10)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:14px;line-height:1.6;padding:16px}
+h2{font-size:15px;font-weight:700;margin-bottom:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:var(--card-shadow);position:relative;margin-bottom:12px}
+.card.bar-up::before,.card.bar-down::before,.card.bar-info::before,.card.bar-warn::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.card.bar-up::before{background:var(--up)}.card.bar-down::before{background:var(--down)}.card.bar-info::before{background:var(--info)}.card.bar-warn::before{background:var(--warn)}
+.card-inner{padding-left:8px}
+.index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:600px){.index-grid{grid-template-columns:1fr}}
+.index-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;position:relative}
+.index-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:8px 0 0 8px}
+.index-card.up::before{background:var(--up)}.index-card.down::before{background:var(--down)}.index-card.flat::before{background:var(--warn)}
+.signal{position:absolute;top:10px;right:10px;width:10px;height:10px;border-radius:50%}
+.signal.up{background:var(--up);box-shadow:0 0 8px rgba(74,222,128,.5)}.signal.down{background:var(--down);box-shadow:0 0 8px rgba(248,113,113,.5)}.signal.flat{background:var(--warn);box-shadow:0 0 8px rgba(251,191,36,.5)}
+.index-name{font-size:11px;color:var(--dim);margin-bottom:4px;font-weight:600}
+.index-val{font-size:20px;font-weight:700}
+.index-chg{font-size:13px;font-weight:600;margin-top:2px}
+.index-chg.up{color:var(--up)}.index-chg.down{color:var(--down)}.index-chg.flat{color:var(--warn)}
+.section{margin-bottom:20px}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
+.bullet-list li:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--thead);color:var(--dim);font-size:11px;font-weight:600;padding:7px 10px;text-align:left}
+td{padding:7px 10px;border-bottom:1px solid var(--border)}
+tr:hover td{background:var(--row-hover)}
+.up-txt{color:var(--up);font-weight:600}.down-txt{color:var(--down);font-weight:600}.warn-txt{color:var(--warn);font-weight:600}
+.disclaimer{margin-top:24px;padding:10px 14px;border-radius:6px;background:var(--thead);color:var(--muted);font-size:11.5px;text-align:center}
+</style>
+<script>
+const params=new URLSearchParams(location.search);
+if(params.get('theme')==='dark') document.documentElement.classList.add('dark');
+window.addEventListener('message',e=>{if(e.data&&e.data.type==='theme'){document.documentElement.classList.toggle('dark',e.data.theme==='dark');}});
+</script>
+</head>
+<body>
+
+<!-- ① 한 줄 요약 -->
+<div class="section">
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <div style="font-size:12px;color:var(--dim);margin-bottom:4px">☀️ 오후 브리핑 · 11/13 (금) 16:00</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">⚖️ 코스피 5,300선 공방, 옵션만기·&#39;젠슨 황 리스크&#39;에 장중 변동성 확대</div>
+      <div style="font-size:13px;color:var(--dim)">뉴욕증시는 S&amp;P 500(-0.09%)과 나스닥(-0.24%)이 소폭 내린 반면 다우존스(+0.10%)는 소폭 올라 혼조로 마감했다. 국내 증시는 옵션 만기일과 &#39;젠슨 황 리스크&#39;가 겹치며 코스피가 장중 5,450선까지 올랐다가 5,340선으로 되돌림하는 등 등락이 컸다는 보도가 이어졌다. 삼성전자 계열은 외국인 매수에 힘입어 강세였던 반면 SK하이닉스는 약세를 보여 반도체 내 온도차가 나타났다. 원/달러 환율은 1,334원 부근에서 하락(원화 강세) 흐름이다. 지수 등락률 데이터와 일부 마감 시황 기사의 수치가 달라, 정확한 마감 수치는 확정 시황 확인이 필요하다.</div>
+      <div style="margin-top:8px;font-size:12.5px;color:var(--up);font-weight:600">✅ 오늘 관전 포인트: 반도체 대형주 외국인 수급, 코스피 5,300선 지지 여부, 원/달러 환율 1,330원대 안착 여부</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 주요 지수 (실제 데이터) -->
+<div class="section">
+  <h2>② 주요 지수 <span style="font-size:11px;font-weight:400;color:var(--dim)">(국내 장중·마감 기준)</span></h2>
+  <div class="index-grid">
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">S&amp;P 500</div>
+      <div class="index-val">7,613</div>
+      <div class="index-chg down">▼ -0.09%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">소폭 하락, 숨 고르기 양상</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">나스닥</div>
+      <div class="index-val">25,404</div>
+      <div class="index-chg down">▼ -0.24%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">기술주 차익실현 속 약보합</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">다우존스</div>
+      <div class="index-val">52,536</div>
+      <div class="index-chg up">▲ +0.10%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">대형 가치주 중심으로 소폭 상승</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스피</div>
+      <div class="index-val">5,375</div>
+      <div class="index-chg up">▲ +2.60%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">장중 5,450선 터치 후 반락, 변동성 큰 하루</div>
+    </div>
+    
+    <div class="index-card up">
+      <div class="signal up"></div>
+      <div class="index-name">코스닥</div>
+      <div class="index-val">705.10</div>
+      <div class="index-chg up">▲ +5.62%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">중소형주 수급 쏠림, 변동성 유의</div>
+    </div>
+    
+    <div class="index-card down">
+      <div class="signal down"></div>
+      <div class="index-name">USD/KRW</div>
+      <div class="index-val">1,334</div>
+      <div class="index-chg down">▼ -0.58%</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:2px">원화 강세 흐름, 외국인 수급과 연동</div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ③ 오늘 장 주요 변수 (해설) -->
+<div class="section">
+  <h2>③ 오늘 장 주요 변수</h2>
+  <div class="card bar-info">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>📉 <strong>&#39;젠슨 황 리스크&#39;</strong> — AI 반도체 관련 발언·이슈가 코스피 5,300선 등락의 변수로 거론됐다.</li>
+        
+        <li>🗓️ <strong>옵션 만기일</strong> — 만기일 수급 영향으로 장중 오르내림이 컸다는 보도가 나왔다.</li>
+        
+        <li>🌐 <strong>외국인 수급</strong> — 삼성전자우 4거래일 연속 상승, 외국인 1천388억원 순매수가 확인됐다.</li>
+        
+        <li>🏗️ <strong>충청권 메가프로젝트 착공</strong> — 정부 주도 대형 프로젝트 착공으로 관련 인프라·건설 수혜 기대가 있다.</li>
+        
+        <li>⚡ <strong>전력기기 강세</strong> — 효성중공업이 3거래일간 18.59% 상승하며 시총 17조원을 회복했다.</li>
+        
+        <li>🔋 <strong>2차전지 숨 고르기</strong> — 삼성SDI가 이틀간의 큰 반등 뒤 하락 전환해 단기 차익실현이 나타났다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ④ 섹터·종목 체크 (해설) -->
+<div class="section">
+  <h2>④ 주요 섹터 및 종목 체크</h2>
+  <div class="card">
+    <div class="card-inner">
+      <table>
+        <thead>
+          <tr><th>섹터 / 종목</th><th>주목 이유</th><th>방향성</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td>삼성전자</td>
+            <td>외국인 순매수 지속, 우선주 4거래일 연속 상승</td>
+            <td class="up-txt">▲ 강세 전망</td>
+          </tr>
+          
+          <tr>
+            <td>SK하이닉스</td>
+            <td>마감 시황에서 약세, 엔비디아 관련 변수에 민감</td>
+            <td class="down-txt">▼ 약세 가능성</td>
+          </tr>
+          
+          <tr>
+            <td>전력기기(효성중공업)</td>
+            <td>단기 급등 후 시총 17조원 회복, 추가 모멘텀 vs 차익실현 공존</td>
+            <td class="warn-txt">→ 중립</td>
+          </tr>
+          
+          <tr>
+            <td>2차전지(삼성SDI)</td>
+            <td>단기 반등 후 상승세 중단</td>
+            <td class="down-txt">▼ 조정 가능성</td>
+          </tr>
+          
+          <tr>
+            <td>인프라·건설</td>
+            <td>충청권 메가프로젝트 착공에 따른 기대</td>
+            <td class="up-txt">▲ 관심 확대</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ 핵심 체크리스트 (해설) -->
+<div class="section">
+  <h2>⑤ 오늘 장 핵심 체크리스트</h2>
+  <div class="card bar-warn">
+    <div class="card-inner">
+      <ul class="bullet-list">
+        
+        <li>☑️ <strong>코스피 5,300선 지지 여부</strong> — 옵션 만기 이후 수급 정상화 과정에서 지지선 확인이 중요하다.</li>
+        
+        <li>☑️ <strong>외국인 반도체 순매수 지속</strong> — 삼성전자·하이닉스 등 대형주 방향성이 지수를 좌우한다.</li>
+        
+        <li>☑️ <strong>엔비디아 등 AI 반도체 관련 뉴스</strong> — &#39;젠슨 황 리스크&#39;가 재부각될 경우 변동성이 확대될 수 있다.</li>
+        
+        <li>☑️ <strong>원/달러 환율 흐름</strong> — 환율 안정 여부가 외국인 수급과 직결된다.</li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="disclaimer">본 브리핑은 공개된 시장 데이터(지수·환율은 실시간 수집)를 기반으로 자동 생성된 참고용 정보입니다. 해설·전망은 AI가 작성했으며, 투자 판단의 최종 책임은 투자자 본인에게 있고 본 내용은 투자 권유가 아닙니다. · 생성 2026-11-13 00:53 KST</div>
+
+
+</body>
+</html>
