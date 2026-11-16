@@ -3535,5 +3535,18 @@
         "file": "briefings/2026_11_14_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-11-16",
+    "label": "2026년 11월 16일 (월)",
+    "sessions": [
+      {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_11_16_morning.html"
+      }
+    ]
   }
 ]
