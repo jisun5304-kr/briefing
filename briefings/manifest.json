@@ -3575,5 +3575,18 @@
         "file": "briefings/2026_11_17_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-11-18",
+    "label": "2026년 11월 18일 (수)",
+    "sessions": [
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_11_18_afternoon.html"
+      }
+    ]
   }
 ]
