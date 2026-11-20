@@ -3656,5 +3656,18 @@
         "file": "briefings/2026_11_20_night.html"
       }
     ]
+  },
+  {
+    "date": "2026-11-21",
+    "label": "2026년 11월 21일 (토)",
+    "sessions": [
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_11_21_afternoon.html"
+      }
+    ]
   }
 ]
