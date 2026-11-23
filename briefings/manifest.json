@@ -3689,5 +3689,18 @@
         "file": "briefings/2026_11_23_morning.html"
       }
     ]
+  },
+  {
+    "date": "2026-11-24",
+    "label": "2026년 11월 24일 (화)",
+    "sessions": [
+      {
+        "time": "16:00",
+        "emoji": "☀️",
+        "period": "오후",
+        "ready": true,
+        "file": "briefings/2026_11_24_afternoon.html"
+      }
+    ]
   }
 ]
