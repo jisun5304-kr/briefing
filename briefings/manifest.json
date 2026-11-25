@@ -3722,6 +3722,13 @@
     "label": "2026년 11월 25일 (수)",
     "sessions": [
       {
+        "time": "07:30",
+        "emoji": "🌅",
+        "period": "오전",
+        "ready": true,
+        "file": "briefings/2026_11_25_morning.html"
+      },
+      {
         "time": "16:00",
         "emoji": "☀️",
         "period": "오후",
